@@ -1,0 +1,16 @@
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\bin\Release\Gss.ProductInfoView.dll
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\bin\Release\Gss.ProductInfoView.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\bin\Release\Gss.Common.dll
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\bin\Release\Xceed.Wpf.Toolkit.dll
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\bin\Release\Gss.Common.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\ProductInfoView.g.cs
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\GeneratedInternalTypeHelper.g.cs
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\Gss.ProductInfoView_MarkupCompile.cache
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\Gss.ProductInfoView_MarkupCompile.lref
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\ProductInfoView.baml
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\Gss.ProductInfoView.g.resources
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\Gss.ProductInfoView.Properties.Resources.resources
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\Gss.ProductInfoView.csproj.GenerateResource.Cache
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\Gss.ProductInfoView.dll
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\Gss.ProductInfoView.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.ProductInfoView\obj\Release\Gss.ProductInfoView.csprojResolveAssemblyReference.cache

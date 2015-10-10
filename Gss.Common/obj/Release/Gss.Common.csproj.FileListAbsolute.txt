@@ -1,0 +1,7 @@
+E:\GitHub\WeiXinTraderSystem\Gss.Common\bin\Release\Gss.Common.dll
+E:\GitHub\WeiXinTraderSystem\Gss.Common\bin\Release\Gss.Common.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.Common\bin\Release\Xceed.Wpf.Toolkit.dll
+E:\GitHub\WeiXinTraderSystem\Gss.Common\obj\Release\Gss.Common.Properties.Resources.resources
+E:\GitHub\WeiXinTraderSystem\Gss.Common\obj\Release\Gss.Common.csproj.GenerateResource.Cache
+E:\GitHub\WeiXinTraderSystem\Gss.Common\obj\Release\Gss.Common.dll
+E:\GitHub\WeiXinTraderSystem\Gss.Common\obj\Release\Gss.Common.pdb

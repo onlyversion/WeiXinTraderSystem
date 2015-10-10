@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\TradeService\CTrade.wsdl" />
+    <None Include="Service References\TradeService\CTrade1.wsdl" />
     <None Include="Service References\TradeService\Gss.TradeService.TradeService.ComHisData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -121,20 +121,20 @@
     <None Include="Service References\TradeService\Gss.TradeService.TradeService.WUserInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\TradeService\TradeService.wsdl" />
-    <None Include="Service References\TradeService\TradeService.xsd">
+    <None Include="Service References\TradeService\TradeService1.wsdl" />
+    <None Include="Service References\TradeService\TradeService5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TradeService\TradeService1.xsd">
+    <None Include="Service References\TradeService\TradeService51.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TradeService\TradeService2.xsd">
+    <None Include="Service References\TradeService\TradeService52.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TradeService\TradeService3.xsd">
+    <None Include="Service References\TradeService\TradeService53.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TradeService\TradeService4.xsd">
+    <None Include="Service References\TradeService\TradeService54.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -162,6 +162,9 @@
       <Project>{935FF084-4A7A-41A8-8C05-8ED7C6F536C3}</Project>
       <Name>Gss.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TradeService\TradeService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

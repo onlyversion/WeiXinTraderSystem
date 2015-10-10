@@ -126,11 +126,11 @@
     <comment>保证金WCF服务（交易服务器）</comment>
   </data>
   <data name="GssManager_ImitateConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8075/GssManager.svc</value>
+    <value>http://192.168.2.102:8077/GssManager.svc</value>
     <comment>(模拟服务器）http://118.123.240.152:8722/GssManager.svc</comment>
   </data>
   <data name="GssManager_StockConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8075/GssManager.svc</value>
+    <value>http://192.168.2.102:8077/GssManager.svc</value>
     <comment>(交易服务器）http://118.123.240.152:8622/GssManager.svc</comment>
   </data>
   <data name="JgjWebService" xml:space="preserve">
@@ -138,19 +138,19 @@
     <comment>金生金WebService地址</comment>
   </data>
   <data name="NewsAddOrEdit_ImitateConnectType" xml:space="preserve">
-    <value />
+    <value>http://192.168.2.102:8077/NewsInfo.aspx</value>
     <comment>模拟服务器  添加或编辑新闻</comment>
   </data>
   <data name="NewsAddOrEdit_StockConnectType" xml:space="preserve">
-    <value />
+    <value>http://192.168.2.102:8077/NewsInfo.aspx</value>
     <comment>交易服务器  添加或编辑新闻</comment>
   </data>
   <data name="NewsShow_ImitateConnectType" xml:space="preserve">
-    <value />
+    <value>http://192.168.2.102:8077/News.aspx</value>
     <comment>模拟服务器 查看新闻</comment>
   </data>
   <data name="NewsShow_StockConnectType" xml:space="preserve">
-    <value />
+    <value>http://192.168.2.102:8077/News.aspx</value>
     <comment>交易服务器 查看新闻</comment>
   </data>
   <data name="OrgTicketService_ImitateConnectType" xml:space="preserve">
@@ -168,11 +168,17 @@
     <comment>服务器上更新程序的文件版本号</comment>
   </data>
   <data name="TradeService_ImitateConnectType" xml:space="preserve">
-    <value>http://192.168.0.26:8075/TradeService.svc</value>
+    <value>http://192.168.2.102:8077/TradeService.svc</value>
     <comment>(模拟服务器）http://118.123.240.152:8722/tradeservice.svc</comment>
   </data>
   <data name="TradeService_StockConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8075/TradeService.svc</value>
+    <value>http://192.168.2.102:8077/TradeService.svc</value>
     <comment>(交易服务器）http://118.123.240.152:8622/tradeservice.svc</comment>
+  </data>
+  <data name="ArticlesInfo_ImitateConnectType" xml:space="preserve">
+    <value>http://192.168.2.102:8077/ArticlesInfo.aspx</value>
+  </data>
+  <data name="ArticlesInfo_StockConnectType" xml:space="preserve">
+    <value>http://192.168.2.102:8077/ArticlesInfo.aspx</value>
   </data>
 </root>

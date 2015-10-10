@@ -1,0 +1,10 @@
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Release\Gss.StockQuotations.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Release\Gss.StockQuotations.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Release\com.gss.cnt.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Release\com.gss.common.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Release\Gss.Common.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Release\Xceed.Wpf.Toolkit.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Release\Gss.Common.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\obj\Release\Gss.StockQuotations.csprojResolveAssemblyReference.cache
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\obj\Release\Gss.StockQuotations.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\obj\Release\Gss.StockQuotations.pdb

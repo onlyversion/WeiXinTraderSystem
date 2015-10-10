@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.2.102:8077/TradeService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model" />
+  <xs:complexType name="WUserInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/WcfInterface.model" base="q1:ResultDesc">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TdUser" nillable="true" type="q1:TradeUser" />
+          <xs:element minOccurs="0" name="WUser" nillable="true" type="tns:Base_WUser" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="WUserInfo" nillable="true" type="tns:WUserInfo" />
+  <xs:complexType name="Base_WUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PWUserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNum" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ticket" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WUserId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Base_WUser" nillable="true" type="tns:Base_WUser" />
+  <xs:complexType name="PayCashFundInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/WcfInterface.model" base="q2:ResultDesc">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IdentifyingCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PayCashFundInfo" nillable="true" type="tns:PayCashFundInfo" />
+  <xs:complexType name="ReturnCashFundInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/WcfInterface.model" base="q3:ResultDesc">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Money" type="xs:double" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReturnCashFundInfo" nillable="true" type="tns:ReturnCashFundInfo" />
+  <xs:complexType name="UserTradeInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/WcfInterface.model" base="q4:ResultDesc">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfWTradeUserInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserTradeInfo" nillable="true" type="tns:UserTradeInfo" />
+  <xs:complexType name="ArrayOfWTradeUserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WTradeUserInfo" nillable="true" type="tns:WTradeUserInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWTradeUserInfo" nillable="true" type="tns:ArrayOfWTradeUserInfo" />
+  <xs:complexType name="WTradeUserInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="TdUser" nillable="true" type="q5:TradeUser" />
+      <xs:element minOccurs="0" name="WUser" nillable="true" type="tns:Base_WUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WTradeUserInfo" nillable="true" type="tns:WTradeUserInfo" />
+  <xs:complexType name="OrgTicketUrlInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/WcfInterface.model" base="q6:ResultDesc">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Url" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrgTicketUrlInfo" nillable="true" type="tns:OrgTicketUrlInfo" />
+</xs:schema>

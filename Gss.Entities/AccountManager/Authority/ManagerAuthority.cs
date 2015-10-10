@@ -110,6 +110,10 @@ namespace Gss.Entities
             }
         }
 
+       
+
+        
+
         private bool _allowReleaseAnnouncement;
 
         /// <summary>

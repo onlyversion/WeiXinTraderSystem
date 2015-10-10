@@ -704,6 +704,25 @@ namespace Gss.Entities.JTWEntityes
             }
         }
 
+        private bool _AllowArticlesInfo;
+
+        /// <summary>
+        /// 获取或设置是否允许理财师说
+        /// </summary>
+        public bool AllowArticlesInfo
+        {
+            get { return _AllowArticlesInfo; }
+            set
+            {
+                if (_AllowArticlesInfo != value)
+                {
+                    _AllowArticlesInfo = value;
+                    RaisePropertyChanged("AllowArticlesInfo");
+
+                }
+            }
+        }
+
         private bool _allowViewLog;
 
         /// <summary>

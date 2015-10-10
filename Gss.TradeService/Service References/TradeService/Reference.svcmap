@@ -20,16 +20,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.0.26:8075/TradeService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.2.102:8077/TradeService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TradeService.xsd" MetadataType="Schema" ID="5e943d7e-4294-4fa2-a16d-06e4bd6b071d" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd1" />
-    <MetadataFile FileName="TradeService1.xsd" MetadataType="Schema" ID="95a93a1c-6059-487f-9065-9574c0f32f70" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd0" />
-    <MetadataFile FileName="TradeService2.xsd" MetadataType="Schema" ID="640bc77a-16c1-4337-bc06-296ad2261956" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd4" />
-    <MetadataFile FileName="TradeService.wsdl" MetadataType="Wsdl" ID="e601d8f6-02ca-44bb-8856-caad7d190b89" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="CTrade.wsdl" MetadataType="Wsdl" ID="1976911c-d208-4b68-b402-aa4939e43780" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?wsdl" />
-    <MetadataFile FileName="TradeService3.xsd" MetadataType="Schema" ID="f8ca2cf2-bcfa-4934-8365-c11cccec537c" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd3" />
-    <MetadataFile FileName="TradeService4.xsd" MetadataType="Schema" ID="034cdcab-52d5-4eec-9770-c3c223745e75" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CTrade1.wsdl" MetadataType="Wsdl" ID="9dd98e80-2bd6-4592-937f-0f85cdc7bda6" SourceId="1" SourceUrl="http://192.168.2.102:8077/TradeService.svc?wsdl" />
+    <MetadataFile FileName="TradeService.disco" MetadataType="Disco" ID="65867ba3-96c7-4383-9ac1-f88f70434a40" SourceId="1" SourceUrl="http://192.168.2.102:8077/TradeService.svc?disco" />
+    <MetadataFile FileName="TradeService5.xsd" MetadataType="Schema" ID="0e662b93-3ddb-4287-9664-864a8fa40ce2" SourceId="1" SourceUrl="http://192.168.2.102:8077/TradeService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TradeService51.xsd" MetadataType="Schema" ID="ce112a2c-3e0a-4ae4-a101-c5325b7b8dde" SourceId="1" SourceUrl="http://192.168.2.102:8077/TradeService.svc?xsd=xsd4" />
+    <MetadataFile FileName="TradeService52.xsd" MetadataType="Schema" ID="4994c5e6-fbf1-4d35-a8b8-db7bb04bc870" SourceId="1" SourceUrl="http://192.168.2.102:8077/TradeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TradeService53.xsd" MetadataType="Schema" ID="4e26fcfc-10ad-45bc-82b5-694d0daea1e7" SourceId="1" SourceUrl="http://192.168.2.102:8077/TradeService.svc?xsd=xsd3" />
+    <MetadataFile FileName="TradeService1.wsdl" MetadataType="Wsdl" ID="a5b617ff-a3ff-46f6-a266-f31f805692e0" SourceId="1" SourceUrl="http://192.168.2.102:8077/TradeService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="TradeService54.xsd" MetadataType="Schema" ID="705a9db2-f2e8-4e5c-9c75-e779e83cd9b4" SourceId="1" SourceUrl="http://192.168.2.102:8077/TradeService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

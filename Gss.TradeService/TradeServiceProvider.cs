@@ -134,7 +134,7 @@ namespace Gss.TradeService
             try
             {
                 MarOrdersLn marOln = TradeConverter.ToMarOrdersLn(loginID, clientAccountName, userType, newOrderInfo);
-                Marketorders result = TradeService.GetWXMarketorders(marOln);
+                Marketorders result = TradeService.GetWXMarketorders(marOln,null);//null为临时指定，微交易管理端下单不考虑券
                 if (!result.Result)
                     return new ErrType(ERR.SERVICE, result.Desc);
 

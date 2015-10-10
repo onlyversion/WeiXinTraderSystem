@@ -73,8 +73,74 @@ namespace Gss.Entities
                 }
                 return null;
             }
-            //get { return AppCommonConfig.NewsAddOrEdit_ImitateConnectType; }
+          
         }
+
+        /// <summary>
+        /// 理财师说
+        /// </summary>
+        public static string ArticlesAddOrEdit
+        {
+            get
+            {
+                switch (AppCommonConfig.AppCompileType)
+                {
+                    //case "JTW":
+                    //    if (ServceConnectType.ConnectType == ConnectType.StockServiec)
+                    //    {
+                    //        return AppCommonConfig_JTW.NewsAddOrEdit_StockConnectType;
+                    //    }
+                    //    else
+                    //    {
+                    //        return AppCommonConfig_JTW.NewsAddOrEdit_ImitateConnectType;
+                    //    }
+                    //    break;
+                    //case "MT":
+                    //    if (ServceConnectType.ConnectType == ConnectType.StockServiec)
+                    //    {
+                    //        return AppCommonConfig_MT.NewsAddOrEdit_StockConnectType;
+                    //    }
+                    //    else
+                    //    {
+                    //        return AppCommonConfig_MT.NewsAddOrEdit_ImitateConnectType;
+                    //    }
+                    //    break;
+                    case "ZD":
+                        if (ServceConnectType.ConnectType == ConnectType.StockServiec)
+                        {
+                            return AppCommonConfig_ZD.ArticlesInfo_StockConnectType;
+                        }
+                        else
+                        {
+                            return AppCommonConfig_ZD.ArticlesInfo_ImitateConnectType;
+                        }
+                        break;
+                    //case "HFB":
+                    //    if (ServceConnectType.ConnectType == ConnectType.StockServiec)
+                    //    {
+                    //        return AppCommonConfig_HFB.NewsAddOrEdit_StockConnectType;
+                    //    }
+                    //    else
+                    //    {
+                    //        return AppCommonConfig_HFB.NewsAddOrEdit_ImitateConnectType;
+                    //    }
+                    //    break;
+                    //case "XS":
+                    //    if (ServceConnectType.ConnectType == ConnectType.StockServiec)
+                    //    {
+                    //        return AppCommonConfig_XS.NewsAddOrEdit_StockConnectType;
+                    //    }
+                    //    else
+                    //    {
+                    //        return AppCommonConfig_XS.NewsAddOrEdit_ImitateConnectType;
+                    //    }
+                    //    break;
+                }
+                return null;
+            }
+
+        }
+       
         /// <summary>
         /// 查看新闻Web地址
         /// </summary>

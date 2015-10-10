@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="www.ITrade.com" elementFormDefault="qualified" targetNamespace="www.ITrade.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.2.102:8077/TradeService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model" />
+  <xs:import schemaLocation="http://192.168.2.102:8077/TradeService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" />
+  <xs:import schemaLocation="http://192.168.2.102:8077/TradeService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tradeAccount" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tradePwd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mac" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetLoginResult" nillable="true" type="q1:Loginfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoginEx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tradeAccount" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tradePwd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mac" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoginExResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetLoginExResult" nillable="true" type="q2:Loginfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductConfigResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetProductConfigResult" nillable="true" type="q3:ArrayOfProductConfig" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductConfigEx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductConfigExResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetProductConfigExResult" nillable="true" type="q4:ArrayOfProductConfig" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMoneyInventory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMoneyInventoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetMoneyInventoryResult" nillable="true" type="q5:MoneyInventory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMoneyInventoryEx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="account" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMoneyInventoryExResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetMoneyInventoryExResult" nillable="true" type="q6:MoneyInventory" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeOrderEx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="account" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeOrderExResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetTradeOrderExResult" nillable="true" type="q7:ArrayOfTradeOrder" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeHoldOrderEx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="account" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeHoldOrderExResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetTradeHoldOrderExResult" nillable="true" type="q8:ArrayOfTradeHoldOrder" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLTradeOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="Lqc" nillable="true" type="q9:LQueryCon" />
+        <xs:element minOccurs="0" name="Ltype" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLTradeOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetLTradeOrderResult" nillable="true" type="q10:ArrayOfLTradeOrder" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLTradeHoldOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="Lqc" nillable="true" type="q11:LQueryCon" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLTradeHoldOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetLTradeHoldOrderResult" nillable="true" type="q12:ArrayOfLTradeHoldOrder" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDelayPlaceOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDelayPlaceOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDelayPlaceOrderResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDelayFlatOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDelayFlatOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDelayFlatOrderResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetTradeOrderResult" nillable="true" type="q13:ArrayOfTradeOrder" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeHoldOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeHoldOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetTradeHoldOrderResult" nillable="true" type="q14:ArrayOfTradeHoldOrder" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="orderln" nillable="true" type="q15:OrdersLncoming" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrdersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetOrdersResult" nillable="true" type="q16:Orders" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DelHoldOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="DhInfo" nillable="true" type="q17:DelHoldInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DelHoldOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="DelHoldOrderResult" nillable="true" type="q18:MarDelivery" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketorders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="marorderln" nillable="true" type="q19:MarOrdersLn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketordersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetMarketordersResult" nillable="true" type="q20:Marketorders" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyMarketorders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="marln" nillable="true" type="q21:MarketLnEnter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyMarketordersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="ModifyMarketordersResult" nillable="true" type="q22:Marketorders" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DelOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="delen" nillable="true" type="q23:DeliveryEnter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DelOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="DelOrderResult" nillable="true" type="q24:Marketorders" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HuaXiaRemitMoney">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="remit" nillable="true" type="q25:RemitInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HuaXiaRemitMoneyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="HuaXiaRemitMoneyResult" nillable="true" type="q26:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContactToHuaxiaSelfBank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bankcard" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContactToHuaxiaSelfBankResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="ContactToHuaxiaSelfBankResult" nillable="true" type="q27:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContactToHuaxiaOhterBank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="OpenBank" nillable="true" type="q28:OpenBankInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContactToHuaxiaOhterBankResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="ContactToHuaxiaOhterBankResult" nillable="true" type="q29:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RescindHuaxiaBank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RescindHuaxiaBankResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="RescindHuaxiaBankResult" nillable="true" type="q30:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestGetRealPrice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pcode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="x" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestGetRealPriceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestGetRealPriceResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegTestTradeUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TradeAccount" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TradePwd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PhoneNum" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CardNum" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegTestTradeUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="RegTestTradeUserResult" nillable="true" type="q31:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeSetInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeSetInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetTradeSetInfoResult" nillable="true" type="q32:TradeSetInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeNewsInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="starttime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="endtime" type="xs:dateTime" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="NType" type="q33:NewsType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeNewsInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetTradeNewsInfoResult" nillable="true" type="q34:TradeNewsInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeNewsInfoWithPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="lqc" nillable="true" type="q35:NewsLqc" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeNewsInfoWithPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetTradeNewsInfoWithPageResult" nillable="true" type="q36:TradeNewsInfo" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHisData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pricecode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="weekflg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHisDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetHisDataResult" nillable="true" type="q37:ArrayOfHisData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHisDataWithTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pricecode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="weekflg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="weektime" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHisDataWithTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetHisDataWithTimeResult" nillable="true" type="q38:ArrayOfHisData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHisDataWithMdtime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pricecode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="weekflg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="weektime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mdtime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHisDataWithMdtimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetHisDataWithMdtimeResult" nillable="true" type="q39:ComHisData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHisDataWithPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="HisCon" nillable="true" type="q40:HisQueryCon" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHisDataWithPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetHisDataWithPageResult" nillable="true" type="q41:ArrayOfHisData" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyHisData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="hisdata" nillable="true" type="q42:HisData" />
+        <xs:element minOccurs="0" name="pricecode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="weekflg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyHisDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="ModifyHisDataResult" nillable="true" type="q43:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyUserPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PwdType" type="xs:int" />
+        <xs:element minOccurs="0" name="oldpwd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newpwd" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyUserPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="ModifyUserPasswordResult" nillable="true" type="q44:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetUserPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CardNum" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PwdType" type="xs:int" />
+        <xs:element minOccurs="0" name="SendType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetUserPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="ResetUserPasswordResult" nillable="true" type="q45:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXMarketorders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="marorderln" nillable="true" type="q46:MarOrdersLn" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="experiences" nillable="true" type="q47:ArrayOfUserExperience" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXMarketordersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetWXMarketordersResult" nillable="true" type="q48:Marketorders" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WXDelOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="delen" nillable="true" type="q49:DeliveryEnter" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WXDelOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="WXDelOrderResult" nillable="true" type="q50:Marketorders" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXLTradeOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="lqc" nillable="true" type="q51:LQueryCon" />
+        <xs:element minOccurs="0" name="ltype" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXLTradeOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetWXLTradeOrderResult" nillable="true" type="q52:ArrayOfLTradeOrder" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXUserInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wUserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXUserInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" minOccurs="0" name="GetWXUserInfoResult" nillable="true" type="q53:WUserInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyTradePassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wUserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newPassword" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyTradePasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="ModifyTradePasswordResult" nillable="true" type="q54:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXProductConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXProductConfigResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetWXProductConfigResult" nillable="true" type="q55:ArrayOfProductConfig" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXHisData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pricecode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="weekflg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="maxCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWXHisDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetWXHisDataResult" nillable="true" type="q56:ArrayOfHisData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsCanEconomicMan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wUserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsCanEconomicManResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="IsCanEconomicManResult" nillable="true" type="q57:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PayEconomicManCashFund">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wUserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="money" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PayEconomicManCashFundResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" minOccurs="0" name="PayEconomicManCashFundResult" nillable="true" type="q58:PayCashFundInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BecomeEconomicMan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wUserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BecomeEconomicManResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="BecomeEconomicManResult" nillable="true" type="q59:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsCanReturnEconomicManCashFund">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wUserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsCanReturnEconomicManCashFundResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" minOccurs="0" name="IsCanReturnEconomicManCashFundResult" nillable="true" type="q60:ReturnCashFundInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnEconomicManCashFund">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wUserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="money" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReturnEconomicManCashFundResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="ReturnEconomicManCashFundResult" nillable="true" type="q61:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEconomicManUserInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wUserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEconomicManUserInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" minOccurs="0" name="GetEconomicManUserInfoResult" nillable="true" type="q62:UserTradeInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrgTicketUrl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="orgID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrgTicketUrlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" minOccurs="0" name="GetOrgTicketUrlResult" nillable="true" type="q63:OrgTicketUrlInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetCommissionRatio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ratio1" type="xs:double" />
+        <xs:element minOccurs="0" name="ratio2" type="xs:double" />
+        <xs:element minOccurs="0" name="ratio3" type="xs:double" />
+        <xs:element xmlns:q64="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="orgIDList" nillable="true" type="q64:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetCommissionRatioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="SetCommissionRatioResult" nillable="true" type="q65:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommissionRatio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="orgID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="type" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommissionRatioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetCommissionRatioResult" nillable="true" type="q66:CommissionRatioSetInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

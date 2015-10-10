@@ -457,6 +457,15 @@ namespace Gss.Entities {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 理财师说.
+        /// </summary>
+        public static string System_ArticlesInfo {
+            get {
+                return ResourceManager.GetString("System_ArticlesInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 客户分组管理.
         /// </summary>
         public static string System_Group {

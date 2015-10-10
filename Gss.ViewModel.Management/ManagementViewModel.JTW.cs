@@ -40,7 +40,7 @@ namespace Gss.ViewModel.Management
         }
         private SelectCondition _GetNewsCondition;
         /// <summary>
-        /// 微会员查询
+        /// 新闻
         /// </summary>
         public SelectCondition GetNewsCondition
         {
@@ -49,6 +49,20 @@ namespace Gss.ViewModel.Management
             {
                 _GetNewsCondition = value;
                 RaisePropertyChanged("GetNewsCondition");
+            }
+        }
+
+        private SelectCondition _GetArticlesCondition;
+        /// <summary>
+        /// 理财师说
+        /// </summary>
+        public SelectCondition GetArticlesCondition
+        {
+            get { return _GetArticlesCondition; }
+            private set
+            {
+                _GetArticlesCondition = value;
+                RaisePropertyChanged("GetArticlesCondition");
             }
         }
 
@@ -137,6 +151,20 @@ namespace Gss.ViewModel.Management
             {
                 _CurNewsInfo = value;
                 RaisePropertyChanged("CurNewsInfo");
+            }
+        }
+
+        private NewsInfo _CurArticlesInfo;
+        /// <summary>
+        /// 当前理财师说记录
+        /// </summary>
+        public NewsInfo CurArticlesInfo
+        {
+            get { return _CurArticlesInfo; }
+            set
+            {
+                _CurArticlesInfo = value;
+                RaisePropertyChanged("CurArticlesInfo");
             }
         }
         #endregion
@@ -239,6 +267,20 @@ namespace Gss.ViewModel.Management
             {
                 _NewsList = value;
                 RaisePropertyChanged("NewsList");
+            }
+        }
+
+        private ObservableCollection<NewsInfo> _ArtilesList;
+        /// <summary>
+        /// 理财师说数据集
+        /// </summary>
+        public ObservableCollection<NewsInfo> ArtilesList
+        {
+            get { return _ArtilesList; }
+            private set
+            {
+                _ArtilesList = value;
+                RaisePropertyChanged("ArtilesList");
             }
         }
 
@@ -480,6 +522,59 @@ namespace Gss.ViewModel.Management
                 if (_EditNewsCommand == null)
                     _EditNewsCommand = new RelayCommand(EditNewsExecute);
                 return _EditNewsCommand;
+            }
+        }
+
+        private ICommand _GetArticlesCommand;
+        /// <summary>
+        /// 获取理财师说
+        /// </summary>
+        public ICommand GetArticlesCommand
+        {
+            get
+            {
+                if (_GetArticlesCommand == null)
+                    _GetArticlesCommand = new RelayCommand(GetArticlesListExecute);
+                return _GetArticlesCommand;
+            }
+        }
+        private ICommand _AddArticlesCommand;
+        /// <summary>
+        /// 添加理财师说
+        /// </summary>
+        public ICommand AddArticlesCommand
+        {
+            get
+            {
+                if (_AddArticlesCommand == null)
+                    _AddArticlesCommand = new RelayCommand(AddArticlesExecute);
+                return _AddArticlesCommand;
+            }
+        }
+        private ICommand _DelArticlesCommand;
+        /// <summary>
+        /// 删除理财师说
+        /// </summary>
+        public ICommand DelArticlesCommand
+        {
+            get
+            {
+                if (_DelArticlesCommand == null)
+                    _DelArticlesCommand = new RelayCommand(DelArticlesExecute);
+                return _DelArticlesCommand;
+            }
+        }
+        private ICommand _EditArticlesCommand;
+        /// <summary>
+        /// 编辑理财师说
+        /// </summary>
+        public ICommand EditArticlesCommand
+        {
+            get
+            {
+                if (_EditArticlesCommand == null)
+                    _EditArticlesCommand = new RelayCommand(EditArticlesExecute);
+                return _EditArticlesCommand;
             }
         }
 
@@ -1286,7 +1381,7 @@ namespace Gss.ViewModel.Management
                 MessageBox.Show(err.ErrMsg, err.ErrTitle, MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            NewsList = _NewsList;
+            NewsList = new ObservableCollection<NewsInfo>(_NewsList.Where(p => p.NType != NewsTypeEnum.理财师说));
             GetNewsCondition.PageCount = pageCount;
         } 
         #endregion
@@ -1374,6 +1469,115 @@ namespace Gss.ViewModel.Management
                 {
                     MessageBox.Show("删除成功！", "提示信息", MessageBoxButton.OK, MessageBoxImage.Information);
                     NewsList.Remove(CurNewsInfo);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(err.ErrMsg, err.ErrTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+        }
+        #endregion
+        #endregion
+
+        #region 现财师说相关
+        #region 获取现财师说数据
+        /// <summary>
+        /// 获取现财师说数据
+        /// </summary>
+        public void GetArticlesListExecute()
+        {
+            int pageCount = 0;
+            if (_ArtilesList == null)
+                _ArtilesList = new ObservableCollection<NewsInfo>();
+            else
+                _ArtilesList.Clear();
+            //界面设置为默认选中“全部”，所以type不可能为空
+            NewsTypeEnum type = (NewsTypeEnum)Enum.Parse(typeof(NewsTypeEnum), GetArticlesCondition.NewsType);
+            ErrType err = _tradeService.GetTradeNewsInfoWithPage(_loginID, GetArticlesCondition.StartTime,
+                GetArticlesCondition.EndTime.AddDays(1), type, GetArticlesCondition.PageIndex, GetArticlesCondition.PageSize, ref pageCount, ref _ArtilesList);
+            if (err.Err != ERR.SUCCESS)
+            {
+                MessageBox.Show(err.ErrMsg, err.ErrTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            ArtilesList = new ObservableCollection<NewsInfo>(_ArtilesList.Where(p => p.NType == NewsTypeEnum.理财师说));
+            GetArticlesCondition.PageCount = pageCount;
+        }
+        #endregion
+
+        #region 编辑现财师说
+        /// <summary>
+        /// 编辑现财师说
+        /// </summary>
+        private void EditArticlesExecute()
+        {
+            NewsWindows window = new NewsWindows()
+            {
+                DataContext = this,
+                Owner = Application.Current.MainWindow,
+                NewsAddress = ConnectConfigData.ArticlesAddOrEdit + "?Account=" + _accName + "&LoginId=" + _loginID + "&ID=" + CurArticlesInfo.ID
+            };
+
+            window.Closed += (e, v) =>
+            {
+                GetArticlesListExecute();
+            };
+            window.ShowDialog();
+            //window.NewsContent = CurNewsInfo.NewsContent;
+            //if (window.ShowDialog() == true)
+            //{
+            //    CurNewsInfo.NewsContent = window.NewsContent;
+            //    ErrType err = _businessService.ModifyTradeNews(CurNewsInfo,_loginID);
+            //    if (err.Err != ERR.SUCCESS)
+            //    {
+            //        MessageBox.Show(err.ErrMsg, err.ErrTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+            //        GetNewsListExecute();
+            //    }
+            //}
+        }
+        #endregion
+
+        #region 添加现财师说
+        /// <summary>
+        /// 添加现财师说
+        /// </summary>
+        private void AddArticlesExecute()
+        {
+            //CurNewsInfo = new NewsInfo();
+            //CurNewsInfo.ID = Guid.NewGuid().ToString("n");
+            //CurNewsInfo.NType = NewsTypeEnum.新闻;
+            //CurNewsInfo.PubPerson = _accName;
+            NewsWindows window = new NewsWindows()
+            {
+                DataContext = this,
+                Owner = Application.Current.MainWindow,
+                NewsAddress = ConnectConfigData.ArticlesAddOrEdit + "?Account=" + _accName + "&LoginId=" + _loginID
+            };
+
+            window.Closed += (e, v) =>
+            {
+                GetArticlesListExecute();
+            };
+            window.ShowDialog();
+        }
+        #endregion
+
+        #region 删除现财师说
+        /// <summary>
+        /// 删除现财师说
+        /// </summary>
+        private void DelArticlesExecute()
+        {
+            MessageBoxResult result = MessageBox.Show("您确定删除当前选中的记录？", "提示信息", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                ErrType err = _businessService.DelTradeNews(CurArticlesInfo.ID, _loginID);
+                if (err.Err == ERR.SUCCESS)
+                {
+                    MessageBox.Show("删除成功！", "提示信息", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ArtilesList.Remove(CurArticlesInfo);
                     return;
                 }
                 else

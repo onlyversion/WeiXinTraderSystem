@@ -1503,7 +1503,7 @@ namespace Gss.BusinessService
                 #region 系统设置
                 info.IsSystemSettingsEnabled = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System).FirstOrDefault() == null ? false : true;//系统设置（父类）
                 info.AllowReleaseNews = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_1).FirstOrDefault() == null ? false : true;//发布新闻
-
+                info.AllowArticlesInfo = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_ArticlesInfo).FirstOrDefault() == null ? false : true;//理财师说
 
 
                 info.AllowReleaseAnnouncement = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_2).FirstOrDefault() == null ? false : true;//发布公告
