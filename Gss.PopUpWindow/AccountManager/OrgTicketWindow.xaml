@@ -1,0 +1,13 @@
+﻿<Window x:Class="Gss.PopUpWindow.AccountManager.OrgTicketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="二维码" Height="480" Width="600" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Image  Name="image"  />
+        <Button Grid.Row="1" Width="120" Margin="2,2,2,2" HorizontalAlignment="Center" Content="下载" Click="Button_Click" />
+    </Grid>
+</Window>

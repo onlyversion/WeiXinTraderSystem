@@ -1,0 +1,119 @@
+﻿<Window x:Class="Gss.PopUpWindow.AccountManager.InventoryManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" WindowStyle="ToolWindow"
+        xmlns:val="clr-namespace:Gss.Entities.ValidationHelper;assembly=Gss.Entities"
+        WindowStartupLocation="CenterOwner" 
+         SizeToContent="Height"
+        ResizeMode="CanMinimize" 
+        Title="库存管理" Height="230" Width="400">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,2,10,2"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Border Background="{x:Null}" CornerRadius="8" BorderThickness="1" Margin="10" BorderBrush="DarkSlateBlue">
+        <Grid DataContext="{Binding BzjInfoInformation}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="商品" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="库存量"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="平均价"/>
+            <TextBlock Grid.Row="0" Grid.Column="3" Text="库存调整"/>
+            <!--<Separator Grid.Row="1" Grid.ColumnSpan="4" Background="Black" Height="1"/>-->
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="黄金"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="白银"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="铂金"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="钯金"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Au}"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Ag}"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Pt}"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Pd}"/>
+            
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="4" Text="克"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="2" Grid.Column="4" Text="千克"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="3" Grid.Column="4" Text="克"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="4" Grid.Column="4" Text="克"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding AuPrice}"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding AgPrice}"/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding PtPrice}"/>
+            <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding PdPrice}"/>
+
+            <TextBox Margin="5,2,5,2" Grid.Row="1" Grid.Column="3" >
+                <TextBox.Text>
+                    <Binding Path="AuUpdate" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <val:NumRule CanMinus="True" IsInteger="False" ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Margin="5,2,5,2" Grid.Row="2" Grid.Column="3" >
+                <TextBox.Text>
+                    <Binding Path="AgUpdate" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <val:NumRule CanMinus="True" IsInteger="False"  ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Margin="5,2,5,2" Grid.Row="3" Grid.Column="3" >
+                <TextBox.Text>
+                    <Binding Path="PtUpdate" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <val:NumRule CanMinus="True" IsInteger="False" ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Margin="5,2,5,2" Grid.Row="4" Grid.Column="3" >
+                <TextBox.Text>
+                    <Binding Path="PdUpdate" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                            <val:NumRule CanMinus="True"  IsInteger="False" ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            <Button Grid.Row="5" Grid.Column="2" Width="60" Height="25" HorizontalAlignment="Center" Content="确定"  Name="OkButton" Click="OkButton_Click"/>
+            <Button Grid.Row="5" Grid.Column="3" Width="60" Height="25" HorizontalAlignment="Center" Content="取消"  Name="CancelButton" Click="CancelButton_Click" />
+        
+        </Grid>
+    </Border>
+</Window>

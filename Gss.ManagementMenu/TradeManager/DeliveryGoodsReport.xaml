@@ -1,0 +1,20 @@
+﻿<UserControl xmlns:my="clr-namespace:Gss.ManagementMenu.TradeManager"  x:Class="Gss.ManagementMenu.TradeManager.DeliveryGoodsReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <Border CornerRadius="3" Background="WhiteSmoke" Margin="2" >
+        <TabControl >
+           
+            <TabItem Header="买涨交割单" >
+                <my:DeliveryOrderGoodsTabItem />
+            </TabItem>
+            <TabItem Header="买跌交割单" >
+                
+                <my:DeliveryGoodsBackTabItem />
+            </TabItem>
+        </TabControl>
+    </Border>
+</UserControl>

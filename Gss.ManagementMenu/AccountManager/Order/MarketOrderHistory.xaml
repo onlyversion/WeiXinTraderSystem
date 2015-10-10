@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.AccountManager.Order.MarketOrderHistory"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:cus="clr-namespace:Gss.ManagementMenu.CustomControl"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             xmlns:cvt="clr-namespace:Gss.ManagementMenu.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1300">
+    <UserControl.Resources>
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCvt"/>
+        <cvt:TransactionTypeConverter x:Key="TransactionTypeCvt"/>
+        <cvt:TradeTypeConverter x:Key="TradeTypeCvt"/>
+        <cvt:LossOrProfitColorConverter x:Key="LossOrProfitColorConverter"/>
+    </UserControl.Resources>
+    <DockPanel>
+        
+   
+        <cus:InquiryCustomControl DockPanel.Dock="Top"  DoSearch="InquiryCustomControl_DoSearch" IsUserIDVisbility="Collapsed" 
+                                  AccountVisibility="Collapsed"
+                                  CurrentPageItemCount="{Binding Items.Count, ElementName=DgResult}"
+                                  PageCount="{Binding PageCount, RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+                                  ProductList="{Binding ProductInfoes}"  />
+        <DataGrid AutoGenerateColumns="False" CanUserResizeRows="False" SelectionMode="Single" IsReadOnly="True" FontSize="15" Name="DgResult">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="客户账号" Binding="{Binding TradeAccount}" Width="70"/>
+                <DataGridTextColumn Header="历史单号" Binding="{Binding HistoryID}" Width="70"/>
+                <DataGridTextColumn Header="商品名称" Binding="{Binding ProductName}"  Width="70"/>
+                <DataGridTextColumn Header="订单类型" Binding="{Binding OrderType, Converter={StaticResource TransactionTypeCvt}}"  Width="70"/>
+                <DataGridTextColumn Header="手数" Binding="{Binding TradeCount}"  Width="70"/>
+                <DataGridTextColumn Header="订单价" Binding="{Binding OrderPrice}"  Width="70"/>
+                <DataGridTextColumn Header="平仓价" Binding="{Binding TradePrice}"  Width="70"/>
+                <DataGridTextColumn Header="止损价" Binding="{Binding StopLoss}"  Width="70"/>
+                <DataGridTextColumn Header="止盈价" Binding="{Binding StopProfit}"  Width="70"/>
+                <!--<DataGridTextColumn Header="盈亏" Binding="{Binding LossOrProfit}"  Width="70"/>-->
+                <DataGridTemplateColumn  Header="盈亏" MinWidth="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel  VerticalAlignment="Center">
+                                <TextBlock Text="{Binding LossOrProfit}" Foreground="{Binding LossOrProfit, Converter={StaticResource LossOrProfitColorConverter}}" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="手续费" Binding="{Binding BasicLaborCharge}"  Width="70"/>
+                <!--<DataGridTextColumn Header="库存费" Binding="{Binding StorageCharge}"  Width="70"/>-->
+                <DataGridTextColumn Header="订单单号" Binding="{Binding OrderID}" Width="70"/>
+                <DataGridTextColumn Header="订单时间" MinWidth="150" Binding="{Binding OrderTime, Converter={StaticResource DateTimeCvt}}"  Width="70"/>
+                <DataGridTextColumn Header="平仓时间" MinWidth="150" Binding="{Binding TradeTime, Converter={StaticResource DateTimeCvt}}"  Width="70"/>
+                <DataGridTextColumn Header="平仓方式" Binding="{Binding TradeType, Converter={StaticResource TradeTypeCvt}}"  Width="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>

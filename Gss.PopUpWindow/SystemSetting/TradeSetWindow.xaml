@@ -1,0 +1,90 @@
+﻿<Window x:Class="Gss.PopUpWindow.SystemSetting.TradeSetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ValidationHelper="clr-namespace:Gss.Entities.ValidationHelper;assembly=Gss.Entities"
+        SizeToContent="Height"
+        ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Name="acc"
+        Title="交易设置"  Width="300" WindowStyle="ToolWindow" Loaded="acc_Loaded">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Margin" Value="5,1,10,1"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Border CornerRadius="8" BorderThickness="1" Margin="10" BorderBrush="DarkSlateBlue" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="名称："/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="代码："/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="值：" />
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="备注："/>
+            
+            <TextBox Grid.Row="0"  Grid.Column="1" Name="txtObjName">
+                <TextBox.Text>
+                    <Binding Path="ObjName" Mode="TwoWay" UpdateSourceTrigger="Explicit">
+                        <Binding.ValidationRules>
+                            <ValidationHelper:StringRegexRule MinLength="1" MaxLength="50" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            <TextBox Grid.Row="1"  Grid.Column="1" IsEnabled="{Binding CodeEnable,Mode=TwoWay,ElementName=acc}" Name="txtCodeEnable">
+                <TextBox.Text>
+                    <Binding Path="ObjCode" Mode="TwoWay" UpdateSourceTrigger="Explicit">
+                        <Binding.ValidationRules>
+                            <ValidationHelper:StringLengthRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Grid.Row="2"  Grid.Column="1" Name="txtObjValue" TextChanged="txtObjValue_TextChanged">
+                <TextBox.Text>
+                    <Binding Path="ObjValue" Mode="TwoWay" UpdateSourceTrigger="Explicit" >
+                        <!--<Binding.ValidationRules>
+                            <ValidationHelper:StringRegexRule MinLength="1" MaxLength="50" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>-->
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Grid.Row="3"  Grid.Column="1" Name="txtRemark">
+                <TextBox.Text>
+                    <Binding Path="Remark" Mode="TwoWay" UpdateSourceTrigger="Explicit">
+                        <Binding.ValidationRules>
+                            <ValidationHelper:StringLengthRule MaxLength="200" MinLength="0" ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Grid.Row="1" Grid.Column="1"  Name="btnOk" Click="btnOk_Click"   Width="60" Height="25"   Margin="5" Content="确定"/>
+                <Button Grid.Row="1" Grid.Column="1"  Name="btnCancel"  Click="btnCancel_Click"  Width="60" Height="25"   Margin="5" Content="取消"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,216 @@
+﻿<Window x:Class="Gss.PopUpWindow.AccountManager.ClerkAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        SizeToContent="Height"
+        ResizeMode="CanMinimize" 
+        xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+        WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" Name="acc"
+        Title="金商店员账户资料" Height="460" Width="540">
+    <Window.Resources>
+
+        <cmCvt:BooleanInvertedConverter x:Key="BoolInvertCvt"/>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxStyle}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="0,2,10,2"/>
+            <Setter Property="Height" Value="24"/>
+        </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Margin" Value="2,5,2,5"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <RoutedUICommand x:Key="Ok" Text="确定"/>
+        <RoutedUICommand x:Key="Cancel" Text="取消"/>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource Ok}" Executed="CommandBinding_Executed_Ok" CanExecute="CommandBinding_CanExecute_Ok"/>
+        <CommandBinding Command="{StaticResource Cancel}" Executed="CommandBinding_Executed_Cancel"/>
+    </Window.CommandBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            
+        </Grid.RowDefinitions>
+        <TabControl>
+            <TabItem Header="基本资料">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel x:Name="SpInfo">
+                        <Grid Margin="20,10,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="店员姓名："/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="店员账号："/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="登录密码："/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="手机号码："/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="所属金商："/>
+
+                            <!--<TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ClerkAccountInfo.ClerkName}" />-->
+                            <!--<Grid Grid.Row="0" Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Width="Auto" Text="{Binding AccName}" Visibility="{Binding AccNameVisibility,ElementName=acc}"/>
+                                <TextBox  Grid.Column="1" Margin="0,0,10,0" Text="{Binding ClerkAccountInfo.ClerkName}"/>
+                            </Grid>-->
+                            <!--<TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ClerkAccountInfo.ClerkId}"/>-->
+                            <TextBox  Grid.Column="1" Margin="0,0,10,0" Text="{Binding ClerkAccountInfo.ClerkName}"/>
+                            <Grid Grid.Row="1" Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Width="Auto" Text="{Binding AccName}" Visibility="{Binding AccNameVisibility,ElementName=acc}"/>
+                                <TextBox  Grid.Column="1" Margin="0,0,10,0" Text="{Binding ClerkAccountInfo.ClerkId}"/>
+                            </Grid>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ClerkAccountInfo.ClerkPwd}"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ClerkAccountInfo.ClerkPhone}"/>
+                            <Grid Grid.Row="4" Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <!--<ColumnDefinition Width="Auto"/>-->
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--<TextBlock Width="Auto" Text="{Binding AccName}"/>-->
+                                <TextBox  Grid.Column="1" IsReadOnly="True" Text="{Binding ClerkAccountInfo.AgentId}"/>
+                            </Grid>
+                           
+
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="权限设定" >
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel >
+                        <GroupBox Margin="3" Header="操作权限">
+                            <!--<GroupBox.Header>
+                                <CheckBox Content="操作权限" Width="Auto" IsChecked="{Binding ClerkAuthInfo.OperatingAuthority}" IsEnabled="False"/>
+                            </GroupBox.Header>-->
+                            <WrapPanel>
+                                <CheckBox Content="开户" IsChecked="{Binding ClerkAuthInfo.AllowCreateNewAccount}" IsEnabled="{Binding AccountAuthority.AllowCreateNewAccount}"/>
+                                <CheckBox Content="用户资料" IsChecked="{Binding ClerkAuthInfo.AllowViewClientInformation}" IsEnabled="{Binding AccountAuthority.AllowViewClientInformation}"/>
+                                <CheckBox Content="删除用户" IsChecked="{Binding ClerkAuthInfo.AllowDeleteClient}" IsEnabled="{Binding AccountAuthority.AllowDeleteClient}"/>
+                                <CheckBox Content="交易详情" IsChecked="{Binding ClerkAuthInfo.AllowViewTradeDetail}" IsEnabled="{Binding AccountAuthority.AllowViewTradeDetail}"/>
+                                <CheckBox Content="库存结算" IsChecked="{Binding ClerkAuthInfo.AllowCashIO}" IsEnabled="{Binding AccountAuthority.AllowCashIO}"/>
+                                <CheckBox Content="调节" IsChecked="{Binding ClerkAuthInfo.AllowAdjustmentAmount}" IsEnabled="{Binding AccountAuthority.AllowAdjustmentAmount}"/>
+                                <CheckBox Content="持仓新单" IsChecked="{Binding ClerkAuthInfo.AllowMarketOrder}" IsEnabled="{Binding AccountAuthority.AllowMarketOrder}"/>
+                                <CheckBox Content="订单平仓" IsChecked="{Binding ClerkAuthInfo.AllowChargebackOrder}" IsEnabled="{Binding AccountAuthority.AllowChargebackOrder}"/>
+                                <CheckBox Content="订单入库" IsChecked="{Binding ClerkAuthInfo.AllowWarehousingOrder}" IsEnabled="{Binding AccountAuthority.AllowWarehousingOrder}"/>
+                                <CheckBox Content="限价挂单" IsChecked="{Binding ClerkAuthInfo.AllowPendingOrder}" IsEnabled="{Binding AccountAuthority.AllowPendingOrder}"/>
+                                <CheckBox Content="撤销挂单" IsChecked="{Binding ClerkAuthInfo.AllowRevocationOrder}" IsEnabled="{Binding AccountAuthority.AllowRevocationOrder}"/>
+                                <CheckBox Content="订单报表" IsChecked="{Binding ClerkAuthInfo.MarketOrderStatements}" IsEnabled="{Binding AccountAuthority.MarketOrderStatements}"/>
+                                <CheckBox Content="入库报表" IsChecked="{Binding ClerkAuthInfo.WarehousingStatements}" IsEnabled="{Binding AccountAuthority.WarehousingStatements}"/>
+                                <CheckBox Content="平仓报表" IsChecked="{Binding ClerkAuthInfo.ChargebackStatements}" IsEnabled="{Binding AccountAuthority.ChargebackStatements}"/>
+                                <CheckBox Content="挂单报表" IsChecked="{Binding ClerkAuthInfo.PendingOrderStatements}" IsEnabled="{Binding AccountAuthority.PendingOrderStatements}"/>
+                                <CheckBox Content="资金报表" IsChecked="{Binding ClerkAuthInfo.AdjustDepositStatements}" IsEnabled="{Binding AccountAuthority.AdjustDepositStatements}"/>
+
+                                <CheckBox Content="买跌检测" IsChecked="{Binding ClerkAuthInfo.CheckManage}" IsEnabled="{Binding AccountAuthority.CheckManage}"/>
+                                <CheckBox Content="买跌处理" IsChecked="{Binding ClerkAuthInfo.CheckDel}" IsEnabled="{Binding AccountAuthority.CheckDel}"/>
+
+                                <CheckBox Content="买涨交割单报表" IsChecked="{Binding ClerkAuthInfo.OrderTakeReport}" IsEnabled="{Binding AccountAuthority.OrderTakeReport}"/>
+                                <CheckBox Content="买跌单报表" IsChecked="{Binding ClerkAuthInfo.OrderBackReport}" IsEnabled="{Binding AccountAuthority.OrderBackReport}"/>
+                                <CheckBox Content="买跌交割单报表" IsChecked="{Binding ClerkAuthInfo.OrderCheckReport}" IsEnabled="{Binding AccountAuthority.OrderCheckReport}"/>
+                                <CheckBox Content="转金生金报表" IsChecked="{Binding ClerkAuthInfo.JgjReport}" IsEnabled="{Binding AccountAuthority.JgjReport}"/>
+                                <CheckBox Content="提货受理报表" IsChecked="{Binding ClerkAuthInfo.AgentDoDetailAgentDoDetail}" IsEnabled="{Binding AccountAuthority.CheckManage}"/>
+
+                            </WrapPanel>
+                        </GroupBox>
+                        <GroupBox Margin="3" Header="交易管理">
+                            <!--<GroupBox.Header>
+                                <CheckBox Content="交易管理" Width="Auto" IsChecked="{Binding ClerkAuthInfo.IsTradeManagerEnabled}"  IsEnabled="False"/>
+                            </GroupBox.Header>-->
+                            <WrapPanel>
+                                <CheckBox Content="有效订单" IsChecked="{Binding ClerkAuthInfo.AllowViewMarketOrder}" IsEnabled="{Binding AccountAuthority.AllowViewMarketOrder}"/>
+                                <CheckBox Content="限价挂单" IsChecked="{Binding ClerkAuthInfo.AllowViewPendingOrder}" IsEnabled="{Binding AccountAuthority.AllowViewPendingOrder}"/>
+                                <CheckBox Content="平仓历史" IsChecked="{Binding ClerkAuthInfo.AllowViewChargebackRecord}" IsEnabled="{Binding AccountAuthority.AllowViewChargebackRecord}"/>
+                                <CheckBox Content="对冲交易" IsChecked="{Binding ClerkAuthInfo.AllowViewHedgingTransactions}" IsEnabled="{Binding AccountAuthority.AllowViewHedgingTransactions}"/>
+                                <CheckBox Content="导出报表" IsChecked="{Binding ClerkAuthInfo.AllowExportStatement}" IsEnabled="{Binding AccountAuthority.AllowExportStatement}"/>
+                                <CheckBox Content="入库单" IsChecked="{Binding ClerkAuthInfo.AllowViewWarehousing}" IsEnabled="{Binding AccountAuthority.AllowViewWarehousing}"/>
+                                <CheckBox Content="金生金单" IsChecked="{Binding ClerkAuthInfo.JgjOrder}" IsEnabled="{Binding AccountAuthority.JgjOrder}"/>
+                                <CheckBox Content="交割单" IsChecked="{Binding ClerkAuthInfo.DeliverOrder}" IsEnabled="{Binding AccountAuthority.DeliverOrder}"/>
+                                <CheckBox Content="提货单" IsChecked="{Binding ClerkAuthInfo.TihuoOrder}" IsEnabled="{Binding AccountAuthority.TihuoOrder}"/>
+                                <CheckBox Content="买跌单" IsChecked="{Binding ClerkAuthInfo.HuiGouOrder}" IsEnabled="{Binding AccountAuthority.HuiGouOrder}"/>
+                            </WrapPanel>
+                        </GroupBox>
+                        <GroupBox Margin="3" Header="提货受理">
+                            <!--<GroupBox.Header>
+                                <CheckBox Content="提货受理" Width="Auto" IsChecked="{Binding ClerkAuthInfo.TiHuoShouLi}" IsEnabled="False"/>
+                            </GroupBox.Header>-->
+                            <WrapPanel>
+                                <CheckBox Content="绑定账号" IsChecked="{Binding ClerkAuthInfo.BangDingUser}" IsEnabled="{Binding AccountAuthority.BangDingUser}"/>
+                                <CheckBox Content="提货" IsChecked="{Binding ClerkAuthInfo.TiHuo}" IsEnabled="{Binding AccountAuthority.TiHuo}"/>
+                                <CheckBox Content="受理明细" IsChecked="{Binding ClerkAuthInfo.ShouLiMingXi}" IsEnabled="{Binding AccountAuthority.ShouLiMingXi}">
+                                 
+                                </CheckBox>
+                            </WrapPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <!--<TabItem Header="登录信息">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel x:Name="SpLogin" DataContext="{Binding AccInfo}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter Property="Margin" Value="2"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="MinWidth" Value="120"/>
+                                    <Setter Property="Margin" Value="2"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Label Grid.Row="0" Grid.Column="0" Content="登陆IP："/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LoginIP}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="登陆MAC："/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LoginMAC}"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="登陆时间："/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding LastLoginTime, Converter={StaticResource DateTimeCvt}}"/>
+                            <Label Grid.Row="3" Grid.Column="0" Content="是否在线："/>
+                            <CheckBox Grid.Row="3" Grid.Column="1" Margin="2" IsChecked="{Binding IsOnline}" VerticalAlignment="Center" IsEnabled="False"/>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>-->
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="确定" Width="88" Margin="5" Command="{StaticResource Ok}" />
+            <Button Content="取消" Width="88" Margin="5" Command="{StaticResource Cancel}" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
+

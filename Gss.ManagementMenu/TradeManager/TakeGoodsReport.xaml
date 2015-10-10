@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.TradeManager.TakeGoodsReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:my="clr-namespace:Gss.ManagementMenu.CustomControl" mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="1000">
+
+    <UserControl.Resources>
+        <!--<RoutedUICommand x:Key="UpdateBackGoods" Text="更新买跌单"/>
+
+
+        <ContextMenu x:Key="menu" Name="cMenu">
+            <MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource UpdateBackGoods}"/>
+        </ContextMenu>-->
+
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}">
+            <Setter Property="MinHeight" Value="26"/>
+            <!--<Setter Property="ContextMenu" Value="{StaticResource menu}"/>-->
+        </Style>
+    </UserControl.Resources>
+
+    <!--<UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource UpdateBackGoods}" Executed="CommandBinding_Executed_UpdateBackGoods" CanExecute="CommandBinding_CanExecute_UpdateBackGoods"/>
+    </UserControl.CommandBindings>-->
+    <Border Grid.Row="0" BorderThickness="1" BorderBrush="#FFD1CFCF" CornerRadius="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="40"/>
+
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <WrapPanel Orientation="Horizontal" Margin="5">
+                <Label Content="客户账号："  Margin="2"/>
+                <TextBox MinWidth="80" Margin="2" Text="{Binding TakeGoodsCondition.Account}"/>
+                <Label Content="单号：" Margin="2"/>
+                <TextBox MinWidth="150" Margin="2" Text="{Binding TakeGoodsCondition.OrderNO}"  />
+                <Label Content="姓名："  Margin="2"/>
+                <TextBox MinWidth="80" Margin="2" Text="{Binding TakeGoodsCondition.UserName}"/>
+                <Label Content="提货码：" Margin="2"/>
+                <TextBox MinWidth="80" Margin="2" Text="{Binding TakeGoodsCondition.OrderCode}"/>
+            </WrapPanel>
+            <WrapPanel Grid.Row="1" Margin="5">
+                <Label Content="时间段：" Margin="2"/>
+                <DatePicker Margin="2" Focusable="False" SelectedDate="{Binding TakeGoodsCondition.StartTime}" MinWidth="80" Width="Auto"/>
+                <Label Content="至" Margin="2"/>
+                <DatePicker Margin="2" Focusable="False" SelectedDate="{Binding TakeGoodsCondition.EndTime}" MinWidth="80" Width="Auto"/>
+                <Button Content="查询" Width="60" Height="26" Margin="5,2"  Command="{Binding GetTakeGoodsCommand}"/>
+            </WrapPanel>
+            <Border Grid.Row="2" BorderThickness="1" BorderBrush="#FFD1CFCF" />
+            <my:DataPagePicker PageChanged="dataPage_PageChanged" Margin="5,2,2,2" Grid.Row="3" CurrentPageItemCount="{Binding Items.Count,ElementName=dataGrid}"
+                               PageCount="{Binding TakeGoodsCondition.PageCount,Mode=TwoWay}" PageSize="{Binding TakeGoodsCondition.PageSize,Mode=TwoWay}"
+                               PageIndex="{Binding TakeGoodsCondition.PageIndex,Mode=TwoWay}"/>
+
+            <ScrollViewer Grid.Row="4" Margin="5,0">
+                <DataGrid Name="dataGrid"  BorderBrush="#FFD1CFCF" ItemsSource="{Binding TakeGoodsList}" 
+                      
+                       CanUserResizeRows="False" SelectionMode="Single" IsReadOnly="True"  AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <!--客户账号	姓名	单号	提货码	预约时间	状态	黄金重量	黄金成本价	白银重量	白银成本价
+                    铂金重量	铂金成本价	钯金重量	钯金成本价	提货金商	金商店员	转入金商库存账号-->
+                        <!--<DataGridTextColumn Header="客户账号" Binding="{Binding Account}" MinWidth="70"/>-->
+                        <DataGridTemplateColumn Header="客户账号">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding Account}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <!--<DataGridTextColumn Header="姓名" Binding="{Binding Name}" MinWidth="60"/>-->
+                        <DataGridTemplateColumn Header="姓名">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <!--<DataGridTextColumn Header="单号" Binding="{Binding OrderNO}" MinWidth="60"/>-->
+                        <DataGridTemplateColumn Header="单号">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding OrderNO}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <!--<DataGridTextColumn Header="提货码" Binding="{Binding OrderCode}" MinWidth="60"/>-->
+                        <DataGridTemplateColumn Header="提货码">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding OrderCode}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="预约时间" Binding="{Binding CreateDate,StringFormat='yyyy-MM-dd HH:mm:ss'}" Width="Auto"/>
+                        <DataGridTextColumn Header="状态" Binding="{Binding StateString}"/>
+                        <DataGridTextColumn Header="黄金重量(克)" Binding="{Binding Au}"/>
+                        <DataGridTextColumn Header="黄金成本价" Binding="{Binding AuP}"  />
+                        <DataGridTextColumn Header="白银重量(千克)" Binding="{Binding Ag}" />
+                        <DataGridTextColumn Header="白银成本价" Binding="{Binding AgP}" />
+                        <DataGridTextColumn Header="铂金重量(克)" Binding="{Binding Pt}" />
+                        <DataGridTextColumn Header="铂金成本价" Binding="{Binding PtP}" />
+                        <DataGridTextColumn Header="钯金重量(克)" Binding="{Binding Pd}"  />
+                        <DataGridTextColumn Header="钯金成本价" Binding="{Binding PdP}"  />
+                        <DataGridTextColumn Header="提货金商" Binding="{Binding AgentId}"   />
+                        <DataGridTextColumn Header="金商店员" Binding="{Binding ClerkId}" />
+                        <DataGridTextColumn Header="转入金商库存账号" Binding="{Binding TradeAccount}" />
+                        <DataGridTextColumn Header="提货时间" Binding="{Binding OperationDate}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+           
+        </Grid>
+    </Border>
+</UserControl>

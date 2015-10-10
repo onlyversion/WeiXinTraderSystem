@@ -1,0 +1,142 @@
+﻿<Window x:Class="Gss.PopUpWindow.PendingOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:cvt="clr-namespace:Gss.PopUpWindow.Converter"
+        xmlns:uti="clr-namespace:Gss.Common.Utility;assembly=Gss.Common"
+        Title="挂单交易" Width="300"
+        WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" SizeToContent="Height" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <RoutedCommand x:Key="Order" />
+        <RoutedCommand x:Key="Recovery" />
+        <cvt:ProductVisibilityConverter x:Key="ProductVisibilityConverter"/>
+
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityCv"/>
+        <cvt:DigitIncrementConverter x:Key="DigitIncrementCv"/>
+        <cvt:DigitFormatStringConverter x:Key="DigitFmtCv"/>
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="2,5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style TargetType="{x:Type xctk:DoubleUpDown}">
+            <Setter Property="uti:DoubleUpDownInputFilter.DigitOnly" Value="True"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource Order}" Executed="CommandBinding_Executed_Order" CanExecute="CommandBinding_CanExecute"/>
+        <CommandBinding Command="{StaticResource Recovery}" Executed="CommandBinding_Executed_Recovery" CanExecute="CommandBindingRecovery_CanExecute"/>
+    </Window.CommandBindings>
+
+    <Border CornerRadius="5" BorderThickness="1" Margin="10" BorderBrush="DarkSlateBlue">
+        <xctk:BusyIndicator IsBusy="{Binding IsTrading, RelativeSource={RelativeSource AncestorType=Window}}">
+            <xctk:BusyIndicator.BusyContent>
+                <TextBlock Text="交易进行中..." HorizontalAlignment="Center" FontSize="20"/>
+            </xctk:BusyIndicator.BusyContent>
+            <StackPanel>
+                <StackPanel>
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="商品："/>
+                        <TextBlock Text="手数：" Grid.Row="1" Grid.Column="0" />
+                        <TextBlock Text="有效期：" Grid.Row="2" Grid.Column="0" />
+                        <ComboBox Name="CbProductName" Grid.Row="0" Grid.Column="1" Margin="2,5"  SelectedIndex="0"
+                                  ItemsSource="{Binding ProductList, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor} }">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ProductName}"   Visibility="{Binding State, Converter={StaticResource ProductVisibilityConverter}}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <!--<xctk:DoubleUpDown Name="IntCount" Grid.Row="1" Grid.Column="1" Margin="2,5" Watermark="输入订单数量"
+                                           Value="{Binding Path=Count, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Mode=TwoWay}"
+                                           Text="{Binding Path=Value, RelativeSource={RelativeSource Mode=Self}}"
+                                           Increment="{Binding TransactionSettings.OrderUnit}"
+                                           Maximum="{Binding TransactionSettings.MaxTrade}"
+                                           Minimum="{Binding TransactionSettings.MinTrade}"/>-->
+                        <xctk:DoubleUpDown Name="IntCount" Grid.Row="1" Grid.Column="1" Margin="2,5" Watermark="输入订单数量"
+                                          
+                                           Increment="1"
+                                           />
+                        
+                        <DatePicker Focusable="False"  Grid.Row="2" Grid.Column="1" Margin="2,5" IsEnabled="False" 
+                                    SelectedDate="{Binding Path=DueDate, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}"/>
+                    </Grid>
+                    
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Path=SelectedValue.RecoveryPriceString, ElementName=CbProductName}" Margin="2" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="18"   FontWeight="Bold" Foreground="Red" />
+                        <TextBlock Text=" / " Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+                        <TextBlock Text="{Binding Path=SelectedValue.OrderPriceString, ElementName=CbProductName}" Grid.Column="2" Margin="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="18"  FontWeight="Bold" Foreground="Blue" />
+                    </Grid>
+                    <xctk:DoubleUpDown Margin="5,5,5,1" TextAlignment="Center" Minimum="0" Watermark="请输入挂单价"
+                                       FormatString="{Binding Path=SelectedValue.SpreadDigit, ElementName=CbProductName, Converter={StaticResource DigitFmtCv}}"
+                                       Increment="{Binding Path=SelectedValue.SpreadDigit, ElementName=CbProductName, Converter={StaticResource DigitIncrementCv}}" 
+                                       Value="{Binding Path=PendingOrderPrice, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Mode=TwoWay}" />
+                    <TextBlock FontWeight="Normal"   Margin="5,1,5,5"
+                               Text="{Binding SelectedValue.PendingOrderSpread, StringFormat=挂价单必须远离市价至少 {0} 点 }"/>
+                    
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Name="CbStopLoss" Content="止损：" Margin="2,5" VerticalAlignment="Center"
+                                  IsChecked="{Binding Path=EnableStopLoss, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Mode=TwoWay}" />
+                        <xctk:DoubleUpDown FormatString="F2" Increment=".01" Margin="2,5" Grid.Column="1" Minimum="0"
+                                           Value="{Binding Path=StopLoss, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Mode=TwoWay}"
+                                           IsEnabled="{Binding Path=IsChecked, ElementName=CbStopLoss}" />
+                        <CheckBox Name="CbStopProfit" Content="止盈：" Margin="2,5" Grid.Column="2" VerticalAlignment="Center"
+                                  IsChecked="{Binding Path=EnableStopProfit, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Mode=TwoWay}" />
+                        <xctk:DoubleUpDown FormatString="F2" Increment=".01" Margin="2,5" Grid.Column="3" Minimum="0"
+                                           Value="{Binding Path=StopProfit, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Mode=TwoWay}"
+                                           IsEnabled="{Binding Path=IsChecked, ElementName=CbStopProfit}" />
+                    </Grid>
+                    
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="买跌" Command="{StaticResource Recovery}" Width="88" Margin="2,5" Background="SteelBlue" Foreground="Black" FontWeight="Bold"
+                                Style="{StaticResource BtnStyle}"/>
+                        <Button Grid.Column="1" Content="买涨" Command="{StaticResource Order}" Width="88" Margin="2,5" Background="SteelBlue" Foreground="Black" FontWeight="Bold"
+                                Style="{StaticResource BtnStyle}"/>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </xctk:BusyIndicator>
+    </Border>
+</Window>

@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.TradeManager.JgjGoodsReport"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:my="clr-namespace:Gss.ManagementMenu.CustomControl" mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}">
+            <Setter Property="MinHeight" Value="26"/>
+        </Style>
+    </UserControl.Resources>
+    <Border Grid.Row="0" BorderThickness="1" BorderBrush="#FFD1CFCF" CornerRadius="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="40"/>
+
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <WrapPanel Orientation="Horizontal" Margin="5">
+                <Label Content="客户账号："  Margin="2"/>
+                <TextBox MinWidth="80" Margin="2" Text="{Binding JgjGoodsCondition.Account}"/>
+                <Label Content="单号：" Margin="2"/>
+                <TextBox MinWidth="150" Margin="2" Text="{Binding JgjGoodsCondition.OrderNO}"  />
+                <Label Content="姓名："  Margin="2"/>
+                <TextBox MinWidth="80" Margin="2" Text="{Binding JgjGoodsCondition.UserName}"/>
+                <!--<Label Content="提货码：" Margin="2"/>
+                <TextBox MinWidth="80" Margin="2" Text="{Binding JgjGoodsCondition.OrderCode}"/>-->
+            </WrapPanel>
+            <WrapPanel Grid.Row="1" Margin="5">
+                <Label Content="时间段：" Margin="2"/>
+                <DatePicker Margin="2" Focusable="False" SelectedDate="{Binding JgjGoodsCondition.StartTime}" MinWidth="130" Width="Auto"/>
+                <Label Content="至" Margin="2"/>
+                <DatePicker Margin="2" Focusable="False" SelectedDate="{Binding JgjGoodsCondition.EndTime}" MinWidth="130" Width="Auto"/>
+                <Button Content="查询" Width="60" Height="26" Margin="5,2" Command="{Binding GetJgjGoodsCommand}"/>
+            </WrapPanel>
+            <Border Grid.Row="2" BorderThickness="1" BorderBrush="#FFD1CFCF" />
+            <my:DataPagePicker PageChanged="dataPage_PageChanged" Margin="5,2,2,2" Grid.Row="3" CurrentPageItemCount="{Binding Items.Count,ElementName=dataGrid}"
+                               PageCount="{Binding JgjGoodsCondition.PageCount,Mode=TwoWay}" PageSize="{Binding JgjGoodsCondition.PageSize,Mode=TwoWay}"
+                               PageIndex="{Binding JgjGoodsCondition.PageIndex,Mode=TwoWay}"/>
+
+            <DataGrid Name="dataGrid" Grid.Row="4" Margin="5,0" BorderBrush="#FFD1CFCF" ItemsSource="{Binding JgjGoodsList}" 
+                          CanUserResizeRows="False" SelectionMode="Single" IsReadOnly="True"  AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <!--客户账号	姓名	单号	黄金重量	黄金成本单价	白银重量	白银成本单价	转入时间-->
+                    <!--<DataGridTextColumn Header="客户账号" Binding="{Binding Account}" />-->
+                    <DataGridTemplateColumn Header="客户账号">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding Account}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="姓名" Binding="{Binding Name}"/>-->
+                    <DataGridTemplateColumn Header="姓名">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                   
+                    <!--<DataGridTextColumn Header="单号" Binding="{Binding OrderNO}" />-->
+                    <DataGridTemplateColumn Header="单号">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding OrderNO}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="验证码" Binding="{Binding OrderCode}"/>-->
+                    <!--<DataGridTextColumn Header="取货方式" Binding="{Binding CarryWayString}" />-->
+                    <DataGridTextColumn Header="黄金重量(克)" Binding="{Binding Au}" />
+                    <DataGridTextColumn Header="黄金成本价" Binding="{Binding AuP}"/>
+                    <DataGridTextColumn Header="白银重量(千克)" Binding="{Binding Ag}" />
+                    <DataGridTextColumn Header="白银成本价" Binding="{Binding AgP}" />
+                    <!--<DataGridTextColumn Header="铂金数量" Binding="{Binding Pt}" />
+                    <DataGridTextColumn Header="钯金数量" Binding="{Binding Pd}"  />-->
+
+                    <!--<DataGridTextColumn Header="黄金开票数量" Binding="{Binding AuQuantity}" />
+                    <DataGridTextColumn Header="白银开票数量" Binding="{Binding AgQuantity}" />
+                    <DataGridTextColumn Header="铂金开票数量" Binding="{Binding PtQuantity}"  />
+                    <DataGridTextColumn Header="钯金开票数量" Binding="{Binding PdQuantity}" />-->
+
+                    
+                   
+                    <!--<DataGridTextColumn Header="铂金成本价" Binding="{Binding PtP}"/>
+                    <DataGridTextColumn Header="钯金成本价" Binding="{Binding PdP}" />-->
+
+                    <DataGridTextColumn Header="转入时间" Binding="{Binding CreateDate}"/>
+                    <!--<DataGridTextColumn Header="提货时间" Binding="{Binding OperationDate}"/>-->
+                    <!--<DataGridTextColumn Header="状态" Binding="{Binding StateString}"  />-->
+                    <!--<DataGridTextColumn Header="定单类型" Binding="{Binding OrderTypeString}"/>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
+</UserControl>

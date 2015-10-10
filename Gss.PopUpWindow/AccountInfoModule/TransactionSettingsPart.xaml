@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="Gss.PopUpWindow.AccountInfoModule.TransactionSettingsPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:uti="clr-namespace:Gss.Common.Utility;assembly=Gss.Common"
+             xmlns:ValidationHelper="clr-namespace:Gss.Entities.ValidationHelper;assembly=Gss.Entities" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        
+        <Style TargetType="{x:Type xctk:DoubleUpDown}">
+            <Setter Property="uti:DoubleUpDownInputFilter.DigitOnly" Value="True"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel>
+        <Grid Margin="5" Name="RootGrid" Validation.ErrorTemplate="{x:Null}">
+            <Grid.BindingGroup>
+                <BindingGroup/>
+            </Grid.BindingGroup>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="允许买涨" Margin="2"/>
+            <CheckBox Grid.Column="1" Margin="2" x:Name="CbAllowOrder" VerticalAlignment="Center"
+                  IsChecked="{Binding AllowOrder, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
+            <Label Grid.Row="1" Content="允许买跌" Margin="2"/>
+            <CheckBox Grid.Row="1" Grid.Column="1" Margin="2" x:Name="CbAllowRecovery" VerticalAlignment="Center"
+                  IsChecked="{Binding AllowRecovery, UpdateSourceTrigger=PropertyChanged,  Mode=TwoWay}" />
+
+            <Label Grid.Row="2" Content="允许平仓" Margin="2"/>
+            <CheckBox Grid.Row="2" Grid.Column="1" Margin="2" x:Name="CbAllowChargeback" VerticalAlignment="Center"
+                  IsChecked="{Binding AllowChargeback, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
+            <!--<Label Grid.Row="3" Content="允许入库" Margin="2"/>
+        <CheckBox Grid.Row="3" Grid.Column="1" Margin="2" x:Name="CbAllowWarehousing" VerticalAlignment="Center"
+                  IsChecked="{Binding AllowWarehousing, Mode=TwoWay}" />-->
+
+            <Label Grid.Row="4" Content="允许入金" Margin="2"/>
+            <CheckBox Grid.Row="4" Grid.Column="1" Margin="2" x:Name="CbAllowRecharge" VerticalAlignment="Center"
+                  IsChecked="{Binding AllowRecharge, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
+            <Label Grid.Row="5" Content="允许出金" Margin="2"/>
+            <CheckBox Grid.Row="5" Grid.Column="1" Margin="2" x:Name="CbAllowEncashment" VerticalAlignment="Center"
+                  IsChecked="{Binding AllowEncashment, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
+
+
+
+            <!--<Label Grid.Row="6" Grid.Column="0" Content="手数单位：" Margin="2"/>
+            <xctk:DoubleUpDown Grid.Row="6" Grid.Column="1" Margin="2" Watermark="请输入手数单位"
+                   Increment="0.1"   Minimum="0.1"   ValueChanged="DoubleUpDown_ValueChanged" >
+                <xctk:DoubleUpDown.Value>
+                    <Binding Path="OrderUnit"  Mode="TwoWay" NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <ValidationHelper:DoubleExactDivisionRule Dividend="0.1"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </xctk:DoubleUpDown.Value>
+
+            </xctk:DoubleUpDown>
+
+            <Label Grid.Row="7" Grid.Column="0" Content="最小交易手数："/>
+            <xctk:DoubleUpDown Name="min" Grid.Row="7" Grid.Column="1" Margin="2" Watermark="请输入最小交易手数"
+                      Minimum="0.5" Increment="{Binding OrderUnit, Mode=OneWay}"  >
+        
+            </xctk:DoubleUpDown>
+
+            <Label Grid.Row="8" Grid.Column="0" Content="最大交易手数："/>
+            <xctk:DoubleUpDown Name="max" Grid.Row="8" Grid.Column="1" Margin="2" Watermark="请输入最大交易手数"
+                    Minimum="0" Increment="{Binding OrderUnit, Mode=OneWay}"  >
+           
+            </xctk:DoubleUpDown>-->
+        </Grid>
+
+    </StackPanel>
+    
+</UserControl>

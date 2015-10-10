@@ -1,0 +1,155 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.AccountManager.Org.OrgManagerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+               xmlns:cus="clr-namespace:Gss.ManagementMenu.CustomControl"
+            
+             xmlns:my="clr-namespace:Gss.ManagementMenu.CustomControl" mc:Ignorable="d" 
+           
+             d:DesignHeight="300" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <RoutedUICommand x:Key="RolePrivilege" Text="微会员角色"/>
+        <RoutedUICommand x:Key="OrgTicket" Text="二维码"/>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityCvt"/>
+        <RoutedUICommand x:Key="SetCommissionRatio" Text="修改返佣"/>
+        <RoutedUICommand x:Key="SetDefaultCommissionRatio" Text="修改默认返佣"/>
+        <RoutedUICommand x:Key="SetAllCommissionRatio" Text="批量返佣"/>
+
+        <ContextMenu x:Key="CmMgrAccount" Opened="ContextMenu_Opened">
+            <MenuItem Visibility="{Binding AccountAuthority.OrgManagerAddAccount, Converter={StaticResource BoolVisibilityCvt}}"  Header="新增微会员" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{Binding AddOrgCommand}"/>
+            <MenuItem Visibility="{Binding AccountAuthority.OrgManagerAccountInfo, Converter={StaticResource BoolVisibilityCvt}}"  Header="微会员资料" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{Binding ShowOrgDetialCommand}"/>
+            <MenuItem Visibility="{Binding AccountAuthority.orgManagerRole, Converter={StaticResource BoolVisibilityCvt}}"  CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource RolePrivilege}"/>
+            <Separator/>
+            <MenuItem Visibility="{Binding AccountAuthority.OrgManagerDelAccount, Converter={StaticResource BoolVisibilityCvt}}"  Header="删除微会员" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{Binding DeleteOrgCommand}"/>
+            <MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource OrgTicket}"/>
+            <MenuItem Visibility="{Binding AccountAuthority.OrgManagerSetCommissionRatio, Converter={StaticResource BoolVisibilityCvt}}"  Header="修改返佣" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource SetCommissionRatio}"/>
+            <MenuItem Visibility="{Binding AccountAuthority.OrgManagerSetDefaultCommissionRatio, Converter={StaticResource BoolVisibilityCvt}}"  Header="修改默认返佣" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource SetDefaultCommissionRatio}"/>
+            <MenuItem Visibility="{Binding AccountAuthority.OrgManagerSetAllCommissionRatio, Converter={StaticResource BoolVisibilityCvt}}"  Header="批量返佣" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource SetAllCommissionRatio}"/>
+        </ContextMenu>
+
+        <ContextMenu x:Key="cMenu" Opened="ContextMenu_Opened">
+            <MenuItem Visibility="{Binding AccountAuthority.OrgManagerAddAccount, Converter={StaticResource BoolVisibilityCvt}}"  Header="新增微会员" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{Binding AddOrgCommand}"/>
+       </ContextMenu>
+
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}">
+            <Setter Property="ContextMenu" Value="{StaticResource CmMgrAccount}"/>
+            <Setter Property="MinHeight" Value="26"/>
+        </Style>
+        <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource DataGridStyle}">
+            <Setter Property="ContextMenu" Value="{StaticResource cMenu}"/>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource RolePrivilege}"
+                        Executed="CommandBinding_Executed_RolePrivilege" CanExecute="CommandBinding_CanExecute_RolePrivilege"/>
+        <CommandBinding Command="{StaticResource OrgTicket}"
+                        Executed="CommandBinding_Executed_OrgTicket" />
+        <CommandBinding Command="{StaticResource SetCommissionRatio}" Executed="CommandBinding_Executed_SetCommissionRatio" />
+        <CommandBinding Command="{StaticResource SetDefaultCommissionRatio}" Executed="CommandBinding_Executed_SetDefaultCommissionRatio" />
+        <CommandBinding Command="{StaticResource SetAllCommissionRatio}" Executed="CommandBinding_Executed_SetAllCommissionRatio" />
+    </UserControl.CommandBindings>
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding GetOrgsListCommand}" Key="F5"/>
+    </UserControl.InputBindings>
+
+    <DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+           
+            
+            <WrapPanel>
+                <Label Content="微会员名称：" Margin="2"/>
+                <!--<TextBox Margin="2" Text="{Binding OrgSelectCondition.Account, Mode=TwoWay}" MinWidth="88"/>-->
+                <!--<ComboBox Width="auto" MinWidth="100" 
+                          ItemsSource="{Binding POrgList}"
+                          DisplayMemberPath="OrgNameAndOrgCode"
+                          SelectedValuePath="OrgID"
+                          SelectedValue="{Binding OrgSelectCondition.Account, Mode=TwoWay}">
+
+                </ComboBox>-->
+
+                <cus:AutoComboBox x:Name="ACB_Search" Width="AUTO" MinWidth="180" Height="24" ItemsSource="{Binding POrgList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" DisplayName="OrgNameAndOrgCode" SelectedValuePath="OrgID"
+                          SelectedValue="{Binding OrgSelectCondition.Account, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+                <Label Content="负责人：" Margin="2"/>
+                <TextBox Margin="2" Text="{Binding OrgSelectCondition.UserName, Mode=TwoWay}" MinWidth="88"/>
+                <Label Content="证件号码：" Margin="2"/>
+                <TextBox Margin="2" Text="{Binding OrgSelectCondition.CardNum, Mode=TwoWay}" MinWidth="150"/>
+                <Button Content="查询" Width="60" Height="26" Margin="5,2" ToolTip="根据查询条件获取微会员列表"  HorizontalAlignment="Right"
+                     Command="{Binding GetOrgsListCommand}" Click="Button_Click"/>
+            </WrapPanel>
+            
+            
+            <my:DataPagePicker PageChanged="dataPage_PageChanged" Margin="5,2,2,2" Grid.Row="1" CurrentPageItemCount="{Binding Items.Count,ElementName=dataGrid}"
+                               PageCount="{Binding OrgSelectCondition.PageCount,Mode=TwoWay}" PageSize="{Binding OrgSelectCondition.PageSize,Mode=TwoWay}"
+                               PageIndex="{Binding OrgSelectCondition.PageIndex,Mode=TwoWay}"/>
+
+            <xctk:BusyIndicator Grid.Row="2" IsBusy="{Binding OrgSelectCondition.IsBusy}">
+                <xctk:BusyIndicator.BusyContent>
+                    <TextBlock Text="加载中..." FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </xctk:BusyIndicator.BusyContent>
+                <DataGrid  CanUserAddRows="False"  AutoGenerateColumns="False" SelectionMode="Single" CanUserResizeRows="False" Name="dataGrid"
+                      ItemsSource="{Binding OrgList}" SelectedItem="{Binding CurOrgInfo,Mode=TwoWay}">
+                    <DataGrid.Columns>
+
+                        <DataGridCheckBoxColumn Header="选择" Binding="{Binding IsCheck}" Width="40"/>
+                        <DataGridCheckBoxColumn Header="启用" Binding="{Binding Status}" Width="40" IsReadOnly="True"/>
+                        <!--<DataGridTextColumn Header="会员编码" Binding="{Binding TelePhone}" MinWidth="70"/>-->
+                        <DataGridTemplateColumn Header="会员编码" Width="70" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding TelePhone}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <!--<DataGridTextColumn Header="微会员" Binding="{Binding OrgName}" MinWidth="100"/>-->
+                        <DataGridTemplateColumn Header="会员名称" Width="100" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding OrgName}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="上级微会员" Binding="{Binding ParentOrgName}" Width="100" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="法人" Binding="{Binding Coperson}" Width="50" IsReadOnly="True"/>
+                        <!--<DataGridTextColumn Header="手机" Binding="{Binding PhoneNum}" MinWidth="80"/>-->
+                        <DataGridTemplateColumn Header="手机" Width="70" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True"
+                                             Text="{Binding PhoneNum}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="证件类型" Binding="{Binding CardTypeString}" Width="70" IsReadOnly="True"/>
+                        <!--<DataGridTextColumn Header="证件编号" Binding="{Binding CardNum}" MinWidth="60"/>-->
+                        <DataGridTemplateColumn Header="证件编号" MinWidth="60" IsReadOnly="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                             Text="{Binding CardNum}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+                        <DataGridTextColumn Header="负责人" Binding="{Binding Reperson}" Width="60" IsReadOnly="True"/>
+
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="60" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="地址" Binding="{Binding Address}" Width="60" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="创建时间" Binding="{Binding AddTime}" Width="140" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </xctk:BusyIndicator>
+        </Grid>
+    </DockPanel>
+</UserControl>

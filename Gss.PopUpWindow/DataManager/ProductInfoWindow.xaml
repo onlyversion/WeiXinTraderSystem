@@ -1,0 +1,291 @@
+﻿<Window x:Class="Gss.PopUpWindow.ProductInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cvt="clr-namespace:Gss.PopUpWindow.Converter"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:uti="clr-namespace:Gss.Common.Utility;assembly=Gss.Common"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:ValiHelp="clr-namespace:Gss.Entities.ValidationHelper;assembly=Gss.Entities"
+        WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow"
+        SizeToContent="Height"
+        Title="商品信息详情" Height="600" Width="640" >
+    <Window.Resources>
+        <RoutedUICommand x:Key="Ok" Text="确定"/>
+        <RoutedUICommand x:Key="Cancel" Text="取消"/>
+
+        <cvt:ProductStateEnumConverter x:Key="ProductStateCvt"/>
+        <cvt:DateLongTimeConverter x:Key="LongTimeCvt"/>
+
+        <Style TargetType="{x:Type GroupBox}">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            
+        </Style>
+        <Style TargetType="xctk:DoubleUpDown">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            
+            <Setter Property="uti:DoubleUpDownInputFilter.DigitOnly" Value="True"/>
+        </Style>
+        <Style TargetType="xctk:IntegerUpDown">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            
+            <Setter Property="uti:IntergerUpDownInputFilter.DigitOnly" Value="True"/>
+        </Style>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource Ok}" Executed="CommandBinding_Executed_Ok" CanExecute="CommandBinding_CanExecute_Ok"/>
+        <CommandBinding Command="{StaticResource Cancel}" Executed="CommandBinding_Executed_Cancel"/>
+    </Window.CommandBindings>
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="确定" Width="88" Margin="5" Command="{StaticResource Ok}" IsDefault="True"/>
+            <Button Content="取消" Width="88" Margin="5" Command="{StaticResource Cancel}" IsCancel="True"/>
+        </StackPanel>
+        <StackPanel>
+            <GroupBox Header="基本信息">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--列1-->
+                    <Label Content="商品名称："/>
+                    <Label Grid.Row="1" Content="行情编码："/>
+                    
+                    <!--列2-->
+                    <!--<TextBox Grid.Column="1" Name="TbName"
+                             IsEnabled="{Binding IsNew,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"
+                             Text="{Binding ProductName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>-->
+
+                    <TextBox Grid.Column="1" Name="TbName"
+                             Text="{Binding ProductName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <ComboBox Grid.Column="1" IsEnabled="{Binding IsNew,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}" Grid.Row="1" Name="CbStockCode" ItemsSource="{Binding RawMaterialsCodeList,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}" 
+                              SelectedItem="{Binding StockCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <!--<sys:String>XPDUSD</sys:String>
+                        <sys:String>XAGUSD</sys:String>
+                        <sys:String>XPTUSD</sys:String>
+                        <sys:String>XAUUSD</sys:String>
+                        <sys:String>USDOLLAR</sys:String>
+                        <sys:String>Copper</sys:String>
+                        <sys:String>UKOil</sys:String>-->
+
+                        <!--<sys:String>XAUUSD</sys:String>
+                        <sys:String>XAGUSD</sys:String>
+                        <sys:String>EURUSD</sys:String>
+                        <sys:String>EURJPY</sys:String>
+                        <sys:String>GBPUSD</sys:String>
+                        <sys:String>USDJPY</sys:String>--> 
+                    </ComboBox>
+                    
+                    <!--列3-->
+                    <Label Grid.Column="2" Content="商品编码："/>
+                    <!--<Label Grid.Column="2" Grid.Row="1" Content="原料编码："/>-->
+
+                    <!--列4-->
+                    <TextBox Grid.Column="3" Name="TbProductCode" IsEnabled="{Binding IsNew,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"
+                             Text="{Binding ProductCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <!--<ComboBox Grid.Column="4" Grid.Row="1" Name="CbRmCode"
+                              SelectedItem="{Binding RawMaterialsCode, Mode=TwoWay}">
+                        <sys:String>XAU</sys:String>
+                        <sys:String>XAG</sys:String>
+                        <sys:String>XPD</sys:String>
+                        <sys:String>XPT</sys:String>
+                        <sys:String>XAUUSD</sys:String>
+                        <sys:String>XAGUSD</sys:String>
+                        <sys:String>EURUSD</sys:String>
+                        <sys:String>EURJPY</sys:String>
+                        <sys:String>GBPUSD</sys:String>
+                        <sys:String>USDJPY</sys:String>
+                    </ComboBox>-->
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="交易控制">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--列1-->
+                    <Label Content="交易状态："/>
+                    <Label Grid.Row="1" Content="价格区间："/>
+                    <Label Grid.Row="2" Content="最大时差："/>
+
+                    <!--列2-->
+                    <ComboBox Grid.Column="1" Margin="2"  FontWeight="Normal" Width="207" HorizontalAlignment="Left"
+                                  SelectedItem="{Binding State, Converter={StaticResource ProductStateCvt}}">
+                        <sys:String>正常交易</sys:String>
+                        <sys:String>只报价</sys:String>
+                        <sys:String>只买涨</sys:String>
+                        <sys:String>只买跌</sys:String>
+                        <sys:String>全部禁止</sys:String>
+                    </ComboBox>
+                    <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="2">
+                        <xctk:DoubleUpDown FormatString="C2" MinWidth="88" Minimum="0.01" Increment="0.01"
+                                               Value="{Binding AllowMinPrice, Mode=TwoWay}"/>
+                        <Label Content="到"/>
+                        <xctk:DoubleUpDown FormatString="C2" MinWidth="88" Minimum="1"
+                                               Value="{Binding AllowMaxPrice, Mode=TwoWay}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Margin="2">
+                        <xctk:IntegerUpDown MinWidth="180" Minimum="0"
+                                                Value="{Binding AllowMaxTimeDeviation}"/>
+                        <Label Content="秒"/>
+                    </StackPanel>
+
+                    <!--列3-->
+                    <!--<Label Grid.Row="1" Grid.Column="2" Content="开盘时间："/>
+                    <Label Grid.Row="2" Grid.Column="2" Content="收盘时间："/>-->
+
+                    <!--列4-->
+                    <!--<xctk:TimePicker Grid.Row="1" Grid.Column="3" TimeInterval="1:00" Watermark="输入开盘时间" Format="Custom" FormatString="HH:mm:ss" Margin="2"
+                             Value="{Binding StartTradeTime, Mode=TwoWay, Converter={StaticResource LongTimeCvt}}"/>
+                    <xctk:TimePicker Grid.Row="2" Grid.Column="3" TimeInterval="1:00" Watermark="输入收盘时间" Format="Custom" FormatString="HH:mm:ss" Margin="2"
+                             StartTime="00:59:59" EndTime="23:59:59"
+                             Value="{Binding EndTradeTime, Mode=TwoWay, Converter={StaticResource LongTimeCvt}}"/>-->
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="交易设置" Margin="3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--列1-->
+                    <Label Content="点差："/>
+                    <Label Grid.Row="1" Content="点值："/>
+                    <!--<Label Grid.Row="2" Content="止盈止损点差："/>-->
+                    <Label Grid.Row="1" Grid.Column="2" Content="重量单位："/>
+                    <Label Grid.Row="4" Content="交易工费公式："/>
+                    <!--<Label Grid.Row="5" Content="买涨单库存费公式："/>-->
+                    
+
+                    <!--列2-->
+                    <xctk:IntegerUpDown Grid.Column="1" Minimum="0"
+                                        Value="{Binding Spread, Mode=TwoWay}"/>
+                    <xctk:DoubleUpDown Grid.Column="1" Grid.Row="1" Minimum="0" Increment="0.01" FormatString="F2"
+                                       Value="{Binding PointValue, Mode=TwoWay}"/>
+                    <!--<xctk:IntegerUpDown Grid.Column="1" Grid.Row="2" Minimum="0"
+                                        Value="{Binding LossProfitSpread, Mode=TwoWay}"/>-->
+                    <xctk:DoubleUpDown Grid.Column="3" Grid.Row="1" Minimum="0" Increment="0.001"
+                                       Value="{Binding WeightUnit, Mode=TwoWay}"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" TextWrapping="WrapWithOverflow">
+                        <TextBox.Text>
+                            <Binding Path="TransactionFeeFormula" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <ValiHelp:StringLengthRule MaxLength="50"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <!--<TextBox Grid.Column="1" Grid.Row="5" TextWrapping="WrapWithOverflow">
+                        <TextBox.Text>
+                            <Binding Path="OrderStorageFeeFormula" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <ValiHelp:StringLengthRule MaxLength="50"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>-->
+
+
+                    <!--列3-->
+                    <Label Grid.Column="2" Content="点差基值："/>
+                    <!--<Label Grid.Column="2" Grid.Row="1" Content="点差位数："/>-->
+                    <!--<Label Grid.Column="2" Grid.Row="1" Content="挂单点差："/>-->
+                    <!--<Label Grid.Column="2" Grid.Row="3" Content="下浮价格："/>-->
+                    <!--<Label Grid.Column="2" Grid.Row="4" Content="买跌手续费公式："/>-->
+                    <Label Grid.Column="2" Grid.Row="4" Content="保证金计算公式："/>
+                    <!--<Label Grid.Column="2" Grid.Row="5" Content="买跌单库存费公式："/>-->
+                    <!--<Label Grid.Column="2" Grid.Row="6" Content="定金百分比："/>-->
+
+                    <!--列4-->
+                    <xctk:DecimalUpDown Grid.Row="0" Grid.Column="3" Minimum="0" Increment="0.01"
+                                       Value="{Binding SpreadBaseValue, Mode=TwoWay}"/>
+                    <!--<xctk:IntegerUpDown Grid.Column="3" Grid.Row="1" Minimum="0"
+                                       Value="{Binding SpreadDigit, Mode=TwoWay}"/>-->
+                    <!--<xctk:IntegerUpDown Grid.Column="3" Grid.Row="1" Minimum="0"
+                                       Value="{Binding PendingOrderSpread, Mode=TwoWay}"/>-->
+                    <!--<xctk:DoubleUpDown Grid.Column="3" Grid.Row="3" Minimum="0"
+                                       Value="{Binding CutDownPrice, Mode=TwoWay}"/>-->
+
+                    <!--买跌手续费公式
+                    <TextBox Grid.Column="3" Grid.Row="4" TextWrapping="WrapWithOverflow"
+                             Text="{Binding RecoveryFeeFormula, Mode=TwoWay}"/>-->
+
+                    <TextBox Grid.Column="3" Grid.Row="4"  TextWrapping="WrapWithOverflow">
+                        <TextBox.Text>
+                            <Binding Path="DepositFormula" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <ValiHelp:StringLengthRule MaxLength="50"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <!--<TextBox Grid.Column="3" Grid.Row="5" TextWrapping="WrapWithOverflow">
+                        <TextBox.Text>
+                            <Binding Path="RecovertyStorageFeeFormula" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <ValiHelp:StringLengthRule MaxLength="50"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>-->
+
+                    <!--定金百分比
+                    <xctk:DoubleUpDown Grid.Column="3" Grid.Row="6" Minimum="0" Maximum="1" FormatString="P" Increment="0.01"
+                                       Value="{Binding PercentageOfDeposit, Mode=TwoWay}"/>-->
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+    </DockPanel>
+</Window>

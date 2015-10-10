@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.AccountManager.Order.PendingOrderHistory"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+           xmlns:cvt="clr-namespace:Gss.ManagementMenu.Converter"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             xmlns:xckt="http://schemas.xceed.com/wpf/xaml/toolkit"
+              xmlns:cus="clr-namespace:Gss.ManagementMenu.CustomControl"
+             FocusManager.IsFocusScope="True" >
+    <UserControl.Resources>
+
+
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCvt"/>
+        <cvt:TransactionTypeConverter x:Key="TransactionTypeCvt"/>
+        <cvt:PendingOrdersStateConverter x:Key="PendingOrderValidEnumCvt"/>
+
+
+    </UserControl.Resources>
+
+
+    <DockPanel>
+     
+
+        <cus:InquiryCustomControl IsUserIDVisbility="Collapsed"
+                                 
+                                  DockPanel.Dock="Top" DoSearch="InquiryCustomControl_DoSearch" 
+                                  CurrentPageItemCount="{Binding Items.Count, ElementName=DgResult}"
+                                  PageCount="{Binding PageCount, RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+                                  ProductList="{Binding ProductInfoes}" />
+        <!--<xckt:BusyIndicator IsBusy="{Binding IsLoadingPendingOrderList}">
+            <xckt:BusyIndicator.BusyContent>
+                <TextBlock Text="加载中..." FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </xckt:BusyIndicator.BusyContent>-->
+        <DataGrid AutoGenerateColumns="False" CanUserResizeRows="False" SelectionMode="Single" IsReadOnly="True" FontSize="15" Name="DgResult">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="取消单号" Width="130" Binding="{Binding HistoryID}" />
+                <DataGridTextColumn Header="挂单单号" Width="130" Binding="{Binding OrdersID}"/>
+                <DataGridTextColumn Header="挂单状态" Width="66" Binding="{Binding OrdersState, Converter={StaticResource PendingOrderValidEnumCvt}}" />
+                <DataGridTextColumn Header="商品名称" Width="88" Binding="{Binding ProductName}"/>
+                <DataGridTextColumn Header="手数" Width="50" Binding="{Binding TradeCount}" />
+                <DataGridTextColumn Header="挂单类型" Width="70" Binding="{Binding OrdersType, Converter={StaticResource TransactionTypeCvt}}" />
+                <DataGridTextColumn Header="挂单价" Width="66" Binding="{Binding OrdersPrice}"/>
+                <DataGridTextColumn Header="止损价" Width="66" Binding="{Binding StopLoss}"/>
+                <DataGridTextColumn Header="止盈价" Width="66" Binding="{Binding StopProfit}" />
+                <DataGridTextColumn Header="有效期" Width="100" Binding="{Binding DueDate, Converter={StaticResource DateTimeCvt}}"/>
+                <DataGridTextColumn Header="订单时间" Width="150" Binding="{Binding OrdersTime, Converter={StaticResource DateTimeCvt}, ConverterParameter=yyyy/MM/dd HH:mm:ss}" />
+                <DataGridTextColumn Header="取消时间" Width="150" Binding="{Binding TradeTime, Converter={StaticResource DateTimeCvt}, ConverterParameter=yyyy/MM/dd HH:mm:ss}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--</xckt:BusyIndicator>-->
+    </DockPanel>
+</UserControl>

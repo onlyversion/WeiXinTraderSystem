@@ -1,0 +1,390 @@
+﻿<TreeView xmlns:my="clr-namespace:Gss.ManagementMenu.AccountManager.Clerk"  x:Class="Gss.ManagementMenu.ManagementMenu"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:accMgr="clr-namespace:Gss.ManagementMenu.AccountManager"
+          xmlns:tradeMgr="clr-namespace:Gss.ManagementMenu.TradeManager"
+          xmlns:sysSetting="clr-namespace:Gss.ManagementMenu.SystemSetting"
+          xmlns:dataMgr="clr-namespace:Gss.ManagementMenu.DataManager"
+          xmlns:cvt="clr-namespace:Gss.ManagementMenu.Converter"
+          xmlns:cus="clr-namespace:Gss.ManagementMenu.CustomControl"
+          xmlns:Dealer="clr-namespace:Gss.ManagementMenu.AccountManager.Dealer"
+          xmlns:TakeGoodsManager="clr-namespace:Gss.ManagementMenu.TakeGoodsManager"
+          xmlns:Org="clr-namespace:Gss.ManagementMenu.AccountManager.Org" Loaded="TreeView_Loaded">
+    <TreeView.Resources>
+        <cvt:BooleanNullVisibilityConverter x:Key="BoolNullVisibilityCvt"/>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityCvt"/>
+        
+        <Style TargetType="TreeViewItem">
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        
+        <Style TargetType="cus:GssTreeViewItem">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="2">
+                            <Image Source="{Binding Icon, RelativeSource={RelativeSource AncestorType=cus:GssTreeViewItem}}"
+                                   Width="{Binding IconSize, RelativeSource={RelativeSource AncestorType=cus:GssTreeViewItem}}"
+                                   Margin="2"/>
+                            <TextBlock VerticalAlignment="Center" Margin="2"
+                                       Text="{Binding Title, RelativeSource={RelativeSource AncestorType=cus:GssTreeViewItem}}"
+                                       FontSize="{Binding TitleSize, RelativeSource={RelativeSource AncestorType=cus:GssTreeViewItem}}"
+                                       FontWeight="{Binding TitleWeight, RelativeSource={RelativeSource AncestorType=cus:GssTreeViewItem}}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style TargetType="ListBoxItem" x:Key="LbStyle">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        
+    </TreeView.Resources>
+    
+    <!--账户管理-->
+    <cus:GssTreeViewItem IsExpanded="True"  x:Name="tvAccMgr" Title="账户管理"  TitleWeight="Bold" Icon="/Gss.ManagementMenu;component/Images/AccountManager.png" 
+                         Visibility="{Binding AccountManager, Converter={StaticResource BoolNullVisibilityCvt}}">
+        <!--<cus:GssTreeViewItem.View>
+            <ListBox Name="lbAccMgr" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Margin="0,20,0,0"
+                     ItemContainerStyle="{StaticResource LbStyle}">
+                <ListBox.ItemTemplate>
+                    <HierarchicalDataTemplate>
+                        <ToggleButton IsChecked="{Binding IsSelected, Mode=TwoWay}" Visibility="{Binding Visibility}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Icon}" Width="32"/>
+                                <TextBlock Text="{Binding Title}" FontSize="22" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </HierarchicalDataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </cus:GssTreeViewItem.View>-->
+        <cus:GssTreeViewItem Title="客户管理" Icon="/Gss.ManagementMenu;component/Images/ClientAccount.png"
+                             Visibility="{Binding ClientAccountManager, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <accMgr:ClientAccountControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <!--<cus:GssTreeViewItem Title="在线客户" Icon="/Gss.ManagementMenu;component/Images/ClientOnline.png"
+                             Visibility="{Binding ClientOnlineAccountManager, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <accMgr:ClientOnlineControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>-->
+        <cus:GssTreeViewItem Title="微会员" Icon="/Gss.ManagementMenu;component/Images/OrgManager.png"
+                             Visibility="{Binding OrgManager, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <Org:OrgManagerControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="会员账户" Icon="/Gss.ManagementMenu;component/Images/DealerAccount.png"
+                             Visibility="{Binding DealerAccountManager, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <Dealer:DealerAccountControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="管理员" Icon="/Gss.ManagementMenu;component/Images/ManagerAccount.png"
+                             Visibility="{Binding AdminAccountManager, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <accMgr:AdminAccountControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+     
+       
+        
+    </cus:GssTreeViewItem>
+
+    <!--交易管理-->
+    <cus:GssTreeViewItem IsExpanded="True"  x:Name="tvTradeMgr" Title="交易管理"  TitleWeight="Bold" Icon="/Gss.ManagementMenu;component/Images/TradeManager.png" 
+                         Visibility="{Binding IsTradeManagerEnabled, Converter={StaticResource BoolNullVisibilityCvt}}">
+        <!--<cus:GssTreeViewItem.View>
+            <ListBox Name="lbTradeMgr" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Margin="0,20,0,0"
+                     ItemContainerStyle="{StaticResource LbStyle}" >
+                <ListBox.ItemTemplate>
+                    <HierarchicalDataTemplate>
+                        <ToggleButton IsChecked="{Binding IsSelected, Mode=TwoWay}" Visibility="{Binding Visibility}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Icon}" Width="32"/>
+                                <TextBlock Text="{Binding Title}" FontSize="22" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </HierarchicalDataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </cus:GssTreeViewItem.View>-->
+        
+        <cus:GssTreeViewItem Title="在手订单" Icon="/Gss.ManagementMenu;component/Images/MarketOrder.png"
+                             Visibility="{Binding AllowViewMarketOrder, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:MarketOrder/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <!--<cus:GssTreeViewItem Title="委托订单" Icon="/Gss.ManagementMenu;component/Images/PendingOrder.png"
+                             Visibility="{Binding AllowViewPendingOrder, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:PendingOrder/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>-->
+        <cus:GssTreeViewItem Title="入库订单" Icon="/Gss.ManagementMenu;component/Images/Warehousing.png"
+                             Visibility="{Binding AllowViewWarehousing, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:WarehousingOrder/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="平仓历史" Icon="/Gss.ManagementMenu;component/Images/ChargebackRecord.png"
+                             Visibility="{Binding AllowViewChargebackRecord, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:ChargebackRecode/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="资金明细" Icon="/Gss.ManagementMenu;component/Images/FundReport.png"
+                             Visibility="{Binding AllowFundReport, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:FundReport/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        
+        <cus:GssTreeViewItem Title="对冲交易" Icon="/Gss.ManagementMenu;component/Images/HedgingTransactions.png"
+                             Visibility="{Binding AllowViewHedgingTransactions, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:HedgeTrade/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+        <cus:GssTreeViewItem Title="会员报表"   Icon="/Gss.ManagementMenu;component/Images/DealerAccount.png"
+                             Visibility="{Binding AllowJujian, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:InterofficeManager/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+        <cus:GssTreeViewItem Title="出金处理" Icon="/Gss.ManagementMenu;component/Images/ChuJin.png"
+                             Visibility="{Binding TradeChuJin, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:PaymentManager/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+        <cus:GssTreeViewItem Title="解约处理"  Icon="/Gss.ManagementMenu;component/Images/Termination.png"
+                              Visibility="{Binding TradeTermination, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:Termination/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+      
+
+        <cus:GssTreeViewItem Title="导出报表" Icon="/Gss.ManagementMenu;component/Images/ExportStatements.png"
+                             Visibility="{Binding AllowExportStatement, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:ExportStatements/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+        <cus:GssTreeViewItem Title="交割单" Icon="/Gss.ManagementMenu;component/Images/DeliverOrders.png"
+                             Visibility="{Binding DeliverOrder, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:DeliveryGoodsReport/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+        <cus:GssTreeViewItem Title="提货单" Icon="/Gss.ManagementMenu;component/Images/TakeGoodsOrder.png"
+                             Visibility="{Binding TihuoOrder	, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:TakeGoodsReport/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+        <cus:GssTreeViewItem Title="买跌单" Icon="/Gss.ManagementMenu;component/Images/BackOrders.png"
+                             Visibility="{Binding HuiGouOrder, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:BackGoodsReport/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+        <cus:GssTreeViewItem Title="金生金单" Icon="/Gss.ManagementMenu;component/Images/JgjOrder.png"
+                             Visibility="{Binding JgjOrder, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:JgjGoodsReport/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+    </cus:GssTreeViewItem>
+
+    <!--系统设置-->
+    <cus:GssTreeViewItem IsExpanded="True"  x:Name="tvSysSet" Title="系统设置"  TitleWeight="Bold" Icon="/Gss.ManagementMenu;component/Images/SystemSettings.png" 
+                         Visibility="{Binding IsSystemSettingsEnabled, Converter={StaticResource BoolNullVisibilityCvt}}">
+        <cus:GssTreeViewItem.View>
+            <ListBox Name="lbSysSet" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Margin="0,20,0,0"
+                     ItemContainerStyle="{StaticResource LbStyle}">
+                <ListBox.ItemTemplate>
+                    <HierarchicalDataTemplate>
+                        <ToggleButton IsChecked="{Binding IsSelected, Mode=TwoWay}" Visibility="{Binding Visibility}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Icon}" Width="32"/>
+                                <TextBlock Text="{Binding Title}" FontSize="22" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </HierarchicalDataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </cus:GssTreeViewItem.View>
+        <cus:GssTreeViewItem Title="客户分组" Icon="/Gss.ManagementMenu;component/Images/PrivilegeManager.png"
+                             Visibility="{Binding GroupManager, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:UserGroups/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="交易日管理" Icon="/Gss.ManagementMenu;component/Images/TradingDaySettings.png"
+                             Visibility="{Binding AllowTradingDaySettings, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:TradingDayControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="节假日管理" Icon="/Gss.ManagementMenu;component/Images/HolidaySettings.png"
+                             Visibility="{Binding AllowHolidaysSettings, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:HolidayControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="交易设置管理" Icon="/Gss.ManagementMenu;component/Images/TransactionSettings.png"
+                             Visibility="{Binding AllowTransactionSettings, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:TradingSettingControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        
+        <cus:GssTreeViewItem Title="新闻公告" Icon="/Gss.ManagementMenu;component/Images/ReleaseNews.png"
+                             Visibility="{Binding AllowReleaseNews, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:NewsControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+       
+
+        <!--<cus:GssTreeViewItem Title="发布" Icon="/Gss.ManagementMenu;component/Images/ReleaseAnnouncement.png"
+                             Visibility="{Binding AllowReleaseAnnouncement, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <TextBlock Text="新闻发布"/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>-->
+        <cus:GssTreeViewItem Title="日志记录" Icon="/Gss.ManagementMenu;component/Images/LogRecord.png"
+                             Visibility="{Binding AllowViewLog, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:LogInfoControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="IP地址过滤" Icon="/Gss.ManagementMenu;component/Images/IPAddressFilter.png"
+                             Visibility="{Binding EnableIPAddressFiltering, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:IPAddrFilterControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="MAC地址过滤" Icon="/Gss.ManagementMenu;component/Images/MACAddressFilter.png"
+                             Visibility="{Binding EnableMACAddressFiltering, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:MACFilterControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="角色管理" Icon="/Gss.ManagementMenu;component/Images/RoleManager.png"
+                             Visibility="{Binding EnableRoleManager, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:RoleManagerControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="权限管理" Icon="/Gss.ManagementMenu;component/Images/PrivilegeManager.png"
+                             Visibility="{Binding EnablePrivilegeManager, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:PrivilegeManagerControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+
+     
+    </cus:GssTreeViewItem> 
+
+    <!--数据管理-->
+    <cus:GssTreeViewItem IsExpanded="True"  x:Name="tvDataMgr" Title="数据管理"  TitleWeight="Bold" Icon="/Gss.ManagementMenu;component/Images/DataManager.png" 
+                         Visibility="{Binding IsDataManagerEnabled, Converter={StaticResource BoolNullVisibilityCvt}}">
+        <!--<cus:GssTreeViewItem.View>
+            <ListBox Name="lbDataMgr" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Margin="0,20,0,0"
+                     ItemContainerStyle="{StaticResource LbStyle}">
+                <ListBox.ItemTemplate>
+                    <HierarchicalDataTemplate>
+                        <ToggleButton IsChecked="{Binding IsSelected, Mode=TwoWay}" Visibility="{Binding Visibility}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Icon}" Width="32"/>
+                                <TextBlock Text="{Binding Title}" FontSize="22" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </HierarchicalDataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </cus:GssTreeViewItem.View>-->
+        
+        <cus:GssTreeViewItem Title="商品管理" Icon="/Gss.ManagementMenu;component/Images/ProductManager.png"
+                             Visibility="{Binding IsProductManagerEnabled, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <dataMgr:ProductInfoControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="体验券" Icon="/Gss.ManagementMenu;component/Images/Experience.png"
+                             Visibility="{Binding EffectiveEnabled, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <dataMgr:ExperienceControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="历史数据" Icon="/Gss.ManagementMenu;component/Images/HistoryData.png"
+                             Visibility="{Binding IsHistoryDataManagerEnabled, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <tradeMgr:HistoryData/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="汇率/水" Icon="/Gss.ManagementMenu;component/Images/ExchangeRateWater.png"
+                             Visibility="{Binding ExchangeRateWater, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <dataMgr:RateWaterInfoControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+       
+    </cus:GssTreeViewItem>
+
+    <!--提货受理-->
+    <cus:GssTreeViewItem IsExpanded="True"  x:Name="tvTakeGoodsAccept" Title="提货受理"  TitleWeight="Bold"
+                         Icon="/Gss.ManagementMenu;component/Images/TakeGoodsAccept.png" 
+                      Visibility="{Binding TiHuoShouLi, Converter={StaticResource BoolNullVisibilityCvt}}">
+        <!--<cus:GssTreeViewItem.View>
+            <ListBox Name="lbTakeGoodsAccept" HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent" BorderThickness="0" Margin="0,20,0,0"
+                     ItemContainerStyle="{StaticResource LbStyle}">
+                <ListBox.ItemTemplate>
+                    <HierarchicalDataTemplate>
+                        <ToggleButton IsChecked="{Binding IsSelected, Mode=TwoWay}" Visibility="{Binding Visibility}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Icon}" Width="32"/>
+                                <TextBlock Text="{Binding Title}" FontSize="22" FontWeight="Bold"/>
+                            </StackPanel>
+                        </ToggleButton>
+                    </HierarchicalDataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </cus:GssTreeViewItem.View>-->
+        <cus:GssTreeViewItem Title="绑定账号" Icon="/Gss.ManagementMenu;component/Images/BindingAccount.png"
+                            Visibility="{Binding BangDingUser, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <TakeGoodsManager:BindingAccountCountrol/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="提货" Icon="/Gss.ManagementMenu;component/Images/TakeOrders.png"
+                            Visibility="{Binding TiHuo, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <TakeGoodsManager:TakeGoodsCountrol/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+        <cus:GssTreeViewItem Title="受理明细" Icon="/Gss.ManagementMenu;component/Images/ShouLiMingXi.png"
+                            Visibility="{Binding ShouLiMingXi, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <TakeGoodsManager:AcceptDetailControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
+    </cus:GssTreeViewItem>
+</TreeView>

@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.AccountManager.AdminAccountControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:popCvt="clr-namespace:Gss.PopUpWindow.Converter;assembly=Gss.PopUpWindow"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             xmlns:xckt="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:my="clr-namespace:Gss.ManagementMenu.CustomControl" FocusManager.IsFocusScope="True"
+             >
+    <UserControl.Resources>
+
+        <RoutedUICommand x:Key="ViewAccount" Text="管理员资料"/>
+        <RoutedUICommand x:Key="RolePrivilege" Text="角色权限"/>
+        <RoutedUICommand x:Key="Delete" Text="删除管理员"/>
+        
+        <popCvt:SexEnumConverter x:Key="SexCvt"/>
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCvt"/>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityCvt"/>
+
+        <ContextMenu x:Key="CmMgrAccount" Opened="ContextMenu_Opened">
+            <MenuItem Header="新增管理员"  Command="{Binding CreateManagerAccountCmd}"  Visibility="{Binding AccountAuthority.AdminAccountManagerAddAccount, Converter={StaticResource BoolVisibilityCvt}}"/>
+            <MenuItem Visibility="{Binding AccountAuthority.AdminAccountManagerAccountInfo, Converter={StaticResource BoolVisibilityCvt}}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource ViewAccount}"/>
+            <MenuItem DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor}}"  
+                      Visibility="{Binding AccountAuthority.RolePrivilegeEnabled, Converter={StaticResource BoolVisibilityCvt}}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource RolePrivilege}"/>
+            <Separator x:Name="SpMenuItem">
+                <Separator.Style>
+                    <Style TargetType="{x:Type Separator}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding AccInfo.AccountName}" Value="admin">
+                                <Setter Property="UIElement.Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Separator.Style>
+            </Separator>
+            <MenuItem Visibility="{Binding AccountAuthority.AdminAccountManagerDelAccount, Converter={StaticResource BoolVisibilityCvt}}"  CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource Delete}"                              x:Name="MiDelete">
+                <MenuItem.Style>
+                    <Style TargetType="{x:Type MenuItem}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding AccInfo.AccountName}" Value="admin">
+                                <Setter Property="UIElement.Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </MenuItem.Style>
+            </MenuItem>
+        </ContextMenu>
+        <ContextMenu x:Key="cMenu" Opened="ContextMenu_Opened">
+            <MenuItem Visibility="{Binding AccountAuthority.AdminAccountManagerAddAccount, Converter={StaticResource BoolVisibilityCvt}}" Header="新增管理员"  Command="{Binding CreateManagerAccountCmd}"/>
+         </ContextMenu>
+        <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource DataGridStyle}">
+            <Setter Property="ContextMenu" Value="{StaticResource cMenu}"/>
+        </Style>
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}">
+            <!--<EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>-->
+            <Setter Property="ContextMenu" Value="{StaticResource CmMgrAccount}"/>
+            <Setter Property="MinHeight" Value="26"/>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource ViewAccount}" Executed="CommandBinding_Executed_ViewAccount"/>
+        <CommandBinding Command="{StaticResource Delete}" Executed="CommandBinding_Executed_Delete"/>
+        <CommandBinding Command="{StaticResource RolePrivilege}" Executed="CommandBinding_Executed_RolePrivilege" CanExecute="CommandBinding_CanExecute_RolePrivilege"/>
+
+    </UserControl.CommandBindings>
+    
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding RefreshManagerListCmd}" Key="F5"/>
+    </UserControl.InputBindings>
+
+    <DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <WrapPanel>
+                <Label Content="客户账号：" Margin="2"/>
+                <TextBox Margin="2" Text="{Binding ManagerAccountSelectCondition.Account, Mode=TwoWay}" MinWidth="88"/>
+                <Label Content="客户姓名：" Margin="2"/>
+                <TextBox Margin="2" Text="{Binding ManagerAccountSelectCondition.UserName, Mode=TwoWay}" MinWidth="88"/>
+                <Label Content="证件号码：" Margin="2"/>
+                <TextBox Margin="2" Text="{Binding ManagerAccountSelectCondition.CardNum, Mode=TwoWay}" MinWidth="150"/>
+                <Button Content="查询" Width="60" Height="26" Margin="5,2" ToolTip="根据查询条件获取客户账号列表"  HorizontalAlignment="Right"
+                     Command="{Binding GetManagerAccountListCommand}"/>
+            </WrapPanel>
+            <my:DataPagePicker PageChanged="dataPage_PageChanged" Margin="5,2,2,2" Grid.Row="1" CurrentPageItemCount="{Binding Items.Count,ElementName=dataGrid}"
+                               PageCount="{Binding ManagerAccountSelectCondition.PageCount,Mode=TwoWay}" PageSize="{Binding ManagerAccountSelectCondition.PageSize,Mode=TwoWay}"
+                               PageIndex="{Binding ManagerAccountSelectCondition.PageIndex,Mode=TwoWay}"/>
+        
+        <!--<xckt:BusyIndicator Grid.Row="2" IsBusy="{Binding IsLoadingManagerList}">
+            <xckt:BusyIndicator.BusyContent>
+                <TextBlock Text="加载中..." FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </xckt:BusyIndicator.BusyContent>-->
+            <DataGrid  Grid.Row="2"  AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserResizeRows="False" Name="dataGrid"
+                      ItemsSource="{Binding ManagerAccountList}">
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn  Width="40"  Header="启用" Binding="{Binding AccInfo.IsAccountEnabled}"/>
+                    <!--<DataGridTextColumn Header="账号" Binding="{Binding AccInfo.AccountName}" MinWidth="80"/>
+                    <DataGridTextColumn Header="姓名" Binding="{Binding AccInfo.UserName}" MinWidth="80"/>-->
+
+                    <DataGridTemplateColumn Header="账号" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding AccInfo.AccountName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="姓名" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding AccInfo.UserName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="性别" Binding="{Binding AccInfo.Sex, Converter={StaticResource SexCvt}}" Width="50"/>
+                    <!--<DataGridTextColumn Header="身份证号码" Binding="{Binding AccInfo.CertificateNumber}" MinWidth="160"/>-->
+                    <DataGridTemplateColumn Header="证件号码" MinWidth="160">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                             Text="{Binding AccInfo.CertificateNumber}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="手机" Binding="{Binding AccInfo.CellPhoneNumber}" Width="100"/>
+                    <DataGridTextColumn Header="固话" Binding="{Binding AccInfo.TelephoneNumber}" Width="100"/>
+                    <DataGridTextColumn Header="邮箱" Binding="{Binding AccInfo.Email}" Width="100"/>
+                    <DataGridTextColumn Header="创建时间" Binding="{Binding AccInfo.OpenAccountTime, Converter={StaticResource DateTimeCvt}}" Width="150"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        <!--</xckt:BusyIndicator>-->
+        </Grid>
+    </DockPanel>
+</UserControl>

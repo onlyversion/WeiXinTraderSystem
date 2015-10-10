@@ -1,0 +1,67 @@
+﻿<Window x:Class="Gss.PopUpWindow.RateWaterInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:uti="clr-namespace:Gss.Common.Utility;assembly=Gss.Common"
+        WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow"
+        Title="汇率/水信息详情" Height="220" Width="300">
+    <Window.Resources>
+        <RoutedUICommand x:Key="Ok" Text="确定"/>
+        <RoutedUICommand x:Key="Cancel" Text="取消"/>
+
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="{x:Type xctk:DoubleUpDown}">
+            <Setter Property="uti:DoubleUpDownInputFilter.DigitOnly" Value="True"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource Ok}" Executed="CommandBinding_Executed_Ok" CanExecute="CommandBinding_CanExecute_Ok"/>
+        <CommandBinding Command="{StaticResource Cancel}" Executed="CommandBinding_Executed_Cancel"/>
+    </Window.CommandBindings>
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="确定" Width="88" Margin="5" Command="{StaticResource Ok}" IsDefault="True"/>
+            <Button Content="取消" Width="88" Margin="5" Command="{StaticResource Cancel}" IsCancel="True"/>
+        </StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--列1-->
+            <Label Content="行情编码："/>
+            <Label Grid.Row="1" Content="汇率："/>
+            <Label Grid.Row="2" Content="水："/>
+            
+            <!--列2-->
+            <TextBlock Grid.Column="1"
+                     Text="{Binding StockCode}"/>
+            <xctk:DoubleUpDown Grid.Column="1" Grid.Row="1" Minimum="0" Increment="0.0001" FormatString="F4"
+                     Value="{Binding Rate, Mode=TwoWay}"/>
+            <xctk:DoubleUpDown Grid.Column="1" Grid.Row="2"
+                     Value="{Binding Water, Mode=TwoWay}"/>
+        </Grid>
+    </DockPanel>
+</Window>

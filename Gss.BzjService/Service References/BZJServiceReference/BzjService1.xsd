@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfInterface.model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfInterface.model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="StockEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ag" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AgAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AgPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AgTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Ag_b" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Au" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AuAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AuPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AuTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Au_b" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Pd" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PdAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PdPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PdTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Pd_b" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Pt" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PtAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PtPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PtTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Pt_b" type="xs:decimal" />
+          <xs:element minOccurs="0" name="StockID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StockEntity" nillable="true" type="tns:StockEntity" />
+  <xs:complexType name="EntityBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataSource" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EntityBase" nillable="true" type="tns:EntityBase" />
+  <xs:complexType name="OrderTypeTotal">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AskOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="AskSuccess" type="xs:int" />
+          <xs:element minOccurs="0" name="BidOrder" type="xs:int" />
+          <xs:element minOccurs="0" name="BidSuccess" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrderTypeTotal" nillable="true" type="tns:OrderTypeTotal" />
+  <xs:complexType name="UserBindEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsEnable" type="xs:int" />
+          <xs:element minOccurs="0" name="JUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserBindId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserBindEntity" nillable="true" type="tns:UserBindEntity" />
+  <xs:complexType name="ResultDesc">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultDesc" nillable="true" type="tns:ResultDesc" />
+  <xs:complexType name="OrderEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Account" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ag" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AgAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AgCost" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AgP" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AgQuantity" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AgT" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Ag_b" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AgentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AgentName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AgentUserID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Au" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AuAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AuCost" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AuP" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AuQuantity" type="xs:decimal" />
+          <xs:element minOccurs="0" name="AuT" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Au_b" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CardNum" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardType" type="xs:int" />
+          <xs:element minOccurs="0" name="CarryWay" type="xs:int" />
+          <xs:element minOccurs="0" name="ClerkID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IDNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CeritificateEnum" type="xs:int" />
+          <xs:element minOccurs="0" name="JUserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OperationDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderType" type="xs:int" />
+          <xs:element minOccurs="0" name="Pd" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PdAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PdCost" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PdP" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PdQuantity" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PdT" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Pd_b" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PhoneNum" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Pt" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PtAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PtCost" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PtP" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PtQuantity" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PtT" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Pt_b" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" type="xs:int" />
+          <xs:element minOccurs="0" name="TmpId" type="xs:int" />
+          <xs:element minOccurs="0" name="UserId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserType" type="xs:int" />
+          <xs:element minOccurs="0" name="Version" type="xs:int" />
+          <xs:element minOccurs="0" name="tradeAccount" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrderEntity" nillable="true" type="tns:OrderEntity" />
+  <xs:complexType name="OrderAttachEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IDNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CeritificateEnum" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderAttachId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserType" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderAttachEntity" nillable="true" type="tns:OrderAttachEntity" />
+  <xs:complexType name="OrderOperationEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Account" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Remark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderOperationEntity" nillable="true" type="tns:OrderOperationEntity" />
+  <xs:complexType name="DeliverEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Account" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AvailableTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DeliverDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DeliverId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DeliverNo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Direction" type="xs:int" />
+          <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FromFlag" type="xs:int" />
+          <xs:element minOccurs="0" name="Goods" type="xs:int" />
+          <xs:element minOccurs="0" name="LockPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OperationUserID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" type="xs:int" />
+          <xs:element minOccurs="0" name="Total" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeliverEntity" nillable="true" type="tns:DeliverEntity" />
+  <xs:complexType name="VerifyCodeEntity">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="VierfyCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VerifyCodeEntity" nillable="true" type="tns:VerifyCodeEntity" />
+  <xs:complexType name="ArrayOfOrderEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderEntity" nillable="true" type="tns:OrderEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderEntity" nillable="true" type="tns:ArrayOfOrderEntity" />
+  <xs:complexType name="ArrayOfDeliverEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DeliverEntity" nillable="true" type="tns:DeliverEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDeliverEntity" nillable="true" type="tns:ArrayOfDeliverEntity" />
+</xs:schema>

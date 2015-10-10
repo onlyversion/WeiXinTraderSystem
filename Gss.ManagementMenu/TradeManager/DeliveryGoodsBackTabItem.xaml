@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.TradeManager.DeliveryGoodsBackTabItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:my="clr-namespace:Gss.ManagementMenu.CustomControl" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <RoutedUICommand x:Key="ModifyState" Text="买跌处理"/>
+
+
+        <ContextMenu x:Key="menu" Name="cMenu">
+            <MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+                      Command="{StaticResource ModifyState}"/>
+        </ContextMenu>
+
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}">
+            <Setter Property="MinHeight" Value="26"/>
+            <Setter Property="ContextMenu" Value="{StaticResource menu}"/>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource ModifyState}" Executed="CommandBinding_Executed_ModifyState" CanExecute="CommandBinding_CanExecute_ModifyState"/>
+    </UserControl.CommandBindings>
+    <Border Grid.Row="0" BorderThickness="1" BorderBrush="#FFD1CFCF" CornerRadius="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="40"/>
+
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <WrapPanel Orientation="Horizontal" Margin="5">
+                <Label Content="客户账号："  Margin="2"/>
+                <TextBox MinWidth="80" Margin="2" Text="{Binding DeliveryBackGoodsCondition.Account}"/>
+                <Label Content="时间段：" Margin="2"/>
+                <DatePicker Margin="2" Focusable="False" SelectedDate="{Binding DeliveryBackGoodsCondition.StartTime}" MinWidth="130" Width="Auto"/>
+                <Label Content="至" Margin="2"/>
+                <DatePicker Margin="2" Focusable="False" SelectedDate="{Binding DeliveryBackGoodsCondition.EndTime}" MinWidth="130" Width="Auto"/>
+                <Button Content="查询" Width="60" Height="26" Margin="5,2" Command="{Binding GetDeliveryBackGoodsCommand}"/>
+            </WrapPanel>
+
+            <Border Grid.Row="1" BorderThickness="1" BorderBrush="#FFD1CFCF" />
+            <my:DataPagePicker PageChanged="dataPage_PageChanged" Margin="5,2,2,2" Grid.Row="2" CurrentPageItemCount="{Binding Items.Count,ElementName=dataGrid}"
+                               PageCount="{Binding DeliveryBackGoodsCondition.PageCount,Mode=TwoWay}" PageSize="{Binding DeliveryBackGoodsCondition.PageSize,Mode=TwoWay}"
+                               PageIndex="{Binding DeliveryBackGoodsCondition.PageIndex,Mode=TwoWay}"  />
+
+            <DataGrid Name="dataGrid" Grid.Row="3" Margin="5,0" BorderBrush="#FFD1CFCF" ItemsSource="{Binding DeliveryBackGoodsList}" 
+                          CanUserResizeRows="False" SelectionMode="Single" IsReadOnly="True"  AutoGenerateColumns="False">
+                <DataGrid.Columns>
+<!--客户账号	姓名	单号	来源	商品类型	买跌单价	买跌重量	买跌款	买跌时间	付款时间	操作员	状态-->
+
+                    <!--<DataGridTextColumn Header="客户账号" Binding="{Binding TradeAccount}" />-->
+                    <DataGridTemplateColumn Header="客户账号">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding TradeAccount}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="姓名" Binding="{Binding UserName}"  />-->
+                    <DataGridTemplateColumn Header="姓名">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding UserName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="单号" Binding="{Binding OrderId}"/>-->
+                    <DataGridTemplateColumn Header="单号">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                         Text="{Binding OrderId}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="商品类型" Binding="{Binding ProductName}" />
+                    <DataGridTextColumn Header="买跌单价" Binding="{Binding OverPrice}"  />
+                    <DataGridTextColumn Header="买跌重量" Binding="{Binding RealWeightString}" />
+                    <DataGridTextColumn Header="买跌款" Binding="{Binding PayMoney}"/>
+
+                    <DataGridTextColumn Header="买跌时间" Binding="{Binding Overtime,StringFormat='yyyy-MM-dd HH:mm:ss'}" />
+                    <DataGridTextColumn Header="付款时间" Binding="{Binding PayTime,StringFormat='yyyy-MM-dd HH:mm:ss'}" />
+                    <DataGridTextColumn Header="操作员" Binding="{Binding DoPerson}"  />
+                    <DataGridTextColumn Header="状态" Binding="{Binding StateString}"  />
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
+</UserControl>

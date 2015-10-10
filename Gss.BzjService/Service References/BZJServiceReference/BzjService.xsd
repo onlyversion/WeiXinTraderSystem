@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="www.IManagerBzj.com" elementFormDefault="qualified" targetNamespace="www.IManagerBzj.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.0.36:8087/BzjService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model" />
+  <xs:element name="GetUserStockInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserStockInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetUserStockInfoResult" nillable="true" type="q1:StockEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdminUserStockInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdminUserStockInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetAdminUserStockInfoResult" nillable="true" type="q2:StockEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountStockInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="account" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountStockInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetAccountStockInfoResult" nillable="true" type="q3:StockEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetOrderListResult" nillable="true" type="q4:EntityBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderTotal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderTotalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetOrderTotalResult" nillable="true" type="q5:OrderTypeTotal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateGssUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="entity" nillable="true" type="q6:UserBindEntity" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateGssUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="CreateGssUserResult" nillable="true" type="q7:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateAdminGssUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="entity" nillable="true" type="q8:UserBindEntity" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateAdminGssUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="CreateAdminGssUserResult" nillable="true" type="q9:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGssUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="entity" nillable="true" type="q10:UserBindEntity" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGssUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="UpdateGssUserResult" nillable="true" type="q11:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DelteGssUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userBindId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DelteGssUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="DelteGssUserResult" nillable="true" type="q12:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadGssUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userBindId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadGssUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="ReadGssUserResult" nillable="true" type="q13:UserBindEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="entity" nillable="true" type="q14:OrderEntity" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="attachEntity" nillable="true" type="q15:OrderAttachEntity" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="CreateOrderResult" nillable="true" type="q16:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateBackOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="entity" nillable="true" type="q17:OrderEntity" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="operationEntity" nillable="true" type="q18:OrderOperationEntity" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateBackOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="CreateBackOrderResult" nillable="true" type="q19:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrderLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrderLogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="OrderLogResult" nillable="true" type="q20:EntityBase" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoadByOrderHG">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="orderNo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoadByOrderHGResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="LoadByOrderHGResult" nillable="true" type="q21:OrderEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateOrderJSJ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="orderEntity" nillable="true" type="q22:OrderEntity" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="operationEntity" nillable="true" type="q23:OrderOperationEntity" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateOrderJSJResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="CreateOrderJSJResult" nillable="true" type="q24:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="order" nillable="true" type="q25:OrderEntity" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="orderOperation" nillable="true" type="q26:OrderOperationEntity" />
+        <xs:element minOccurs="0" name="agentInfoID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="IP" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="UpdateOrderResult" nillable="true" type="q27:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateDeliverAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="entity" nillable="true" type="q28:DeliverEntity" />
+        <xs:element minOccurs="0" name="orderType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateDeliverAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="CreateDeliverAdminResult" nillable="true" type="q29:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateVerifyCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OrderType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateVerifyCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="CreateVerifyCodeResult" nillable="true" type="q30:VerifyCodeEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckVerifyCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="verifyCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OrderType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckVerifyCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="CheckVerifyCodeResult" nillable="true" type="q31:VerifyCodeEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgentBind">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="account" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="agentid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cardNum" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AgentBindResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="AgentBindResult" nillable="true" type="q32:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAgentOrderList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="agentID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="order" nillable="true" type="q33:OrderEntity" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAgentOrderListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetAgentOrderListResult" nillable="true" type="q34:EntityBase" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderTakeList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="order" nillable="true" type="q35:OrderEntity" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="list" nillable="true" type="q36:ArrayOfOrderEntity" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderTakeListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetOrderTakeListResult" nillable="true" type="q37:EntityBase" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="list" nillable="true" type="q38:ArrayOfOrderEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderBackList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="order" nillable="true" type="q39:OrderEntity" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="list" nillable="true" type="q40:ArrayOfOrderEntity" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderBackListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetOrderBackListResult" nillable="true" type="q41:EntityBase" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="list" nillable="true" type="q42:ArrayOfOrderEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBuyBackOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OrderCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="agentID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBuyBackOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="UpdateBuyBackOrderResult" nillable="true" type="q43:EntityBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderJsjList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="order" nillable="true" type="q44:OrderEntity" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="list" nillable="true" type="q45:ArrayOfOrderEntity" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderJsjListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetOrderJsjListResult" nillable="true" type="q46:EntityBase" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="list" nillable="true" type="q47:ArrayOfOrderEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateStockDeliverAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="operationID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="orderEnity" nillable="true" type="q48:OrderEntity" />
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateStockDeliverAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="CreateStockDeliverAdminResult" nillable="true" type="q49:ResultDesc" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeliverList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="deliverType" type="xs:int" />
+        <xs:element minOccurs="0" name="startTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="endTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="goods" type="xs:int" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeliverListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetDeliverListResult" nillable="true" type="q50:EntityBase" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderNOInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="orderCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderNOInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetOrderNOInfoResult" nillable="true" type="q51:OrderEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeliverOrderList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="loginID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="entity" nillable="true" type="q52:DeliverEntity" />
+        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="list" nillable="true" type="q53:ArrayOfDeliverEntity" />
+        <xs:element minOccurs="0" name="roleType" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeliverOrderListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="GetDeliverOrderListResult" nillable="true" type="q54:EntityBase" />
+        <xs:element minOccurs="0" name="page" type="xs:int" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/WcfInterface.model" minOccurs="0" name="list" nillable="true" type="q55:ArrayOfDeliverEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

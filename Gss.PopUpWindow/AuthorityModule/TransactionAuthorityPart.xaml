@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Gss.PopUpWindow.AuthorityModule.TransactionAuthorityPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <GroupBox Margin="3">
+        <GroupBox.Header>
+            <CheckBox Content="交易管理" Width="Auto" IsChecked="{Binding IsTradeManagerEnabled}"/>
+        </GroupBox.Header>
+        <WrapPanel>
+            <CheckBox Content="有效订单" IsChecked="{Binding AllowViewMarketOrder}"/>
+            <CheckBox Content="限价挂单" IsChecked="{Binding AllowViewPendingOrder}"/>
+            <CheckBox Content="平仓历史" IsChecked="{Binding AllowViewChargebackRecord}"/>
+            <CheckBox Content="对冲交易" IsChecked="{Binding AllowViewHedgingTransactions}"/>
+            <CheckBox Content="导出报表" IsChecked="{Binding AllowExportStatement}"/>
+            <CheckBox Content="入库单" IsChecked="{Binding AllowViewWarehousing}"/>
+            <CheckBox Content="金生金单" IsChecked="{Binding JgjOrder}"/>
+            <CheckBox Content="交割单" IsChecked="{Binding DeliverOrder}"/>
+            <CheckBox Content="提货单" IsChecked="{Binding TihuoOrder}"/>
+            <CheckBox Content="买跌单" IsChecked="{Binding HuiGouOrder}"/>
+        </WrapPanel>
+    </GroupBox>
+</UserControl>

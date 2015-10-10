@@ -1,0 +1,88 @@
+﻿<UserControl x:Class=" Gss.ManagementMenu.CustomControl.InquiryCustomControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cus="clr-namespace:Gss.ManagementMenu.CustomControl"
+             Name="Icc" >
+    <UserControl.Resources>
+        <RoutedUICommand x:Key="Excel" Text="Excel"/>
+    </UserControl.Resources>
+    <UserControl.CommandBindings>
+        <CommandBinding Command="Find" Executed="CommandBinding_Executed_Find" CanExecute="CommandBinding_CanExecute_Find"/>
+        <CommandBinding Command="{StaticResource Excel}" Executed="CommandBinding_Executed_Excel" CanExecute="CommandBinding_CanExecute_Excel"/>
+    </UserControl.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <WrapPanel Margin="2">
+            <WrapPanel.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="2"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Style>
+            </WrapPanel.Resources>
+            <StackPanel Orientation="Horizontal" Visibility="{Binding AccountVisibility, ElementName=Icc}">
+                <TextBlock Text="客户账号：" />
+                <TextBox Margin="2" MinWidth="88"
+                         Text="{Binding AccountName, ElementName=Icc, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Visibility="{Binding OrgNameVisibility, ElementName=Icc}">
+                <TextBlock Text="会员名称：" />
+                <!--<TextBox Margin="2" MinWidth="88"
+                         Text="{Binding OrgName, ElementName=Icc, Mode=TwoWay}"/>-->
+                <!--<ComboBox Width="auto" MinWidth="100"  
+                          ItemsSource="{Binding POrgList, ElementName=Icc}" DisplayMemberPath="OrgNameAndOrgCode" SelectedValuePath="OrgID"
+                          SelectedValue="{Binding OrgName, ElementName=Icc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+                <cus:AutoComboBox x:Name="ACB" Width="AUTO" MinWidth="180" Height="24" ItemsSource="{Binding POrgList, ElementName=Icc}" DisplayName="OrgNameAndOrgCode" SelectedValuePath="OrgID"
+                          SelectedValue="{Binding OrgName, ElementName=Icc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Visibility="{Binding IsProductNameVisibility, ElementName=Icc}">
+                <TextBlock Text="商品名称：" />
+                <ComboBox Name="CbProductName" SelectedIndex="0" VerticalAlignment="Center" Margin="2" MinWidth="88"
+                          ItemsSource="{Binding ProductItems, ElementName=Icc}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Visibility="{Binding IsProductNameVisibility, ElementName=Icc}">
+                <TextBlock Text="行情编码：" />
+                <ComboBox Name="CbStockCode" SelectedIndex="0" VerticalAlignment="Center" Margin="2" MinWidth="88"
+                          ItemsSource="{Binding Stockcodes, ElementName=Icc}"/>
+            </StackPanel>
+            
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="开始时间:" />
+                <DatePicker Focusable="False"  Margin="2" VerticalAlignment="Center"
+                            SelectedDate="{Binding StartDate, ElementName=Icc}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="结束时间:" />
+                <DatePicker Focusable="False"  Margin="2" VerticalAlignment="Center"
+                            SelectedDate="{Binding EndDate, ElementName=Icc}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Visibility="{Binding IsOrdersTypeVisibility,ElementName=Icc}">
+                <TextBlock Text="订单类型:"/>
+                <ComboBox Name="CbOrdersType" VerticalAlignment="Center" Margin="2" SelectedIndex="0" MinWidth="66" >
+                    <ComboBoxItem Content="全部" />
+                    <ComboBoxItem Content="买涨" />
+                    <ComboBoxItem Content="买跌" />
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+
+            </StackPanel>
+            <Button  Content="查询" Width="60" Height="26" Margin="5,2" HorizontalAlignment="Left"  Command="Find" Click="Button_Click" />
+            <Button  Visibility="Collapsed" Content="Excel" Width="60" Height="26" Margin="5,2" HorizontalAlignment="Left"  Command="{StaticResource Excel}" />
+        </WrapPanel>
+        <cus:DataPagePicker Grid.Row="1" Margin="2"
+                            CurrentPageItemCount="{Binding CurrentPageItemCount, ElementName=Icc}"
+                            PageIndex="{Binding PageIndex, Mode=TwoWay, ElementName=Icc}"
+                            PageCount="{Binding PageCount, ElementName=Icc}"
+                            PageSize="{Binding PageSize, Mode=TwoWay, ElementName=Icc}"
+                            PageChanged="DataPagePicker_PageChanged"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,250 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.TakeGoodsManager.TakeGoodsCountrol"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:cvt="clr-namespace:Gss.ManagementMenu.Converter"
+             xmlns:ValidationHelper="clr-namespace:Gss.Entities.ValidationHelper;assembly=Gss.Entities"
+             mc:Ignorable="d" 
+             d:DesignHeight="1000" d:DesignWidth="1000" >
+    <UserControl.Resources>
+        <RoutedUICommand x:Key="DoQuery" />
+        <RoutedUICommand x:Key="SubjectGoods" />
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20,0,0,0"/>
+
+       
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,2,10,2"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource DoQuery}" Executed="CommandBinding_Executed_DoQuery" CanExecute="CommandBinding_CanExecute_DoQuery"/>
+        <CommandBinding Command="{StaticResource SubjectGoods}" Executed="CommandBinding_Executed_SubjectGoods" CanExecute="CommandBinding_CanExecute_SubjectGoods"/>
+    </UserControl.CommandBindings>
+    <Border Margin="20" BorderThickness="1" CornerRadius="10" BorderBrush="#FF888484" Name="border">
+        <DockPanel>
+            <Border Margin="40,20,40,20"  DockPanel.Dock="Top" >
+                <StackPanel Height="40" Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Margin="20,0,10,0" Text="提货短信验证码："/>
+                    <TextBox Width="200" Height="25" Name="txtOdrerCode"/>
+                    <Button Command="{StaticResource DoQuery}" Content="查询" Width="60" Height="26" Margin="5,2"/>
+                </StackPanel>
+            </Border>
+            <Grid Margin="40,0,40,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="101"/>
+                    <RowDefinition Height="131"/>
+                    <RowDefinition Height="101"/>
+                    <RowDefinition Height="161"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0"  BorderThickness="1" CornerRadius="10" BorderBrush="#FF888484" Grid.ColumnSpan="4"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="客户信息" FontWeight="Bold"  Grid.ColumnSpan="2"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="客户姓名："/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BzjOrderEntity.Name }"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="证件类型："/>
+                    <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding BzjOrderEntity.CardType}"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="手机号码："/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BzjOrderEntity.PhoneNum }"/>
+                    
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="证件号码："/>
+                    <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding BzjOrderEntity.CardNum }"/>
+
+                    
+                </Grid>
+
+                <Grid Grid.Row="2" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0"  BorderThickness="1" CornerRadius="10" BorderBrush="#FF888484" Grid.ColumnSpan="4"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="订单信息" FontWeight="Bold"  Grid.ColumnSpan="2"/> 
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="订单编号："/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BzjOrderEntity.OrderNO }"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="订单状态："/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BzjOrderEntity.StateString }"/>
+
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="订单类别："/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding BzjOrderEntity.OrderTypeString }"/>
+
+                    <!--<TextBlock Grid.Row="3" Grid.Column="2" Text="证件号码："/>
+                    <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding BzjOrderEntity.CardNum }"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="证件类型：" />
+                    <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding BzjOrderEntity.CardType }"/>
+
+                     <TextBlock Grid.Row="4" Grid.Column="2" Text="手机号码："/>
+                    <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding BzjOrderEntity.PhoneNum }"/>-->
+                </Grid>
+
+                <Grid Grid.Row="3" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0"  BorderThickness="1" CornerRadius="10" BorderBrush="#FF888484" Grid.ColumnSpan="4"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="可提货重量" FontWeight="Bold"  Grid.ColumnSpan="2"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="黄金："/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding BzjOrderEntity.Au,StringFormat=' {0}  克'}"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="白银："/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding BzjOrderEntity.Ag ,StringFormat=' {0}  千克'}"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="铂金："/>
+                    <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding BzjOrderEntity.Pt ,StringFormat=' {0}  克'}"/>
+
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="钯金："/>
+                    <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding BzjOrderEntity.Pd,StringFormat=' {0}  克' }"/>
+                </Grid>
+
+                <Grid Grid.Row="4" Name="grid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0"  BorderThickness="1" CornerRadius="10" BorderBrush="#FF888484" Grid.ColumnSpan="4"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="实际提货重量"  FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="开票额"  FontWeight="Bold" Grid.ColumnSpan="2"/>
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="黄金（克）："/>
+                    <TextBlock Grid.Row="3" Grid.Column="0" Text="白银（千克）："/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="铂金（克）："/>
+                    <TextBlock Grid.Row="5" Grid.Column="0" Text="钯金（克）："/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Width="150" HorizontalAlignment="Left" Name="txtAu" >
+                        <TextBox.Text>
+                            <Binding Path="BzjOrderEntity.AuK" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <ValidationHelper:NumRule CanMinus="False" IsInteger="False"/>
+                                    <ExceptionValidationRule/>
+                                   
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="2" Width="150" HorizontalAlignment="Left" Name="txtAg">
+                        <TextBox.Text>
+                            <Binding Path="BzjOrderEntity.AgK" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <ValidationHelper:NumRule CanMinus="False" IsInteger="False"/>
+                                    <ExceptionValidationRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox Grid.Row="4" Grid.Column="1" Margin="2" Width="150" HorizontalAlignment="Left" Name="txtPt">
+                        <TextBox.Text>
+                            <Binding Path="BzjOrderEntity.PtK" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <ValidationHelper:NumRule CanMinus="False" IsInteger="False"/>
+                                    <ExceptionValidationRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox Grid.Row="5" Grid.Column="1" Margin="2" Width="150" HorizontalAlignment="Left" Name="txtPd" >
+                        <TextBox.Text>
+                            <Binding Path="BzjOrderEntity.PdK" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
+                                <Binding.ValidationRules>
+                                    <ValidationHelper:NumRule CanMinus="False" IsInteger="False"/>
+                                    <ExceptionValidationRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding BzjOrderEntity.AuQuantity}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding BzjOrderEntity.AgQuantity}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="2" Text="{Binding BzjOrderEntity.PtQuantity}"/>
+                    <TextBlock Grid.Row="5" Grid.Column="2" Text="{Binding BzjOrderEntity.PdQuantity}"/>
+                </Grid>
+
+                <Grid Grid.Row="5" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Grid.Column="0"  BorderThickness="1" CornerRadius="10" BorderBrush="#FF888484" Grid.ColumnSpan="2"/>
+                    <Button Name="btnOK" Grid.Row="1"   Width="100" Height="40" Content="确认提货" Command="{StaticResource SubjectGoods}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <!--<DataTrigger Binding="{Binding BzjOrderEntity.StateString}" Value="交易完成" >
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>-->
+                                  
+                                </Style.Triggers> 
+                            </Style>
+                        </Button.Style>
+                    </Button>         
+                </Grid>
+
+            </Grid>
+        </DockPanel>
+    </Border>
+</UserControl>

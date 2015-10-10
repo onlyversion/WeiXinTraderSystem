@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="www.IManagerBzj.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="www.IManagerBzj.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="www.IManagerBzj.com/Imports">
+      <xsd:import schemaLocation="http://192.168.0.36:8087/BzjService.svc?xsd=xsd0" namespace="www.IManagerBzj.com" />
+      <xsd:import schemaLocation="http://192.168.0.36:8087/BzjService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.0.36:8087/BzjService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model" />
+      <xsd:import schemaLocation="http://192.168.0.36:8087/BzjService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IManagerBzj_GetUserStockInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserStockInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetUserStockInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserStockInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetAdminUserStockInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminUserStockInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetAdminUserStockInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminUserStockInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetAccountStockInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountStockInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetAccountStockInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountStockInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderList" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderTotal_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderTotal" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderTotal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderTotalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateGssUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGssUser" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateGssUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGssUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateAdminGssUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAdminGssUser" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateAdminGssUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateAdminGssUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_UpdateGssUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGssUser" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_UpdateGssUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGssUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_DelteGssUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelteGssUser" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_DelteGssUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelteGssUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_ReadGssUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadGssUser" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_ReadGssUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadGssUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrder" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateBackOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBackOrder" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateBackOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBackOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_OrderLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:OrderLog" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_OrderLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OrderLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_LoadByOrderHG_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoadByOrderHG" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_LoadByOrderHG_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoadByOrderHGResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateOrderJSJ_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrderJSJ" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateOrderJSJ_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrderJSJResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_UpdateOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrder" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_UpdateOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateDeliverAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDeliverAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateDeliverAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDeliverAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateVerifyCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVerifyCode" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateVerifyCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVerifyCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CheckVerifyCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckVerifyCode" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CheckVerifyCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckVerifyCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_AgentBind_InputMessage">
+    <wsdl:part name="parameters" element="tns:AgentBind" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_AgentBind_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AgentBindResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetAgentOrderList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentOrderList" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetAgentOrderList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentOrderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderTakeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderTakeList" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderTakeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderTakeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderBackList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderBackList" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderBackList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderBackListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_UpdateBuyBackOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBuyBackOrder" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_UpdateBuyBackOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBuyBackOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderJsjList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderJsjList" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderJsjList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderJsjListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateStockDeliverAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateStockDeliverAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_CreateStockDeliverAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateStockDeliverAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetDeliverList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliverList" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetDeliverList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliverListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderNOInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderNOInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetOrderNOInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderNOInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetDeliverOrderList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliverOrderList" />
+  </wsdl:message>
+  <wsdl:message name="IManagerBzj_GetDeliverOrderList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeliverOrderListResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IManagerBzj">
+    <wsdl:operation name="GetUserStockInfo">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetUserStockInfo" message="tns:IManagerBzj_GetUserStockInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetUserStockInfoResponse" message="tns:IManagerBzj_GetUserStockInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminUserStockInfo">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetAdminUserStockInfo" message="tns:IManagerBzj_GetAdminUserStockInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetAdminUserStockInfoResponse" message="tns:IManagerBzj_GetAdminUserStockInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountStockInfo">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetAccountStockInfo" message="tns:IManagerBzj_GetAccountStockInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetAccountStockInfoResponse" message="tns:IManagerBzj_GetAccountStockInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderList">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderList" message="tns:IManagerBzj_GetOrderList_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderListResponse" message="tns:IManagerBzj_GetOrderList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderTotal">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderTotal" message="tns:IManagerBzj_GetOrderTotal_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderTotalResponse" message="tns:IManagerBzj_GetOrderTotal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateGssUser">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateGssUser" message="tns:IManagerBzj_CreateGssUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateGssUserResponse" message="tns:IManagerBzj_CreateGssUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAdminGssUser">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateAdminGssUser" message="tns:IManagerBzj_CreateAdminGssUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateAdminGssUserResponse" message="tns:IManagerBzj_CreateAdminGssUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGssUser">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/UpdateGssUser" message="tns:IManagerBzj_UpdateGssUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/UpdateGssUserResponse" message="tns:IManagerBzj_UpdateGssUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelteGssUser">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/DelteGssUser" message="tns:IManagerBzj_DelteGssUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/DelteGssUserResponse" message="tns:IManagerBzj_DelteGssUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadGssUser">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/ReadGssUser" message="tns:IManagerBzj_ReadGssUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/ReadGssUserResponse" message="tns:IManagerBzj_ReadGssUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrder">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateOrder" message="tns:IManagerBzj_CreateOrder_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateOrderResponse" message="tns:IManagerBzj_CreateOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBackOrder">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateBackOrder" message="tns:IManagerBzj_CreateBackOrder_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateBackOrderResponse" message="tns:IManagerBzj_CreateBackOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderLog">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/OrderLog" message="tns:IManagerBzj_OrderLog_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/OrderLogResponse" message="tns:IManagerBzj_OrderLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadByOrderHG">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/LoadByOrderHG" message="tns:IManagerBzj_LoadByOrderHG_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/LoadByOrderHGResponse" message="tns:IManagerBzj_LoadByOrderHG_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrderJSJ">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateOrderJSJ" message="tns:IManagerBzj_CreateOrderJSJ_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateOrderJSJResponse" message="tns:IManagerBzj_CreateOrderJSJ_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/UpdateOrder" message="tns:IManagerBzj_UpdateOrder_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/UpdateOrderResponse" message="tns:IManagerBzj_UpdateOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDeliverAdmin">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateDeliverAdmin" message="tns:IManagerBzj_CreateDeliverAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateDeliverAdminResponse" message="tns:IManagerBzj_CreateDeliverAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateVerifyCode">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateVerifyCode" message="tns:IManagerBzj_CreateVerifyCode_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateVerifyCodeResponse" message="tns:IManagerBzj_CreateVerifyCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckVerifyCode">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/CheckVerifyCode" message="tns:IManagerBzj_CheckVerifyCode_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/CheckVerifyCodeResponse" message="tns:IManagerBzj_CheckVerifyCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AgentBind">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/AgentBind" message="tns:IManagerBzj_AgentBind_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/AgentBindResponse" message="tns:IManagerBzj_AgentBind_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentOrderList">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetAgentOrderList" message="tns:IManagerBzj_GetAgentOrderList_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetAgentOrderListResponse" message="tns:IManagerBzj_GetAgentOrderList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderTakeList">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderTakeList" message="tns:IManagerBzj_GetOrderTakeList_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderTakeListResponse" message="tns:IManagerBzj_GetOrderTakeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderBackList">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderBackList" message="tns:IManagerBzj_GetOrderBackList_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderBackListResponse" message="tns:IManagerBzj_GetOrderBackList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBuyBackOrder">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/UpdateBuyBackOrder" message="tns:IManagerBzj_UpdateBuyBackOrder_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/UpdateBuyBackOrderResponse" message="tns:IManagerBzj_UpdateBuyBackOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderJsjList">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderJsjList" message="tns:IManagerBzj_GetOrderJsjList_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderJsjListResponse" message="tns:IManagerBzj_GetOrderJsjList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateStockDeliverAdmin">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateStockDeliverAdmin" message="tns:IManagerBzj_CreateStockDeliverAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/CreateStockDeliverAdminResponse" message="tns:IManagerBzj_CreateStockDeliverAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliverList">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetDeliverList" message="tns:IManagerBzj_GetDeliverList_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetDeliverListResponse" message="tns:IManagerBzj_GetDeliverList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderNOInfo">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderNOInfo" message="tns:IManagerBzj_GetOrderNOInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetOrderNOInfoResponse" message="tns:IManagerBzj_GetOrderNOInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeliverOrderList">
+      <wsdl:input wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetDeliverOrderList" message="tns:IManagerBzj_GetDeliverOrderList_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManagerBzj.com/IManagerBzj/GetDeliverOrderListResponse" message="tns:IManagerBzj_GetDeliverOrderList_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

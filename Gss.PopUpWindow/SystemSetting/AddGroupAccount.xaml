@@ -1,0 +1,22 @@
+﻿<Window x:Class="Gss.PopUpWindow.SystemSetting.AddGroupAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Validation="clr-namespace:Gss.PopUpWindow.ValidationHelper"
+        Title="用户添加到分组" Height="195" Width="382" Name="win" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid>
+        <Label Content="分组名称：" Height="24" HorizontalAlignment="Left" Margin="42,20,0,0" Name="label1" VerticalAlignment="Top" Width="68" />
+        <Label Content="客户账户：" Height="24" HorizontalAlignment="Left" Margin="42,50,0,0" Name="label2" VerticalAlignment="Top" Width="68" />
+        <TextBox Height="25" HorizontalAlignment="Left" Margin="107,49,0,0" Name="textBox2" VerticalAlignment="Top" Width="155" >
+            <TextBox.Text>
+                <Binding Path="Account" UpdateSourceTrigger="PropertyChanged" ElementName="win">
+                    <Binding.ValidationRules>
+                        <Validation:StringLengthRule MinLength="1" MaxLength="16"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBlock Height="18" HorizontalAlignment="Left" Margin="111,24,0,0" Name="textBlock1" Text="{Binding UserGroupName, Mode=OneWay}" VerticalAlignment="Top" Width="131" />
+        <Button Content="确 定" Height="24" HorizontalAlignment="Left" Margin="86,108,0,0" Name="button1" VerticalAlignment="Top" Width="64" Click="button1_Click" />
+        <Button Content="取 消" Height="24" HorizontalAlignment="Left" Margin="183,108,0,0" Name="button2" VerticalAlignment="Top" Width="64" Click="button2_Click" />
+    </Grid>
+</Window>

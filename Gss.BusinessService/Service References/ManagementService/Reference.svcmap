@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="661d51e8-58d7-4624-bd99-29b5ebd93e4c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.1.116:8075/GssManager.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="GssManager.disco" MetadataType="Disco" ID="217bb084-2244-4e9a-b992-21928bb1db59" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?disco" />
+    <MetadataFile FileName="GssManager4.xsd" MetadataType="Schema" ID="58a96b6b-3bec-45cf-a05d-b97ab40b6672" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?xsd=xsd0" />
+    <MetadataFile FileName="GssManager41.xsd" MetadataType="Schema" ID="7b5927d7-b489-42e4-98d7-8be85c8dad79" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?xsd=xsd1" />
+    <MetadataFile FileName="GssManager42.xsd" MetadataType="Schema" ID="08850b2e-dbdc-4200-b301-d89d38e51c1d" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?xsd=xsd2" />
+    <MetadataFile FileName="CManager.wsdl" MetadataType="Wsdl" ID="cbded0d9-a570-453e-93fb-ce85bcee75de" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?wsdl" />
+    <MetadataFile FileName="GssManager.wsdl" MetadataType="Wsdl" ID="3602fcab-7ba9-4a91-aec9-435f292fc297" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="GssManager43.xsd" MetadataType="Schema" ID="d6638ac7-8aea-418f-9e4e-4305ad8e9f7d" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

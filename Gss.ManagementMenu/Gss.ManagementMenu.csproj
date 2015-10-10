@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20BCE712-41DD-4368-A805-817FCFDCD666}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gss.ManagementMenu</RootNamespace>
+    <AssemblyName>Gss.ManagementMenu</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ref\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountManager\Admin\AdminAccountControl.xaml.cs">
+      <DependentUpon>AdminAccountControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Clerk\ClerkAccountControl.xaml.cs">
+      <DependentUpon>ClerkAccountControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Client\ClientOnlineControl.xaml.cs">
+      <DependentUpon>ClientOnlineControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Dealer\DealerAccountControl.xaml.cs">
+      <DependentUpon>DealerAccountControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Client\ClientAccountControl.xaml.cs">
+      <DependentUpon>ClientAccountControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Order\MarketOrder.xaml.cs">
+      <DependentUpon>MarketOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Order\MarketOrderHistory.xaml.cs">
+      <DependentUpon>MarketOrderHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Order\OrderInfoWindow.xaml.cs">
+      <DependentUpon>OrderInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Order\PendingOrder.xaml.cs">
+      <DependentUpon>PendingOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Order\PendingOrderHistory.xaml.cs">
+      <DependentUpon>PendingOrderHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Order\WarehousingHistory.xaml.cs">
+      <DependentUpon>WarehousingHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\Org\OrgManagerControl.xaml.cs">
+      <DependentUpon>OrgManagerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\BankTypeConverter.cs" />
+    <Compile Include="Converter\BooleanNullVisibilityConverter.cs" />
+    <Compile Include="Converter\CertificateEnumConverter.cs" />
+    <Compile Include="Converter\LogTypeEnumConverter.cs" />
+    <Compile Include="Converter\LossOrProfitColorConverter.cs" />
+    <Compile Include="Converter\PendingOrdersStateConverter.cs" />
+    <Compile Include="Converter\PendingOrderValidEnumConverter.cs" />
+    <Compile Include="Converter\RiskCoefficientConverter.cs" />
+    <Compile Include="Converter\StatementsTypeEnumConverter.cs" />
+    <Compile Include="Converter\TerminationStateConverter.cs" />
+    <Compile Include="Converter\VisibilityToBooleanConverter.cs" />
+    <Compile Include="CustomControl\AutoComboBox.xaml.cs">
+      <DependentUpon>AutoComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\AutoFilteredComboBox.cs" />
+    <Compile Include="CustomControl\DataPagePicker.xaml.cs">
+      <DependentUpon>DataPagePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\GssTreeViewItem.cs" />
+    <Compile Include="CustomControl\HeightLightTextBlock.cs" />
+    <Compile Include="CustomControl\InquiryCustomControl.xaml.cs">
+      <DependentUpon>InquiryCustomControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\TradeTypeConverter.cs" />
+    <Compile Include="Converter\TransactionTypeConverter.cs" />
+    <Compile Include="CustomControl\PopupButton.cs" />
+    <Compile Include="DataManager\ExperienceControl.xaml.cs">
+      <DependentUpon>ExperienceControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\NewsControl.xaml.cs">
+      <DependentUpon>NewsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\PrivilegeManagerControl.xaml.cs">
+      <DependentUpon>PrivilegeManagerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\RoleManagerControl.xaml.cs">
+      <DependentUpon>RoleManagerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\UserGroups.xaml.cs">
+      <DependentUpon>UserGroups.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TakeGoodsManager\AcceptDetailControl.xaml.cs">
+      <DependentUpon>AcceptDetailControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TakeGoodsManager\BindingAccountCountrol.xaml.cs">
+      <DependentUpon>BindingAccountCountrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\ProductInfoControl.xaml.cs">
+      <DependentUpon>ProductInfoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\RateWaterInfoControl.xaml.cs">
+      <DependentUpon>RateWaterInfoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TakeGoodsManager\TakeGoodsCountrol.xaml.cs">
+      <DependentUpon>TakeGoodsCountrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementMenu.xaml.cs">
+      <DependentUpon>ManagementMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SystemSetting\HolidayControl.xaml.cs">
+      <DependentUpon>HolidayControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\IPAddrFilterControl.xaml.cs">
+      <DependentUpon>IPAddrFilterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\LogInfoControl.xaml.cs">
+      <DependentUpon>LogInfoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\MACFilterControl.xaml.cs">
+      <DependentUpon>MACFilterControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\TradingDayControl.xaml.cs">
+      <DependentUpon>TradingDayControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\TradingSettingControl.xaml.cs">
+      <DependentUpon>TradingSettingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\BackGoodsReport.xaml.cs">
+      <DependentUpon>BackGoodsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\ChargebackRecode.xaml.cs">
+      <DependentUpon>ChargebackRecode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\DeliveryGoodsBackTabItem.xaml.cs">
+      <DependentUpon>DeliveryGoodsBackTabItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\DeliveryGoodsReport.xaml.cs">
+      <DependentUpon>DeliveryGoodsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\DeliveryOrderGoodsTabItem.xaml.cs">
+      <DependentUpon>DeliveryOrderGoodsTabItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\ExportStatements.xaml.cs">
+      <DependentUpon>ExportStatements.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\FundReport.xaml.cs">
+      <DependentUpon>FundReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\HedgeTrade.xaml.cs">
+      <DependentUpon>HedgeTrade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\HistoryData.xaml.cs">
+      <DependentUpon>HistoryData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\InterofficeManager.xaml.cs">
+      <DependentUpon>InterofficeManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\JgjGoodsReport.xaml.cs">
+      <DependentUpon>JgjGoodsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\MarketOrder.xaml.cs">
+      <DependentUpon>MarketOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\PaymentManager.xaml.cs">
+      <DependentUpon>PaymentManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\PendingOrder.xaml.cs">
+      <DependentUpon>PendingOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\TakeGoodsReport.xaml.cs">
+      <DependentUpon>TakeGoodsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\Termination.xaml.cs">
+      <DependentUpon>Termination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\WarehousingOrder.xaml.cs">
+      <DependentUpon>WarehousingOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeMoneyInfo.xaml.cs">
+      <DependentUpon>TradeMoneyInfo.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AccountManager\Admin\AdminAccountControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Clerk\ClerkAccountControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\Client\ClientOnlineControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Dealer\DealerAccountControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Client\ClientAccountControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Order\MarketOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Order\MarketOrderHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Order\OrderInfoWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Order\PendingOrder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Order\PendingOrderHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Order\WarehousingHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\Org\OrgManagerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControl\AutoComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomControl\DataPagePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomControl\InquiryCustomControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DataManager\ExperienceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\NewsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\PrivilegeManagerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\RoleManagerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\UserGroups.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TakeGoodsManager\AcceptDetailControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TakeGoodsManager\BindingAccountCountrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataManager\ProductInfoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataManager\RateWaterInfoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TakeGoodsManager\TakeGoodsCountrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagementMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\HolidayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\IPAddrFilterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\LogInfoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\MACFilterControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\TradingDayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\TradingSettingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\BackGoodsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\ChargebackRecode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\DeliveryGoodsBackTabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\DeliveryGoodsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\DeliveryOrderGoodsTabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\ExportStatements.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\FundReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\HedgeTrade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\HistoryData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\InterofficeManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\JgjGoodsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\MarketOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\PaymentManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\PendingOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\TakeGoodsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\Termination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\WarehousingOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeMoneyInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gss.Common\Gss.Common.csproj">
+      <Project>{CD1E903F-E26F-4950-9D18-24F4DEECA249}</Project>
+      <Name>Gss.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.Entities\Gss.Entities.csproj">
+      <Project>{935FF084-4A7A-41A8-8C05-8ED7C6F536C3}</Project>
+      <Name>Gss.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.PopUpWindow\Gss.PopUpWindow.csproj">
+      <Project>{59FA53BF-10AF-42C4-8289-FB42D1B01941}</Project>
+      <Name>Gss.PopUpWindow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.ViewModel.Management\Gss.ViewModel.Management.csproj">
+      <Project>{46FCB452-1DE7-4CE0-A7AF-47DFE9C847E9}</Project>
+      <Name>Gss.ViewModel.Management</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AccountInformation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AccountManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ChargebackRecord.png" />
+    <Resource Include="Images\ClientAccount.png" />
+    <Resource Include="Images\ClientOnline.png" />
+    <Resource Include="Images\DealerAccount.png" />
+    <Resource Include="Images\HedgingTransactions.png" />
+    <Resource Include="Images\HistoryData.png" />
+    <Resource Include="Images\HolidaySettings.png" />
+    <Resource Include="Images\LogRecord.png" />
+    <Resource Include="Images\ManagerAccount.png" />
+    <Resource Include="Images\MarketOrder.png" />
+    <Resource Include="Images\PendingOrder.png" />
+    <Resource Include="Images\ProductManager.png" />
+    <Resource Include="Images\ReleaseAnnouncement.png" />
+    <Resource Include="Images\ReleaseNews.png" />
+    <Resource Include="Images\SystemSettings.png" />
+    <Resource Include="Images\TradeManager.png" />
+    <Resource Include="Images\TradingDaySettings.png" />
+    <Resource Include="Images\TransactionSettings.png" />
+    <Resource Include="Images\Warehousing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DataManager.png" />
+    <Resource Include="Images\ExchangeRateWater.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\New.png" />
+    <Resource Include="Images\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ExportStatements.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DeliverOrders.png" />
+    <Resource Include="Images\ShouLiMingXi.png" />
+    <Resource Include="Images\BackOrders.png" />
+    <Resource Include="Images\DealerClerk.png" />
+    <Resource Include="Images\TakeOrders.png" />
+    <Resource Include="Images\TakeGoodsOrder.png" />
+    <Resource Include="Images\TakeGoodsAccept.png" />
+    <Resource Include="Images\BindingAccount.png" />
+    <Resource Include="Images\JgjOrder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\clerk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Combox.png" />
+    <Resource Include="Images\datePicker.png" />
+    <Resource Include="Images\First.png" />
+    <Resource Include="Images\Last.png" />
+    <Resource Include="Images\Next.png" />
+    <Resource Include="Images\Preview.png" />
+    <Resource Include="Images\Reload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\IPAddressFilter.png" />
+    <Resource Include="Images\MACAddressFilter.png" />
+    <Resource Include="Images\PrivilegeManager.png" />
+    <Resource Include="Images\RoleManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ChuJin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\OrgManager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FundReport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Termination.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Experience.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

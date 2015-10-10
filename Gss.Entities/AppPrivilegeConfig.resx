@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account" xml:space="preserve">
+    <value>账户管理</value>
+    <comment>账户管理</comment>
+  </data>
+  <data name="Account_Client" xml:space="preserve">
+    <value>客户管理</value>
+    <comment>账户管理-客户管理</comment>
+  </data>
+  <data name="Account_Client_AccountInfo" xml:space="preserve">
+    <value>客户账户资料</value>
+  </data>
+  <data name="Account_Client_AddAccount" xml:space="preserve">
+    <value>新增客户账户</value>
+  </data>
+  <data name="Account_Client_AdjustMoney" xml:space="preserve">
+    <value>调节</value>
+  </data>
+  <data name="Account_Client_DelAccount" xml:space="preserve">
+    <value>删除客户账户</value>
+  </data>
+  <data name="Account_Client_FundsInfo" xml:space="preserve">
+    <value>客户资金信息</value>
+  </data>
+  <data name="Account_Client_FundsInfo_Ok" xml:space="preserve">
+    <value>修改冻结资金</value>
+    <comment>客户资金信息-确定</comment>
+  </data>
+  <data name="Account_Client_MarketOrder" xml:space="preserve">
+    <value>即时成交</value>
+  </data>
+  <data name="Account_Client_OrderInfo" xml:space="preserve">
+    <value>订单信息</value>
+    <comment>账户管理-客户管理-订单信息</comment>
+  </data>
+  <data name="Account_Client_PendingOrder" xml:space="preserve">
+    <value>挂单交易</value>
+  </data>
+  <data name="Account_Manager" xml:space="preserve">
+    <value>管理员</value>
+    <comment>账户管理-管理员</comment>
+  </data>
+  <data name="Account_Manager_AccountInfo" xml:space="preserve">
+    <value>管理员资料</value>
+  </data>
+  <data name="Account_Manager_AddAccount" xml:space="preserve">
+    <value>新增管理员</value>
+  </data>
+  <data name="Account_Manager_DelAccount" xml:space="preserve">
+    <value>删除管理员</value>
+  </data>
+  <data name="Account_Manager_Role" xml:space="preserve">
+    <value>角色权限</value>
+    <comment>账户管理-管理员-角色权限</comment>
+  </data>
+  <data name="Account_Online" xml:space="preserve">
+    <value>在线客户</value>
+    <comment>账户管理-在线客户</comment>
+  </data>
+  <data name="Account_Online_AccountInfo" xml:space="preserve">
+    <value>账户资料</value>
+  </data>
+  <data name="Account_Online_DelAccount" xml:space="preserve">
+    <value>删除账户</value>
+  </data>
+  <data name="Account_Online_FundsInfo" xml:space="preserve">
+    <value>资金信息</value>
+  </data>
+  <data name="Account_Online_OrderInfo" xml:space="preserve">
+    <value>订单信息</value>
+    <comment>账户管理-在线客户-订单信息</comment>
+  </data>
+  <data name="Account_Org" xml:space="preserve">
+    <value>微会员</value>
+  </data>
+  <data name="Account_OrgAccount" xml:space="preserve">
+    <value>会员账户</value>
+    <comment>账户管理-会员账户</comment>
+  </data>
+  <data name="Account_OrgAccount_AccountInfo" xml:space="preserve">
+    <value>会员账户资料</value>
+  </data>
+  <data name="Account_OrgAccount_AddAccount" xml:space="preserve">
+    <value>新增会员账户</value>
+  </data>
+  <data name="Account_OrgAccount_DelAccount" xml:space="preserve">
+    <value>删除会员账户</value>
+  </data>
+  <data name="Account_OrgAccount_Role" xml:space="preserve">
+    <value>会员账户角色</value>
+  </data>
+  <data name="Account_Org_AccountInfo" xml:space="preserve">
+    <value>微会员资料</value>
+  </data>
+  <data name="Account_Org_AddAccount" xml:space="preserve">
+    <value>新增微会员</value>
+  </data>
+  <data name="Account_Org_DelAccount" xml:space="preserve">
+    <value>删除微会员</value>
+  </data>
+  <data name="Account_Org_Role" xml:space="preserve">
+    <value>微会员角色</value>
+    <comment>微会员-微会员角色</comment>
+  </data>
+  <data name="Account_Org_SetAllCommissionRatio" xml:space="preserve">
+    <value>批量返佣</value>
+  </data>
+  <data name="Account_Org_SetCommissionRatio" xml:space="preserve">
+    <value>修改返佣</value>
+  </data>
+  <data name="Account_Org_SetDefaultCommissionRatio" xml:space="preserve">
+    <value>修改默认返佣</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>数据管理</value>
+    <comment>数据管理</comment>
+  </data>
+  <data name="Data_Effective" xml:space="preserve">
+    <value>体验券</value>
+    <comment>数据管理-体验券</comment>
+  </data>
+  <data name="Data_HistoryData" xml:space="preserve">
+    <value>历史数据</value>
+    <comment>数据管理-历史数据</comment>
+  </data>
+  <data name="Data_ProductInfo" xml:space="preserve">
+    <value>商品管理</value>
+    <comment>数据管理-商品管理</comment>
+  </data>
+  <data name="Data_ProductInfo_ManualPrice" xml:space="preserve">
+    <value>手工报价</value>
+    <comment>数据管理-商品管理-手工报价</comment>
+  </data>
+  <data name="Data_RateWaterInfo" xml:space="preserve">
+    <value>汇率/水</value>
+    <comment>数据管理-汇率/水</comment>
+  </data>
+  <data name="Data_String2" xml:space="preserve">
+    <value>历史数据</value>
+    <comment>数据管理-历史数据</comment>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>系统设置</value>
+    <comment>系统设置</comment>
+  </data>
+  <data name="System_1" xml:space="preserve">
+    <value>新闻公告</value>
+    <comment>系统设置-新闻发布</comment>
+  </data>
+  <data name="System_2" xml:space="preserve">
+    <value>公告发布</value>
+    <comment>系统设置-公告发布</comment>
+  </data>
+  <data name="System_Group" xml:space="preserve">
+    <value>客户分组管理</value>
+    <comment>系统设置-客户分组</comment>
+  </data>
+  <data name="System_Holiday" xml:space="preserve">
+    <value>节假日管理</value>
+    <comment>系统设置-节假日管理</comment>
+  </data>
+  <data name="System_IPAddrFilter" xml:space="preserve">
+    <value>IP地址过滤</value>
+    <comment>系统设置-IP地址过滤</comment>
+  </data>
+  <data name="System_LogInfo" xml:space="preserve">
+    <value>日志记录</value>
+    <comment>系统设置-日志记录</comment>
+  </data>
+  <data name="System_MACFilter" xml:space="preserve">
+    <value>MAC地址过滤</value>
+    <comment>系统设置-MAC地址过滤</comment>
+  </data>
+  <data name="System_PrivilegeManager" xml:space="preserve">
+    <value>权限管理</value>
+    <comment>系统设置-权限管理</comment>
+  </data>
+  <data name="System_RoleManager" xml:space="preserve">
+    <value>角色管理</value>
+    <comment>系统设置-角色管理</comment>
+  </data>
+  <data name="System_TradeMoneyInfo" xml:space="preserve">
+    <value>出入金提示</value>
+    <comment>出入金解约设置弹出窗体</comment>
+  </data>
+  <data name="System_TradingDay" xml:space="preserve">
+    <value>交易日管理</value>
+    <comment>系统设置-交易日管理</comment>
+  </data>
+  <data name="System_TradingSetting" xml:space="preserve">
+    <value>交易设置管理</value>
+    <comment>系统设置-交易设置管理</comment>
+  </data>
+  <data name="TakeGoods" xml:space="preserve">
+    <value>提货受理</value>
+    <comment>提货受理</comment>
+  </data>
+  <data name="TakeGoods_AcceptDetail" xml:space="preserve">
+    <value>受理明细</value>
+    <comment>提货受理-受理明细</comment>
+  </data>
+  <data name="TakeGoods_BindingAccount" xml:space="preserve">
+    <value>绑定账号</value>
+    <comment>提货受理-绑定账号</comment>
+  </data>
+  <data name="TakeGoods_TakeGoods" xml:space="preserve">
+    <value>提货</value>
+    <comment>提货受理-提货</comment>
+  </data>
+  <data name="Trade" xml:space="preserve">
+    <value>交易管理</value>
+    <comment>交易管理</comment>
+  </data>
+  <data name="Trade_BackGoods" xml:space="preserve">
+    <value>买跌单</value>
+    <comment>交易管理-买跌单</comment>
+  </data>
+  <data name="Trade_ChargebackRecode" xml:space="preserve">
+    <value>平仓历史</value>
+    <comment>交易管理-平仓历史</comment>
+  </data>
+  <data name="Trade_ChargebackRecode_OrderInfo" xml:space="preserve">
+    <value>订单信息</value>
+    <comment>交易管理-平仓历史-订单信息</comment>
+  </data>
+  <data name="Trade_ChuJin" xml:space="preserve">
+    <value>出金处理</value>
+    <comment>交易管理-出金处理</comment>
+  </data>
+  <data name="Trade_ChuJin_Details" xml:space="preserve">
+    <value>出入金详情</value>
+  </data>
+  <data name="Trade_ChuJin_OrderInfo" xml:space="preserve">
+    <value>订单信息</value>
+    <comment>交易管理-出金处理-订单信息</comment>
+  </data>
+  <data name="Trade_DeliveryGoods" xml:space="preserve">
+    <value>交割单</value>
+    <comment>交易管理-交割单</comment>
+  </data>
+  <data name="Trade_ExportStatements" xml:space="preserve">
+    <value>导出报表</value>
+    <comment>交易管理-导出报表</comment>
+  </data>
+  <data name="Trade_ExportStatements_AdjustReport" xml:space="preserve">
+    <value>平仓报表</value>
+    <comment>交易管理-导出报表-平仓</comment>
+  </data>
+  <data name="Trade_ExportStatements_FundReport" xml:space="preserve">
+    <value>资金报表</value>
+    <comment>交易管理-导出报表-资金</comment>
+  </data>
+  <data name="Trade_ExportStatements_MarketOrderReport" xml:space="preserve">
+    <value>订单报表</value>
+    <comment>交易管理-导出报表-订单</comment>
+  </data>
+  <data name="Trade_ExportStatements_PendingOrderReport" xml:space="preserve">
+    <value>挂单报表</value>
+    <comment>交易管理-导出报表-挂单</comment>
+  </data>
+  <data name="Trade_FundReport" xml:space="preserve">
+    <value>资金明细</value>
+    <comment>交易管理-资金明细</comment>
+  </data>
+  <data name="Trade_FundReport_OrderInfo" xml:space="preserve">
+    <value>订单信息</value>
+    <comment>交易管理-资金明细-订单信息</comment>
+  </data>
+  <data name="Trade_HedgeTrade" xml:space="preserve">
+    <value>对冲交易</value>
+    <comment>交易管理-对冲交易</comment>
+  </data>
+  <data name="Trade_JgjGoods" xml:space="preserve">
+    <value>金生金单</value>
+    <comment>交易管理-金生金单</comment>
+  </data>
+  <data name="Trade_JujianManager" xml:space="preserve">
+    <value>会员报表</value>
+    <comment>会员报表</comment>
+  </data>
+  <data name="Trade_MarketOrder" xml:space="preserve">
+    <value>在手订单</value>
+    <comment>交易管理-在手订单</comment>
+  </data>
+  <data name="Trade_MarketOrder_Chargeback" xml:space="preserve">
+    <value>平仓</value>
+  </data>
+  <data name="Trade_MarketOrder_OrderInfo" xml:space="preserve">
+    <value>订单信息</value>
+    <comment>交易管理-在手订单-订单信息</comment>
+  </data>
+  <data name="Trade_PendingOrder" xml:space="preserve">
+    <value>委托订单</value>
+    <comment>交易管理-委托订单</comment>
+  </data>
+  <data name="Trade_PendingOrder_Cancel" xml:space="preserve">
+    <value>撤销</value>
+  </data>
+  <data name="Trade_PendingOrder_OrderInfo" xml:space="preserve">
+    <value>订单信息</value>
+    <comment>交易管理-委托订单-订单信息</comment>
+  </data>
+  <data name="Trade_TakeGoods" xml:space="preserve">
+    <value>提货单</value>
+    <comment>交易管理-提货单</comment>
+  </data>
+  <data name="Trade_Termination" xml:space="preserve">
+    <value>解约处理</value>
+    <comment>交易管理-解约处理</comment>
+  </data>
+  <data name="Trade_Termination_Approved" xml:space="preserve">
+    <value>审核解约</value>
+  </data>
+  <data name="Trade_Termination_OrderInfo" xml:space="preserve">
+    <value>订单信息</value>
+    <comment>交易管理-解约处理-订单信息</comment>
+  </data>
+  <data name="Trade_Termination_Reject" xml:space="preserve">
+    <value>拒绝解约</value>
+  </data>
+  <data name="Trade_WarehousingOrder" xml:space="preserve">
+    <value>入库订单</value>
+    <comment>交易管理-入库订单</comment>
+  </data>
+</root>

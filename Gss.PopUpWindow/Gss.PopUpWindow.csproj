@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{59FA53BF-10AF-42C4-8289-FB42D1B01941}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gss.PopUpWindow</RootNamespace>
+    <AssemblyName>Gss.PopUpWindow</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Log" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ref\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Gss.ManagementMenu\Converter\BooleanNullVisibilityConverter.cs">
+      <Link>Converter\BooleanNullVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="AccountInfoModule\AccountInfoPart.xaml.cs">
+      <DependentUpon>AccountInfoPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountInfoModule\DealerBasicInfoPart.xaml.cs">
+      <DependentUpon>DealerBasicInfoPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountInfoModule\ManagerBasicInfoPart.xaml.cs">
+      <DependentUpon>ManagerBasicInfoPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountInfoModule\TransactionSettingsPart.xaml.cs">
+      <DependentUpon>TransactionSettingsPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountInfoModule\ClientBasicInfoPart.xaml.cs">
+      <DependentUpon>ClientBasicInfoPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountInfoModule\FundsInfoPart.xaml.cs">
+      <DependentUpon>FundsInfoPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountInfoModule\LoginInfoPart.xaml.cs">
+      <DependentUpon>LoginInfoPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\AdjustMoneyWindow.xaml.cs">
+      <DependentUpon>AdjustMoneyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\BindingOrgWindow.xaml.cs">
+      <DependentUpon>BindingOrgWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\ClerkAccountWindow.xaml.cs">
+      <DependentUpon>ClerkAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\OrgDetialWindow.xaml.cs">
+      <DependentUpon>OrgDetialWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\OrgTicketWindow.xaml.cs">
+      <DependentUpon>OrgTicketWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\SetCommissionRatioWindow.xaml.cs">
+      <DependentUpon>SetCommissionRatioWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorityModule\ClerkAuthorityPart.xaml.cs">
+      <DependentUpon>ClerkAuthorityPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\EntityAcceptWindow.xaml.cs">
+      <DependentUpon>EntityAcceptWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\InventoryManagerWindow.xaml.cs">
+      <DependentUpon>InventoryManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorityModule\AccountAuthorityPart.xaml.cs">
+      <DependentUpon>AccountAuthorityPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorityModule\DataManagerPart.xaml.cs">
+      <DependentUpon>DataManagerPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorityModule\DealerAuthorityItem.xaml.cs">
+      <DependentUpon>DealerAuthorityItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorityModule\ManagerAuthorityItem.xaml.cs">
+      <DependentUpon>ManagerAuthorityItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthWindows\AddOrEditRoleWindow.xaml.cs">
+      <DependentUpon>AddOrEditRoleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthWindows\RolePrivilegesConfigWindow.xaml.cs">
+      <DependentUpon>RolePrivilegesConfigWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorityModule\SystemSettingsPart.xaml.cs">
+      <DependentUpon>SystemSettingsPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorityModule\TransactionAuthorityPart.xaml.cs">
+      <DependentUpon>TransactionAuthorityPart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\ClientAccountInfoWindow.xaml.cs">
+      <DependentUpon>ClientAccountInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\ClientFundsInfoWindow.xaml.cs">
+      <DependentUpon>ClientFundsInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\BankEnumConverter.cs" />
+    <Compile Include="Converter\CertificateEnumConverter.cs" />
+    <Compile Include="Converter\ClientTypeEnumConverter.cs" />
+    <Compile Include="Converter\ContractStatusEnumConverter.cs" />
+    <Compile Include="Converter\DateLongTimeConverter.cs" />
+    <Compile Include="Converter\DigitFormatStringConverter.cs" />
+    <Compile Include="Converter\DigitIncrementConverter.cs" />
+    <Compile Include="Converter\ManualPriceBtnContentConverter.cs" />
+    <Compile Include="Converter\ProductStateEnumConverter.cs" />
+    <Compile Include="Converter\ProductVisibilityConverter.cs" />
+    <Compile Include="Converter\SexEnumConverter.cs" />
+    <Compile Include="AccountManager\DealerAccountInfoWindow.xaml.cs">
+      <DependentUpon>DealerAccountInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\ManagerAccountInfoWindow.xaml.cs">
+      <DependentUpon>ManagerAccountInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\WeekEnumConverter.cs" />
+    <Compile Include="CustomCotrol\AutoComboBox.xaml.cs">
+      <DependentUpon>AutoComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomCotrol\HeightLightTextBlock.cs" />
+    <Compile Include="DataManager\ExperienceWindow.xaml.cs">
+      <DependentUpon>ExperienceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\HistoryDataSetWindow.xaml.cs">
+      <DependentUpon>HistoryDataSetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\ManualPriceWindow.xaml.cs">
+      <DependentUpon>ManualPriceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\ProductInfoWindow.xaml.cs">
+      <DependentUpon>ProductInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataManager\RateWaterInfoWindow.xaml.cs">
+      <DependentUpon>RateWaterInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\NewOrder\MarketOrderWindow.xaml.cs">
+      <DependentUpon>MarketOrderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AccountManager\NewOrder\PendingOrderWindow.xaml.cs">
+      <DependentUpon>PendingOrderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyPassword\ModifyPasswordWindow.xaml.cs">
+      <DependentUpon>ModifyPasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\AddGroupAccount.xaml.cs">
+      <DependentUpon>AddGroupAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\AddUserGroup.xaml.cs">
+      <DependentUpon>AddUserGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\AlterUserGroup.xaml.cs">
+      <DependentUpon>AlterUserGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\NewsWindows.xaml.cs">
+      <DependentUpon>NewsWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\TradeSetWindow.xaml.cs">
+      <DependentUpon>TradeSetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\ModifyBackTradeWindow.xaml.cs">
+      <DependentUpon>ModifyBackTradeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\ModifyOrderAllowStoreWindow.xaml.cs">
+      <DependentUpon>ModifyOrderAllowStoreWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\OrderChangedWindow.xaml.cs">
+      <DependentUpon>OrderChangedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\MACFilterInfoWindow.xaml.cs">
+      <DependentUpon>MACFilterInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\IPAddrFilterInfoWindow.xaml.cs">
+      <DependentUpon>IPAddrFilterInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetting\HolidayInfoWindow.xaml.cs">
+      <DependentUpon>HolidayInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SystemSetting\TradingDayWindow.xaml.cs">
+      <DependentUpon>TradingDayWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\PaymentDetails.xaml.cs">
+      <DependentUpon>PaymentDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TradeManager\RecordRealWeightWindow.xaml.cs">
+      <DependentUpon>RecordRealWeightWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValidationHelper\CellPhoneRule.cs" />
+    <Compile Include="ValidationHelper\EmailRule.cs" />
+    <Compile Include="ValidationHelper\HisDataRule.cs" />
+    <Compile Include="ValidationHelper\IsDoubleRule.cs" />
+    <Compile Include="ValidationHelper\IsIntRule.cs" />
+    <Compile Include="ValidationHelper\IsPlusIntRule.cs" />
+    <Compile Include="ValidationHelper\StringLengthRule.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AccountInfoModule\AccountInfoPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountInfoModule\DealerBasicInfoPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountInfoModule\ManagerBasicInfoPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountInfoModule\TransactionSettingsPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountInfoModule\ClientBasicInfoPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountInfoModule\FundsInfoPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountInfoModule\LoginInfoPart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\AdjustMoneyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\BindingOrgWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\ClerkAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\OrgDetialWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\OrgTicketWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\SetCommissionRatioWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorityModule\ClerkAuthorityPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\EntityAcceptWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\InventoryManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorityModule\AccountAuthorityPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorityModule\DataManagerPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorityModule\DealerAuthorityItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorityModule\ManagerAuthorityItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthWindows\AddOrEditRoleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthWindows\RolePrivilegesConfigWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorityModule\SystemSettingsPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AuthorityModule\TransactionAuthorityPart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\ClientAccountInfoWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AccountManager\ClientFundsInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\DealerAccountInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\ManagerAccountInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomCotrol\AutoComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataManager\ExperienceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataManager\HistoryDataSetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataManager\ManualPriceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataManager\ProductInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataManager\RateWaterInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\NewOrder\MarketOrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AccountManager\NewOrder\PendingOrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModifyPassword\ModifyPasswordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SystemSetting\AddGroupAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\AddUserGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\AlterUserGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\NewsWindows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\TradeSetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\ModifyBackTradeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\ModifyOrderAllowStoreWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\OrderChangedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\MACFilterInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\IPAddrFilterInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\HolidayInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\TradingDayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\PaymentDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TradeManager\RecordRealWeightWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gss.Common\Gss.Common.csproj">
+      <Project>{CD1E903F-E26F-4950-9D18-24F4DEECA249}</Project>
+      <Name>Gss.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.Entities\Gss.Entities.csproj">
+      <Project>{935FF084-4A7A-41A8-8C05-8ED7C6F536C3}</Project>
+      <Name>Gss.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ModifyPassword\Images\BasicInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ModifyPassword\Images\ModifyPassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ModifyPassword\Images\UpdatePassword.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

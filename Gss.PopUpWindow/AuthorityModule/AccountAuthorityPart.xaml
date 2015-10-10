@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Gss.PopUpWindow.AuthorityModule.AccountAuthorityPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             >
+    <GroupBox Margin="3" >
+        <GroupBox.Header>
+            <CheckBox Content="操作权限" Width="Auto" IsChecked="{Binding OperatingAuthority}"/>
+        </GroupBox.Header>
+        <WrapPanel>
+            <CheckBox Content="开户" IsChecked="{Binding AllowCreateNewAccount}"/>
+            <CheckBox Content="用户资料" IsChecked="{Binding AllowViewClientInformation}"/>
+            <CheckBox Content="删除用户" IsChecked="{Binding AllowDeleteClient}"/>
+            <CheckBox Content="交易详情" IsChecked="{Binding AllowViewTradeDetail}"/>
+            <CheckBox Content="库存结算" IsChecked="{Binding AllowCashIO}"/>
+            <CheckBox Content="调节" IsChecked="{Binding AllowAdjustmentAmount}"/>
+            <CheckBox Content="持仓新单" IsChecked="{Binding AllowMarketOrder}"/>
+            <CheckBox Content="订单平仓" IsChecked="{Binding AllowChargebackOrder}"/>
+            <CheckBox Content="订单入库" IsChecked="{Binding AllowWarehousingOrder}"/>
+            <CheckBox Content="限价挂单" IsChecked="{Binding AllowPendingOrder}"/>
+            <CheckBox Content="撤销挂单" IsChecked="{Binding AllowRevocationOrder}"/>
+            <CheckBox Content="订单报表" IsChecked="{Binding MarketOrderStatements}"/>
+            <CheckBox Content="入库报表" IsChecked="{Binding WarehousingStatements}"/>
+            <CheckBox Content="平仓报表" IsChecked="{Binding ChargebackStatements}"/>
+            <CheckBox Content="挂单报表" IsChecked="{Binding PendingOrderStatements}"/>
+            <CheckBox Content="资金报表" IsChecked="{Binding AdjustDepositStatements}"/>
+
+            <CheckBox Content="买跌检测" IsChecked="{Binding CheckManage}"/>
+            <CheckBox Content="买跌处理" IsChecked="{Binding CheckDel}"/>
+
+            <CheckBox Content="买涨交割单报表" IsChecked="{Binding OrderTakeReport}"/>
+            <CheckBox Content="买跌单报表" IsChecked="{Binding OrderBackReport}" />
+            <CheckBox Content="买跌交割单报表" IsChecked="{Binding OrderCheckReport}"/>
+            <CheckBox Content="转金生金报表" IsChecked="{Binding JgjReport}" />
+            <CheckBox Content="提货受理报表" IsChecked="{Binding AgentDoDetailAgentDoDetail}" />
+        </WrapPanel>
+    </GroupBox>
+</UserControl>

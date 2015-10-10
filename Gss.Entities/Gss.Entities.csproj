@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{935FF084-4A7A-41A8-8C05-8ED7C6F536C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gss.Entities</RootNamespace>
+    <AssemblyName>Gss.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountManager\Account\ClientAccount.cs" />
+    <Compile Include="AccountManager\Account\CommissionRatioSet.cs" />
+    <Compile Include="AccountManager\Authority\ClerkAuthority.cs" />
+    <Compile Include="AccountManager\Bank.cs" />
+    <Compile Include="AccountManager\ClientUserBaseInfo.cs" />
+    <Compile Include="AccountManager\Information\AccountInformationBase.cs" />
+    <Compile Include="AccountManager\Information\ClientAccountInformation.cs" />
+    <Compile Include="AccountManager\Account\DealerAccount.cs" />
+    <Compile Include="AccountManager\Information\DealerAccountInformation.cs" />
+    <Compile Include="AccountManager\Authority\DealerAuthority.cs" />
+    <Compile Include="AccountManager\FundsInformation.cs" />
+    <Compile Include="AccountManager\Account\ManagerAccount.cs" />
+    <Compile Include="AccountManager\OrderInformation\NewMarketOrderInfo.cs" />
+    <Compile Include="AccountManager\OrderInformation\NewOrderInfoBase.cs" />
+    <Compile Include="AccountManager\OrderInformation\NewPendingOrderInfo.cs" />
+    <Compile Include="AccountManager\ClientAccountFilter.cs" />
+    <Compile Include="AppCommonConfig.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCommonConfig.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppCommonConfig_HFB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCommonConfig_HFB.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppCommonConfig_JTW.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCommonConfig_JTW.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppCommonConfig_MT.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCommonConfig_MT.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppCommonConfig_XS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCommonConfig_XS.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppCommonConfig_ZD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppCommonConfig_ZD.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AppPrivilegeConfig.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppPrivilegeConfig.resx</DependentUpon>
+    </Compile>
+    <Compile Include="BaseInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BzjEntities\BzjClerk.cs" />
+    <Compile Include="BzjEntities\BzjClerkAuth.cs" />
+    <Compile Include="BzjEntities\BzjClerkQueryCon.cs" />
+    <Compile Include="BzjEntities\BzjDeliverEntity.cs" />
+    <Compile Include="BzjEntities\BzjDeliveryGoodsBackEntity.cs" />
+    <Compile Include="BzjEntities\BzjInfoInformation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BzjEntities\BzjOrderEntity.cs" />
+    <Compile Include="BzjEntities\BzjRecoverOrder.cs" />
+    <Compile Include="BzjEntities\BzjTakeGoodsDetailEntity.cs" />
+    <Compile Include="BzjEntities\BzjUserBindEntity.cs" />
+    <Compile Include="BzjEntities\SelectCondition.cs" />
+    <Compile Include="ConnectConfigData.cs" />
+    <Compile Include="DataManager\ExperienceInformation.cs" />
+    <Compile Include="Enums\CashIOEnum.cs" />
+    <Compile Include="Enums\ChargebackModeEnum.cs" />
+    <Compile Include="Enums\ContractBankStatusEnum.cs" />
+    <Compile Include="Enums\EnumConverter.cs" />
+    <Compile Include="Enums\NewsStatusEnum.cs" />
+    <Compile Include="Enums\NewsTypeEnum.cs" />
+    <Compile Include="Enums\PassWordEnum.cs" />
+    <Compile Include="Enums\StatementsTypeEnum.cs" />
+    <Compile Include="Enums\UserTypeInfo.cs" />
+    <Compile Include="ErrorText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IBzjService.cs" />
+    <Compile Include="Interface\ITradeServiceProvider.cs" />
+    <Compile Include="JTWEntityes\HisData.cs" />
+    <Compile Include="JTWEntityes\OrgInfo.cs" />
+    <Compile Include="JTWEntityes\PrivilegeInfo.cs" />
+    <Compile Include="JTWEntityes\PrivilegeNode.cs" />
+    <Compile Include="JTWEntityes\RoleInfo.cs" />
+    <Compile Include="JTWEntityes\RolePrivilegeInfo.cs" />
+    <Compile Include="JTWEntityes\TradeConfigInfo.cs" />
+    <Compile Include="JTWEntityes\NewsInfo.cs" />
+    <Compile Include="JTWEntityes\UserPrivilegesInfo.cs" />
+    <Compile Include="PasswordBoxHelper.cs" />
+    <Compile Include="ResourceWrapper.cs" />
+    <Compile Include="ServceConnectType.cs" />
+    <Compile Include="SystemSetting\CxQueryConInfomation.cs" />
+    <Compile Include="SystemSetting\LogQueryConInfomation.cs" />
+    <Compile Include="SystemSetting\UserGroup.cs" />
+    <Compile Include="SystemSetting\UserQueryConInfomation.cs" />
+    <Compile Include="TradeManager\CJQueryConInfomation.cs" />
+    <Compile Include="TradeManager\ClientFundChangeInfo.cs" />
+    <Compile Include="TradeManager\ClientHedgingInfo .cs" />
+    <Compile Include="TradeManager\ClientLTradeOrderInfo.cs" />
+    <Compile Include="TradeManager\ClientTradeChuJinInfo.cs" />
+    <Compile Include="TradeManager\ClientTradeHoldOrderInfo.cs" />
+    <Compile Include="TradeManager\ClientTradeJuJianInfo.cs" />
+    <Compile Include="TradeManager\ClientTradeOrderInfo.cs" />
+    <Compile Include="TradeManager\FcQueryConInfomation.cs" />
+    <Compile Include="TradeManager\FundChangeInformation.cs" />
+    <Compile Include="TradeManager\FundInformation.cs" />
+    <Compile Include="TradeManager\HedgingTradeData.cs" />
+    <Compile Include="TradeManager\HistorySearchInfo.cs" />
+    <Compile Include="AccountManager\Information\ManagerAccountInformation.cs" />
+    <Compile Include="AccountManager\Authority\ManagerAuthority.cs" />
+    <Compile Include="TradeManager\MarketHistoryData.cs" />
+    <Compile Include="AccountManager\TransactionSettings.cs" />
+    <Compile Include="Enums\AccountTypeEnum.cs" />
+    <Compile Include="Enums\BankEnum.cs" />
+    <Compile Include="Enums\CeritificateEnum.cs" />
+    <Compile Include="Enums\ClientType.cs" />
+    <Compile Include="Enums\LoginTypeEnum.cs" />
+    <Compile Include="Enums\LogTypeEnum.cs" />
+    <Compile Include="Enums\PendingOrderValidEnum.cs" />
+    <Compile Include="Enums\ProductStateEnum.cs" />
+    <Compile Include="Enums\SexEnum.cs" />
+    <Compile Include="Enums\TransactionTypeEnum.cs" />
+    <Compile Include="Enums\WeekEnum.cs" />
+    <Compile Include="ErrType.cs" />
+    <Compile Include="DataManager\ProductInformation.cs" />
+    <Compile Include="DataManager\ExchangeRateWaterInformation.cs" />
+    <Compile Include="TradeManager\OrderChangedInformation.cs" />
+    <Compile Include="TradeManager\PendingOrderData.cs" />
+    <Compile Include="RequestInformationBase.cs" />
+    <Compile Include="TradeManager\OrderDataBase.cs" />
+    <Compile Include="TradeManager\MarketOrderData.cs" />
+    <Compile Include="TradeManager\StatementsRequestInformation.cs" />
+    <Compile Include="TradeManager\TradeChuJinInformation.cs" />
+    <Compile Include="TradeManager\TradeJieYue.cs" />
+    <Compile Include="TradeManager\TradeJuJian.cs" />
+    <Compile Include="TradeManager\TradeMoneyData.cs" />
+    <Compile Include="TradeManager\WarehousingHistoryData.cs" />
+    <Compile Include="SystemSetting\LogRequestInformation.cs" />
+    <Compile Include="JTWEntityes\LogInformation.cs" />
+    <Compile Include="SystemSetting\MACFilterInformation.cs" />
+    <Compile Include="SystemSetting\IPAddressFilterInformation.cs" />
+    <Compile Include="SystemSetting\HolidayInformation.cs" />
+    <Compile Include="Interface\IBusinessServiceProvider.cs" />
+    <Compile Include="LoginInformation.cs" />
+    <Compile Include="LoginResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemSetting\TradingDayInformation.cs" />
+    <Compile Include="SystemSetting\TradingSettingInformation.cs" />
+    <Compile Include="UserInformation.cs" />
+    <Compile Include="ValidationHelper\CellPhoneRule.cs" />
+    <Compile Include="ValidationHelper\CertificateNumberRule.cs" />
+    <Compile Include="ValidationHelper\DoubleExactDivisionRule.cs" />
+    <Compile Include="ValidationHelper\EmailRule.cs" />
+    <Compile Include="ValidationHelper\IPAddressRule.cs" />
+    <Compile Include="ValidationHelper\NumRule.cs" />
+    <Compile Include="ValidationHelper\PasswordRule.cs" />
+    <Compile Include="ValidationHelper\StringLengthRule.cs" />
+    <Compile Include="ValidationHelper\StringRegexRule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AppCommonConfig.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppCommonConfig.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppCommonConfig_HFB.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppCommonConfig_HFB.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppCommonConfig_JTW.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppCommonConfig_JTW.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppCommonConfig_MT.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppCommonConfig_MT.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppCommonConfig_XS.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppCommonConfig_XS.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppCommonConfig_ZD.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppCommonConfig_ZD.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppPrivilegeConfig.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppPrivilegeConfig.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorText.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gss.Common\Gss.Common.csproj">
+      <Project>{CD1E903F-E26F-4950-9D18-24F4DEECA249}</Project>
+      <Name>Gss.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

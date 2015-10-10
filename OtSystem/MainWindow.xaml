@@ -1,0 +1,230 @@
+﻿<Window x:Class="JtwSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
+        xmlns:mgrMenu="clr-namespace:Gss.ManagementMenu;assembly=Gss.ManagementMenu"
+        xmlns:pdtView="clr-namespace:Gss.ProductInfoView;assembly=Gss.ProductInfoView"
+        xmlns:cus="clr-namespace:Gss.ManagementMenu.CustomControl;assembly=Gss.ManagementMenu"
+        xmlns:converter="clr-namespace:Gss.ManagementMenu.Converter;assembly=Gss.ManagementMenu"
+        Title="金通网微中心管理系统" Height="800" Width="960" 
+        WindowStartupLocation="CenterScreen" WindowState="Maximized" FontSize="12"
+      
+        Loaded="Window_Loaded" Icon="/JtwSystem;component/appico.ico">
+    <Window.Resources>
+        <converter:BooleanNullVisibilityConverter x:Key="BoolNullVisibilityCvt"/>
+        <RoutedCommand x:Key="About"/>
+        <RoutedCommand x:Key="ModifyPassword"/>
+        <Style TargetType="{x:Type cus:PopupButton}">
+            <Setter Property="Height" Value="30"/>
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type cus:PopupButton}">
+                        <Grid  Name="gridLayOut">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--<Border Background="Transparent">
+                                <Path   x:Name="ArrowR"    
+                                     Fill ="Gray"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Data="M 0 4 L 4 0 L 8 4 Z"/>
+                            </Border>-->
+                            <Border Grid.Column="1" Name="bd"  Background="Transparent">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <Popup  IsOpen="{Binding Path= IsPopOpen,RelativeSource={RelativeSource TemplatedParent}}"  Placement="Top"
+                                    PlacementTarget="{Binding Path= .,RelativeSource={RelativeSource TemplatedParent}}">
+                                <UserControl Content="{Binding Path= PopupWindow,RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Popup>
+                        </Grid>
+
+
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="gridLayOut" Property="Background"  Value="LightGray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource About}" Executed="CommandBinding_Executed_About"/>
+        <CommandBinding Command="{StaticResource ModifyPassword}" Executed="CommandBinding_Executed_ModifyPassword" />
+    </Window.CommandBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Image Source="/JtwSystem;component/logo.png" Opacity="0" Margin="30,0,0,0">
+                <Image.LayoutTransform>
+                    <ScaleTransform ScaleX="0.7" ScaleY="0.7" />
+                </Image.LayoutTransform>
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" BeginTime="0:0:0.5" Duration="0:0:1.3" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.35" BeginTime="0:0:00" Duration="0:0:0.5" />
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.35" To="1" BeginTime="0:0:0.5" Duration="0:0:1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Image.Triggers>
+            </Image>
+            <TextBlock Grid.Column="1" Margin="20,0,10,0" FontSize="28" FontWeight="Bold" Opacity="0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" FontFamily="YouYuan"
+                        Text="金通网微中心管理系统" >
+                <TextBlock.LayoutTransform>
+                  <ScaleTransform ScaleY="1.5" />
+                </TextBlock.LayoutTransform>
+                <TextBlock.RenderTransform>
+                  <TransformGroup>
+                    <TranslateTransform x:Name="SampleBrowserTranslateTransform" Y="-2" />
+                    <ScaleTransform x:Name="RenderScale"/>
+                  </TransformGroup>
+                </TextBlock.RenderTransform>
+                <TextBlock.Triggers>
+                  <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard>
+                      <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="SampleBrowserTranslateTransform" DecelerationRatio="0.7" Storyboard.TargetProperty="X" From="250" To="0" BeginTime="0:0:0.5" Duration="0:0:1.3" />
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="0.65" BeginTime="0:0:0.5" Duration="0:0:1.3" />
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </EventTrigger>
+                  <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <BeginStoryboard>
+                      <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="RenderScale" Storyboard.TargetProperty="ScaleX" From="1" To="1.05" BeginTime="0:0:00" Duration="0:0:0.3" />
+                        <DoubleAnimation Storyboard.TargetName="RenderScale" Storyboard.TargetProperty="ScaleY" From="1" To="1.05" BeginTime="0:0:0" Duration="0:0:0.3" />
+                        
+                        <DoubleAnimation Storyboard.TargetName="RenderScale" Storyboard.TargetProperty="ScaleX" From="1.05" To="1" BeginTime="0:0:0.3" Duration="0:0:0.3" />
+                        <DoubleAnimation Storyboard.TargetName="RenderScale" Storyboard.TargetProperty="ScaleY" From="1.05" To="1" BeginTime="0:0:0.3" Duration="0:0:0.3" />
+                      </Storyboard>
+                    </BeginStoryboard>
+                  </EventTrigger>
+                </TextBlock.Triggers>
+            </TextBlock>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Margin="5" Command="{StaticResource ModifyPassword}" Height="76" Width="76">
+                    <StackPanel>
+                        <Image Source="/JtwSystem;component/Image/密码锁.png"  />
+                        <TextBlock Text="修改密码" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Margin="5" Command="{StaticResource About}" Height="76" Width="76">
+                    <StackPanel>
+                        <Image Source="/JtwSystem;component/Image/help.png"  />
+                        <TextBlock Text="帮助" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <avalonDock:DockingManager Grid.Row="1" AllowMixedOrientation="True">
+            <avalonDock:DockingManager.Theme>
+                <avalonDock:AeroTheme/>
+            </avalonDock:DockingManager.Theme>
+
+            <avalonDock:LayoutRoot>
+                <avalonDock:LayoutPanel Orientation="Vertical">
+                    <avalonDock:LayoutPanel Orientation="Horizontal">
+                        <avalonDock:LayoutAnchorablePane DockWidth="200" >
+                            <avalonDock:LayoutAnchorable Title="管理菜单" CanClose="False" CanHide="False">
+                                <!--<mgrMenu:ManagementMenu x:Name="TvManager"  SelectedItemChanged="TvManager_SelectedItemChanged"/>-->
+                                <mgrMenu:ManagementMenu x:Name="TvManager" DataContext="{Binding AccountAuthority}" SelectedItemChanged="TvManager_SelectedItemChanged"/>
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+                        <avalonDock:LayoutDocumentPane x:Name="DocumentPane" >
+                            <avalonDock:LayoutAnchorable x:Name="MainContainer" CanClose="False" CanFloat="False" CanAutoHide="False" Title="主界面展示">
+                                <Border Background="White">
+                                    <ContentPresenter Content="{Binding SelectedItem.View, ElementName=TvManager}"/>
+                                </Border>
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutDocumentPane>
+                        <avalonDock:LayoutAnchorablePane DockWidth="320">
+                            <avalonDock:LayoutAnchorable ContentId="4" Title="商品列表" CanClose="False" CanHide="False">
+                                <pdtView:ProductInfoView/>
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+                    </avalonDock:LayoutPanel>
+                    <!--avalonDock:LayoutAnchorablePane DockHeight="200">
+                        <avalonDock:LayoutAnchorable ContentId="1" Title="即时图" CanClose="False" CanHide="False" >
+                            <TextBlock Text="图标显示"></TextBlock>
+                        </avalonDock:LayoutAnchorable>
+                        <avalonDock:LayoutAnchorable ContentId="2" Title="存取款" CanClose="False" CanHide="False">
+                            <TextBlock Text="账户信息"></TextBlock>
+                        </avalonDock:LayoutAnchorable>
+                    </avalonDock:LayoutAnchorablePane-->
+                </avalonDock:LayoutPanel>
+            </avalonDock:LayoutRoot>
+        </avalonDock:DockingManager>
+        <Border  Visibility="{Binding AccountAuthority.EnableTradeMoneyInfo, Converter={StaticResource BoolNullVisibilityCvt}}"  BorderThickness="0,1,0,0" BorderBrush="LightGray" Grid.Row="2" Grid.ColumnSpan="4" CornerRadius="2"  Name="AccountInfoContainer"  Margin="3,0,3,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <Grid Background="Transparent" Grid.Column="1">
+                    <Path   x:Name="ArrowR1" Visibility="Collapsed"  
+                                     Fill ="Gray"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Data="M 0 4 L 4 0 L 8 4 Z"/>
+                    <Path   x:Name="ArrowR2"   
+                                     Fill ="Gray"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Data="M 0 0 L 8 0 L 4 4 Z"/>
+                </Grid>
+                <cus:PopupButton Grid.Column="2" Content="出入金/解约" Name="PBtn" Click="PBtn_Click">
+                    <cus:PopupButton.PopupWindow>
+                        <UserControl Name="UC_Accountcement">
+                            <mgrMenu:TradeMoneyInfo/>
+                            <!--<pop:FirstAcounncementInfoWindow  ClickOnItemEvent="FirstAcounncementInfoWindow_ClickOnItemEvent"  IsShow="{Binding IsPopOpen, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ElementName=PBtn}"/>-->
+                        </UserControl>
+                    </cus:PopupButton.PopupWindow>
+                    <!--<cus:PopupButton.Style>
+                        <Style TargetType="cus:PopupButton">
+                            <Style.Triggers>
+                                <DataTrigger Binding="AccountAuthority.EnableTradeMoneyInfo" Value="False">
+                                    <Setter Property="IsPopOpen" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="AccountAuthority.EnableTradeMoneyInfo" Value="True">
+                                    <Setter Property="IsPopOpen" Value="True"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </cus:PopupButton.Style>-->
+                </cus:PopupButton>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

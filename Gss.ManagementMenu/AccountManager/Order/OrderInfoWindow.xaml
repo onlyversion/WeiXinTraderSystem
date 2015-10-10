@@ -1,0 +1,58 @@
+﻿<Window x:Class="Gss.ManagementMenu.AccountManager.Order.OrderInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:Gss.ManagementMenu.AccountManager.Order"
+        xmlns:converter="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+        WindowStyle="ToolWindow"
+          Title="订单信息" Height="600" Width="1000" Name="orderInfoWindow"  WindowStartupLocation="CenterScreen" 
+        Loaded="UserControl_Loaded">
+    <Window.Resources>
+        <converter:PercentageConverter x:Key="PercentageConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <TabControl>
+            <TabItem Header="在手订单">
+                <loc:MarketOrder FundInformation="{Binding FundInformation, ElementName=orderInfoWindow, Mode=TwoWay}"  AccountName="{Binding AccountName, ElementName=orderInfoWindow, Mode=TwoWay}"/>
+            </TabItem>
+            <!--<TabItem Header="委托挂单">
+                <loc:PendingOrder AccountName="{Binding AccountName, ElementName=orderInfoWindow, Mode=TwoWay}"/>
+            </TabItem>-->
+            <TabItem Header="平仓历史">
+                <loc:MarketOrderHistory  AccountName="{Binding AccountName, ElementName=orderInfoWindow, Mode=TwoWay}" />
+            </TabItem>
+            <!--<TabItem Header="挂单历史">
+                <loc:PendingOrderHistory AccountName="{Binding AccountName, ElementName=orderInfoWindow, Mode=TwoWay}" LoginID="{Binding LoginID, ElementName=od, Mode=TwoWay}"/>
+            </TabItem>
+            <TabItem Header="入库历史">
+                <loc:WarehousingHistory AccountName="{Binding AccountName, ElementName=orderInfoWindow, Mode=TwoWay}"/>
+            </TabItem>-->
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal"  DataContext="{Binding FundInformation,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}">
+            <Label Content="账户：" />
+            <TextBlock  Margin="0,5,0,0" Text="{Binding Path=AccountName,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}" Foreground="Black"/>
+            <Label Content="账户结余：" />
+            <TextBlock Margin="0,5,0,0" Text="{Binding Path=AccountBalance,StringFormat=n}" Foreground="Black"/>
+
+            <Label Content="冻结资金：" />
+            <TextBlock Margin="0,5,0,0" Text="{Binding Path=DongJieMoney,StringFormat=n}" Foreground="Black"/>
+
+            <Label Content="浮动盈亏：" />
+            <TextBlock Margin="0,5,0,0" Text="{Binding Path=LossOrProfit,StringFormat=n}" Foreground="Red"/>
+            <Label Content="净资金余额："/>
+            <TextBlock Margin="0,5,0,0" Text="{Binding Path=NetAssets,StringFormat=n}" Foreground="Black"/>
+            <Label Content="保证金"/>
+            <TextBlock Margin="0,5,0,0" Text="{Binding Path=OccupiedDeposit,StringFormat=n}" Foreground="Black"/>
+            <!--<Label Content="预付款：" />
+            <TextBlock Margin="0,5,0,0" Text="{Binding Path=FrozenDeposit,StringFormat=n}" Foreground="Black"/>-->
+            <Label Content="可用资金" />
+            <TextBlock Margin="0,5,0,0" Text="{Binding Path=AvailableDeposit,StringFormat=n}" Foreground="Black"/>
+            <Label Content="风险系数：" />
+            <TextBlock Margin="0,5,0,0" Text="{Binding Path=RiskCoefficient, Converter={StaticResource PercentageConverter}, StringFormat={}{0}%}" Foreground="Black"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

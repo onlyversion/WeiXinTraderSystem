@@ -1,0 +1,95 @@
+﻿<Window x:Class="Gss.PopUpWindow.TradeManager.PaymentDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="出入金详情" Height="456" Width="896"
+        Name="win" WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="{x:Type  Label}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"  />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="1*" />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="3">所属组织：</Label>
+        <Label Grid.Row="1" Grid.Column="3">用户账号：</Label>
+        <!--<Label Grid.Row="2" Grid.Column="3">持卡人：</Label>-->
+        <Label Grid.Row="3" Grid.Column="3">银行卡号：</Label>
+        <Label Grid.Row="4" Grid.Column="3">开户行：</Label>
+        <Label Grid.Row="5" Grid.Column="3">金额：</Label>
+        <Label Grid.Row="6" Grid.Column="3">状态：</Label>
+
+        <TextBlock Grid.Row="0" Grid.Column="4" Text="{Binding ChuJinInfo.OrgName, ElementName=win}"   />
+        <TextBlock Grid.Row="1" Grid.Column="4" Text="{Binding ChuJinInfo.Account, ElementName=win}"   />
+        <!--<TextBlock Grid.Row="2" Grid.Column="4" Text="{Binding ChuJinInfo.CardName, ElementName=win}"   />-->
+        <TextBlock Grid.Row="3" Grid.Column="4" Text="{Binding ChuJinInfo.BankCard, ElementName=win}"   />
+        <TextBlock Grid.Row="4" Grid.Column="4" Text="{Binding ChuJinInfo.OpenBank, ElementName=win}"   />
+        <TextBlock Grid.Row="5" Grid.Column="4" Text="{Binding ChuJinInfo.Amt, ElementName=win}"   />
+        <TextBlock Grid.Row="6" Grid.Column="4" Text="{Binding ChuJinInfo.StateString, ElementName=win}"   />
+        <StackPanel  Margin="0,10" Grid.Row="7" Grid.Column="4"  Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button IsEnabled="{Binding IsCmdEnable, ElementName=win}" Width="60" Height="26" Content="付 款" Click="Button_Click" />
+            <Button IsEnabled="{Binding CanJuJue, ElementName=win}" Width="60" Margin="10,0" Height="26" Content="退 回" Click="Button_Click_1" />
+        </StackPanel>
+
+
+        <Label Grid.Column="0" >入金总和：</Label>
+        <Label Grid.Row="1" Grid.Column="0">出金总和：</Label>
+
+
+        <TextBlock Grid.Column="1" Foreground="Red" Text="{Binding InFundInfo.AMT, ElementName=win}"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Foreground="Red"  Text="{Binding OutFundInfo.AMT2, ElementName=win}"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.RowSpan="8" Grid.ColumnSpan="2">
+            <Label>最近出金记录</Label>
+            <ListBox ItemsSource="{Binding OutFundInfo.TOderLst, ElementName=win}" MinHeight="20" Margin="0,10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="5" MinHeight="15">
+                            <Label  VerticalAlignment="Center" Width="35">出金</Label>
+                            <TextBlock VerticalAlignment="Center"  Foreground="Red" Text="{Binding Amt}" Width="80"/>
+                            <Label  VerticalAlignment="Center" Width="35">时间</Label>
+                            <TextBlock  VerticalAlignment="Center"   Foreground="Red" Text="{Binding OpTime ,StringFormat=yyyy-MM-dd HH:mm:ss}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label>最近入金记录</Label>
+            <ListBox ItemsSource="{Binding InFundInfo.TOderLst, ElementName=win}" Margin="0,10" MinHeight="20">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="5" MinHeight="15">
+                            <Label  VerticalAlignment="Center" Width="35">入金</Label>
+                            <TextBlock  VerticalAlignment="Center"   Foreground="Red" Text="{Binding Amt}" Width="80"/>
+                            <Label  VerticalAlignment="Center" Width="35">时间</Label>
+                            <TextBlock  VerticalAlignment="Center"   Foreground="Red" Text="{Binding OpTime ,StringFormat=yyyy-MM-dd HH:mm:ss}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+    </Grid>
+</Window>

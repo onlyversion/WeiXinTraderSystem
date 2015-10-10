@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.TradeManager.HedgeTrade"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             xmlns:xckt="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:cvt="clr-namespace:Gss.ManagementMenu.Converter"
+             FocusManager.IsFocusScope="True" >
+    <UserControl.Resources>
+        <cvt:TransactionTypeConverter x:Key="TransactionTypeCvt"/>
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}">
+            <Setter Property="MinHeight" Value="52"/>
+        </Style>
+        <cmCvt:PlusMinusConverter x:Key="PlusMinusConverter"/>
+        <cvt:LossOrProfitColorConverter x:Key="LossOrProfitColorConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" DataContext="{Binding HedgingTradeRequestInfo}">
+                <Label Content="时间段：" Margin="2"/>
+                <!--<xckt:DateTimePicker Margin="2" TimeFormat="LongTime" Format="FullDateTime" Watermark="请输入起始时间" AutoCloseCalendar="True"
+                                     Value="{Binding StartTime}" />-->
+                <DatePicker Margin="2" Focusable="False" SelectedDate="{Binding StartTime}"  />
+                <Label Content="至" Margin="2"/>
+                <!--<xckt:DateTimePicker Margin="2" TimeFormat="LongTime" Format="FullDateTime" Watermark="请输入结束时间" AutoCloseCalendar="True"
+                                     Value="{Binding EndTime}"/>-->
+                <DatePicker Margin="2" Focusable="False" SelectedDate="{Binding EndTime}"  />
+
+            </StackPanel>
+            <Button Content="查询" Width="60" Height="26" Margin="5,2"  ToolTip="根据查询条件获取对冲记录数据"   Command="{Binding GetHedgingHistoryListCmd}"/>
+        </WrapPanel>
+        <xckt:BusyIndicator Grid.Row="1"  IsBusy="{Binding IsLoadingHedgingTradeList}">
+            <xckt:BusyIndicator.BusyContent>
+                <TextBlock Text="加载中..." FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </xckt:BusyIndicator.BusyContent>
+            <DataGrid Name="DgResult" Grid.Row="1" FontSize="13" AutoGenerateColumns="False" CanUserResizeRows="False" SelectionMode="Single" IsReadOnly="True" CanUserSortColumns="False"
+                      ItemsSource="{Binding HedgingInfo.LTdOrderList}" >
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="0,5,0,5"/>
+                        <Setter Property="Background" Value="Red"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="商品" Binding="{Binding ProductName}" MinWidth="88" />-->
+
+                    <DataGridTemplateColumn Width="70" Header="商品">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent"
+                                         IsReadOnly="True" Text="{Binding ProductName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+
+                    <!--<DataGridTextColumn Header="类型" Binding="{Binding OrderType, Converter={StaticResource TransactionTypeCvt}}" MinWidth="66"/>-->
+
+                    <DataGridTemplateColumn  Header="类型"  Width="70">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Margin="0,5,0,0" Text="{Binding OrderType, Converter={StaticResource TransactionTypeCvt}}" VerticalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,3,0,3" Background="#FFA7C0DC" />
+                                    <TextBlock Margin="0,0,0,5" Text="{Binding OrderType2, TargetNullValue=---, Converter={StaticResource TransactionTypeCvt}}"  VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!--<DataGridTextColumn Header="订单数量" Binding="{Binding OrderQuantity}" MinWidth="60"/>-->
+                    <DataGridTemplateColumn  Header="订单数量"  Width="70">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding OrderQuantity}" VerticalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,3,0,3" Background="#FFA7C0DC" />
+                                    <TextBlock Text="{Binding OrderQuantity2, TargetNullValue=---}"  VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="平均价" Binding="{Binding AveragePrice}" MinWidth="60"/>-->
+                    <DataGridTemplateColumn  Header="平均价"  Width="70">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding AveragePrice}" VerticalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,3,0,3" Background="#FFA7C0DC" />
+                                    <TextBlock Text="{Binding AveragePrice2, TargetNullValue=---}"  VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="实时价" Binding="{Binding RealTimePrice}" MinWidth="60"/>-->
+                    <DataGridTemplateColumn  Header="实时价" Width="60">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding RealTimePrice}" VerticalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,3,0,3" Background="#FFA7C0DC"/>
+                                    <TextBlock Text="{Binding RealTimePrice2, TargetNullValue=---}"  VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="盈亏" Binding="{Binding LossOrProfit}" MinWidth="60"/>-->
+                    <DataGridTemplateColumn  Header="盈亏" Width="60">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding LossOrProfit}" VerticalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,3,0,3" Background="#FFA7C0DC" />
+                                    <TextBlock Text="{Binding LossOrProfit2, TargetNullValue=---}"  VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="手续费" Binding="{Binding TradeFee}" MinWidth="60"/>-->
+                    <DataGridTemplateColumn  Header="手续费" Width="60">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding TradeFee,Converter={StaticResource PlusMinusConverter}}" VerticalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,3,0,3" Background="#FFA7C0DC" />
+                                    <TextBlock Text="{Binding TradeFee2, Converter={StaticResource PlusMinusConverter}, TargetNullValue=---}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="库存费" Binding="{Binding StorageFee}" MinWidth="60"/>-->
+                    <!--<DataGridTemplateColumn  Header="库存费" MinWidth="60">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding StorageFee}" VerticalAlignment="Center"/>
+                                    <Border Height="1" Margin="0,3,0,3" Background="#FFA7C0DC" />
+                                    <TextBlock Text="{Binding StorageFee2,TargetNullValue=}"  VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+
+
+
+
+
+
+
+
+
+
+                    <!--<DataGridTextColumn Header="对冲数量" Binding="{Binding HedgingQuantity}" MinWidth="60"/>-->
+                    <DataGridTemplateColumn  Header="总数量" Width="60">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding HedgingQuantity}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="对冲工费" Binding="{Binding HedgingTradeFee}" MinWidth="60"/>-->
+                    <DataGridTemplateColumn  Header="总工费" Width="60">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding HedgingTradeFee}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="对冲盈亏" Binding="{Binding HedgingLossOrProfit}" MinWidth="60"/>-->
+                    <DataGridTemplateColumn  Header="总盈亏" Width="60">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding HedgingLossOrProfit}" Foreground="{Binding HedgingLossOrProfit, Converter={StaticResource LossOrProfitColorConverter}}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="对冲仓储费" Binding="{Binding HedgingStorageFee}" MinWidth="60"/>-->
+                    <!--<DataGridTemplateColumn  Header="总库存费" MinWidth="60">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel  VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding HedgingStorageFee}" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </xckt:BusyIndicator>
+
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Label>数量:</Label>
+            <TextBlock Text="{Binding HedgingInfo.Quantity}" VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+
+
+            <Label>手续费：</Label>
+            <TextBlock Text="{Binding HedgingInfo.Tradefee,Converter={StaticResource PlusMinusConverter}}"  VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+            <!--<Label>库存费：</Label>
+            <TextBlock Text="{Binding HedgingInfo.Storagefee, Converter={StaticResource PlusMinusConverter}}"  VerticalAlignment="Center" Margin="0,0,20,0"/>-->
+
+            <Label>盈亏：</Label>
+            <TextBlock Text="{Binding HedgingInfo.ProfitValue}"  VerticalAlignment="Center" Margin="0,0,20,0"/>
+        </StackPanel>
+    </Grid>
+    
+</UserControl>

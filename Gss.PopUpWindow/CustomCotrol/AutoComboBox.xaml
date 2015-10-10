@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="Gss.PopUpWindow.CustomCotrol.AutoComboBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:Gss.PopUpWindow.CustomCotrol"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+           d:DesignHeight="30" d:DesignWidth="280" Name="UserC">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="SearchToggleButton" TargetType="ToggleButton">
+
+            <Border 
+              x:Name="Border" 
+              Background="Transparent"
+                  BorderBrush="Black"
+              BorderThickness="1,0,0,0" >
+                <Path 
+              x:Name="Arrow"    
+              Fill="Black"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center" Width="16" Height="16" Focusable="False" Data="M 4 4 L 12 4 L 8 12 Z"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                    <Setter TargetName="Border" Property="Background" Value="#FFB6C1D3"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Border Name="borderRoot" BorderThickness="1" BorderBrush="Black">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox Style="{x:Null}"  VerticalContentAlignment="Center" VerticalAlignment="Center" BorderThickness="0"
+                          Background="Transparent" Name="Tbx" Text="{Binding KeyWords, ElementName=UserC, UpdateSourceTrigger=PropertyChanged}"
+                          TextChanged="Tbx_TextChanged" PreviewKeyDown="Tbx_PreviewKeyDown"/>
+
+                <ToggleButton  Name="Btn_Search" Grid.Column="1" Click="Btn_Search_Click" Template="{StaticResource SearchToggleButton}"/>
+
+            </Grid>
+        </Border>
+        <Popup IsOpen="{Binding IsPopOpen, ElementName=UserC}" Placement="Bottom" MinHeight="20" Width="{Binding ActualWidth, ElementName=borderRoot}">
+            <Border BorderBrush="Black" BorderThickness="1,0,1,1">
+                <ListBox Name="Lst" 
+                         SelectedValuePath="{Binding SelectedValuePath, ElementName=UserC}"
+                         SelectedValue="{Binding SelectedValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ElementName=UserC}"
+                         ItemsSource="{Binding ItemsSource, ElementName=UserC}" 
+                         MouseLeave="UserC_MouseLeave" Background="White" 
+                         SelectedItem="{Binding CurItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ElementName=UserC}"
+                         PreviewKeyDown="Lst_PreviewKeyDown" MouseDoubleClick="Lst_MouseDoubleClick">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <local:HeightLightTextBlock Text="{Binding}"  KeyWords="{Binding KeyWords, RelativeSource={RelativeSource AncestorLevel=1, AncestorType={x:Type local:AutoComboBox}, Mode=FindAncestor}}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

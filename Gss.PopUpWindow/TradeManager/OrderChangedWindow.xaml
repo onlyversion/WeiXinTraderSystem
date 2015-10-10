@@ -1,0 +1,99 @@
+﻿<Window x:Class="Gss.PopUpWindow.OrderChangedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:uti="clr-namespace:Gss.Common.Utility;assembly=Gss.Common"
+        Width="300" SizeToContent="Height" WindowStyle="ToolWindow"
+        ResizeMode="CanMinimize" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityCv" />
+
+        <RoutedCommand x:Key="Ok" />
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style TargetType="{x:Type xctk:DoubleUpDown}">
+            <Setter Property="uti:DoubleUpDownInputFilter.DigitOnly" Value="True" />
+        </Style>
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource Ok}" Executed="CommandBinding_Executed_Ok" CanExecute="CommandBinding_CanExecute_Ok"/>
+    </Window.CommandBindings>
+
+    <Border CornerRadius="8" BorderThickness="1" Margin="10" BorderBrush="DarkSlateBlue">
+        <xctk:BusyIndicator IsBusy="{Binding IsTrading, RelativeSource={RelativeSource AncestorType=Window}}">
+            <xctk:BusyIndicator.BusyContent>
+                <TextBlock Text="交易进行中..." HorizontalAlignment="Center" FontSize="20" />
+            </xctk:BusyIndicator.BusyContent>
+            <StackPanel>
+                <StackPanel>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="订单号：" HorizontalAlignment="Right" Margin="2,5" />
+                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="2,5"
+                                   Text="{Binding OrderID}"/>
+                        <TextBlock Text="商品名称：" HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="2,5" />
+                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="2,5"
+                                   Text="{Binding ProductName}"/>
+                        <TextBlock Text="手数：" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="0" Margin="2,5" />
+                        <xctk:DoubleUpDown Name="DudCount" Grid.Row="2" Grid.Column="1" Margin="2,5" SelectAllOnGotFocus="True"
+                                           Increment="1" >
+                            <xctk:DoubleUpDown.Resources>
+                                <Style TargetType="{x:Type xctk:DoubleUpDown}">
+                                    <Style.Triggers>
+                                        <Trigger Property="Validation.HasError" Value="True">
+                                            <Setter Property="ToolTip">
+                                                <Setter.Value>
+                                                    <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </xctk:DoubleUpDown.Resources>
+                        </xctk:DoubleUpDown>
+                        <!--<xctk:DoubleUpDown Name="DudCount" Grid.Row="2" Grid.Column="1" Margin="2,5" SelectAllOnGotFocus="True"
+                                           Increment="{Binding OwnedProduct.OrderUnit}"
+                                           Value="{Binding OrderQuantity, Mode=OneWay}"
+                                           Minimum="0" Maximum="{Binding OrderQuantity}" />-->
+                    </Grid>
+
+                    <StackPanel Margin="5">
+                        <CheckBox Name="CbDeviation" HorizontalAlignment="Left" Content="允许成交价与报价最大偏差" Margin="2" FontSize="13" FontWeight="Bold" />
+                        <StackPanel Margin="2" Orientation="Horizontal" HorizontalAlignment="Right"
+                                    IsEnabled="{Binding Path=IsChecked, ElementName=CbDeviation}"
+                                    Visibility="{Binding Path=IsChecked, ElementName=CbDeviation, Converter={StaticResource BoolVisibilityCv}}">
+                            <TextBlock Text="最大偏差" Margin="2" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Normal" />
+                            <xctk:IntegerUpDown Margin="2" Width="88" Minimum="0" FontWeight="Normal" VerticalAlignment="Center"
+                                                Value="{Binding Path=AllowMaxPriceDiff, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Mode=TwoWay}" />
+                            <TextBlock Text="点" FontWeight="Normal" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="5" TextAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="CornflowerBlue" VerticalAlignment="Center" ToolTip="实时价"
+                                   Text="{Binding RealTimePriceString}" />
+                        <Button Name="BtOk" Grid.Column="1" Command="{StaticResource Ok}" FontSize="16" IsDefault="True" Width="120"  HorizontalAlignment="Right" Margin="5" />
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </xctk:BusyIndicator>
+    </Border>
+</Window>

@@ -1,0 +1,101 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.DataManager.ProductInfoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:popCvt="clr-namespace:Gss.PopUpWindow.Converter;assembly=Gss.PopUpWindow"
+             xmlns:xckt="http://schemas.xceed.com/wpf/xaml/toolkit"
+             FocusManager.IsFocusScope="True"
+             Loaded="UserControl_Loaded" >
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityCvt"/>
+        <RoutedUICommand x:Key="ViewDetail" Text="详细信息"/>
+        <RoutedUICommand x:Key="Delete" Text="删除商品"/>
+        <RoutedUICommand x:Key="ManualPrice" Text="手工报价"/>
+        <RoutedUICommand x:Key="AddCmd" Text="新增"/>
+        <RoutedUICommand x:Key="RefreshCmd" Text="刷新"/>
+        <popCvt:ProductStateEnumConverter x:Key="ProductStateCvt"/>
+
+        <ContextMenu x:Key="CmProductInfo">
+            <MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource ViewDetail}"/>
+            <Separator x:Name="SpMenuItem">
+                <Separator.Style>
+                    <Style TargetType="{x:Type Separator}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding AccInfo.AccountName}" Value="admin">
+                                <Setter Property="UIElement.Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Separator.Style>
+            </Separator>
+            <MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource AddCmd}"/>
+            <!--<MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource Delete}" x:Name="MiDelete">
+                <MenuItem.Style>
+                    <Style TargetType="{x:Type MenuItem}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding AccInfo.AccountName}" Value="admin">
+                                <Setter Property="UIElement.Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </MenuItem.Style>
+            </MenuItem>-->
+            <MenuItem DataContext="{Binding DataContext,RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor}}"  
+                      Visibility="{Binding AccountAuthority.ManualPriceEnabled, Converter={StaticResource BoolVisibilityCvt}}" 
+                      CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource ManualPrice}"/>
+            <MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource RefreshCmd}"/>
+           
+        </ContextMenu>
+
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}">
+            <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+            <Setter Property="ContextMenu" Value="{StaticResource CmProductInfo}"/>
+            <Setter Property="MinHeight" Value="26"/>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource ViewDetail}" Executed="CommandBinding_Executed_ViewDetail"/>
+        <CommandBinding Command="{StaticResource Delete}" Executed="CommandBinding_Executed_Delete"/>
+        <CommandBinding Command="{StaticResource ManualPrice}" Executed="CommandBinding_Executed_ManualPrice"/>
+        <CommandBinding Command="{StaticResource AddCmd}" Executed="CommandBinding_Executed_Add"/>
+        <CommandBinding Command="{StaticResource RefreshCmd}" Executed="CommandBinding_Executed_Refresh"/>
+    </UserControl.CommandBindings>
+
+    <DockPanel>
+        <!--<ToolBar DockPanel.Dock="Top">
+            <Button ToolTip="新增商品信息"  Margin="2" Command="{Binding AddProductInfoCmd}">
+                <Image Source="/Gss.ManagementMenu;component/Images/New.png" Width="22" Height="22"/>
+            </Button>
+            <Button ToolTip="刷新商品数据列表" Margin="2" Command="{Binding RefreshProductInfoListCmd}">
+                <Image Source="/Gss.ManagementMenu;component/Images/Refresh.png" Width="22" Height="22"/>
+            </Button>
+        </ToolBar>-->
+        <xckt:BusyIndicator IsBusy="{Binding IsLoadingProductInfoList}">
+            <xckt:BusyIndicator.BusyContent>
+                <TextBlock Text="加载中..." FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </xckt:BusyIndicator.BusyContent>
+            <DataGrid AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserResizeRows="False"
+                      ItemsSource="{Binding ProductInfoes}">
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="名称" Binding="{Binding ProductName}"/>-->
+                    <DataGridTemplateColumn Width="70" Header="名称">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent"
+                                         IsReadOnly="True" Text="{Binding ProductName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn  Width="70" Header="状态" Binding="{Binding State, Converter={StaticResource ProductStateCvt}}"/>
+                    <DataGridTextColumn Width="70" Header="点差" Binding="{Binding Spread}"/>
+                    <DataGridTextColumn  Width="70" Header="点值" Binding="{Binding PointValue}"/>
+                    <DataGridTextColumn Width="70" Header="点差基值" Binding="{Binding SpreadBaseValueString}"/>
+                    <DataGridTextColumn Width="70" Header="最小价" Binding="{Binding AllowMinPrice}"/>
+                    <DataGridTextColumn Width="70" Header="最大价" Binding="{Binding AllowMaxPrice}"/>
+                    <DataGridTextColumn  Width="100" Header="最大时差(秒)" Binding="{Binding AllowMaxTimeDeviation}"/>
+                    <!--<DataGridTextColumn Header="下浮价格" Binding="{Binding CutDownPrice}"/>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </xckt:BusyIndicator>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,279 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.AccountManager.ClientOnlineControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cvt="clr-namespace:Gss.ManagementMenu.Converter"
+             xmlns:popCvt="clr-namespace:Gss.PopUpWindow.Converter;assembly=Gss.PopUpWindow"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             xmlns:xckt="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:my="clr-namespace:Gss.ManagementMenu.CustomControl" FocusManager.IsFocusScope="True">
+    <UserControl.Resources>
+        <RoutedUICommand x:Key="AccountInfo" Text="账户资料"/>
+        <RoutedUICommand x:Key="FundsInfo" Text="资金信息"/>
+        <RoutedUICommand x:Key="Delete" Text="删除账号"/>
+        <RoutedUICommand x:Key="HistoryOrder" Text="订单信息"/>
+
+        <popCvt:SexEnumConverter x:Key="SexCvt"/>
+        <popCvt:BankEnumConverter x:Key="BankCvt"/>
+        <popCvt:ClientTypeEnumConverter x:Key="ClientCvt"/>
+        <popCvt:ContractStatusEnumConverter x:Key="ContractCvt"/>
+        <cvt:CertificateEnumConverter x:Key="CertificateCvt"/>
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCvt"/>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityCvt"/>
+        <cvt:VisibilityToBooleanConverter x:Key="VisibilityBoolCvt"/>
+        <cmCvt:PlusMinusConverter x:Key="PlusMinusConverter"/>
+
+        <ContextMenu x:Key="CmClientOnline" Opened="ContextMenu_Opened">
+            <MenuItem Visibility="{Binding AccountAuthority.ClientOnlineAccountManagerAccountInfo, Converter={StaticResource BoolVisibilityCvt}}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource AccountInfo}"/>
+            <MenuItem Visibility="{Binding AccountAuthority.ClientOnlineAccountManagerFundsInfo, Converter={StaticResource BoolVisibilityCvt}}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource FundsInfo}"/>
+            <Separator/>
+            <MenuItem Visibility="{Binding AccountAuthority.ClientOnlineAccountManagerDelAccount, Converter={StaticResource BoolVisibilityCvt}}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource Delete}"/>
+            <MenuItem Visibility="{Binding AccountAuthority.ClientOnlineAccountManagerOrderInfo, Converter={StaticResource BoolVisibilityCvt}}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource HistoryOrder}"/>
+        </ContextMenu>
+
+        <Style TargetType="{x:Type MenuItem}" x:Key="ShowColumnMenuItemStyle">
+            <Setter Property="IsCheckable" Value="True"/>
+            <Setter Property="IsChecked" Value="{Binding Visibility, Converter={StaticResource VisibilityBoolCvt}, Mode=TwoWay}"/>
+        </Style>
+
+        <ContextMenu x:Key="CmDataGrid" DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGrid, Mode=FindAncestor}}" Opened="ContextMenu_Opened">
+            <MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Header="显示列" ItemsSource="{Binding Columns}" ItemContainerStyle="{StaticResource ShowColumnMenuItemStyle}">
+                <MenuItem.ItemTemplate>
+                    <HierarchicalDataTemplate>
+                        <TextBlock Text="{Binding Header}"/>
+                    </HierarchicalDataTemplate>
+                </MenuItem.ItemTemplate>
+            </MenuItem>
+        </ContextMenu>
+
+
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}" x:Key="DGRStyle">
+            <!--<EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>-->
+            <Setter Property="ContextMenu" Value="{StaticResource CmClientOnline}"/>
+            <Setter Property="MinHeight" Value="26"/>
+        </Style>
+
+        <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource DataGridStyle}">
+            <Setter Property="ItemContainerStyle" Value="{StaticResource DGRStyle}"/>
+            <Setter Property="ContextMenu" Value="{StaticResource CmDataGrid}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding AccountAuthority.AccMgrReadonly}" Value="True">
+                    <Setter Property="ItemContainerStyle" Value="{x:Null}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource AccountInfo}" Executed="CommandBinding_Executed_AccountInfo" CanExecute="CommandBinding_CanExecute_AccountInfo"/>
+        <CommandBinding Command="{StaticResource FundsInfo}" Executed="CommandBinding_Executed_FundsInfo" CanExecute="CommandBinding_CanExecute_FundsInfo"/>
+        <CommandBinding Command="{StaticResource Delete}" Executed="CommandBinding_Executed_Delete" CanExecute="CommandBinding_CanExecute_Delete"/>
+        <CommandBinding Command="{StaticResource HistoryOrder}" Executed="CommandBinding_Executed_HistoryOrder" CanExecute="CommandBinding_CanExecute__HistoryOrder"/>
+    </UserControl.CommandBindings>
+
+    <DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Grid.Row="0">
+                <StackPanel Orientation="Horizontal" >
+                    <Label Content="客户账号：" Margin="2"/>
+                    <TextBox Margin="2" Text="{Binding OnlineAccountSelectCondition.Account, Mode=TwoWay}" MinWidth="88"/>
+                    <Label Content="客户姓名：" Margin="2"/>
+                    <TextBox Margin="2" Text="{Binding OnlineAccountSelectCondition.UserName, Mode=TwoWay}" MinWidth="88"/>
+                    <Label Content="证件号码：" Margin="2"/>
+                    <TextBox Margin="2" Text="{Binding OnlineAccountSelectCondition.CardNum, Mode=TwoWay}" MinWidth="150"/>
+
+                </StackPanel>
+                <Button Content="查询" Width="60" Height="26" Margin="5,2" ToolTip="根据查询条件获取在线客户账号列表"  HorizontalAlignment="Right"
+                     Command="{Binding GetOnlineClientsCommand}"/>
+            </StackPanel>
+            <my:DataPagePicker PageChanged="dataPage_PageChanged" Margin="5,2,2,2" Grid.Row="1" CurrentPageItemCount="{Binding Items.Count,ElementName=dataGrid}"
+                               PageCount="{Binding OnlineAccountSelectCondition.PageCount,Mode=TwoWay}" PageSize="{Binding OnlineAccountSelectCondition.PageSize,Mode=TwoWay}"
+                               PageIndex="{Binding OnlineAccountSelectCondition.PageIndex,Mode=TwoWay}"/>
+
+            <StackPanel Grid.Row="3"  Orientation="Horizontal">
+                <Label>账户余额:</Label>
+                <TextBlock Text="{Binding OnLineUserBaseInfo.Money}" VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+                <!--<Label>预付款：</Label>
+                <TextBlock Text="{Binding OnLineUserBaseInfo.FrozenMoney}"  VerticalAlignment="Center" Margin="0,0,20,0"/>-->
+
+                <Label>保证金：</Label>
+                <TextBlock Text="{Binding OnLineUserBaseInfo.OccMoney}"  VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+            </StackPanel>
+            <xckt:BusyIndicator IsBusy="False" Grid.Row="2">
+                <xckt:BusyIndicator.BusyContent>
+                    <TextBlock Text="加载中..." FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </xckt:BusyIndicator.BusyContent>
+                <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserResizeRows="False"
+                      ItemsSource="{Binding OnLineUserBaseInfo.TdUserList}">
+                    <DataGrid.Columns>
+                        <!--会员编码  会员名称  帐号  姓名 性别  账户余额  保证金  预付款 手机号码  证件类型  证件号码以及其他剩余信息…….（重要信息放在前边）-->
+                        <DataGridCheckBoxColumn  Width="40"  Header="启用"  x:Name="dgEnable" Binding="{Binding AccInfo.IsAccountEnabled}"/>
+                        <DataGridTemplateColumn  Width="70" Header="会员编码">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding AccInfo.Telephone}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn  Width="70" Header="会员名称">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding AccInfo.OrgName}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="60"  Header="账号">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding AccInfo.AccountName}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="60"  Header="姓名">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding AccInfo.UserName}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+
+
+                        <DataGridTextColumn Width="60"  Header="性别" Binding="{Binding AccInfo.Sex, Converter={StaticResource SexCvt}}"/>
+                        <DataGridTextColumn  Width="70" Header="账户余额" Binding="{Binding FundsInfo.CurrentBalance}"/>
+                        <DataGridTextColumn  Width="70" Header="冻结资金" Binding="{Binding FundsInfo.DongJieMoney}"/>
+                        <DataGridTextColumn  Width="70" Header="预付款" Binding="{Binding FundsInfo.FrozenDeposit,Converter={StaticResource PlusMinusConverter}}"/>
+                        <!--<DataGridTextColumn Header="资金账户" Binding="{Binding FundsInfo.FundsAccount}"/>-->
+                        <DataGridTextColumn  Width="70" Header="保证金" Binding="{Binding FundsInfo.OccupiedDeposit,Converter={StaticResource PlusMinusConverter}}"/>
+                        <DataGridTextColumn Header="手机" Binding="{Binding AccInfo.CellPhoneNumber}"/>
+
+                        <DataGridTextColumn  Width="70" Header="证件类型" Binding="{Binding AccInfo.CeritificateEnum, Converter={StaticResource CertificateCvt}}"/>
+                        <!--<DataGridTextColumn Header="证件号码" Binding="{Binding AccInfo.CertificateNumber}"/>-->
+                        <DataGridTemplateColumn  Width="70" Header="证件号码">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" 
+                                             Text="{Binding AccInfo.CertificateNumber}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <!--<DataGridTextColumn Header="用户类型" Binding="{Binding AccInfo.ClientType, Converter={StaticResource ClientCvt}}"/>
+                        <DataGridTextColumn Header="法人" Binding="{Binding AccInfo.Legal}"/>-->
+                        <DataGridTextColumn  Width="70" Header="联系人" Binding="{Binding AccInfo.Contact}"/>
+                        <DataGridTextColumn  Width="70" Header="联系地址" Binding="{Binding AccInfo.Address}"/>
+
+                        <DataGridTextColumn Width="60"  Header="固话" Binding="{Binding AccInfo.TelephoneNumber}"/>
+                        <DataGridTextColumn Width="60"  Header="邮箱" Binding="{Binding AccInfo.Email}"/>
+                        <DataGridTextColumn  Width="120" Header="开户时间" Binding="{Binding AccInfo.OpenAccountTime, Converter={StaticResource DateTimeCvt}}"/>
+                        <!--<DataGridTextColumn Header="余额" Binding="{Binding FundsInfo.CurrentBalance}"/>-->
+                        <DataGridTextColumn Width="80"  Header="最近更新人" Binding="{Binding AccInfo.LastUpdateManager}"/>
+                        <DataGridTextColumn  Width="120" Header="最近更新时间" Binding="{Binding AccInfo.LastUpdateTime, Converter={StaticResource DateTimeCvt}}"/>
+                        <DataGridTextColumn  Width="70" Header="开户人" Binding="{Binding AccInfo.OpeningMan}"/>
+                        <DataGridTextColumn  Width="70" Header="下单电话" Binding="{Binding AccInfo.OrderPhoneNumber}"/>
+                        <DataGridCheckBoxColumn  Width="70" Header="是否在线" Binding="{Binding AccInfo.IsOnline}"/>
+                        <DataGridTextColumn  Width="120" Header="上次登录时间" Binding="{Binding AccInfo.LastLoginTime, Converter={StaticResource DateTimeCvt}}"/>
+                        <DataGridTextColumn  Width="100" Header="上次登录IP" Binding="{Binding AccInfo.LoginIP}"/>
+                        <DataGridTextColumn  Width="100" Header="上次登录MAC" Binding="{Binding AccInfo.LoginMAC}"/>
+                        <!--<DataGridTextColumn Header="银行卡账户名" Binding="{Binding FundsInfo.BankAccountName}"/>
+                        <DataGridTextColumn Header="银行卡卡号" Binding="{Binding FundsInfo.BankCardNumber}"/>-->
+                        <!--<DataGridTextColumn Header="银行行号" Binding="{Binding FundsInfo.BankNumber}"/>-->
+                        <!--<DataGridTextColumn Header="签约银行" Binding="{Binding FundsInfo.ContractedBank, Converter={StaticResource BankCvt}}"/>-->
+                        <!--<DataGridTextColumn Header="签约状态" Binding="{Binding FundsInfo.ContractStatus, Converter={StaticResource ContractCvt}}"/>-->
+
+
+                        <!--<DataGridTextColumn Header="开户银行" Binding="{Binding FundsInfo.OpenBank}"/>-->
+                        <!--<DataGridTextColumn Header="子账号" Binding="{Binding FundsInfo.SubAccount}"/>-->
+                        <!--<DataGridTextColumn Header="摊位号" Binding="{Binding FundsInfo.TanAccount}"/>-->
+                        <DataGridCheckBoxColumn Width="70"  Header="允许平仓" Binding="{Binding TransactionSettings.AllowChargeback}"/>
+                        <DataGridCheckBoxColumn Width="70"  Header="允许买涨" Binding="{Binding TransactionSettings.AllowOrder}"/>
+                        <DataGridCheckBoxColumn Width="70"  Header="允许出金" Binding="{Binding TransactionSettings.AllowEncashment}"/>
+                        <DataGridCheckBoxColumn Width="70"  Header="允许入金" Binding="{Binding TransactionSettings.AllowRecharge}"/>
+                        <DataGridCheckBoxColumn Width="70"  Header="允许买跌" Binding="{Binding TransactionSettings.AllowRecovery}"/>
+                        <!--<DataGridCheckBoxColumn Header="允许入库" Binding="{Binding TransactionSettings.AllowWarehousing}"/>-->
+                        <DataGridTextColumn  Width="70" Header="下单单位" Binding="{Binding TransactionSettings.OrderUnit}"/>
+                        <DataGridTextColumn  Width="90" Header="最小交易手数" Binding="{Binding TransactionSettings.MinTrade}"/>
+                        <DataGridTextColumn  Width="100" Header="最大交易手数" Binding="{Binding TransactionSettings.MaxTrade}"/>
+                        <!--<DataGridTextColumn Header="是否激活金生金" Binding="{Binding AccInfo.IsEnable}"/>-->
+                    </DataGrid.Columns>
+                    <!--<DataGrid.Columns>
+                        <DataGridCheckBoxColumn MinWidth="30" Header="启用" x:Name="dgEnable" Binding="{Binding AccInfo.IsAccountEnabled}"/>
+                       
+                        <DataGridTemplateColumn Header="账号">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding AccInfo.AccountName}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="姓名">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding AccInfo.UserName}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn MinWidth="65" Header="性别" Binding="{Binding AccInfo.Sex, Converter={StaticResource SexCvt}}"/>
+                        <DataGridTextColumn MinWidth="65" Header="证件类型" Binding="{Binding AccInfo.CeritificateEnum, Converter={StaticResource CertificateCvt}}"/>
+                        <DataGridTemplateColumn Header="证件号码">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True" Text="{Binding AccInfo.CertificateNumber}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn MinWidth="65" Header="用户类型" Binding="{Binding AccInfo.ClientType, Converter={StaticResource ClientCvt}}"/>
+                        <DataGridTextColumn MinWidth="65" Header="法人" Binding="{Binding AccInfo.Legal}"/>
+                        <DataGridTextColumn MinWidth="65" Header="联系人" Binding="{Binding AccInfo.Contact}"/>
+                        <DataGridTextColumn MinWidth="65" Header="联系地址" Binding="{Binding AccInfo.Address}"/>
+                        <DataGridTextColumn MinWidth="65" Header="手机" Binding="{Binding AccInfo.CellPhoneNumber}"/>
+                        <DataGridTextColumn MinWidth="65" Header="固话" Binding="{Binding AccInfo.TelephoneNumber}"/>
+                        <DataGridTextColumn MinWidth="65" Header="邮箱" Binding="{Binding AccInfo.Email}"/>
+                        <DataGridTextColumn MinWidth="65" Header="开户时间" Binding="{Binding AccInfo.OpenAccountTime, Converter={StaticResource DateTimeCvt}}"/>
+                        <DataGridTextColumn MinWidth="65" Header="金商" Binding="{Binding AccInfo.Dealer}"/>
+                        <DataGridTextColumn MinWidth="65" Header="最近更新人" Binding="{Binding AccInfo.LastUpdateManager}"/>
+                        <DataGridTextColumn MinWidth="65" Header="最近更新时间" Binding="{Binding AccInfo.LastUpdateTime, Converter={StaticResource DateTimeCvt}}"/>
+                        <DataGridTextColumn MinWidth="65" Header="开户人" Binding="{Binding AccInfo.OpeningMan}"/>
+                        <DataGridTextColumn MinWidth="65" Header="下单电话" Binding="{Binding AccInfo.OrderPhoneNumber}"/>
+                        <DataGridCheckBoxColumn Header="是否在线" Binding="{Binding AccInfo.IsOnline}"/>
+                        <DataGridTextColumn MinWidth="65" Header="上次登录时间" Binding="{Binding AccInfo.LastLoginTime, Converter={StaticResource DateTimeCvt}}"/>
+                        <DataGridTextColumn MinWidth="65"  Header="上次登录IP" Binding="{Binding AccInfo.LoginIP}"/>
+                        <DataGridTextColumn MinWidth="65" Header="上次登录MAC" Binding="{Binding AccInfo.LoginMAC}"/>
+                        <DataGridTextColumn MinWidth="65" Header="银行卡账户名" Binding="{Binding FundsInfo.BankAccountName}"/>
+                        <DataGridTextColumn MinWidth="65" Header="银行卡卡号" Binding="{Binding FundsInfo.BankCardNumber}"/>
+                        <DataGridTextColumn MinWidth="65" Header="银行行号" Binding="{Binding FundsInfo.BankNumber}"/>
+                        <DataGridTextColumn MinWidth="65" Header="签约银行" Binding="{Binding FundsInfo.ContractedBank, Converter={StaticResource BankCvt}}"/>
+                        <DataGridTextColumn MinWidth="65" Header="签约状态" Binding="{Binding FundsInfo.ContractStatus, Converter={StaticResource ContractCvt}}"/>
+                        <DataGridTextColumn MinWidth="65" Header="账户余额" Binding="{Binding FundsInfo.CurrentBalance}"/>
+                        <DataGridTextColumn MinWidth="65" Header="冻结订金" Binding="{Binding FundsInfo.FrozenDeposit}"/>
+                        <DataGridTextColumn MinWidth="65" Header="占用资金" Binding="{Binding FundsInfo.OccupiedDeposit}"/>
+                        <DataGridTextColumn MinWidth="65" Header="开户银行" Binding="{Binding FundsInfo.OpenBank}"/>
+                        <DataGridTextColumn MinWidth="65" Header="子账号" Binding="{Binding FundsInfo.SubAccount}"/>
+                        <DataGridTextColumn MinWidth="65" Header="摊位号" Binding="{Binding FundsInfo.TanAccount}"/>
+                        <DataGridCheckBoxColumn Header="允许平仓" Binding="{Binding TransactionSettings.AllowChargeback}"/>
+                        <DataGridCheckBoxColumn Header="允许买涨" Binding="{Binding TransactionSettings.AllowOrder}"/>
+                        <DataGridCheckBoxColumn Header="允许出金" Binding="{Binding TransactionSettings.AllowEncashment}"/>
+                        <DataGridCheckBoxColumn Header="允许入金" Binding="{Binding TransactionSettings.AllowRecharge}"/>
+                        <DataGridCheckBoxColumn Header="允许买跌" Binding="{Binding TransactionSettings.AllowRecovery}"/>
+                        <DataGridCheckBoxColumn Header="允许入库" Binding="{Binding TransactionSettings.AllowWarehousing}"/>
+                        <DataGridTextColumn MinWidth="65" Header="下单单位" Binding="{Binding TransactionSettings.OrderUnit}"/>
+                        <DataGridTextColumn MinWidth="65" Header="最小交易手数" Binding="{Binding TransactionSettings.MinTrade}"/>
+                        <DataGridTextColumn MinWidth="65" Header="最大交易手数" Binding="{Binding TransactionSettings.MaxTrade}"/>
+                    </DataGrid.Columns>-->
+                </DataGrid>
+            </xckt:BusyIndicator>
+        </Grid>
+    </DockPanel>
+</UserControl>

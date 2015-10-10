@@ -1,0 +1,64 @@
+﻿<Window x:Class="Gss.PopUpWindow.ClientAccountInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:accModule="clr-namespace:Gss.PopUpWindow.AccountInfoModule"
+        xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+        WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow"
+        
+        Title="客户账户资料" MinWidth="600"  SizeToContent="WidthAndHeight">
+    <Window.BindingGroup>
+        <BindingGroup Name="BindingG"/>
+    </Window.BindingGroup>
+    <Window.Resources>
+        <RoutedUICommand x:Key="Ok" Text="确定"/>
+        <RoutedUICommand x:Key="Cancel" Text="取消"/>
+
+        <cmCvt:BooleanInvertedConverter x:Key="BoolInvertCvt"/>
+    </Window.Resources>
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource Ok}" Executed="CommandBinding_Executed_Ok" CanExecute="CommandBinding_CanExecute_Ok"/>
+        <CommandBinding Command="{StaticResource Cancel}" Executed="CommandBinding_Executed_Cancel"/>
+    </Window.CommandBindings>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TabControl >
+            <TabItem Header="基本资料" >
+                <!--<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="SpInfo" DataContext="{Binding AccInfo}"
+                                IsEnabled="{Binding IsReadOnly, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Converter={StaticResource BoolInvertCvt}}">
+                        <accModule:AccountInfoPart x:Name="AccInfoPart"/>
+                        <accModule:ClientBasicInfoPart x:Name="BasicInfoPart"/>
+                    </StackPanel>
+                </ScrollViewer>-->
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="SpInfo" DataContext="{Binding .}"
+                                IsEnabled="{Binding IsReadOnly, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Converter={StaticResource BoolInvertCvt}}">
+                        <accModule:AccountInfoPart x:Name="AccInfoPart" DataContext="{Binding AccInfo}"/>
+                        <accModule:ClientBasicInfoPart x:Name="BasicInfoPart"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="交易控制">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                              IsEnabled="{Binding IsReadOnly, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}, Converter={StaticResource BoolInvertCvt}}">
+                    <accModule:TransactionSettingsPart DataContext="{Binding TransactionSettings}"/>
+                </ScrollViewer>
+            </TabItem>
+            <!--<TabItem Header="登录信息">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                              IsEnabled="False">
+                    <accModule:LoginInfoPart DataContext="{Binding AccInfo}"/>
+                </ScrollViewer>
+            </TabItem>-->
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="确定" Width="88" Margin="5" Command="{StaticResource Ok}" />
+            <Button Content="取消" Width="88" Margin="5" Command="{StaticResource Cancel}" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

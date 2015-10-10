@@ -1,0 +1,196 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.TradeManager.MarketOrder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             xmlns:cvt="clr-namespace:Gss.ManagementMenu.Converter"
+             xmlns:xckt="http://schemas.xceed.com/wpf/xaml/toolkit"
+              xmlns:cus="clr-namespace:Gss.ManagementMenu.CustomControl"
+             FocusManager.IsFocusScope="True" >
+    <UserControl.Resources>
+        <RoutedUICommand x:Key="Chargeback" Text="平仓"/>
+        <RoutedUICommand x:Key="Warehousing" Text="入库"/>
+        <RoutedUICommand x:Key="AllowStore" Text="入库设置"/>
+        <RoutedUICommand x:Key="RecordRealWeight" Text="买跌检测"/>
+        <RoutedUICommand x:Key="HistoryOrder" Text="订单信息"/>
+        <cvt:RiskCoefficientConverter x:Key="RiskCoefficientConverter"/>
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCvt"/>
+        <cvt:TransactionTypeConverter x:Key="TransactionTypeCvt"/>
+        <cmCvt:PlusMinusConverter x:Key="PlusMinusConverter"/>
+        <BooleanToVisibilityConverter x:Key="BoolVisibilityCvt"/>
+        <ContextMenu x:Key="CmMarketOrder" Opened="ContextMenu_Opened" >
+            <MenuItem Visibility="{Binding AccountAuthority.AllowViewMarketOrderChargeback, Converter={StaticResource BoolVisibilityCvt}}"  CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource Chargeback}"/>
+            <!--<MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource Warehousing}"/>
+            <MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource AllowStore}"/>
+            <MenuItem CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource RecordRealWeight}"/>-->
+            <MenuItem Visibility="{Binding AccountAuthority.AllowViewMarketOrderOrderInfo, Converter={StaticResource BoolVisibilityCvt}}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType=ContextMenu}}"  Command="{StaticResource HistoryOrder}"/>
+        </ContextMenu>
+
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}">
+            <Setter Property="MinHeight" Value="26"/>
+            <Setter Property="ContextMenu" Value="{StaticResource CmMarketOrder}"/>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource Chargeback}" Executed="CommandBinding_Executed_Chargeback" CanExecute="CommandBinding_CanExecute_Chargeback"/>
+        <CommandBinding Command="{StaticResource Warehousing}" Executed="CommandBinding_Executed_Warehousing" CanExecute="CommandBinding_CanExecute_Warehousing"/>
+        <CommandBinding Command="{StaticResource AllowStore}" Executed="CommandBinding_Executed_AllowStore" CanExecute="CommandBinding_CanExecute_AllowStore"/>
+        <CommandBinding Command="{StaticResource RecordRealWeight}" Executed="CommandBinding_Executed_RecordRealWeight" CanExecute="CommandBinding_CanExecute_RecordRealWeight"/>
+        <CommandBinding Command="{StaticResource HistoryOrder}" Executed="CommandBinding_Executed_HistoryOrder" CanExecute="CommandBinding_CanExecute__HistoryOrder"/>
+    </UserControl.CommandBindings>
+
+    <DockPanel>
+        <cus:InquiryCustomControl DockPanel.Dock="Top" OrgNameVisibility="Visible" DoSearch="InquiryCustomControl_DoSearch" IsProductNameVisibility="Visible" 
+                                  CurrentPageItemCount="{Binding Items.Count, ElementName=DgResult}" DoExcel="InquiryCustomControl_DoExcel"
+                                  PageCount="{Binding PageCount, RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+                                  ProductList="{Binding ProductInfoes}"  POrgList="{Binding POrgList}"/>
+
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <Label>数量:</Label>
+            <TextBlock Text="{Binding TradeOrderInfo.Quantity}" VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+            <Label>保证金：</Label>
+            <TextBlock Text="{Binding TradeOrderInfo.OccMoney,Converter={StaticResource PlusMinusConverter}}"  VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+            <Label>手续费：</Label>
+            <TextBlock Text="{Binding TradeOrderInfo.Tradefee,Converter={StaticResource PlusMinusConverter}}"  VerticalAlignment="Center" Margin="0,0,20,0"/>
+
+            <!--<Label>库存费：</Label>
+            <TextBlock Text="{Binding TradeOrderInfo.Storagefee,Converter={StaticResource PlusMinusConverter}}"  VerticalAlignment="Center" Margin="0,0,20,0"/>-->
+            <Label>盈亏：</Label>
+            <TextBlock Margin="0,0,20,0" Text="{Binding TradeOrderInfo.TotalLossOrProfit,StringFormat=F2}" VerticalAlignment="Center" />
+        </StackPanel>
+
+        <xckt:BusyIndicator IsBusy="{Binding IsLoadingMarketOrderList}">
+            <xckt:BusyIndicator.BusyContent>
+                <TextBlock Text="加载中..." FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </xckt:BusyIndicator.BusyContent>
+            <DataGrid AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" CanUserResizeRows="False" Name="DgResult"
+                      ItemsSource="{Binding TradeOrderInfo.TdOrderList}">
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="会员编码" Binding="{Binding Telephone}" MinWidth="70"/>
+                    <DataGridTextColumn Header="所属会员" Binding="{Binding OrgName}" MinWidth="70"/>
+                    <DataGridTextColumn Header="客户账号" Binding="{Binding TradeAccount}"  MinWidth="88"/>
+                    <DataGridTextColumn Header="客户名称" Binding="{Binding UserName}" MinWidth="70"/>-->
+                    <DataGridTemplateColumn Width="70" Header="会员编码">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True"
+                                         Text="{Binding Telephone}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!--<DataGridTextColumn  Header="会员名称" Binding="{Binding AccInfo.OrgName}"  >
+                            
+                        </DataGridTextColumn>-->
+                    <DataGridTemplateColumn Width="70" Header="会员名称">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" 
+                                         IsReadOnly="True" Text="{Binding OrgName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="70" Header="账号">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent"
+                                         IsReadOnly="True" Text="{Binding TradeAccount}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="70" Header="姓名">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent"
+                                         IsReadOnly="True" Text="{Binding UserName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+
+
+                    <DataGridTextColumn Width="70" Header="订单" Binding="{Binding OrderID}" />
+                    <DataGridTextColumn Width="70" Header="商品" Binding="{Binding ProductName}" />
+                    <DataGridTextColumn Header="类型" Binding="{Binding OrderType, Converter={StaticResource TransactionTypeCvt}}" MinWidth="60"/>
+                    <DataGridTextColumn Header="手数" Binding="{Binding OrderQuantity}" Width="60"/>
+                    <DataGridTextColumn Header="成交价" Binding="{Binding OrderPrice}" Width="60"/>
+                    <!--<DataGridTextColumn Header="即时价" Binding="{Binding RealTimePriceString}" MinWidth="60"/>-->
+                    <DataGridTemplateColumn Header="即时价" Width="60" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" IsReadOnly="True" Background="Transparent"  Padding="0" Margin="0" 
+                                         TextChanged="TextBox_TextChanged" Text="{Binding RealTimePriceString,Mode=OneWay}" BorderThickness="0">
+                                  
+                                </TextBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                        <!--<DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <Label  Content="{Binding RealTimePriceString}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>-->
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="盈亏" Width="60" Binding="{Binding LossOrProfit}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource DataGridCellBaseStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsEarnings}" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=IsEarnings}" Value="False">
+                                        <Setter Property="Foreground" Value="Green"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+                  
+                    <!--<DataGridTemplateColumn Header="风险系数%">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RiskCoefficient}" Foreground="{Binding RiskCoefficient, Converter={StaticResource RiskCoefficientConverter}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+                    <DataGridTextColumn Header="风险系数%" Width="88" Binding="{Binding RiskCoefficient}">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource DataGridCellBaseStyle}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <TextBlock VerticalAlignment="Center" Text="{Binding RiskCoefficient}" 
+                                                       Foreground="{Binding RiskCoefficient, Converter={StaticResource RiskCoefficientConverter}}"/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="止损价" Binding="{Binding StopLoss}" Width="60"/>
+                    <DataGridTextColumn Header="止盈价" Binding="{Binding StopProfit}" Width="60"/>
+                    <DataGridTextColumn Header="保证金" Binding="{Binding OccupiedDeposit,Converter={StaticResource PlusMinusConverter}}" Width="60"/>
+                    <!--<DataGridTextColumn Header="库存费" Binding="{Binding StorageFee,Converter={StaticResource PlusMinusConverter}}" MinWidth="60"/>-->
+                    <DataGridTextColumn Header="手续费" Width="66" Binding="{Binding TradeFee,Converter={StaticResource PlusMinusConverter}}"/>
+
+                    <!--<DataGridTextColumn Header="订单时间" Binding="{Binding OrderTime, Converter={StaticResource DateTimeCvt}}" MinWidth="60"/>-->
+
+                    <DataGridTemplateColumn Header="订单时间"  Width="140">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" IsReadOnly="True"
+                                         Text="{Binding OrderTime,  Converter={StaticResource DateTimeCvt}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridCheckBoxColumn Header="允许入库" Binding="{Binding AllowStore}" MinWidth="60"/>-->
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </xckt:BusyIndicator>
+       
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,197 @@
+﻿<Window x:Class="Gss.PopUpWindow.AccountManager.OrgDetialWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ValidationHelper="clr-namespace:Gss.Entities.ValidationHelper;assembly=Gss.Entities"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:converter="clr-namespace:Gss.ManagementMenu.Converter"
+        xmlns:cus="clr-namespace:Gss.PopUpWindow.CustomCotrol"
+        WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow"
+         SizeToContent="Height"
+        ResizeMode="CanMinimize" 
+        Title="微会员" Height="320" Width="500">
+
+    <Window.Resources>
+        <converter:BooleanNullVisibilityConverter x:Key="BooleanNullVisibilityConverter"/>
+        <RoutedUICommand x:Key="OK" Text="确定"/>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxStyle}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,0,5,0"/>
+            <Setter Property="Height" Value="26"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,2,5,2"/>
+            <Setter Property="Height" Value="26"/>
+            <Setter Property="Width" Value="60"/>
+        </Style>
+    </Window.Resources>
+   
+    <GroupBox Header="详细信息" Margin="3">
+        <Grid Name="grid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <CheckBox Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding CurOrgInfo.Status}" Content="启用"/>
+
+
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="上级会员："/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="会员名称："/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="会员编码："/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="证件类型："/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="证件编号："/>
+
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="负责人："/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="手机："/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="法人："/>
+            <TextBlock Grid.Row="4" Grid.Column="2" Text="Email："/>
+            <TextBlock Grid.Row="5" Grid.Column="2"  Text="地址："/>
+            <!--<TextBlock Grid.Row="11" Text="创建时间："/>-->
+            <!--<TextBox Text="{Binding AddTime,Mode=TwoWay}" Grid.Row="1" Grid.Column="1"/>-->
+
+            <TextBox Name="orgName"  Grid.Row="2" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="CurOrgInfo.OrgName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <!--<ValidationHelper:StringLengthRule ValidatesOnTargetUpdated="True"/>-->
+                            <ValidationHelper:StringRegexRule MinLength="1" MaxLength="50"  ValidatesOnTargetUpdated="True"/>
+                            <ExceptionValidationRule ValidatesOnTargetUpdated="True"/>
+                          </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <!--<ComboBox  Grid.Row="1" Grid.Column="1" Name="cmbParentOrgName"  SelectionChanged="cmbParentOrgName_SelectionChanged"   
+                      VerticalAlignment="Center" Margin="3,0,3,0" MinWidth="40" Height="26"
+                      SelectedItem="{Binding ParentOrgInfo,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}" 
+                      ItemsSource="{Binding POrgList}" DisplayMemberPath="OrgNameAndOrgCode" 
+                     />-->
+            <cus:AutoComboBox Grid.Row="1" Grid.Column="1" x:Name="cmbParentOrgName" Width="AUTO"
+                              
+                              Height="24" CurItem="{Binding ParentOrgInfo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,RelativeSource={RelativeSource AncestorType=Window, AncestorLevel=1,Mode=FindAncestor}}" 
+                      ItemsSource="{Binding POrgList}" DisplayName="OrgNameAndOrgCode" 
+                     />
+
+
+
+            <TextBox  Grid.Row="1" Grid.Column="3">
+                <TextBox.Text>
+                    <Binding Path="CurOrgInfo.Coperson" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <!--<Binding.ValidationRules>
+                            <ValidationHelper:StringRegexRule MinLength="2" MaxLength="50" ValidatesOnTargetUpdated="True"/>
+                            <ExceptionValidationRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>-->
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ComboBox Grid.Row="4" Grid.Column="1"
+                      VerticalAlignment="Center" Margin="3,0,3,0" MinWidth="40" Height="26"
+                      SelectedItem="{Binding CurOrgInfo.CardTypeString}">
+                <sys:String>身份证</sys:String>
+                <sys:String>其它</sys:String>
+                <sys:String>机构代码</sys:String>
+            </ComboBox>
+      
+            <TextBox  Grid.Row="5" Grid.Column="1">
+                <TextBox.Text>
+                    <Binding Path="CurOrgInfo.CardNum" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <!--<Binding.ValidationRules>
+                            <ValidationHelper:StringRegexRule MinLength="6" MaxLength="15" HasChinese="False" HasUnderline="False" ValidatesOnTargetUpdated="True"/>
+                            <ExceptionValidationRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>-->
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox  Grid.Row="3" Grid.Column="3">
+                <TextBox.Text>
+                    <Binding Path="CurOrgInfo.Reperson" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <!--<Binding.ValidationRules>
+                            <ValidationHelper:StringRegexRule MinLength="2" MaxLength="5"  ValidatesOnTargetUpdated="True"/>
+                            <ExceptionValidationRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>-->
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox  Grid.Row="2" Grid.Column="3">
+                <TextBox.Text>
+                    <Binding Path="CurOrgInfo.PhoneNum" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <!--<Binding.ValidationRules>
+                            <ValidationHelper:CellPhoneRule ValidatesOnTargetUpdated="True"/>
+                            <ExceptionValidationRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>-->
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox  IsEnabled="{Binding IsCanCreateOrgCode,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}">
+                    <TextBox.Text>
+                        <Binding Path="CurOrgInfo.TelePhone" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                            <Binding.ValidationRules>
+                                <ValidationHelper:StringLengthRule  MinLength="1" MaxLength="20" ValidatesOnTargetUpdated="True"/>
+                                <ExceptionValidationRule  ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button Visibility="{Binding IsCanCreateOrgCode,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}, Converter={StaticResource BooleanNullVisibilityConverter}}" IsEnabled="False" Name="btnCreateOrgCode" Content="生成编码" Command="{Binding CreateOrgCodeCommand}" Grid.Column="1" Width="60" Height="25" Margin="2,0,0,0"/>
+            </Grid>
+         
+            <TextBox Grid.Row="4" Grid.Column="3">
+                <TextBox.Text>
+                    <Binding Path="CurOrgInfo.Email" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <!--<Binding.ValidationRules>
+                            <ValidationHelper:EmailRule  ValidatesOnTargetUpdated="True"/>
+                            <ExceptionValidationRule  ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>-->
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Grid.Row="5" Grid.Column="3">
+                <TextBox.Text>
+                    <Binding Path="CurOrgInfo.Address" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <!--<Binding.ValidationRules>
+                            <ValidationHelper:StringRegexRule MinLength="2" MaxLength="50" ValidatesOnTargetUpdated="True"/>
+                            <ExceptionValidationRule  ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>-->
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="4" HorizontalAlignment="Center">
+                <!--<Button Content="确定" Command="{StaticResource OK}" IsDefault="True"/>-->
+                <Button Content="确定" Click="btnOK_Click"/>
+                <Button Content="取消" Name="btnCancel" Click="btnCancel_Click" IsCancel="True"/>
+            </StackPanel>
+        </Grid>
+    </GroupBox>
+
+</Window>

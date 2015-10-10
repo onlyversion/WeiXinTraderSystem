@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="Gss.PopUpWindow.AuthorityModule.DataManagerPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <GroupBox Margin="3">
+        <GroupBox.Header>
+            <CheckBox Content="数据管理" Width="Auto" IsChecked="{Binding IsDataManagerEnabled}"/>
+        </GroupBox.Header>
+        <WrapPanel>
+            <CheckBox Content="商品管理" IsChecked="{Binding IsProductManagerEnabled}"/>
+            <CheckBox Content="历史数据" IsChecked="{Binding IsHistoryDataManagerEnabled}"/>
+            <CheckBox Content="汇率/水" IsChecked="{Binding ExchangeRateWater}"/>
+        </WrapPanel>
+    </GroupBox>
+</UserControl>

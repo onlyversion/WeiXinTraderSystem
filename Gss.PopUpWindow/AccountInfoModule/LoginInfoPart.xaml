@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="Gss.PopUpWindow.AccountInfoModule.LoginInfoPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common">
+    <UserControl.Resources>
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCvt"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="MinWidth" Value="120"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+        </Grid.Resources>
+        <Label Grid.Row="0" Grid.Column="0" Content="登陆IP："/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LoginIP}"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="登陆MAC："/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LoginMAC}"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="登陆时间："/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding LastLoginTime, Converter={StaticResource DateTimeCvt}}"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="是否在线："/>
+        <CheckBox Grid.Row="3" Grid.Column="1" Margin="2" IsChecked="{Binding IsOnline}" VerticalAlignment="Center" IsEnabled="False"/>
+    </Grid>
+</UserControl>

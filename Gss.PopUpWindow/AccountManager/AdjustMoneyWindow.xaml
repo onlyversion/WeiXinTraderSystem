@@ -1,0 +1,90 @@
+﻿<Window x:Class="Gss.PopUpWindow.AdjustMoneyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:uti="clr-namespace:Gss.Common.Utility;assembly=Gss.Common"
+        xmlns:val="clr-namespace:Gss.Entities.ValidationHelper;assembly=Gss.Entities"
+        WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow"
+        SizeToContent="Height" Width="300">
+    <Window.Resources>
+        <RoutedUICommand x:Key="CashIn" Text="入金"/>
+        <RoutedUICommand x:Key="CashOut" Text="出金"/>
+
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}">
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+        
+        <Style TargetType="{x:Type xctk:DoubleUpDown}">
+            <Setter Property="uti:DoubleUpDownInputFilter.DigitOnly" Value="True"/>
+            <Setter Property="Margin" Value="2"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+      
+    </Window.Resources>
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource CashIn}" Executed="CommandBinding_Executed_CashIn"/>
+        <CommandBinding Command="{StaticResource CashOut}" Executed="CommandBinding_Executed_CashOut"/>
+    </Window.CommandBindings>
+    
+    <StackPanel>
+        <Grid Margin="5" DataContext="{Binding AccInfo}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+            <!--列1-->
+            <Label Grid.Row="0" Content="账户：" />
+            <Label Grid.Row="1" Content="姓名：" />
+            <Label Grid.Row="2" Content="资金：" />
+            
+            <!--列2-->
+            <TextBox Grid.Row="0" Grid.Column="1" IsEnabled="False"
+                     Text="{Binding AccountName}" />
+            <TextBox Grid.Row="1" Grid.Column="1" IsEnabled="False"
+                     Text="{Binding UserName}" />
+            <!--<xctk:DoubleUpDown Grid.Row="2" Grid.Column="1" FormatString="C2" Minimum="0" Increment="0.01" 
+                     Value="{Binding Deposit, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}">
+                
+            </xctk:DoubleUpDown>-->
+            <xctk:DoubleUpDown Grid.Row="2" Grid.Column="1" FormatString="C2" Minimum="0" Increment="0.01" 
+                     >
+                <xctk:DoubleUpDown.Value>
+                    <Binding Path="Deposit" Mode="TwoWay" RelativeSource="{RelativeSource AncestorType=Window}"  UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <val:NumRule IsInteger="False" MaxValue="10000000000" CanMinus="False"  ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </xctk:DoubleUpDown.Value>
+            </xctk:DoubleUpDown>
+        </Grid>
+        <Rectangle Height="2" Fill="Gray"/>
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Content="调节负" Margin="5" Command="{StaticResource CashOut}" />
+            <Button Grid.Column="1" Content="调节正" Margin="5" Command="{StaticResource CashIn}" />
+        </Grid>
+    </StackPanel>
+</Window>

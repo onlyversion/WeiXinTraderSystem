@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f451795c-9d6b-4a6d-a42e-d56248e6dcb1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.36:8087/BzjService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BzjService.xsd" MetadataType="Schema" ID="d4e065c4-e778-48e8-a77c-9a8f765f620f" SourceId="1" SourceUrl="http://192.168.0.36:8087/BzjService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ManagerBzj.wsdl" MetadataType="Wsdl" ID="0d411105-cbeb-419a-9349-6e24b0c4e3b6" SourceId="1" SourceUrl="http://192.168.0.36:8087/BzjService.svc?wsdl" />
+    <MetadataFile FileName="BzjService1.xsd" MetadataType="Schema" ID="7a67386b-31e8-47c8-a355-13f5196c3493" SourceId="1" SourceUrl="http://192.168.0.36:8087/BzjService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BzjService.disco" MetadataType="Disco" ID="4acfed52-53a0-42af-bf74-6d313f039344" SourceId="1" SourceUrl="http://192.168.0.36:8087/BzjService.svc?disco" />
+    <MetadataFile FileName="BzjService.wsdl" MetadataType="Wsdl" ID="2b912c3a-09ba-4b4d-bf7e-3ea2ee8d16cb" SourceId="1" SourceUrl="http://192.168.0.36:8087/BzjService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="BzjService2.xsd" MetadataType="Schema" ID="b8930ada-ee6d-42b4-ac45-31ccfc063dbb" SourceId="1" SourceUrl="http://192.168.0.36:8087/BzjService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BzjService3.xsd" MetadataType="Schema" ID="cf3eada2-02ca-4e8f-8103-a270802495cb" SourceId="1" SourceUrl="http://192.168.0.36:8087/BzjService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.AccountManager.Order.PendingOrder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cvt="clr-namespace:Gss.ManagementMenu.Converter"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             FocusManager.IsFocusScope="True"  Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCvt"/>
+        <cvt:TransactionTypeConverter x:Key="TransactionTypeCvt"/>
+    </UserControl.Resources>
+    <DockPanel>
+        <DataGrid AutoGenerateColumns="False" CanUserResizeRows="False" SelectionMode="Single" IsReadOnly="True" FontSize="15" Name="DgResult">
+                <DataGrid.Style>
+                    <Style TargetType="DataGrid">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=Visibility, ElementName=TbMsg}" Value="Collapsed">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=Visibility, ElementName=TbMsg}" Value="Visible">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Style>
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="单号" Binding="{Binding OrderID}" MinWidth="100" Width="Auto"/>-->
+                <DataGridTemplateColumn Width="70" Header="单号">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" 
+                                     IsReadOnly="True" Text="{Binding OrderID}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!--<DataGridTextColumn Header="商品" Binding="{Binding ProductName}" MinWidth="88" Width="Auto"/>-->
+
+                <DataGridTemplateColumn Width="70"  Header="商品">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" 
+                                     IsReadOnly="True" Text="{Binding ProductName}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="类型" Binding="{Binding OrderType, Converter={StaticResource TransactionTypeCvt}}"  Width="70" />
+                <DataGridTextColumn Header="手数" Binding="{Binding OrderQuantity}"  Width="70" />
+                <DataGridTextColumn Header="挂单价" Binding="{Binding OrderPrice}"  Width="70" />
+                <DataGridTemplateColumn Header="实时价"   Width="70" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="15" Height="15">
+                                    <Image.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=IsPriceRising}" Value="True">
+                                                    <Setter Property="Source" Value="/Gss.ProductInfoView;component/Images/Up.png" />
+                                                    <Setter Property="ToolTip" Value="上涨"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Path=IsPriceRising}" Value="False">
+                                                    <Setter Property="Source" Value="/Gss.ProductInfoView;component/Images/Down.png" />
+                                                    <Setter Property="ToolTip" Value="下跌"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Image.Resources>
+                                </Image>
+                                <TextBlock>
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=IsPriceRising}" Value="True">
+                                                <Setter Property="Text" Value="{Binding Path=RealTimePriceString}"/>
+                                               <Setter Property="Foreground" Value="Red"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=IsPriceRising}" Value="False">
+                                                <Setter Property="Text" Value="{Binding Path=RealTimePriceString}"/>
+                                                <Setter Property="Foreground" Value="Green"/>
+                                            </DataTrigger> 
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                                </TextBlock>
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="止损价" Binding="{Binding StopLoss}"  Width="70" />
+                <DataGridTextColumn Header="止盈价" Binding="{Binding StopProfit}"  Width="70" />
+                <DataGridTextColumn Header="预付款" Binding="{Binding FrozenDeposit}"  Width="70" />
+                <DataGridTextColumn Header="有效期" Binding="{Binding DueDate, Converter={StaticResource DateTimeCvt}}"  Width="70" />
+                <DataGridTextColumn Header="订单时间" Binding="{Binding OrderTime, Converter={StaticResource DateTimeCvt}}"  Width="140" />
+                </DataGrid.Columns>
+            </DataGrid>
+        <!--</xckt:BusyIndicator>-->
+    </DockPanel>
+</UserControl>

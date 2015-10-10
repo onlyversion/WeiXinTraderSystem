@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fb7ee2ca-d688-44cd-b4c7-0a8ab353e41b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.26:8075/TradeService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TradeService.xsd" MetadataType="Schema" ID="5e943d7e-4294-4fa2-a16d-06e4bd6b071d" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TradeService1.xsd" MetadataType="Schema" ID="95a93a1c-6059-487f-9065-9574c0f32f70" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TradeService2.xsd" MetadataType="Schema" ID="640bc77a-16c1-4337-bc06-296ad2261956" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd4" />
+    <MetadataFile FileName="TradeService.wsdl" MetadataType="Wsdl" ID="e601d8f6-02ca-44bb-8856-caad7d190b89" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="CTrade.wsdl" MetadataType="Wsdl" ID="1976911c-d208-4b68-b402-aa4939e43780" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?wsdl" />
+    <MetadataFile FileName="TradeService3.xsd" MetadataType="Schema" ID="f8ca2cf2-bcfa-4934-8365-c11cccec537c" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd3" />
+    <MetadataFile FileName="TradeService4.xsd" MetadataType="Schema" ID="034cdcab-52d5-4eec-9770-c3c223745e75" SourceId="1" SourceUrl="http://192.168.0.26:8075/TradeService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

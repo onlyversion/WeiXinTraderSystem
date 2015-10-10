@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{46FCB452-1DE7-4CE0-A7AF-47DFE9C847E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gss.ViewModel.Management</RootNamespace>
+    <AssemblyName>Gss.ViewModel.Management</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ManagementViewModel.Bzj.cs" />
+    <Compile Include="ManagementViewModel.cs" />
+    <Compile Include="ManagementViewModel.JTW.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gss.BusinessService\Gss.BusinessService.csproj">
+      <Project>{4DB006AF-B0CD-47DF-AEFE-3373D86FE811}</Project>
+      <Name>Gss.BusinessService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.BzjService\Gss.BzjService.csproj">
+      <Project>{89EBD6B8-272A-45C3-9053-D81A2F0DAE08}</Project>
+      <Name>Gss.BzjService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.Common\Gss.Common.csproj">
+      <Project>{CD1E903F-E26F-4950-9D18-24F4DEECA249}</Project>
+      <Name>Gss.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.Entities\Gss.Entities.csproj">
+      <Project>{935FF084-4A7A-41A8-8C05-8ED7C6F536C3}</Project>
+      <Name>Gss.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.PopUpWindow\Gss.PopUpWindow.csproj">
+      <Project>{59FA53BF-10AF-42C4-8289-FB42D1B01941}</Project>
+      <Name>Gss.PopUpWindow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.StockQuotations\Gss.StockQuotations.csproj">
+      <Project>{60203675-42E9-49ED-9815-8C0D1640D3F3}</Project>
+      <Name>Gss.StockQuotations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gss.TradeService\Gss.TradeService.csproj">
+      <Project>{1E233D64-C3AB-483D-9509-6987FBD439D6}</Project>
+      <Name>Gss.TradeService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="alert.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,25 @@
+﻿<Window x:Class="Gss.PopUpWindow.TradeManager.ModifyBackTradeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen" SizeToContent="Height"
+        ResizeMode="CanMinimize" WindowStyle="ToolWindow"
+        Title="处理买跌单" Height="160" Width="300" Name="acc">
+    <Border CornerRadius="8" BorderThickness="1" Margin="10" BorderBrush="DarkSlateBlue">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="付款时间：" Margin="10" Height="25"/>
+            <DatePicker SelectedDate="{Binding PayTime,ElementName=acc}" Grid.Column="1" Margin="0,10,10,10" Height="25" Focusable="False" MinWidth="80" Width="Auto"/>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                <Button Grid.Row="1" Grid.Column="1"  Name="btnOk" Click="btnOk_Click"   Width="60" Height="25"   Margin="5" Content="确定"/>
+                <Button Grid.Row="1" Grid.Column="1"  Name="btnCancel"  Click="btnCancel_Click"  Width="60" Height="25"   Margin="5" Content="取消"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,281 @@
+﻿<UserControl x:Class="Gss.PopUpWindow.AccountInfoModule.ClientBasicInfoPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cvt="clr-namespace:Gss.PopUpWindow.Converter"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             xmlns:val="clr-namespace:Gss.PopUpWindow.ValidationHelper"
+             xmlns:cus="clr-namespace:Gss.PopUpWindow.CustomCotrol"
+             xmlns:ValiHelp="clr-namespace:Gss.Entities.ValidationHelper;assembly=Gss.Entities">
+    <UserControl.Resources>
+        <cvt:SexEnumConverter x:Key="SexCvt"/>
+        <cvt:CertificateEnumConverter x:Key="CertificateCvt"/>
+        <cvt:ClientTypeEnumConverter x:Key="ClientTypeCvt"/>
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCvt"/>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="MinWidth" Value="120"/>
+                <Setter Property="Margin" Value="2"/>
+                <Style.Triggers>
+                    <Trigger Property="Validation.HasError" Value="True">
+                        <Setter Property="ToolTip">
+                            <Setter.Value>
+                                <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="{x:Type ComboBox}">
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+        </Grid.Resources>
+        <Label Grid.Row="0" Grid.Column="0" Content="姓名："/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="TbUserName">
+            <TextBox.Text>
+                <Binding Path="AccInfo.UserName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <!--<Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule ValidatesOnTargetUpdated="True" MinLength="2" MaxLength="50"/>
+                    </Binding.ValidationRules>-->
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Row="0" Grid.Column="2" Content="性别："/>
+        <ComboBox Grid.Row="0" Grid.Column="3" SelectedValue="{Binding AccInfo.Sex, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource SexCvt}}">
+            <sys:String>男</sys:String>
+            <sys:String>女</sys:String>
+        </ComboBox>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="证件号码："/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="TbCertificateNumber">
+            <TextBox.Text>
+                <Binding Path="AccInfo.CertificateNumber" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <!--<Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule MinLength="1" MaxLength="25" HasChinese="False" HasUnderline="False" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>-->
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <!--<Label Grid.Row="1" Grid.Column="0" Content="用户类型："/>
+        <ComboBox Grid.Row="1" Grid.Column="1" SelectedValue="{Binding AccInfo.ClientType, Mode=TwoWay, Converter={StaticResource ClientTypeCvt}}">
+            <sys:String>个体用户</sys:String>
+            <sys:String>机构用户</sys:String>
+        </ComboBox>
+        <Label Grid.Row="1" Grid.Column="2" Content="法人："/>
+        <TextBox Grid.Row="1" Grid.Column="3" x:Name="TbZipCode">
+            <TextBox.Text>
+                <Binding Path="AccInfo.Legal" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule ValidatesOnTargetUpdated="True" MinLength="2" MaxLength="50"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>-->
+        <!--<Label Grid.Row="2" Grid.Column="0" Content="开户人："/>
+        <TextBox Grid.Row="2" Grid.Column="1" >
+            <TextBox.Text>
+                <Binding Path="AccInfo.OpeningMan" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule ValidatesOnTargetUpdated="True" MinLength="1" MaxLength="50"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>-->
+
+        <Label Grid.Row="2" Grid.Column="0" Content="所属会员："/>
+        <!--<ComboBox Grid.Row="2" Grid.Column="3" x:Name="TbDealer" ItemsSource="{Binding POrgList, RelativeSource={RelativeSource AncestorLevel=1, AncestorType=Window, Mode=FindAncestor}}" 
+                  DisplayMemberPath="OrgNameAndOrgCode" SelectedValuePath="OrgName" >
+            <ComboBox.SelectedValue>
+                <Binding Path="AccInfo.OrgName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule ValidatesOnTargetUpdated="True" MinLength="0" MaxLength="25"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.SelectedValue>
+            
+        </ComboBox>-->
+        <cus:AutoComboBox Width="AUTO" Grid.Row="2" Grid.Column="1" x:Name="TbDealer"  Height="24" 
+                          ItemsSource="{Binding POrgList, RelativeSource={RelativeSource AncestorLevel=1, AncestorType=Window, Mode=FindAncestor}}" 
+                          DisplayName="OrgNameAndOrgCode" SelectedValuePath="OrgName">
+            <cus:AutoComboBox.SelectedValue>
+                <Binding Path="AccInfo.OrgName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+               
+            </Binding>
+            </cus:AutoComboBox.SelectedValue>
+        </cus:AutoComboBox>
+        <!--<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding AccInfo.OrgName}" IsReadOnly="True"/>-->
+
+
+        <!--<TextBox Grid.Row="2" Grid.Column="3" x:Name="TbDealer">
+            <TextBox.Text>
+                <Binding Path="AccInfo.OrgName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule ValidatesOnTargetUpdated="True" MinLength="0" MaxLength="25"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>-->
+        <!--<Label Grid.Row="3" Grid.Column="0" Content="资料更新人："/>
+        <TextBox Grid.Row="3" Grid.Column="1"
+                 Text="{Binding AccInfo.LastUpdateManager}" IsEnabled="False"/>
+        <Label Grid.Row="3" Grid.Column="2" Content="更新时间："/>
+        <TextBox Grid.Row="3" Grid.Column="3" IsEnabled="False"
+                 Text="{Binding AccInfo.LastUpdateTime, Converter={StaticResource DateTimeCvt}}"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="证件类型："/>
+        <ComboBox Grid.Row="4" Grid.Column="1" x:Name="CbCertificate" 
+                  SelectedValue="{Binding AccInfo.CeritificateEnum, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, 
+            Converter={StaticResource CertificateCvt}}">
+            <sys:String>身份证</sys:String>
+            <sys:String>其它</sys:String>
+        </ComboBox>
+      
+        <Label Grid.Row="5" Grid.Column="0" Content="资金密码："/>
+        <TextBox Grid.Row="5" Grid.Column="1" x:Name="TbFundsPassword">
+            <TextBox.Text>
+                <Binding Path="AccInfo.FundsPassword" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringLengthRule MinLength="6" MaxLength="16" ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Row="5" Grid.Column="2" Content="联系人："/>
+        <TextBox Grid.Row="5" Grid.Column="3" x:Name="TbContact">
+            <TextBox.Text>
+                <Binding Path="AccInfo.Contact" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule MinLength="2" MaxLength="50" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>-->
+
+
+        <Label Grid.Row="2" Grid.Column="2" Content="手机："/>
+        <TextBox Grid.Row="2" Grid.Column="3" x:Name="TbPhone">
+            <TextBox.Text>
+                <Binding Path="AccInfo.CellPhoneNumber" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <!--<Binding.ValidationRules>
+                        <val:CellPhoneRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>-->
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <!--
+        <Label Grid.Row="6" Grid.Column="2" Content="固话："/>
+        <TextBox Grid.Row="6" Grid.Column="3" x:Name="TbTelephoneNumber">
+            <TextBox.Text>
+                <Binding Path="AccInfo.TelephoneNumber" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule  MaxLength="11" IsNumberOnly="True"  ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <Label Grid.Row="7" Grid.Column="0" Content="邮箱："/>
+        <TextBox Grid.Row="7" Grid.Column="1" x:Name="TbEmail">
+            <TextBox.Text>
+                <Binding Path="AccInfo.Email" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <val:EmailRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Row="7" Grid.Column="2" Content="下单电话："/>
+        <TextBox Grid.Row="7" Grid.Column="3" x:Name="TbOrderPhone">
+            <TextBox.Text>
+                <Binding Path="AccInfo.OrderPhoneNumber" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule MinLength="0" MaxLength="11" IsNumberOnly="True" HasChinese="False" HasUnderline="False" ValidatesOnTargetUpdated="True"/>
+
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+
+        <Label Grid.Row="9" Grid.Column="0" Content="银行类型："/>
+        <ComboBox  Grid.Row="9" Grid.Column="1" ItemsSource="{Binding Banks, RelativeSource={RelativeSource AncestorLevel=1, AncestorType={x:Type Window}, Mode=FindAncestor}}" 
+                   DisplayMemberPath="BankName" SelectedValuePath="BankCode" SelectedValue="{Binding FundsInfo.banktype, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        </ComboBox>-->
+
+        
+
+        <!--<TextBox Grid.Row="9" Grid.Column="1"  >
+            <TextBox.Text>
+                <Binding Path="FundsInfo.banktype" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringLengthRule ValidatesOnTargetUpdated="True" MinLength="1" MaxLength="50"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>-->
+
+        <!--<Label Grid.Row="10" Grid.Column="0" Content="银行名称："/>
+        <TextBox Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="3" >
+            <TextBox.Text>
+                <Binding Path="FundsInfo.OpenBank" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringLengthRule ValidatesOnTargetUpdated="True" MinLength="1" MaxLength="50"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+
+        <Label Grid.Row="9" Grid.Column="2" Content="银行卡号："/>
+        <TextBox Grid.Row="9" Grid.Column="3" >
+            <TextBox.Text>
+                <Binding Path="FundsInfo.BankCardNumber" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringLengthRule ValidatesOnTargetUpdated="True" MinLength="1" MaxLength="50"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+
+        <Label Grid.Row="11" Grid.Column="0" Content="地址："/>
+        <TextBox Grid.Row="11" Grid.Column="1"  Grid.ColumnSpan="3" x:Name="TbAddress">
+            <TextBox.Text>
+                <Binding Path="AccInfo.Address" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ValiHelp:StringRegexRule ValidatesOnTargetUpdated="True" MinLength="1" MaxLength="100"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>-->
+
+    </Grid>
+</UserControl>

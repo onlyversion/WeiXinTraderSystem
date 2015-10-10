@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="Gss.ManagementMenu.TradeManager.WarehousingOrder"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             xmlns:cvt="clr-namespace:Gss.ManagementMenu.Converter"
+             xmlns:cus="clr-namespace:Gss.ManagementMenu.CustomControl"
+             xmlns:xckt="http://schemas.xceed.com/wpf/xaml/toolkit"
+             FocusManager.IsFocusScope="True" >
+    <UserControl.Resources>
+        <cvt:TransactionTypeConverter x:Key="TransactionTypeCv"/>
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCv"/>
+        <cmCvt:PlusMinusConverter x:Key="PlusMinusConverter"/>
+
+        <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource DataGridRowBaseStyle}">
+            <Setter Property="MinHeight" Value="26"/>
+        </Style>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <cus:InquiryCustomControl DockPanel.Dock="Top" OrgNameVisibility="Visible" DoSearch="InquiryCustomControl_DoSearch"
+                                  CurrentPageItemCount="{Binding Items.Count, ElementName=DgResult}"
+                                  PageCount="{Binding PageCount, RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}}"
+                                  ProductList="{Binding ProductInfoes}" POrgList="{Binding POrgList}" />
+        <xckt:BusyIndicator IsBusy="{Binding IsLoadingWarehousingHistory}">
+            <xckt:BusyIndicator.BusyContent>
+                <TextBlock Text="加载中..." FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </xckt:BusyIndicator.BusyContent>
+            <DataGrid Name="DgResult" Grid.Row="1" AutoGenerateColumns="False" CanUserResizeRows="False" SelectionMode="Single" IsReadOnly="True" Grid.ColumnSpan="2"
+                      ItemsSource="{Binding}">
+                <DataGrid.Columns>
+                    <!--<DataGridTextColumn Header="会员编码" Binding="{Binding Telephone}" MinWidth="88"/>
+                    <DataGridTextColumn Header="所属会员" Binding="{Binding OrgName}"  MinWidth="88"/>
+                    <DataGridTextColumn Header="客户账号" Binding="{Binding TradeAccount}"/>-->
+                    <DataGridTemplateColumn Width="70" Header="会员编码">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" 
+                                         IsReadOnly="True" Text="{Binding Telephone}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="70" Header="会员名称">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent" 
+                                         IsReadOnly="True" Text="{Binding OrgName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="60" Header="账号">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent"
+                                         IsReadOnly="True" Text="{Binding AccountName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Width="60" Header="姓名">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent"
+                                         IsReadOnly="True" Text="{Binding UserName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <!--<DataGridTextColumn Header="入库单号" Binding="{Binding HistoryID}"/>-->
+                    <DataGridTemplateColumn Width="70" Header="入库单号">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent"
+                                         IsReadOnly="True" Text="{Binding HistoryID}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="订单单号" Binding="{Binding OrderID}"/>-->
+                    <DataGridTemplateColumn Width="70" Header="订单单号">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent"
+                                         IsReadOnly="True" Text="{Binding OrderID}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="商品名称" Binding="{Binding ProductName}"/>-->
+                    <DataGridTemplateColumn Width="70" Header="商品名称">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Style="{x:Null}" BorderThickness="0" Background="Transparent"
+                                         IsReadOnly="True" Text="{Binding ProductName}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Width="70" Header="手数" Binding="{Binding TradeCount}"/>
+                    <DataGridTextColumn Width="70" Header="订单类型" Binding="{Binding OrderType, Converter={StaticResource TransactionTypeCv}}"/>
+                    <DataGridTextColumn Width="70" Header="订单价" Binding="{Binding OrderPrice}"/>
+                    <DataGridTextColumn Width="70" Header="入库价" Binding="{Binding TradePrice}"/>
+                    <!--<DataGridTextColumn Header="盈亏" Binding="{Binding LossOrProfit}"/>-->
+                    <DataGridTextColumn Width="70" Header="货款" Binding="{Binding Payment}"/>
+                    <!--<DataGridTextColumn Header="库存费" Binding="{Binding StorageCharge,Converter={StaticResource PlusMinusConverter}}"/>-->
+                    <DataGridTextColumn Width="70" Header="手续费" Binding="{Binding BasicLaborCharge,Converter={StaticResource PlusMinusConverter}}"/>
+                    <DataGridTextColumn Width="140" Header="订单时间" Binding="{Binding OrderTime, Converter={StaticResource DateTimeCv}}"/>
+                    <DataGridTextColumn Width="140" Header="入库时间" Binding="{Binding TradeTime, Converter={StaticResource DateTimeCv}}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </xckt:BusyIndicator>
+    </DockPanel>
+</UserControl>

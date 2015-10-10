@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ExperienceInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Desc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExperienceList" nillable="true" type="tns:ArrayOfExperience" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExperienceInfo" nillable="true" type="tns:ExperienceInfo" />
+  <xs:complexType name="ArrayOfExperience">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Experience" nillable="true" type="tns:Experience" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExperience" nillable="true" type="tns:ArrayOfExperience" />
+  <xs:complexType name="Experience">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Annount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CreatID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Effective" type="xs:int" />
+      <xs:element minOccurs="0" name="EffectiveTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Num" type="xs:int" />
+      <xs:element minOccurs="0" name="Rceharge" type="xs:decimal" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Type" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Experience" nillable="true" type="tns:Experience" />
+</xs:schema>

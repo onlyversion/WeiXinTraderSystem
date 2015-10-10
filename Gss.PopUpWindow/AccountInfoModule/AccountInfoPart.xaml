@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="Gss.PopUpWindow.AccountInfoModule.AccountInfoPart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cmCvt="clr-namespace:Gss.Common.Converter;assembly=Gss.Common"
+             xmlns:val="clr-namespace:Gss.PopUpWindow.ValidationHelper"
+             xmlns:vald="clr-namespace:Gss.Entities.ValidationHelper;assembly=Gss.Entities">
+    <UserControl.Resources>
+        <cmCvt:DateTimeFormatConverter x:Key="DateTimeCvt"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Margin="10,5,5,5" Source="/Gss.ManagementMenu;component/Images/AccountInformation.png"/>
+            <Grid Grid.Column="1" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+                    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="MinWidth" Value="120"/>
+                        <Setter Property="Margin" Value="2"/>
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True">
+                                <Setter Property="ToolTip">
+                                    <Setter.Value>
+                                        <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Resources>
+                <Label Content="账号：" Margin="0,0,2,5" VerticalAlignment="Bottom" />
+                <TextBox Grid.Column="1" x:Name="TbName" Margin="2" 
+                         IsEnabled="{Binding Path=CreateMode, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}">
+                    <TextBox.Resources>
+                        <!--这里的触发器是为了解决对已有账户进行修改时因为有对账户长度进行的验证而导致无法提交修改-->
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="MinWidth" Value="120"/>
+                            <Setter Property="Margin" Value="2"/>
+                            <Style.Triggers>
+                                <Trigger Property="Validation.HasError" Value="True">
+                                    <Setter Property="ToolTip">
+                                        <Setter.Value>
+                                            <Binding Path="(Validation.Errors).CurrentItem.ErrorContent" RelativeSource="{x:Static RelativeSource.Self}" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <DataTrigger Binding="{Binding Path=CreateMode, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" Value="False">
+                                    <Setter Property="Text">
+                                        <Setter.Value>
+                                            <Binding Path="AccountName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=CreateMode, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" Value="True">
+                                    <Setter Property="Text">
+                                        <Setter.Value>
+                                            <Binding Path="AccountName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.ValidationRules>
+                                                    <val:StringLengthRule MinLength="3" MaxLength="10" ValidatesOnTargetUpdated="True"/>
+                                                </Binding.ValidationRules>
+                                            </Binding>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <CheckBox Grid.Column="2" Content="启用" VerticalAlignment="Center" Margin="2" IsTabStop="False"
+                          IsChecked="{Binding IsAccountEnabled}" />
+                <Label Grid.Row="1" Grid.Column="0" Content="密码：" />
+                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TbPassword" Margin="2">
+                    <TextBox.Text>
+                        <Binding Path="AccountPassword" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <vald:StringLengthRule MaxLength="30" MinLength="6" ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Grid.Row="2" Grid.Column="0" Content="创建时间：" />
+                <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="False" Margin="2"
+                         Text="{Binding OpenAccountTime, Converter={StaticResource DateTimeCvt}}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
