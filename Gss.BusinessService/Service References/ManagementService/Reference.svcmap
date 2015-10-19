@@ -20,16 +20,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.1.116:8075/GssManager.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.2.102:8077/GssManager.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GssManager.disco" MetadataType="Disco" ID="217bb084-2244-4e9a-b992-21928bb1db59" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?disco" />
-    <MetadataFile FileName="GssManager4.xsd" MetadataType="Schema" ID="58a96b6b-3bec-45cf-a05d-b97ab40b6672" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?xsd=xsd0" />
-    <MetadataFile FileName="GssManager41.xsd" MetadataType="Schema" ID="7b5927d7-b489-42e4-98d7-8be85c8dad79" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?xsd=xsd1" />
-    <MetadataFile FileName="GssManager42.xsd" MetadataType="Schema" ID="08850b2e-dbdc-4200-b301-d89d38e51c1d" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?xsd=xsd2" />
-    <MetadataFile FileName="CManager.wsdl" MetadataType="Wsdl" ID="cbded0d9-a570-453e-93fb-ce85bcee75de" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?wsdl" />
-    <MetadataFile FileName="GssManager.wsdl" MetadataType="Wsdl" ID="3602fcab-7ba9-4a91-aec9-435f292fc297" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="GssManager43.xsd" MetadataType="Schema" ID="d6638ac7-8aea-418f-9e4e-4305ad8e9f7d" SourceId="1" SourceUrl="http://192.168.1.116:8075/GssManager.svc?xsd=xsd3" />
+    <MetadataFile FileName="CManager1.wsdl" MetadataType="Wsdl" ID="56af9c98-a41d-47c0-9356-dfd22dfb090c" SourceId="1" SourceUrl="http://192.168.2.102:8077/GssManager.svc?wsdl" />
+    <MetadataFile FileName="GssManager1.wsdl" MetadataType="Wsdl" ID="5a047f41-b01d-4fa7-b0ee-1d5e6dbf21ce" SourceId="1" SourceUrl="http://192.168.2.102:8077/GssManager.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="GssManager.xsd" MetadataType="Schema" ID="9b136f64-955a-4cdf-a526-8f2d10994564" SourceId="1" SourceUrl="http://192.168.2.102:8077/GssManager.svc?xsd=xsd0" />
+    <MetadataFile FileName="GssManager1.xsd" MetadataType="Schema" ID="c032c603-f04d-4b0c-aa4f-0176a220e6e0" SourceId="1" SourceUrl="http://192.168.2.102:8077/GssManager.svc?xsd=xsd3" />
+    <MetadataFile FileName="GssManager2.xsd" MetadataType="Schema" ID="ade6090e-f4ca-4592-bebf-380eb50dd2d1" SourceId="1" SourceUrl="http://192.168.2.102:8077/GssManager.svc?xsd=xsd2" />
+    <MetadataFile FileName="GssManager1.disco" MetadataType="Disco" ID="571f93bb-44ec-4e8c-a60e-1f75a8ceb809" SourceId="1" SourceUrl="http://192.168.2.102:8077/GssManager.svc?disco" />
+    <MetadataFile FileName="GssManager3.xsd" MetadataType="Schema" ID="9f986ecb-429a-4ffc-9159-ef89250203e8" SourceId="1" SourceUrl="http://192.168.2.102:8077/GssManager.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

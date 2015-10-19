@@ -131,3 +131,5 @@ E:\GitHub\WeiXinTraderSystem\Gss.ManagementMenu\obj\Release\Gss.ManagementMenu.d
 E:\GitHub\WeiXinTraderSystem\Gss.ManagementMenu\obj\Release\Gss.ManagementMenu.pdb
 E:\GitHub\WeiXinTraderSystem\Gss.ManagementMenu\obj\Release\SystemSetting\ArticlesInfoControl.g.cs
 E:\GitHub\WeiXinTraderSystem\Gss.ManagementMenu\obj\Release\SystemSetting\ArticlesInfoControl.baml
+E:\GitHub\WeiXinTraderSystem\Gss.ManagementMenu\obj\Release\SystemSetting\AdvertControl.baml
+E:\GitHub\WeiXinTraderSystem\Gss.ManagementMenu\obj\Release\SystemSetting\AdvertControl.g.cs

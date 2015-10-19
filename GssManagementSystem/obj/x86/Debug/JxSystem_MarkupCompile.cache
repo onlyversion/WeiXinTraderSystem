@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\AllProjects\金通网微交易\公用管理端\GssManagementSystem\obj\x86\Debug\
+E:\GitHub\WeiXinTraderSystem\GssManagementSystem\obj\x86\Debug\
 JxSystem
 none
 false
 DEBUG;TRACE
-E:\AllProjects\金通网微交易\公用管理端\GssManagementSystem\App.xaml
+E:\GitHub\WeiXinTraderSystem\GssManagementSystem\App.xaml
 8-74542522
 
 81553742554
-22163821929
+22-280908035
 AboutBox.xaml;CustomStyle\ComboBoxStyle.xaml;CustomStyle\DataGridStyle.xaml;CustomStyle\PulseButtonStyle.xaml;CustomStyle\Styles.xaml;CustomStyle\TabControlStyle.xaml;LoginWindow.xaml;MainWindow.xaml;
 
 False

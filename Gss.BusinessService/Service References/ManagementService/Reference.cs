@@ -15,786 +15,6 @@ namespace Gss.BusinessService.ManagementService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EntityBase", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.PrivilegeEntity))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.OrgEntity))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.UserRoleEntity))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.OrgUserEntity))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.RoleEntity))]
-    public partial class EntityBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ResultField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Desc {
-            get {
-                return this.DescField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescField, value) != true)) {
-                    this.DescField = value;
-                    this.RaisePropertyChanged("Desc");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Result {
-            get {
-                return this.ResultField;
-            }
-            set {
-                if ((this.ResultField.Equals(value) != true)) {
-                    this.ResultField = value;
-                    this.RaisePropertyChanged("Result");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PrivilegeEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    [System.SerializableAttribute()]
-    public partial class PrivilegeEntity : Gss.BusinessService.ManagementService.EntityBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool CheckField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int DisplayorderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LibraryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MenuPicField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameSpaceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ParentPrivilegeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ParentPrivilegeNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PrivilegeCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PrivilegeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PrivilegeNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gss.BusinessService.ManagementService.PrivilegeType PrivilegeTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RemarkField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gss.BusinessService.ManagementService.Status StatusField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Check {
-            get {
-                return this.CheckField;
-            }
-            set {
-                if ((this.CheckField.Equals(value) != true)) {
-                    this.CheckField = value;
-                    this.RaisePropertyChanged("Check");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Displayorder {
-            get {
-                return this.DisplayorderField;
-            }
-            set {
-                if ((this.DisplayorderField.Equals(value) != true)) {
-                    this.DisplayorderField = value;
-                    this.RaisePropertyChanged("Displayorder");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Library {
-            get {
-                return this.LibraryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LibraryField, value) != true)) {
-                    this.LibraryField = value;
-                    this.RaisePropertyChanged("Library");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MenuPic {
-            get {
-                return this.MenuPicField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MenuPicField, value) != true)) {
-                    this.MenuPicField = value;
-                    this.RaisePropertyChanged("MenuPic");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string NameSpace {
-            get {
-                return this.NameSpaceField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameSpaceField, value) != true)) {
-                    this.NameSpaceField = value;
-                    this.RaisePropertyChanged("NameSpace");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ParentPrivilegeId {
-            get {
-                return this.ParentPrivilegeIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ParentPrivilegeIdField, value) != true)) {
-                    this.ParentPrivilegeIdField = value;
-                    this.RaisePropertyChanged("ParentPrivilegeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ParentPrivilegeName {
-            get {
-                return this.ParentPrivilegeNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ParentPrivilegeNameField, value) != true)) {
-                    this.ParentPrivilegeNameField = value;
-                    this.RaisePropertyChanged("ParentPrivilegeName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PrivilegeCode {
-            get {
-                return this.PrivilegeCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PrivilegeCodeField, value) != true)) {
-                    this.PrivilegeCodeField = value;
-                    this.RaisePropertyChanged("PrivilegeCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PrivilegeId {
-            get {
-                return this.PrivilegeIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PrivilegeIdField, value) != true)) {
-                    this.PrivilegeIdField = value;
-                    this.RaisePropertyChanged("PrivilegeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PrivilegeName {
-            get {
-                return this.PrivilegeNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PrivilegeNameField, value) != true)) {
-                    this.PrivilegeNameField = value;
-                    this.RaisePropertyChanged("PrivilegeName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gss.BusinessService.ManagementService.PrivilegeType PrivilegeType {
-            get {
-                return this.PrivilegeTypeField;
-            }
-            set {
-                if ((this.PrivilegeTypeField.Equals(value) != true)) {
-                    this.PrivilegeTypeField = value;
-                    this.RaisePropertyChanged("PrivilegeType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Remark {
-            get {
-                return this.RemarkField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RemarkField, value) != true)) {
-                    this.RemarkField = value;
-                    this.RaisePropertyChanged("Remark");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gss.BusinessService.ManagementService.Status Status {
-            get {
-                return this.StatusField;
-            }
-            set {
-                if ((this.StatusField.Equals(value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrgEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    [System.SerializableAttribute()]
-    public partial class OrgEntity : Gss.BusinessService.ManagementService.EntityBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AddTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CardNumField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gss.BusinessService.ManagementService.IDType CardTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodeOrgNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CopersonField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrgIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrgNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ParentOrgIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ParentOrgNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PhoneNumField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RepersonField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gss.BusinessService.ManagementService.Status StatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TelePhoneField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AddTime {
-            get {
-                return this.AddTimeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddTimeField, value) != true)) {
-                    this.AddTimeField = value;
-                    this.RaisePropertyChanged("AddTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Address {
-            get {
-                return this.AddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
-                    this.AddressField = value;
-                    this.RaisePropertyChanged("Address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CardNum {
-            get {
-                return this.CardNumField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CardNumField, value) != true)) {
-                    this.CardNumField = value;
-                    this.RaisePropertyChanged("CardNum");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gss.BusinessService.ManagementService.IDType CardType {
-            get {
-                return this.CardTypeField;
-            }
-            set {
-                if ((this.CardTypeField.Equals(value) != true)) {
-                    this.CardTypeField = value;
-                    this.RaisePropertyChanged("CardType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodeOrgName {
-            get {
-                return this.CodeOrgNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CodeOrgNameField, value) != true)) {
-                    this.CodeOrgNameField = value;
-                    this.RaisePropertyChanged("CodeOrgName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Coperson {
-            get {
-                return this.CopersonField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CopersonField, value) != true)) {
-                    this.CopersonField = value;
-                    this.RaisePropertyChanged("Coperson");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrgID {
-            get {
-                return this.OrgIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrgIDField, value) != true)) {
-                    this.OrgIDField = value;
-                    this.RaisePropertyChanged("OrgID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrgName {
-            get {
-                return this.OrgNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrgNameField, value) != true)) {
-                    this.OrgNameField = value;
-                    this.RaisePropertyChanged("OrgName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ParentOrgId {
-            get {
-                return this.ParentOrgIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ParentOrgIdField, value) != true)) {
-                    this.ParentOrgIdField = value;
-                    this.RaisePropertyChanged("ParentOrgId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ParentOrgName {
-            get {
-                return this.ParentOrgNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ParentOrgNameField, value) != true)) {
-                    this.ParentOrgNameField = value;
-                    this.RaisePropertyChanged("ParentOrgName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PhoneNum {
-            get {
-                return this.PhoneNumField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PhoneNumField, value) != true)) {
-                    this.PhoneNumField = value;
-                    this.RaisePropertyChanged("PhoneNum");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Reperson {
-            get {
-                return this.RepersonField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RepersonField, value) != true)) {
-                    this.RepersonField = value;
-                    this.RaisePropertyChanged("Reperson");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gss.BusinessService.ManagementService.Status Status {
-            get {
-                return this.StatusField;
-            }
-            set {
-                if ((this.StatusField.Equals(value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TelePhone {
-            get {
-                return this.TelePhoneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TelePhoneField, value) != true)) {
-                    this.TelePhoneField = value;
-                    this.RaisePropertyChanged("TelePhone");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserRoleEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    [System.SerializableAttribute()]
-    public partial class UserRoleEntity : Gss.BusinessService.ManagementService.EntityBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoleIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoleID {
-            get {
-                return this.RoleIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoleIDField, value) != true)) {
-                    this.RoleIDField = value;
-                    this.RaisePropertyChanged("RoleID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string UserId {
-            get {
-                return this.UserIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
-                    this.UserIdField = value;
-                    this.RaisePropertyChanged("UserId");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrgUserEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    [System.SerializableAttribute()]
-    public partial class OrgUserEntity : Gss.BusinessService.ManagementService.EntityBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AccountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OrgIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Gss.BusinessService.ManagementService.Status StatusField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Account {
-            get {
-                return this.AccountField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AccountField, value) != true)) {
-                    this.AccountField = value;
-                    this.RaisePropertyChanged("Account");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OrgID {
-            get {
-                return this.OrgIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OrgIDField, value) != true)) {
-                    this.OrgIDField = value;
-                    this.RaisePropertyChanged("OrgID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Gss.BusinessService.ManagementService.Status Status {
-            get {
-                return this.StatusField;
-            }
-            set {
-                if ((this.StatusField.Equals(value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RoleEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    [System.SerializableAttribute()]
-    public partial class RoleEntity : Gss.BusinessService.ManagementService.EntityBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RemarkField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoleIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoleNameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Remark {
-            get {
-                return this.RemarkField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RemarkField, value) != true)) {
-                    this.RemarkField = value;
-                    this.RaisePropertyChanged("Remark");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoleID {
-            get {
-                return this.RoleIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoleIDField, value) != true)) {
-                    this.RoleIDField = value;
-                    this.RaisePropertyChanged("RoleID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoleName {
-            get {
-                return this.RoleNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoleNameField, value) != true)) {
-                    this.RoleNameField = value;
-                    this.RaisePropertyChanged("RoleName");
-                }
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PrivilegeType", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    public enum PrivilegeType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Module = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Page = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Control = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Menu = 3,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Status", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    public enum Status : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Enabled = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Disable = 0,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IDType", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    public enum IDType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Identity = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Company = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Business = 3,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RolePrivilegeEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
-    [System.SerializableAttribute()]
-    public partial class RolePrivilegeEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PrivilegeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoleIDField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PrivilegeId {
-            get {
-                return this.PrivilegeIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PrivilegeIdField, value) != true)) {
-                    this.PrivilegeIdField = value;
-                    this.RaisePropertyChanged("PrivilegeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoleID {
-            get {
-                return this.RoleIDField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoleIDField, value) != true)) {
-                    this.RoleIDField = value;
-                    this.RaisePropertyChanged("RoleID");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="TradeUser", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
     [System.SerializableAttribute()]
     public partial class TradeUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -3013,6 +2233,9 @@ namespace Gss.BusinessService.ManagementService {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Notice = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Articles = 3,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -10670,108 +9893,1148 @@ namespace Gss.BusinessService.ManagementService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AdvertLqc", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    public partial class AdvertLqc : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime EndTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LoginIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime StartTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Creator {
+            get {
+                return this.CreatorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreatorField, value) != true)) {
+                    this.CreatorField = value;
+                    this.RaisePropertyChanged("Creator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime EndTime {
+            get {
+                return this.EndTimeField;
+            }
+            set {
+                if ((this.EndTimeField.Equals(value) != true)) {
+                    this.EndTimeField = value;
+                    this.RaisePropertyChanged("EndTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LoginID {
+            get {
+                return this.LoginIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LoginIDField, value) != true)) {
+                    this.LoginIDField = value;
+                    this.RaisePropertyChanged("LoginID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime StartTime {
+            get {
+                return this.StartTimeField;
+            }
+            set {
+                if ((this.StartTimeField.Equals(value) != true)) {
+                    this.StartTimeField = value;
+                    this.RaisePropertyChanged("StartTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AdvertListInfo", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    public partial class AdvertListInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<Gss.BusinessService.ManagementService.Advert> AdvertListField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ResultField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReturnCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<Gss.BusinessService.ManagementService.Advert> AdvertList {
+            get {
+                return this.AdvertListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AdvertListField, value) != true)) {
+                    this.AdvertListField = value;
+                    this.RaisePropertyChanged("AdvertList");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Desc {
+            get {
+                return this.DescField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescField, value) != true)) {
+                    this.DescField = value;
+                    this.RaisePropertyChanged("Desc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Result {
+            get {
+                return this.ResultField;
+            }
+            set {
+                if ((this.ResultField.Equals(value) != true)) {
+                    this.ResultField = value;
+                    this.RaisePropertyChanged("Result");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReturnCode {
+            get {
+                return this.ReturnCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReturnCodeField, value) != true)) {
+                    this.ReturnCodeField = value;
+                    this.RaisePropertyChanged("ReturnCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Advert", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    public partial class Advert : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreateDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RemarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UrlField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreateDate {
+            get {
+                return this.CreateDateField;
+            }
+            set {
+                if ((this.CreateDateField.Equals(value) != true)) {
+                    this.CreateDateField = value;
+                    this.RaisePropertyChanged("CreateDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Creator {
+            get {
+                return this.CreatorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreatorField, value) != true)) {
+                    this.CreatorField = value;
+                    this.RaisePropertyChanged("Creator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IDField, value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Remark {
+            get {
+                return this.RemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemarkField, value) != true)) {
+                    this.RemarkField = value;
+                    this.RaisePropertyChanged("Remark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Url {
+            get {
+                return this.UrlField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UrlField, value) != true)) {
+                    this.UrlField = value;
+                    this.RaisePropertyChanged("Url");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EntityBase", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.PrivilegeEntity))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.OrgEntity))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.UserRoleEntity))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.OrgUserEntity))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(Gss.BusinessService.ManagementService.RoleEntity))]
+    public partial class EntityBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ResultField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Desc {
+            get {
+                return this.DescField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescField, value) != true)) {
+                    this.DescField = value;
+                    this.RaisePropertyChanged("Desc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Result {
+            get {
+                return this.ResultField;
+            }
+            set {
+                if ((this.ResultField.Equals(value) != true)) {
+                    this.ResultField = value;
+                    this.RaisePropertyChanged("Result");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PrivilegeEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    public partial class PrivilegeEntity : Gss.BusinessService.ManagementService.EntityBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool CheckField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DisplayorderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LibraryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MenuPicField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameSpaceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ParentPrivilegeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ParentPrivilegeNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PrivilegeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PrivilegeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PrivilegeNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gss.BusinessService.ManagementService.PrivilegeType PrivilegeTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RemarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gss.BusinessService.ManagementService.Status StatusField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Check {
+            get {
+                return this.CheckField;
+            }
+            set {
+                if ((this.CheckField.Equals(value) != true)) {
+                    this.CheckField = value;
+                    this.RaisePropertyChanged("Check");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Displayorder {
+            get {
+                return this.DisplayorderField;
+            }
+            set {
+                if ((this.DisplayorderField.Equals(value) != true)) {
+                    this.DisplayorderField = value;
+                    this.RaisePropertyChanged("Displayorder");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Library {
+            get {
+                return this.LibraryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LibraryField, value) != true)) {
+                    this.LibraryField = value;
+                    this.RaisePropertyChanged("Library");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MenuPic {
+            get {
+                return this.MenuPicField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MenuPicField, value) != true)) {
+                    this.MenuPicField = value;
+                    this.RaisePropertyChanged("MenuPic");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NameSpace {
+            get {
+                return this.NameSpaceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameSpaceField, value) != true)) {
+                    this.NameSpaceField = value;
+                    this.RaisePropertyChanged("NameSpace");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ParentPrivilegeId {
+            get {
+                return this.ParentPrivilegeIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentPrivilegeIdField, value) != true)) {
+                    this.ParentPrivilegeIdField = value;
+                    this.RaisePropertyChanged("ParentPrivilegeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ParentPrivilegeName {
+            get {
+                return this.ParentPrivilegeNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentPrivilegeNameField, value) != true)) {
+                    this.ParentPrivilegeNameField = value;
+                    this.RaisePropertyChanged("ParentPrivilegeName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PrivilegeCode {
+            get {
+                return this.PrivilegeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrivilegeCodeField, value) != true)) {
+                    this.PrivilegeCodeField = value;
+                    this.RaisePropertyChanged("PrivilegeCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PrivilegeId {
+            get {
+                return this.PrivilegeIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrivilegeIdField, value) != true)) {
+                    this.PrivilegeIdField = value;
+                    this.RaisePropertyChanged("PrivilegeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PrivilegeName {
+            get {
+                return this.PrivilegeNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrivilegeNameField, value) != true)) {
+                    this.PrivilegeNameField = value;
+                    this.RaisePropertyChanged("PrivilegeName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gss.BusinessService.ManagementService.PrivilegeType PrivilegeType {
+            get {
+                return this.PrivilegeTypeField;
+            }
+            set {
+                if ((this.PrivilegeTypeField.Equals(value) != true)) {
+                    this.PrivilegeTypeField = value;
+                    this.RaisePropertyChanged("PrivilegeType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Remark {
+            get {
+                return this.RemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemarkField, value) != true)) {
+                    this.RemarkField = value;
+                    this.RaisePropertyChanged("Remark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gss.BusinessService.ManagementService.Status Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrgEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    public partial class OrgEntity : Gss.BusinessService.ManagementService.EntityBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardNumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gss.BusinessService.ManagementService.IDType CardTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeOrgNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CopersonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrgIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrgNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ParentOrgIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ParentOrgNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneNumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RepersonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gss.BusinessService.ManagementService.Status StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelePhoneField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AddTime {
+            get {
+                return this.AddTimeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddTimeField, value) != true)) {
+                    this.AddTimeField = value;
+                    this.RaisePropertyChanged("AddTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Address {
+            get {
+                return this.AddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
+                    this.AddressField = value;
+                    this.RaisePropertyChanged("Address");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CardNum {
+            get {
+                return this.CardNumField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardNumField, value) != true)) {
+                    this.CardNumField = value;
+                    this.RaisePropertyChanged("CardNum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gss.BusinessService.ManagementService.IDType CardType {
+            get {
+                return this.CardTypeField;
+            }
+            set {
+                if ((this.CardTypeField.Equals(value) != true)) {
+                    this.CardTypeField = value;
+                    this.RaisePropertyChanged("CardType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodeOrgName {
+            get {
+                return this.CodeOrgNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeOrgNameField, value) != true)) {
+                    this.CodeOrgNameField = value;
+                    this.RaisePropertyChanged("CodeOrgName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Coperson {
+            get {
+                return this.CopersonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CopersonField, value) != true)) {
+                    this.CopersonField = value;
+                    this.RaisePropertyChanged("Coperson");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrgID {
+            get {
+                return this.OrgIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrgIDField, value) != true)) {
+                    this.OrgIDField = value;
+                    this.RaisePropertyChanged("OrgID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrgName {
+            get {
+                return this.OrgNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrgNameField, value) != true)) {
+                    this.OrgNameField = value;
+                    this.RaisePropertyChanged("OrgName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ParentOrgId {
+            get {
+                return this.ParentOrgIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentOrgIdField, value) != true)) {
+                    this.ParentOrgIdField = value;
+                    this.RaisePropertyChanged("ParentOrgId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ParentOrgName {
+            get {
+                return this.ParentOrgNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentOrgNameField, value) != true)) {
+                    this.ParentOrgNameField = value;
+                    this.RaisePropertyChanged("ParentOrgName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PhoneNum {
+            get {
+                return this.PhoneNumField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneNumField, value) != true)) {
+                    this.PhoneNumField = value;
+                    this.RaisePropertyChanged("PhoneNum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Reperson {
+            get {
+                return this.RepersonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RepersonField, value) != true)) {
+                    this.RepersonField = value;
+                    this.RaisePropertyChanged("Reperson");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gss.BusinessService.ManagementService.Status Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TelePhone {
+            get {
+                return this.TelePhoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelePhoneField, value) != true)) {
+                    this.TelePhoneField = value;
+                    this.RaisePropertyChanged("TelePhone");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UserRoleEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    public partial class UserRoleEntity : Gss.BusinessService.ManagementService.EntityBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoleIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoleID {
+            get {
+                return this.RoleIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoleIDField, value) != true)) {
+                    this.RoleIDField = value;
+                    this.RaisePropertyChanged("RoleID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserIdField, value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrgUserEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    public partial class OrgUserEntity : Gss.BusinessService.ManagementService.EntityBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AccountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrgIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private Gss.BusinessService.ManagementService.Status StatusField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Account {
+            get {
+                return this.AccountField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccountField, value) != true)) {
+                    this.AccountField = value;
+                    this.RaisePropertyChanged("Account");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrgID {
+            get {
+                return this.OrgIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrgIDField, value) != true)) {
+                    this.OrgIDField = value;
+                    this.RaisePropertyChanged("OrgID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public Gss.BusinessService.ManagementService.Status Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RoleEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    public partial class RoleEntity : Gss.BusinessService.ManagementService.EntityBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RemarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoleIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoleNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Remark {
+            get {
+                return this.RemarkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemarkField, value) != true)) {
+                    this.RemarkField = value;
+                    this.RaisePropertyChanged("Remark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoleID {
+            get {
+                return this.RoleIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoleIDField, value) != true)) {
+                    this.RoleIDField = value;
+                    this.RaisePropertyChanged("RoleID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoleName {
+            get {
+                return this.RoleNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoleNameField, value) != true)) {
+                    this.RoleNameField = value;
+                    this.RaisePropertyChanged("RoleName");
+                }
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PrivilegeType", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    public enum PrivilegeType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Module = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Page = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Control = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Menu = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Status", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    public enum Status : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Enabled = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Disable = 0,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IDType", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    public enum IDType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Identity = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Company = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Business = 3,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RolePrivilegeEntity", Namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model")]
+    [System.SerializableAttribute()]
+    public partial class RolePrivilegeEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PrivilegeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoleIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PrivilegeId {
+            get {
+                return this.PrivilegeIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrivilegeIdField, value) != true)) {
+                    this.PrivilegeIdField = value;
+                    this.RaisePropertyChanged("PrivilegeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoleID {
+            get {
+                return this.RoleIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoleIDField, value) != true)) {
+                    this.RoleIDField = value;
+                    this.RaisePropertyChanged("RoleID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="www.IManager.com", ConfigurationName="ManagementService.IManager")]
     public interface IManager {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddRole", ReplyAction="www.IManager.com/IManager/AddRoleResponse")]
-        Gss.BusinessService.ManagementService.EntityBase AddRole(string loginId, Gss.BusinessService.ManagementService.RoleEntity roleEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdateRole", ReplyAction="www.IManager.com/IManager/UpdateRoleResponse")]
-        Gss.BusinessService.ManagementService.EntityBase UpdateRole(string loginId, Gss.BusinessService.ManagementService.RoleEntity roleEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadRole", ReplyAction="www.IManager.com/IManager/ReadRoleResponse")]
-        Gss.BusinessService.ManagementService.RoleEntity ReadRole(string loginId, string roleID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeleteRole", ReplyAction="www.IManager.com/IManager/DeleteRoleResponse")]
-        Gss.BusinessService.ManagementService.EntityBase DeleteRole(string loginId, string roleID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddRolePrivileges", ReplyAction="www.IManager.com/IManager/AddRolePrivilegesResponse")]
-        Gss.BusinessService.ManagementService.EntityBase AddRolePrivileges(string loginId, System.Collections.Generic.List<Gss.BusinessService.ManagementService.RolePrivilegeEntity> list, string roldeID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetRoles", ReplyAction="www.IManager.com/IManager/GetRolesResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetRoles(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.RoleEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegesRole", ReplyAction="www.IManager.com/IManager/GetPrivilegesRoleResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetPrivilegesRole(string loginId, string roleID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegesWithRoleSign", ReplyAction="www.IManager.com/IManager/GetPrivilegesWithRoleSignResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetPrivilegesWithRoleSign(string loginId, string roleID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddPrivileges", ReplyAction="www.IManager.com/IManager/AddPrivilegesResponse")]
-        Gss.BusinessService.ManagementService.EntityBase AddPrivileges(string loginId, Gss.BusinessService.ManagementService.PrivilegeEntity pEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdatePrivileges", ReplyAction="www.IManager.com/IManager/UpdatePrivilegesResponse")]
-        Gss.BusinessService.ManagementService.EntityBase UpdatePrivileges(string loginId, Gss.BusinessService.ManagementService.PrivilegeEntity pEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadPrivileges", ReplyAction="www.IManager.com/IManager/ReadPrivilegesResponse")]
-        Gss.BusinessService.ManagementService.PrivilegeEntity ReadPrivileges(string loginId, string PrivilegeId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeletePrivileges", ReplyAction="www.IManager.com/IManager/DeletePrivilegesResponse")]
-        Gss.BusinessService.ManagementService.EntityBase DeletePrivileges(string loginId, string PrivilegeId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegeList", ReplyAction="www.IManager.com/IManager/GetPrivilegeListResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetPrivilegeList(string loginId, string PrivilegeId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegeParentLit", ReplyAction="www.IManager.com/IManager/GetPrivilegeParentLitResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetPrivilegeParentLit(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegeTopMenu", ReplyAction="www.IManager.com/IManager/GetPrivilegeTopMenuResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetPrivilegeTopMenu(string loginId, string userID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegesByParentID", ReplyAction="www.IManager.com/IManager/GetPrivilegesByParentIDResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetPrivilegesByParentID(string loginId, string currentPrivilegID, string userid, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ValidataUserRole", ReplyAction="www.IManager.com/IManager/ValidataUserRoleResponse")]
-        Gss.BusinessService.ManagementService.EntityBase ValidataUserRole(string loginId, string userID, string type, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UserRolePrivileges", ReplyAction="www.IManager.com/IManager/UserRolePrivilegesResponse")]
-        Gss.BusinessService.ManagementService.EntityBase UserRolePrivileges(string loginId, string userId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivileges", ReplyAction="www.IManager.com/IManager/GetPrivilegesResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetPrivileges(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddOrg", ReplyAction="www.IManager.com/IManager/AddOrgResponse")]
-        Gss.BusinessService.ManagementService.EntityBase AddOrg(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdateOrg", ReplyAction="www.IManager.com/IManager/UpdateOrgResponse")]
-        Gss.BusinessService.ManagementService.EntityBase UpdateOrg(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadOrg", ReplyAction="www.IManager.com/IManager/ReadOrgResponse")]
-        Gss.BusinessService.ManagementService.OrgEntity ReadOrg(string loginId, string orgID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeleteOrg", ReplyAction="www.IManager.com/IManager/DeleteOrgResponse")]
-        Gss.BusinessService.ManagementService.EntityBase DeleteOrg(string loginId, string orgID, string orgName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetOrgList", ReplyAction="www.IManager.com/IManager/GetOrgListResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetOrgList(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity, int pageindex, int pagesize, ref int page, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.OrgEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetBaseOrgListAll", ReplyAction="www.IManager.com/IManager/GetBaseOrgListAllResponse")]
-        Gss.BusinessService.ManagementService.EntityBase GetBaseOrgListAll(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.OrgEntity> list);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddUserRole", ReplyAction="www.IManager.com/IManager/AddUserRoleResponse")]
-        Gss.BusinessService.ManagementService.EntityBase AddUserRole(string loginId, Gss.BusinessService.ManagementService.UserRoleEntity userRoleEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdateUserRole", ReplyAction="www.IManager.com/IManager/UpdateUserRoleResponse")]
-        Gss.BusinessService.ManagementService.EntityBase UpdateUserRole(string loginId, Gss.BusinessService.ManagementService.UserRoleEntity userRoleEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadUserRole", ReplyAction="www.IManager.com/IManager/ReadUserRoleResponse")]
-        Gss.BusinessService.ManagementService.UserRoleEntity ReadUserRole(string loginId, string userID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeleteUserRole", ReplyAction="www.IManager.com/IManager/DeleteUserRoleResponse")]
-        Gss.BusinessService.ManagementService.EntityBase DeleteUserRole(string loginId, string userID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddOrgUser", ReplyAction="www.IManager.com/IManager/AddOrgUserResponse")]
-        Gss.BusinessService.ManagementService.EntityBase AddOrgUser(string loginId, Gss.BusinessService.ManagementService.OrgUserEntity orgUserEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdateOrgUser", ReplyAction="www.IManager.com/IManager/UpdateOrgUserResponse")]
-        Gss.BusinessService.ManagementService.EntityBase UpdateOrgUser(string loginId, Gss.BusinessService.ManagementService.OrgUserEntity orgUserEntity);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadOrgUser", ReplyAction="www.IManager.com/IManager/ReadOrgUserResponse")]
-        Gss.BusinessService.ManagementService.OrgUserEntity ReadOrgUser(string loginId, string account);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeleteOrgUser", ReplyAction="www.IManager.com/IManager/DeleteOrgUserResponse")]
-        Gss.BusinessService.ManagementService.EntityBase DeleteOrgUser(string loginId, string Account);
         
         [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddTradeUser", ReplyAction="www.IManager.com/IManager/AddTradeUserResponse")]
         Gss.BusinessService.ManagementService.ResultDesc AddTradeUser(Gss.BusinessService.ManagementService.TradeUser TdUser, Gss.BusinessService.ManagementService.UserType UType, string LoginId);
@@ -10976,6 +11239,117 @@ namespace Gss.BusinessService.ManagementService {
         
         [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DelExperience", ReplyAction="www.IManager.com/IManager/DelExperienceResponse")]
         Gss.BusinessService.ManagementService.ResultDesc DelExperience(string loginId, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetAdvertInfoWithPage", ReplyAction="www.IManager.com/IManager/GetAdvertInfoWithPageResponse")]
+        Gss.BusinessService.ManagementService.AdvertListInfo GetAdvertInfoWithPage(Gss.BusinessService.ManagementService.AdvertLqc lqc, int pageindex, int pagesize, ref int page);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddAdvert", ReplyAction="www.IManager.com/IManager/AddAdvertResponse")]
+        Gss.BusinessService.ManagementService.ResultDesc AddAdvert(string loginId, Gss.BusinessService.ManagementService.Advert exp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DelAdvert", ReplyAction="www.IManager.com/IManager/DelAdvertResponse")]
+        Gss.BusinessService.ManagementService.ResultDesc DelAdvert(string loginId, string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/EditAdvert", ReplyAction="www.IManager.com/IManager/EditAdvertResponse")]
+        Gss.BusinessService.ManagementService.ResultDesc EditAdvert(string loginId, Gss.BusinessService.ManagementService.Advert exp);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddRole", ReplyAction="www.IManager.com/IManager/AddRoleResponse")]
+        Gss.BusinessService.ManagementService.EntityBase AddRole(string loginId, Gss.BusinessService.ManagementService.RoleEntity roleEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdateRole", ReplyAction="www.IManager.com/IManager/UpdateRoleResponse")]
+        Gss.BusinessService.ManagementService.EntityBase UpdateRole(string loginId, Gss.BusinessService.ManagementService.RoleEntity roleEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadRole", ReplyAction="www.IManager.com/IManager/ReadRoleResponse")]
+        Gss.BusinessService.ManagementService.RoleEntity ReadRole(string loginId, string roleID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeleteRole", ReplyAction="www.IManager.com/IManager/DeleteRoleResponse")]
+        Gss.BusinessService.ManagementService.EntityBase DeleteRole(string loginId, string roleID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddRolePrivileges", ReplyAction="www.IManager.com/IManager/AddRolePrivilegesResponse")]
+        Gss.BusinessService.ManagementService.EntityBase AddRolePrivileges(string loginId, System.Collections.Generic.List<Gss.BusinessService.ManagementService.RolePrivilegeEntity> list, string roldeID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetRoles", ReplyAction="www.IManager.com/IManager/GetRolesResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetRoles(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.RoleEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegesRole", ReplyAction="www.IManager.com/IManager/GetPrivilegesRoleResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetPrivilegesRole(string loginId, string roleID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegesWithRoleSign", ReplyAction="www.IManager.com/IManager/GetPrivilegesWithRoleSignResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetPrivilegesWithRoleSign(string loginId, string roleID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddPrivileges", ReplyAction="www.IManager.com/IManager/AddPrivilegesResponse")]
+        Gss.BusinessService.ManagementService.EntityBase AddPrivileges(string loginId, Gss.BusinessService.ManagementService.PrivilegeEntity pEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdatePrivileges", ReplyAction="www.IManager.com/IManager/UpdatePrivilegesResponse")]
+        Gss.BusinessService.ManagementService.EntityBase UpdatePrivileges(string loginId, Gss.BusinessService.ManagementService.PrivilegeEntity pEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadPrivileges", ReplyAction="www.IManager.com/IManager/ReadPrivilegesResponse")]
+        Gss.BusinessService.ManagementService.PrivilegeEntity ReadPrivileges(string loginId, string PrivilegeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeletePrivileges", ReplyAction="www.IManager.com/IManager/DeletePrivilegesResponse")]
+        Gss.BusinessService.ManagementService.EntityBase DeletePrivileges(string loginId, string PrivilegeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegeList", ReplyAction="www.IManager.com/IManager/GetPrivilegeListResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetPrivilegeList(string loginId, string PrivilegeId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegeParentLit", ReplyAction="www.IManager.com/IManager/GetPrivilegeParentLitResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetPrivilegeParentLit(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegeTopMenu", ReplyAction="www.IManager.com/IManager/GetPrivilegeTopMenuResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetPrivilegeTopMenu(string loginId, string userID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivilegesByParentID", ReplyAction="www.IManager.com/IManager/GetPrivilegesByParentIDResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetPrivilegesByParentID(string loginId, string currentPrivilegID, string userid, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ValidataUserRole", ReplyAction="www.IManager.com/IManager/ValidataUserRoleResponse")]
+        Gss.BusinessService.ManagementService.EntityBase ValidataUserRole(string loginId, string userID, string type, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UserRolePrivileges", ReplyAction="www.IManager.com/IManager/UserRolePrivilegesResponse")]
+        Gss.BusinessService.ManagementService.EntityBase UserRolePrivileges(string loginId, string userId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetPrivileges", ReplyAction="www.IManager.com/IManager/GetPrivilegesResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetPrivileges(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddOrg", ReplyAction="www.IManager.com/IManager/AddOrgResponse")]
+        Gss.BusinessService.ManagementService.EntityBase AddOrg(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdateOrg", ReplyAction="www.IManager.com/IManager/UpdateOrgResponse")]
+        Gss.BusinessService.ManagementService.EntityBase UpdateOrg(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadOrg", ReplyAction="www.IManager.com/IManager/ReadOrgResponse")]
+        Gss.BusinessService.ManagementService.OrgEntity ReadOrg(string loginId, string orgID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeleteOrg", ReplyAction="www.IManager.com/IManager/DeleteOrgResponse")]
+        Gss.BusinessService.ManagementService.EntityBase DeleteOrg(string loginId, string orgID, string orgName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetOrgList", ReplyAction="www.IManager.com/IManager/GetOrgListResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetOrgList(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity, int pageindex, int pagesize, ref int page, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.OrgEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/GetBaseOrgListAll", ReplyAction="www.IManager.com/IManager/GetBaseOrgListAllResponse")]
+        Gss.BusinessService.ManagementService.EntityBase GetBaseOrgListAll(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.OrgEntity> list);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddUserRole", ReplyAction="www.IManager.com/IManager/AddUserRoleResponse")]
+        Gss.BusinessService.ManagementService.EntityBase AddUserRole(string loginId, Gss.BusinessService.ManagementService.UserRoleEntity userRoleEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdateUserRole", ReplyAction="www.IManager.com/IManager/UpdateUserRoleResponse")]
+        Gss.BusinessService.ManagementService.EntityBase UpdateUserRole(string loginId, Gss.BusinessService.ManagementService.UserRoleEntity userRoleEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadUserRole", ReplyAction="www.IManager.com/IManager/ReadUserRoleResponse")]
+        Gss.BusinessService.ManagementService.UserRoleEntity ReadUserRole(string loginId, string userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeleteUserRole", ReplyAction="www.IManager.com/IManager/DeleteUserRoleResponse")]
+        Gss.BusinessService.ManagementService.EntityBase DeleteUserRole(string loginId, string userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/AddOrgUser", ReplyAction="www.IManager.com/IManager/AddOrgUserResponse")]
+        Gss.BusinessService.ManagementService.EntityBase AddOrgUser(string loginId, Gss.BusinessService.ManagementService.OrgUserEntity orgUserEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/UpdateOrgUser", ReplyAction="www.IManager.com/IManager/UpdateOrgUserResponse")]
+        Gss.BusinessService.ManagementService.EntityBase UpdateOrgUser(string loginId, Gss.BusinessService.ManagementService.OrgUserEntity orgUserEntity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/ReadOrgUser", ReplyAction="www.IManager.com/IManager/ReadOrgUserResponse")]
+        Gss.BusinessService.ManagementService.OrgUserEntity ReadOrgUser(string loginId, string account);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="www.IManager.com/IManager/DeleteOrgUser", ReplyAction="www.IManager.com/IManager/DeleteOrgUserResponse")]
+        Gss.BusinessService.ManagementService.EntityBase DeleteOrgUser(string loginId, string Account);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -11003,138 +11377,6 @@ namespace Gss.BusinessService.ManagementService {
         
         public ManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase AddRole(string loginId, Gss.BusinessService.ManagementService.RoleEntity roleEntity) {
-            return base.Channel.AddRole(loginId, roleEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase UpdateRole(string loginId, Gss.BusinessService.ManagementService.RoleEntity roleEntity) {
-            return base.Channel.UpdateRole(loginId, roleEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.RoleEntity ReadRole(string loginId, string roleID) {
-            return base.Channel.ReadRole(loginId, roleID);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase DeleteRole(string loginId, string roleID) {
-            return base.Channel.DeleteRole(loginId, roleID);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase AddRolePrivileges(string loginId, System.Collections.Generic.List<Gss.BusinessService.ManagementService.RolePrivilegeEntity> list, string roldeID) {
-            return base.Channel.AddRolePrivileges(loginId, list, roldeID);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetRoles(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.RoleEntity> list) {
-            return base.Channel.GetRoles(loginId, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegesRole(string loginId, string roleID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
-            return base.Channel.GetPrivilegesRole(loginId, roleID, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegesWithRoleSign(string loginId, string roleID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
-            return base.Channel.GetPrivilegesWithRoleSign(loginId, roleID, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase AddPrivileges(string loginId, Gss.BusinessService.ManagementService.PrivilegeEntity pEntity) {
-            return base.Channel.AddPrivileges(loginId, pEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase UpdatePrivileges(string loginId, Gss.BusinessService.ManagementService.PrivilegeEntity pEntity) {
-            return base.Channel.UpdatePrivileges(loginId, pEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.PrivilegeEntity ReadPrivileges(string loginId, string PrivilegeId) {
-            return base.Channel.ReadPrivileges(loginId, PrivilegeId);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase DeletePrivileges(string loginId, string PrivilegeId) {
-            return base.Channel.DeletePrivileges(loginId, PrivilegeId);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegeList(string loginId, string PrivilegeId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
-            return base.Channel.GetPrivilegeList(loginId, PrivilegeId, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegeParentLit(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
-            return base.Channel.GetPrivilegeParentLit(loginId, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegeTopMenu(string loginId, string userID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
-            return base.Channel.GetPrivilegeTopMenu(loginId, userID, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegesByParentID(string loginId, string currentPrivilegID, string userid, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
-            return base.Channel.GetPrivilegesByParentID(loginId, currentPrivilegID, userid, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase ValidataUserRole(string loginId, string userID, string type, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
-            return base.Channel.ValidataUserRole(loginId, userID, type, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase UserRolePrivileges(string loginId, string userId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
-            return base.Channel.UserRolePrivileges(loginId, userId, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetPrivileges(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
-            return base.Channel.GetPrivileges(loginId, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase AddOrg(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity) {
-            return base.Channel.AddOrg(loginId, orgEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase UpdateOrg(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity) {
-            return base.Channel.UpdateOrg(loginId, orgEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.OrgEntity ReadOrg(string loginId, string orgID) {
-            return base.Channel.ReadOrg(loginId, orgID);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase DeleteOrg(string loginId, string orgID, string orgName) {
-            return base.Channel.DeleteOrg(loginId, orgID, orgName);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetOrgList(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity, int pageindex, int pagesize, ref int page, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.OrgEntity> list) {
-            return base.Channel.GetOrgList(loginId, orgEntity, pageindex, pagesize, ref page, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase GetBaseOrgListAll(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.OrgEntity> list) {
-            return base.Channel.GetBaseOrgListAll(loginId, ref list);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase AddUserRole(string loginId, Gss.BusinessService.ManagementService.UserRoleEntity userRoleEntity) {
-            return base.Channel.AddUserRole(loginId, userRoleEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase UpdateUserRole(string loginId, Gss.BusinessService.ManagementService.UserRoleEntity userRoleEntity) {
-            return base.Channel.UpdateUserRole(loginId, userRoleEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.UserRoleEntity ReadUserRole(string loginId, string userID) {
-            return base.Channel.ReadUserRole(loginId, userID);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase DeleteUserRole(string loginId, string userID) {
-            return base.Channel.DeleteUserRole(loginId, userID);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase AddOrgUser(string loginId, Gss.BusinessService.ManagementService.OrgUserEntity orgUserEntity) {
-            return base.Channel.AddOrgUser(loginId, orgUserEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase UpdateOrgUser(string loginId, Gss.BusinessService.ManagementService.OrgUserEntity orgUserEntity) {
-            return base.Channel.UpdateOrgUser(loginId, orgUserEntity);
-        }
-        
-        public Gss.BusinessService.ManagementService.OrgUserEntity ReadOrgUser(string loginId, string account) {
-            return base.Channel.ReadOrgUser(loginId, account);
-        }
-        
-        public Gss.BusinessService.ManagementService.EntityBase DeleteOrgUser(string loginId, string Account) {
-            return base.Channel.DeleteOrgUser(loginId, Account);
         }
         
         public Gss.BusinessService.ManagementService.ResultDesc AddTradeUser(Gss.BusinessService.ManagementService.TradeUser TdUser, Gss.BusinessService.ManagementService.UserType UType, string LoginId) {
@@ -11407,6 +11649,154 @@ namespace Gss.BusinessService.ManagementService {
         
         public Gss.BusinessService.ManagementService.ResultDesc DelExperience(string loginId, int id) {
             return base.Channel.DelExperience(loginId, id);
+        }
+        
+        public Gss.BusinessService.ManagementService.AdvertListInfo GetAdvertInfoWithPage(Gss.BusinessService.ManagementService.AdvertLqc lqc, int pageindex, int pagesize, ref int page) {
+            return base.Channel.GetAdvertInfoWithPage(lqc, pageindex, pagesize, ref page);
+        }
+        
+        public Gss.BusinessService.ManagementService.ResultDesc AddAdvert(string loginId, Gss.BusinessService.ManagementService.Advert exp) {
+            return base.Channel.AddAdvert(loginId, exp);
+        }
+        
+        public Gss.BusinessService.ManagementService.ResultDesc DelAdvert(string loginId, string id) {
+            return base.Channel.DelAdvert(loginId, id);
+        }
+        
+        public Gss.BusinessService.ManagementService.ResultDesc EditAdvert(string loginId, Gss.BusinessService.ManagementService.Advert exp) {
+            return base.Channel.EditAdvert(loginId, exp);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase AddRole(string loginId, Gss.BusinessService.ManagementService.RoleEntity roleEntity) {
+            return base.Channel.AddRole(loginId, roleEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase UpdateRole(string loginId, Gss.BusinessService.ManagementService.RoleEntity roleEntity) {
+            return base.Channel.UpdateRole(loginId, roleEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.RoleEntity ReadRole(string loginId, string roleID) {
+            return base.Channel.ReadRole(loginId, roleID);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase DeleteRole(string loginId, string roleID) {
+            return base.Channel.DeleteRole(loginId, roleID);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase AddRolePrivileges(string loginId, System.Collections.Generic.List<Gss.BusinessService.ManagementService.RolePrivilegeEntity> list, string roldeID) {
+            return base.Channel.AddRolePrivileges(loginId, list, roldeID);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetRoles(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.RoleEntity> list) {
+            return base.Channel.GetRoles(loginId, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegesRole(string loginId, string roleID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
+            return base.Channel.GetPrivilegesRole(loginId, roleID, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegesWithRoleSign(string loginId, string roleID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
+            return base.Channel.GetPrivilegesWithRoleSign(loginId, roleID, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase AddPrivileges(string loginId, Gss.BusinessService.ManagementService.PrivilegeEntity pEntity) {
+            return base.Channel.AddPrivileges(loginId, pEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase UpdatePrivileges(string loginId, Gss.BusinessService.ManagementService.PrivilegeEntity pEntity) {
+            return base.Channel.UpdatePrivileges(loginId, pEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.PrivilegeEntity ReadPrivileges(string loginId, string PrivilegeId) {
+            return base.Channel.ReadPrivileges(loginId, PrivilegeId);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase DeletePrivileges(string loginId, string PrivilegeId) {
+            return base.Channel.DeletePrivileges(loginId, PrivilegeId);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegeList(string loginId, string PrivilegeId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
+            return base.Channel.GetPrivilegeList(loginId, PrivilegeId, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegeParentLit(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
+            return base.Channel.GetPrivilegeParentLit(loginId, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegeTopMenu(string loginId, string userID, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
+            return base.Channel.GetPrivilegeTopMenu(loginId, userID, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetPrivilegesByParentID(string loginId, string currentPrivilegID, string userid, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
+            return base.Channel.GetPrivilegesByParentID(loginId, currentPrivilegID, userid, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase ValidataUserRole(string loginId, string userID, string type, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
+            return base.Channel.ValidataUserRole(loginId, userID, type, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase UserRolePrivileges(string loginId, string userId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
+            return base.Channel.UserRolePrivileges(loginId, userId, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetPrivileges(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.PrivilegeEntity> list) {
+            return base.Channel.GetPrivileges(loginId, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase AddOrg(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity) {
+            return base.Channel.AddOrg(loginId, orgEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase UpdateOrg(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity) {
+            return base.Channel.UpdateOrg(loginId, orgEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.OrgEntity ReadOrg(string loginId, string orgID) {
+            return base.Channel.ReadOrg(loginId, orgID);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase DeleteOrg(string loginId, string orgID, string orgName) {
+            return base.Channel.DeleteOrg(loginId, orgID, orgName);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetOrgList(string loginId, Gss.BusinessService.ManagementService.OrgEntity orgEntity, int pageindex, int pagesize, ref int page, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.OrgEntity> list) {
+            return base.Channel.GetOrgList(loginId, orgEntity, pageindex, pagesize, ref page, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase GetBaseOrgListAll(string loginId, ref System.Collections.Generic.List<Gss.BusinessService.ManagementService.OrgEntity> list) {
+            return base.Channel.GetBaseOrgListAll(loginId, ref list);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase AddUserRole(string loginId, Gss.BusinessService.ManagementService.UserRoleEntity userRoleEntity) {
+            return base.Channel.AddUserRole(loginId, userRoleEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase UpdateUserRole(string loginId, Gss.BusinessService.ManagementService.UserRoleEntity userRoleEntity) {
+            return base.Channel.UpdateUserRole(loginId, userRoleEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.UserRoleEntity ReadUserRole(string loginId, string userID) {
+            return base.Channel.ReadUserRole(loginId, userID);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase DeleteUserRole(string loginId, string userID) {
+            return base.Channel.DeleteUserRole(loginId, userID);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase AddOrgUser(string loginId, Gss.BusinessService.ManagementService.OrgUserEntity orgUserEntity) {
+            return base.Channel.AddOrgUser(loginId, orgUserEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase UpdateOrgUser(string loginId, Gss.BusinessService.ManagementService.OrgUserEntity orgUserEntity) {
+            return base.Channel.UpdateOrgUser(loginId, orgUserEntity);
+        }
+        
+        public Gss.BusinessService.ManagementService.OrgUserEntity ReadOrgUser(string loginId, string account) {
+            return base.Channel.ReadOrgUser(loginId, account);
+        }
+        
+        public Gss.BusinessService.ManagementService.EntityBase DeleteOrgUser(string loginId, string Account) {
+            return base.Channel.DeleteOrgUser(loginId, Account);
         }
     }
 }

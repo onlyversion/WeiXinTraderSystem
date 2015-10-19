@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Security.Policy;
+using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Gss.Common.Infrastructure;
@@ -19,6 +21,7 @@ using Gss.PopUpWindow.SystemSetting;
 using Gss.PopUpWindow.DataManager;
 using Gss.PopUpWindow.ModifyPassword;
 using Gss.Entities.AccountManager;
+using Microsoft.Win32;
 
 namespace Gss.ViewModel.Management
 {
@@ -66,7 +69,19 @@ namespace Gss.ViewModel.Management
             }
         }
 
-       
+        private SelectCondition _GetAdvertCondition;
+        /// <summary>
+        /// 广告
+        /// </summary>
+        public SelectCondition GetAdvertCondition
+        {
+            get { return _GetAdvertCondition; }
+            private set
+            {
+                _GetAdvertCondition = value;
+                RaisePropertyChanged("GetAdvertCondition");
+            }
+        }
 
         #endregion
 
@@ -167,6 +182,21 @@ namespace Gss.ViewModel.Management
                 RaisePropertyChanged("CurArticlesInfo");
             }
         }
+        private AdvertInfo _CurAdvert;
+        /// <summary>
+        /// 当前广告
+        /// </summary>
+        public AdvertInfo CurAdvert
+        {
+            get { return _CurAdvert; }
+            set
+            {
+                _CurAdvert = value;
+                RaisePropertyChanged("CurAdvert");
+            }
+        }
+
+
         #endregion
 
         #region 数据集
@@ -281,6 +311,20 @@ namespace Gss.ViewModel.Management
             {
                 _ArtilesList = value;
                 RaisePropertyChanged("ArtilesList");
+            }
+        }
+
+        private ObservableCollection<AdvertInfo> _AdvertList;
+        /// <summary>
+        /// 广告数据集
+        /// </summary>
+        public ObservableCollection<AdvertInfo> AdvertList
+        {
+            get { return _AdvertList; }
+            private set
+            {
+                _AdvertList = value;
+                RaisePropertyChanged("AdvertList");
             }
         }
 
@@ -459,18 +503,18 @@ namespace Gss.ViewModel.Management
         /// <summary>
         /// 生成微会员编码
         /// </summary>
-           public ICommand CreateOrgCodeCommand
+        public ICommand CreateOrgCodeCommand
         {
             get
             {
                 if (_CreateOrgCodeCommand == null)
-                    _CreateOrgCodeCommand = new RelayCommand(CreateOrgCodeExecute,CareateOrgCodeCanExecute);
+                    _CreateOrgCodeCommand = new RelayCommand(CreateOrgCodeExecute, CareateOrgCodeCanExecute);
                 return _CreateOrgCodeCommand;
             }
         }
 
-       
-        
+
+
 
         private ICommand _GetNewsCommand;
         /// <summary>
@@ -578,6 +622,59 @@ namespace Gss.ViewModel.Management
             }
         }
 
+
+        private ICommand _GetAdvertCommand;
+        /// <summary>
+        /// 获取广告
+        /// </summary>
+        public ICommand GetAdvertCommand
+        {
+            get
+            {
+                if (_GetAdvertCommand == null)
+                    _GetAdvertCommand = new RelayCommand(GetAdvertListExecute);
+                return _GetAdvertCommand;
+            }
+        }
+        private ICommand _AddAdvertCommand;
+        /// <summary>
+        /// 添加广告
+        /// </summary>
+        public ICommand AddAdvertCommand
+        {
+            get
+            {
+                if (_AddAdvertCommand == null)
+                    _AddAdvertCommand = new RelayCommand(AddAdvertExecute);
+                return _AddAdvertCommand;
+            }
+        }
+        private ICommand _DelAdvertCommand;
+        /// <summary>
+        /// 删除广告
+        /// </summary>
+        public ICommand DelAdvertCommand
+        {
+            get
+            {
+                if (_DelAdvertCommand == null)
+                    _DelAdvertCommand = new RelayCommand(DelAdvertExecute);
+                return _DelAdvertCommand;
+            }
+        }
+        private ICommand _EditAdvertCommand;
+        /// <summary>
+        /// 编辑广告
+        /// </summary>
+        public ICommand EditAdvertCommand
+        {
+            get
+            {
+                if (_EditAdvertCommand == null)
+                    _EditAdvertCommand = new RelayCommand(EditAdvertExecute);
+                return _EditAdvertCommand;
+            }
+        }
         #endregion
 
 
@@ -652,7 +749,7 @@ namespace Gss.ViewModel.Management
             {
                 //通过以下代码移出角色不准确（比如管理员添加了多个角色名字为"超级管理员"或"root管理员",这样移出是不正确的；
                 //此限制已在服务接口中实现，所以这里的代码要注释掉）--2014-11-28 by ygj
-                
+
                 //if (_accName != "admin")
                 //{
                 //    RoleInfo role= _RoleList.Where(p => p.RoleName == "超级管理员").FirstOrDefault();
@@ -847,7 +944,7 @@ namespace Gss.ViewModel.Management
             }
             if (_PrivilegeList != null)
             {
-                
+
                 PrivilegeTreeNodeList = new ObservableCollection<PrivilegeNode>();
                 // PrivilegeNodeList = new ObservableCollection<PrivilegeNode>();
                 IEnumerable<PrivilegeInfo> rootPrivilegeInfoList = _PrivilegeList.Where(p => string.IsNullOrEmpty(p.ParentPrivilegeID)).OrderBy(p => p.Displayorder);
@@ -875,7 +972,7 @@ namespace Gss.ViewModel.Management
                 if (_accName != "admin" && privilegeInfo.PrivilegeName == "权限管理")
                     continue;
                 else
-                   pNode.Add(node);
+                    pNode.Add(node);
                 CreateChildTree(node);
             }
         }
@@ -1065,7 +1162,7 @@ namespace Gss.ViewModel.Management
             if (_POrgList == null)
             {
                 _POrgList = new ObservableCollection<OrgInfo>();
-               _POrgList.Add(new OrgInfo() { OrgName = string.Empty });
+                _POrgList.Add(new OrgInfo() { OrgName = string.Empty });
             }
 
 
@@ -1075,7 +1172,7 @@ namespace Gss.ViewModel.Management
 
                 _POrgList.Add(new OrgInfo() { OrgName = string.Empty });
             }
-                
+
             RaisePropertyChanged("POrgList");
             ErrType err = _businessService.GetBaseOrgListAll(_loginID, ref _POrgList);
             if (err.Err != ERR.SUCCESS)
@@ -1097,7 +1194,7 @@ namespace Gss.ViewModel.Management
                 DataContext = this,
                 ParentOrgInfo = POrgList.FirstOrDefault(p => p.OrgID == CurOrgInfo.ParentOrgId),
                 Owner = Application.Current.MainWindow,
-                IsCanCreateOrgCode=false
+                IsCanCreateOrgCode = false
             };
             window.ComitEvent += new Action(ShowOrgDetial);
             window.CancelEvent += new Action(window_CancelEvent);
@@ -1108,7 +1205,7 @@ namespace Gss.ViewModel.Management
             //    GetOrgsListExecute();
             //    CurOrgInfo = OrgList.Where(p => p.OrgID == id).FirstOrDefault();
             //}
-                
+
         }
 
         void window_CancelEvent()
@@ -1118,7 +1215,7 @@ namespace Gss.ViewModel.Management
             CurOrgInfo = OrgList.Where(p => p.OrgID == id).FirstOrDefault();
             window.Close();
         }
- 
+
         private void ShowOrgDetial()
         {
             if (window.ParentOrgInfo != null)
@@ -1161,17 +1258,17 @@ namespace Gss.ViewModel.Management
             CurOrgInfo.ParentOrgId = "";
             CurOrgInfo.CardType = CeritificateEnum.ID;
 
-          
+
             window = new OrgDetialWindow()
                                          {
                                              POrgList = this.POrgList,
                                              DataContext = this,
                                              Owner = Application.Current.MainWindow,
-                                             IsCanCreateOrgCode=true
+                                             IsCanCreateOrgCode = true
                                          };
             window.ComitEvent += new Action(AddOrg);
 
-            window.ShowDialog() ;
+            window.ShowDialog();
         }
 
 
@@ -1202,7 +1299,7 @@ namespace Gss.ViewModel.Management
                 OrgInfo item = new OrgInfo() { OrgID = CurOrgInfo.OrgID, OrgName = CurOrgInfo.OrgName, TelePhone = CurOrgInfo.TelePhone };
                 POrgList.Add(item);
             }
-            ErrType err2= _businessService.CreateOrgTicket(CurOrgInfo.OrgID);
+            ErrType err2 = _businessService.CreateOrgTicket(CurOrgInfo.OrgID);
             if (err2.Err == ERR.ERROR)
                 MessageBox.Show("生成二维码失败！请联系管理员", "提示信息");
             window.Close();
@@ -1214,7 +1311,7 @@ namespace Gss.ViewModel.Management
         public void CreateOrgCodeExecute()
         {
             string code = "";
-            if (window.ParentOrgInfo!=null)
+            if (window.ParentOrgInfo != null)
             {
                 OrgInfo info = POrgList.FirstOrDefault(p => p.OrgID == window.ParentOrgInfo.OrgID);
                 ErrType err = _businessService.GetOrgcode(info.OrgID, info.TelePhone, ref code);
@@ -1223,12 +1320,12 @@ namespace Gss.ViewModel.Management
                     MessageBox.Show("生成微会员编码出错，请重试！", "提示信息", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                CurOrgInfo.TelePhone = code; 
+                CurOrgInfo.TelePhone = code;
             }
         }
         private bool CareateOrgCodeCanExecute()
         {
-            return CurOrgInfo!=null;
+            return CurOrgInfo != null;
         }
         #endregion
 
@@ -1248,7 +1345,7 @@ namespace Gss.ViewModel.Management
                     POrgList.Remove(POrgList.Where(p => p.OrgID.ToString() == CurOrgInfo.OrgID).FirstOrDefault());
                     //OrgList.Remove(CurOrgInfo);
                     OrgList.Remove(OrgList.Where(p => p.OrgID == CurOrgInfo.OrgID).FirstOrDefault());
-                    
+
                     return;
                 }
                 else
@@ -1267,11 +1364,11 @@ namespace Gss.ViewModel.Management
         /// </summary>
         public void GetOrgsListExecute()
         {
-            if (CanGetOrgsListExecute== false)
+            if (CanGetOrgsListExecute == false)
             {
                 return;
             }
-          
+
             int pageCount = 0;
             if (_OrgList == null)
                 _OrgList = new ObservableCollection<OrgInfo>();
@@ -1354,12 +1451,12 @@ namespace Gss.ViewModel.Management
                 srm.Close();
                 webRes.Close();
             }
-        } 
+        }
         #endregion
 
         #endregion
 
-     
+
         #region 新闻公告相关
         #region 获取新闻公告数据
         /// <summary>
@@ -1383,7 +1480,7 @@ namespace Gss.ViewModel.Management
             }
             NewsList = new ObservableCollection<NewsInfo>(_NewsList.Where(p => p.NType != NewsTypeEnum.理财师说));
             GetNewsCondition.PageCount = pageCount;
-        } 
+        }
         #endregion
 
         #region 编辑新闻公告
@@ -1396,9 +1493,9 @@ namespace Gss.ViewModel.Management
             {
                 DataContext = this,
                 Owner = Application.Current.MainWindow,
-                NewsAddress=ConnectConfigData.NewsAddOrEdit+"?Account="+_accName+"&LoginId="+_loginID+"&ID="+CurNewsInfo.ID
+                NewsAddress = ConnectConfigData.NewsAddOrEdit + "?Account=" + _accName + "&LoginId=" + _loginID + "&ID=" + CurNewsInfo.ID
             };
-            
+
             window.Closed += (e, v) =>
             {
                 GetNewsListExecute();
@@ -1434,7 +1531,7 @@ namespace Gss.ViewModel.Management
                 Owner = Application.Current.MainWindow,
                 NewsAddress = ConnectConfigData.NewsAddOrEdit + "?Account=" + _accName + "&LoginId=" + _loginID
             };
-            
+
             window.Closed += (e, v) =>
             {
                 GetNewsListExecute();
@@ -1464,7 +1561,7 @@ namespace Gss.ViewModel.Management
             MessageBoxResult result = MessageBox.Show("您确定删除当前选中的记录？", "提示信息", MessageBoxButton.OKCancel, MessageBoxImage.Question);
             if (result == MessageBoxResult.OK)
             {
-                ErrType err = _businessService.DelTradeNews(CurNewsInfo.ID,_loginID);
+                ErrType err = _businessService.DelTradeNews(CurNewsInfo.ID, _loginID);
                 if (err.Err == ERR.SUCCESS)
                 {
                     MessageBox.Show("删除成功！", "提示信息", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -1590,8 +1687,314 @@ namespace Gss.ViewModel.Management
         #endregion
         #endregion
 
+        #region 广告相关
+        #region 获取广告数据
+        /// <summary>
+        /// 获取广告数据
+        /// </summary>
+        public void GetAdvertListExecute()
+        {
+            int pageCount = 0;
+            if (_AdvertList == null)
+                _AdvertList = new ObservableCollection<AdvertInfo>();
+            else
+                _AdvertList.Clear();
+
+            //ErrType err = _tradeService.GetTradeNewsInfoWithPage(_loginID, GetArticlesCondition.StartTime,
+            //    GetArticlesCondition.EndTime.AddDays(1), type, GetArticlesCondition.PageIndex, GetArticlesCondition.PageSize, ref pageCount, ref _ArtilesList);
+            ErrType err = _businessService.GetAdvertInfoWithPage(_loginID, GetAdvertCondition.StartTime,
+                GetAdvertCondition.EndTime.AddDays(1), GetAdvertCondition.UserName, "", 0,
+                ref _AdvertList, GetAdvertCondition.PageIndex, GetAdvertCondition.PageSize,
+                ref pageCount);
+            if (err.Err != ERR.SUCCESS)
+            {
+                MessageBox.Show(err.ErrMsg, err.ErrTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            AdvertList = _AdvertList;
+            GetAdvertCondition.PageCount = pageCount;
+        }
+        #endregion
+
+        #region 编辑广告
+        /// <summary>
+        /// 编辑广告
+        /// </summary>
+        private void EditAdvertExecute()
+        {
+            string downLoadUrl = "http://121.40.153.156:8075/AdviceImage/" + CurAdvert.Url;
+            BitmapImage dImg = DownImage(downLoadUrl);
+            AdvertWindow window = new AdvertWindow()
+            {
+                DataContext = this,
+                Owner = Application.Current.MainWindow,
+                AdvertName = CurAdvert.Name,
+                Creater = CurAdvert.Creator,
+                State = CurAdvert.Status,
+                Remark = CurAdvert.Remark
+            };
+            window.ShowImage(dImg);
+            string fullFilename = string.Empty;
+            string fileName = string.Empty;
+            bool isOpened = false;
+            window.OpenImage += () =>
+            {
+                OpenFileDialog dlg = new OpenFileDialog(); //定义一个打开文件对话框
+                dlg.Multiselect = false; //指示用户不可以选择多个文件
+                dlg.Filter = "JPG 图片 (*.jpg)|*.jpg|PNG 图片 (*.png)|*.png"; //指定用户只能上传jpg和png格式的图片
+                bool? result = dlg.ShowDialog(); //打开对话框
+
+                if (result != null && result == true) //如果单击了确定按钮并且选择了文件
+                {
+                    Stream inputStream = dlg.OpenFile();
+                    BitmapImage image = new BitmapImage(); //image就是要预览的图片
+                    fullFilename = dlg.FileName; //获得全路径文件名
+                    fileName = dlg.SafeFileName;//文件名
+                    //string extension = name.Substring(name.LastIndexOf('.'), name.Length - name.LastIndexOf('.')); //取得扩展名（包括“.”） 
+
+                    //以流的形式初始化图片                                                                                                 
+                    image.BeginInit();
+                    image.StreamSource = inputStream;
+                    image.EndInit();
+                    window.ShowImage(image);
+                    isOpened = true;
+                }
+            };
+            if (window.ShowDialog() == true)
+            {
+                try
+                {
+                    if (isOpened)
+                    {
+                        string sUrl = ConnectConfigData.UpLoadImage;
+                        HttpUploadFile(sUrl, fullFilename);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("广告图片上传失败！", "提示信息");
+                    return;
+                }
+                CurAdvert.Name = window.AdvertName;
+                CurAdvert.Remark = window.Remark;
+                CurAdvert.Status = window.State;
+                if (isOpened)
+                    CurAdvert.Url = fileName;
+                ErrType err = _businessService.EditAdvert(_loginID, CurAdvert);
+                if (err.Err == ERR.SUCCESS)
+                {
+                    MessageBox.Show("保存成功！", "提示信息", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(err.ErrMsg, err.ErrTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+
+        private BitmapImage DownImage(string url)
+        {
+            long fileLength = 0;
+            WebRequest webReq = WebRequest.Create(url);
+            WebResponse webRes = webReq.GetResponse();
+            fileLength = webRes.ContentLength;
+            Stream srm = webRes.GetResponseStream();
+            byte[] bufferbyte = new byte[fileLength];
+            int allByte = (int)bufferbyte.Length;
+            int startByte = 0;
+            while (fileLength > 0)
+            {
+                int downByte = srm.Read(bufferbyte, startByte, allByte);
+                if (downByte == 0)
+                { break; };
+                startByte += downByte;
+                allByte -= downByte;
+            }
+
+            BitmapImage image = new BitmapImage();
+            //以流的形式初始化图片                                                                                                 
+            image.BeginInit();
+            image.StreamSource = new MemoryStream(bufferbyte);
+            image.EndInit();
+            //OrgTicketWindow win = new OrgTicketWindow();
+            //win.ShowImage(image);
+            //win.ShowDialog();
+            srm.Close();
+            webRes.Close();
+            return image;
+        }
+        #endregion
+
+        #region 添加广告
+        /// <summary>
+        /// 添加广告
+        /// </summary>
+        private void AddAdvertExecute()
+        {
+            AdvertWindow window = new AdvertWindow()
+            {
+                DataContext = this,
+                Creater = _accName,
+                Owner = Application.Current.MainWindow,
+            };
+            string fullFilename = string.Empty;
+            string fileName = string.Empty;
+            window.OpenImage += () =>
+            {
+                OpenFileDialog dlg = new OpenFileDialog(); //定义一个打开文件对话框
+                dlg.Multiselect = false; //指示用户不可以选择多个文件
+                dlg.Filter = "JPG 图片 (*.jpg)|*.jpg|PNG 图片 (*.png)|*.png"; //指定用户只能上传jpg和png格式的图片
+                bool? result = dlg.ShowDialog(); //打开对话框
+
+                if (result != null && result == true) //如果单击了确定按钮并且选择了文件
+                {
+                    Stream inputStream = dlg.OpenFile();
+                    BitmapImage image = new BitmapImage(); //image就是要预览的图片
+                    fullFilename = dlg.FileName; //获得全路径文件名
+                    fileName = dlg.SafeFileName;//文件名
+                    //string extension = name.Substring(name.LastIndexOf('.'), name.Length - name.LastIndexOf('.')); //取得扩展名（包括“.”） 
+
+                    //以流的形式初始化图片                                                                                                 
+                    image.BeginInit();
+                    image.StreamSource = inputStream;
+                    image.EndInit();
+                    window.ShowImage(image);
+                }
+            };
+            if (window.ShowDialog() == true)
+            {
+                try
+                {
+                    string sUrl = ConnectConfigData.UpLoadImage;
+                    HttpUploadFile(sUrl, fullFilename);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("广告图片上传失败！", "提示信息");
+                    return;
+                }
+                AdvertInfo info = new AdvertInfo();
+                info.ID = Guid.NewGuid().ToString().Replace("-", "");
+                info.Name = window.AdvertName;
+                info.CreateDate = DateTime.Now;
+                info.Creator = _accName;
+                info.Remark = window.Remark;
+                info.Status = window.State;
+                info.Url = fileName;
+                ErrType err = _businessService.AddAdvert(_loginID, info);
+                if (err.Err == ERR.SUCCESS)
+                {
+                    MessageBox.Show("添加成功！", "提示信息", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(err.ErrMsg, err.ErrTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Http上传文件
+        /// </summary>
+        public static string HttpUploadFile(string url, string path)
+        {
+            // 设置参数
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            CookieContainer cookieContainer = new CookieContainer();
+            request.CookieContainer = cookieContainer;
+            request.AllowAutoRedirect = true;
+            request.Method = "POST";
+            string boundary = DateTime.Now.Ticks.ToString("X"); // 随机分隔线
+            request.ContentType = "multipart/form-data;charset=utf-8;boundary=" + boundary;
+            byte[] itemBoundaryBytes = Encoding.UTF8.GetBytes("\r\n--" + boundary + "\r\n");
+            byte[] endBoundaryBytes = Encoding.UTF8.GetBytes("\r\n--" + boundary + "--\r\n");
+
+            int pos = path.LastIndexOf("\\");
+            string fileName = path.Substring(pos + 1);
+
+            //请求头部信息 
+            StringBuilder sbHeader = new StringBuilder(string.Format("Content-Disposition:form-data;name=\"file\";filename=\"{0}\"\r\nContent-Type:application/octet-stream\r\n\r\n", fileName));
+            byte[] postHeaderBytes = Encoding.UTF8.GetBytes(sbHeader.ToString());
+
+            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
+            byte[] bArr = new byte[fs.Length];
+            fs.Read(bArr, 0, bArr.Length);
+            fs.Close();
+
+            Stream postStream = request.GetRequestStream();
+            postStream.Write(itemBoundaryBytes, 0, itemBoundaryBytes.Length);
+            postStream.Write(postHeaderBytes, 0, postHeaderBytes.Length);
+            postStream.Write(bArr, 0, bArr.Length);
+            postStream.Write(endBoundaryBytes, 0, endBoundaryBytes.Length);
+            postStream.Close();
+
+            //发送请求并获取相应回应数据
+            HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+            //直到request.GetResponse()程序才开始向目标网页发送Post请求
+            Stream instream = response.GetResponseStream();
+            StreamReader sr = new StreamReader(instream, Encoding.UTF8);
+            //返回结果网页（html）代码
+            string content = sr.ReadToEnd();
+            return content;
+        }
+
+        /// <summary>
+        /// 保存图片到磁盘
+        /// </summary>
+        /// <param name="img"></param>
+        public void SaveImage(Image img)
+        {
+            //img为Image控件
+            BitmapSource bsrc = (BitmapSource)img.Source;
+            //保存文件对话框
+            SaveFileDialog sf = new SaveFileDialog();
+            //设定默认保存类型为Png
+            sf.DefaultExt = ".png";
+            //指定用户只能下载jpg和png格式的图片
+            sf.Filter = "JPG 图片 (*.jpg)|*.jpg|PNG 图片 (*.png)|*.png";
+            if (sf.ShowDialog() == true)
+            {
+                PngBitmapEncoder pngE = new PngBitmapEncoder();
+                pngE.Frames.Add(BitmapFrame.Create(bsrc));
+                using (Stream stream = File.Create(sf.FileName))
+                {
+                    pngE.Save(stream);
+                }
+            }
+        }
+        #endregion
+
+        #region 删除广告
+        /// <summary>
+        /// 删除广告
+        /// </summary>
+        private void DelAdvertExecute()
+        {
+            MessageBoxResult result = MessageBox.Show("您确定删除当前选中的记录？", "提示信息", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+            if (result == MessageBoxResult.OK)
+            {
+                ErrType err = _businessService.DelAdvert(_loginID, CurAdvert.ID);
+                if (err.Err == ERR.SUCCESS)
+                {
+                    MessageBox.Show("删除成功！", "提示信息", MessageBoxButton.OK, MessageBoxImage.Information);
+                    AdvertList.Remove(CurAdvert);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show(err.ErrMsg, err.ErrTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+        }
+        #endregion
+        #endregion
+
         #region 历史数据
-        private ObservableCollection<string> cycleSource = new ObservableCollection<string>() {  "M1","M5","M15","M30","H1","H4","D1","W1","MN"};
+        private ObservableCollection<string> cycleSource = new ObservableCollection<string>() { "M1", "M5", "M15", "M30", "H1", "H4", "D1", "W1", "MN" };
 
         public ObservableCollection<string> CycleSource
         {
@@ -1613,12 +2016,12 @@ namespace Gss.ViewModel.Management
             private set
             {
                 _GetHistoryDataCondition = value;
-                RaisePropertyChanged("GetHistoryDataCondition"); 
+                RaisePropertyChanged("GetHistoryDataCondition");
             }
         }
-        private ObservableCollection<HisData>  hisDataLst=new ObservableCollection<HisData>();
+        private ObservableCollection<HisData> hisDataLst = new ObservableCollection<HisData>();
 
-        public ObservableCollection<HisData>  HisDataLst
+        public ObservableCollection<HisData> HisDataLst
         {
             get { return hisDataLst; }
             set
@@ -1703,14 +2106,14 @@ namespace Gss.ViewModel.Management
         /// <returns></returns>
         private bool GetHisDatasCommandCanEX()
         {
-         
-            if (string.IsNullOrWhiteSpace(GetHistoryDataCondition.ProductNumber) ||string.IsNullOrWhiteSpace(GetHistoryDataCondition.Cycle) )
+
+            if (string.IsNullOrWhiteSpace(GetHistoryDataCondition.ProductNumber) || string.IsNullOrWhiteSpace(GetHistoryDataCondition.Cycle))
             {
-               return  false;
+                return false;
             }
             else
             {
-                return  true;
+                return true;
             }
         }
         #endregion
@@ -1728,9 +2131,9 @@ namespace Gss.ViewModel.Management
                 return alterHisDatasCommand;
             }
         }
-       /// <summary>
-       /// 修改了历史数据
-       /// </summary>
+        /// <summary>
+        /// 修改了历史数据
+        /// </summary>
         public void AlterHisDatasCommandEX()
         {
             HistoryDataSetWindow win = new HistoryDataSetWindow(CurHisData) { };
@@ -1738,21 +2141,21 @@ namespace Gss.ViewModel.Management
             if (win.DialogResult == true)
             {
                 var result = _tradeService.ModifyHisData(win.HistoryData, win.HistoryData.ProductCod, win.HistoryData.Cycle);
-              if (result.Err == ERR.ERROR)
-              {
-                  MessageBox.Show("修改历史数据失败");
-              }
-              else
-              {
-                  MessageBox.Show("操作成功");
-                  
-              }
+                if (result.Err == ERR.ERROR)
+                {
+                    MessageBox.Show("修改历史数据失败");
+                }
+                else
+                {
+                    MessageBox.Show("操作成功");
+
+                }
             }
             GetHisDatasCommandEX();//刷新数据
         }
         private bool AlterHisDatasCommandCanEX()
         {
-            if (CurHisData ==null)
+            if (CurHisData == null)
             {
                 return false;
             }
@@ -1792,7 +2195,7 @@ namespace Gss.ViewModel.Management
             if (err != GeneralErr.Success)
             {
                 MessageBox.Show("修改密码失败", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
-               
+
             }
             else
             {
@@ -1815,10 +2218,10 @@ namespace Gss.ViewModel.Management
             else
             {
                 MessageBox.Show("修改密码失败", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
-            
+
             }
         }
-        #endregion 
+        #endregion
 
         #region 获取所有的银行类型
 

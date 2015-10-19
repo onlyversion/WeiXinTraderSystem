@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="Interface\IBzjService.cs" />
     <Compile Include="Interface\ITradeServiceProvider.cs" />
+    <Compile Include="JTWEntityes\AdvertInfo.cs" />
     <Compile Include="JTWEntityes\HisData.cs" />
     <Compile Include="JTWEntityes\OrgInfo.cs" />
     <Compile Include="JTWEntityes\PrivilegeInfo.cs" />

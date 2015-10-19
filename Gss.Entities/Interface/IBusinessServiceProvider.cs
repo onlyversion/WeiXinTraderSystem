@@ -128,7 +128,7 @@ namespace Gss.Entities.Interface
         /// <param name="loginID">账户类型</param>
         /// <param name="accType">登录标识ID</param>
         /// <returns>ErrType</returns>
-        ErrType AddClientAccount(ClientAccount clientAcc,FundsInformation Fdinfo , UserTypeInfo type, string loginID);
+        ErrType AddClientAccount(ClientAccount clientAcc, FundsInformation Fdinfo, UserTypeInfo type, string loginID);
 
         /// <summary>
         /// 新增金商账号
@@ -278,8 +278,8 @@ namespace Gss.Entities.Interface
         ErrType GetExportStatementsWebAddr(string loginID, ACCOUNT_TYPE accType, DateTime startTime, DateTime endTime, STATEMENTS_TYPE type, out string webAddr);
 
 
-         ErrType GetExportStatementsWebAddrUser(string TradeAccount, string UserName, string TelPhone, string Broker,
-            string orgid, string IsBroker, string loginID, DateTime startTime, DateTime endTime, STATEMENTS_TYPE type, out string webAddr);
+        ErrType GetExportStatementsWebAddrUser(string TradeAccount, string UserName, string TelPhone, string Broker,
+           string orgid, string IsBroker, string loginID, DateTime startTime, DateTime endTime, STATEMENTS_TYPE type, out string webAddr);
         #endregion
 
         #region 交易日相关
@@ -290,7 +290,7 @@ namespace Gss.Entities.Interface
         /// <param name="loginID">登陆标识</param>
         /// <param name="tradingInfoes">返回的交易日信息</param>
         /// <returns>ErrType</returns>
-        ErrType GetTradingDayInfo(string loginID ,string StockCode, out List<TradingDayInformation> tradingInfoes);
+        ErrType GetTradingDayInfo(string loginID, string StockCode, out List<TradingDayInformation> tradingInfoes);
 
         /// <summary>
         /// 修改指定的交易日信息
@@ -925,7 +925,7 @@ namespace Gss.Entities.Interface
         /// <param name="LoginId">登陆ID</param>
         /// <param name="state">处理状态，"1"-已付款,"2"已拒绝 "3"处理中 "4"处理失败</param>
         /// <returns>ErrType</returns>
-         ErrType ProcessChuJin(int ApplyId, String LoginId, ref string state);
+        ErrType ProcessChuJin(int ApplyId, String LoginId, ref string state);
 
         /// <summary>
         /// 出金拒绝
@@ -1041,7 +1041,7 @@ namespace Gss.Entities.Interface
         /// <returns></returns>
         ErrType DelUserFromUserGroups(string account, string UserGroupId, String LoginId);
 
-        
+
 
         #endregion
 
@@ -1089,6 +1089,52 @@ namespace Gss.Entities.Interface
         /// <param name="id">体验券标识</param>
         /// <returns>ResultDesc</returns>
         ErrType DelExperience(string loginId, int id);
+
+        #endregion
+
+        #region 广告相关
+
+        /// <summary>
+        /// 广告查询
+        /// </summary>
+        /// <param name="loginId"></param>
+        /// <param name="sTime"></param>
+        /// <param name="eTime"></param>
+        /// <param name="Name"></param>
+        /// <param name="Creater"></param>
+        /// <param name="State"></param>
+        /// <param name="list"></param>
+        /// <param name="pageindex">第几页,从1开始</param>
+        /// <param name="pagesize">每页多少条</param>
+        /// <param name="page">输出参数(总页数)</param>
+        /// <returns></returns>
+        ErrType GetAdvertInfoWithPage(string loginId, DateTime sTime, DateTime eTime, string Name, string Creater,
+           int State,
+           ref ObservableCollection<AdvertInfo> list, int pageindex, int pagesize, ref int page);
+
+        /// <summary>
+        /// 添加广告
+        /// </summary>
+        /// <param name="loginId">登录标识</param>
+        /// <param name="info">广告内容</param>
+        /// <returns>ErrType</returns>
+        ErrType AddAdvert(string loginId, AdvertInfo info);
+
+        /// <summary>
+        /// 删除广告
+        /// </summary>
+        /// <param name="loginId">登录标识</param>
+        /// <param name="id">广告标识</param>
+        /// <returns>ResultDesc</returns>
+        ErrType DelAdvert(string loginId, string id);
+
+        /// <summary>
+        /// 编辑广告
+        /// </summary>
+        /// <param name="loginId">登录标识</param>
+        /// <param name="info">广告</param>
+        /// <returns>ResultDesc</returns>
+        ErrType EditAdvert(string loginId, AdvertInfo info);
 
         #endregion
     }

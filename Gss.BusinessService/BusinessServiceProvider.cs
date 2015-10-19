@@ -81,7 +81,7 @@ namespace Gss.BusinessService
             }
         }
 
-     
+
         private OrgTicketChannel _orgTicketService;
         /// <summary>
         /// 微会员创建二维码服务
@@ -106,7 +106,7 @@ namespace Gss.BusinessService
                 return _orgTicketService;
             }
         }
-   
+
         private OrgTicketChannel _trade;
         /// <summary>
         /// 创建一个后台服务实例对象，并记录创建时间
@@ -259,7 +259,7 @@ namespace Gss.BusinessService
             }
             catch (TimeoutException te)
             {
-                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name,  new StackTrace().GetFrame(0).GetMethod().Name, te.Message);
+                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name, new StackTrace().GetFrame(0).GetMethod().Name, te.Message);
                 return new ErrType(ERR.EXEPTION, ErrorText.TimeoutException);
             }
             catch (Exception ex)
@@ -292,7 +292,7 @@ namespace Gss.BusinessService
             }
             catch (TimeoutException te)
             {
-                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name,  new StackTrace().GetFrame(0).GetMethod().Name, te.Message);
+                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name, new StackTrace().GetFrame(0).GetMethod().Name, te.Message);
                 return new ErrType(ERR.EXEPTION, ErrorText.TimeoutException);
             }
             catch (Exception ex)
@@ -364,7 +364,7 @@ namespace Gss.BusinessService
                 Fundinfo info = MyConverter.ToFundInfo(fundsInfo);
                 //ResultDesc result = ManagerService.ModifyUserFundinfo(info, accountName, loginID, (int)accType);
                 ResultDesc result = ManagerService.ModifyUserFundinfo(info, accountName, loginID);
-                return result.Result ? GeneralErr.Success : new ErrType(ERR.SERVICE, result.Desc); 
+                return result.Result ? GeneralErr.Success : new ErrType(ERR.SERVICE, result.Desc);
 
                 #endregion
             }
@@ -403,7 +403,7 @@ namespace Gss.BusinessService
             }
             catch (TimeoutException te)
             {
-                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name,   new StackTrace().GetFrame(0).GetMethod().Name, te.Message);
+                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name, new StackTrace().GetFrame(0).GetMethod().Name, te.Message);
                 return new ErrType(ERR.EXEPTION, ErrorText.TimeoutException);
             }
             catch (Exception ex)
@@ -616,7 +616,7 @@ namespace Gss.BusinessService
             }
             catch (Exception ex)
             {
-                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name,  new StackTrace().GetFrame(0).GetMethod().Name, ex.Message);
+                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name, new StackTrace().GetFrame(0).GetMethod().Name, ex.Message);
                 return new ErrType(ERR.EXEPTION, ErrorText.OperationError);
             }
         }
@@ -1094,8 +1094,8 @@ namespace Gss.BusinessService
             try
             {
                 int int_type = (int)type;
-                ReportForms report = _managerService.GetReportFormsUser( TradeAccount,  UserName,  TelPhone,  Broker,
-             orgid, IsBroker,startTime, endTime, int_type, loginID);
+                ReportForms report = _managerService.GetReportFormsUser(TradeAccount, UserName, TelPhone, Broker,
+             orgid, IsBroker, startTime, endTime, int_type, loginID);
                 if (!report.Result)
                     return new ErrType(ERR.SERVICE, report.Desc);
 
@@ -1221,12 +1221,12 @@ namespace Gss.BusinessService
         /// <param name="StockCode">行情编码</param>
         /// <param name="tradingInfoes">返回的交易日信息</param>
         /// <returns>ErrType</returns>
-        public ErrType GetTradingDayInfo(string loginID,string StockCode, out List<TradingDayInformation> tradingInfoes)
+        public ErrType GetTradingDayInfo(string loginID, string StockCode, out List<TradingDayInformation> tradingInfoes)
         {
             tradingInfoes = null;
             try
             {
-                DateSetInfo info = ManagerService.GetDateSetInfoEx(StockCode,loginID );
+                DateSetInfo info = ManagerService.GetDateSetInfoEx(StockCode, loginID);
                 if (!info.Result)
                     return new ErrType(ERR.SERVICE, info.Desc);
 
@@ -1978,12 +1978,12 @@ namespace Gss.BusinessService
         /// <param name="account">客户id</param>
         /// <param name="LoginId">登陆标示</param>
         /// <returns></returns>
-        public ErrType AddUserToUserGroups(string account,string Groupid, String LoginId,ref ClientAccount CAccount)
+        public ErrType AddUserToUserGroups(string account, string Groupid, String LoginId, ref ClientAccount CAccount)
         {
             try
             {
-                TradeUser user=new TradeUser();
-                ResultDesc result = ManagerService.AddUserToUserGroups(account,Groupid, LoginId, ref user);
+                TradeUser user = new TradeUser();
+                ResultDesc result = ManagerService.AddUserToUserGroups(account, Groupid, LoginId, ref user);
                 CAccount = MyConverter.ToClientAccount(user);
 
                 if (!result.Result)
@@ -2322,8 +2322,7 @@ namespace Gss.BusinessService
             }
         }
         #endregion
-
-
+        
         #region 有效定单分页查询 马友春
         /// <summary>
         /// 有效定单分页查询GetMultiTradeOrderWithPage
@@ -2496,7 +2495,7 @@ namespace Gss.BusinessService
             ClientUserBaseInfo cinfo = new ClientUserBaseInfo();
             try
             {
-              
+
                 UserQueryCon query = MyConverter.ToUserQueryCon(Uqc);
                 UserBaseInfo info = ManagerService.GetUserBaseInfoWithPage(query, pageindex, pagesize, ref pageCount);
                 cinfo.Result = info.Result;
@@ -2605,8 +2604,7 @@ namespace Gss.BusinessService
         }
         #endregion
 
-
-
+        #region 资金相关
         /// <summary>
         /// 获取出金信息
         /// </summary>
@@ -2658,12 +2656,12 @@ namespace Gss.BusinessService
         /// <param name="LoginId">登陆ID</param>
         /// <param name="state">处理状态，"1"-已付款,"2"已拒绝 "3"处理中 "4"处理失败</param>
         /// <returns>ErrType</returns>
-        public ErrType ProcessChuJin(int ApplyId, String LoginId,ref string state)
+        public ErrType ProcessChuJin(int ApplyId, String LoginId, ref string state)
         {
             try
             {
-                
-                ResultDesc desc = ManagerService.ProcessChuJin(ApplyId, LoginId,ref state);
+
+                ResultDesc desc = ManagerService.ProcessChuJin(ApplyId, LoginId, ref state);
 
                 if (!desc.Result)
                     return new ErrType(ERR.SERVICE, desc.Desc);
@@ -2764,7 +2762,7 @@ namespace Gss.BusinessService
             }
             return cinfo;
         }
-
+        #endregion
 
         #region 	交割单[买跌]分页查询 马友春
         /// <summary>
@@ -2863,7 +2861,7 @@ namespace Gss.BusinessService
             }
             catch (TimeoutException te)
             {
-                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name, new StackTrace().GetFrame(0).GetMethod().Name, te.Message); 
+                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name, new StackTrace().GetFrame(0).GetMethod().Name, te.Message);
                 return new ErrType(ERR.EXEPTION, ErrorText.TimeoutException);
             }
             catch (Exception ex)
@@ -2873,7 +2871,6 @@ namespace Gss.BusinessService
             }
         }
         #endregion
-
 
         #region 店员资料分页查询
         /// <summary>
@@ -2949,7 +2946,6 @@ namespace Gss.BusinessService
 
         #endregion
 
-
         #region 店员资料修改
         /// <summary>
         /// 店员资料修改
@@ -2985,7 +2981,6 @@ namespace Gss.BusinessService
 
         #endregion
 
-
         #region 店员资料修改
         /// <summary>
         /// 店员资料修改
@@ -3019,7 +3014,6 @@ namespace Gss.BusinessService
         }
 
         #endregion
-
 
         #region 获取店员权限
         /// <summary>
@@ -3098,7 +3092,6 @@ namespace Gss.BusinessService
         }
 
         #endregion
-
 
         #region 角色权限
         #region 添加角色
@@ -3920,6 +3913,7 @@ namespace Gss.BusinessService
         #endregion
 
         #endregion
+
         #region 解约
         /// <summary>
         /// 获取解约
@@ -4019,6 +4013,7 @@ namespace Gss.BusinessService
         }
         #endregion
 
+        #region 获取出入金和解约信息
         /// <summary>
         /// 获取出入金和解约信息
         /// </summary>
@@ -4048,15 +4043,16 @@ namespace Gss.BusinessService
                 return new ErrType(ERR.EXEPTION, ErrorText.QueryError);
             }
         }
+        #endregion
         
+        #region
         public ClientFundChangeInfo GetMultiFundChangeWithPage(CxQueryConInfomation Fcqc, int pageindex, int pagesize, ref int page)
         {
             throw new NotImplementedException();
         }
-        #region
-        
         #endregion
 
+        #region 获取银行列表
         /// <summary>
         /// 获取银行列表
         /// </summary>
@@ -4065,13 +4061,13 @@ namespace Gss.BusinessService
         {
             try
             {
-                if (banks ==null)
+                if (banks == null)
                 {
                     banks = new ObservableCollection<Bank>();
                 }
                 banks.Clear();
 
-                List<TradeBank> rst =  ManagerService.GetTradeBank();
+                List<TradeBank> rst = ManagerService.GetTradeBank();
                 rst.ForEach(p => banks.Add(new Bank() { BankCode = p.ConBankType, BankName = p.BankName }));
                 return GeneralErr.Success;
             }
@@ -4084,8 +4080,10 @@ namespace Gss.BusinessService
                 FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name, new StackTrace().GetFrame(0).GetMethod().Name, ex.Message);
                 return new ErrType(ERR.EXEPTION, ErrorText.QueryError);
             }
-        }
+        } 
+        #endregion
 
+        #region 创建微会员二维码
         /// <summary>
         /// 创建微会员二维码
         /// </summary>
@@ -4098,8 +4096,8 @@ namespace Gss.BusinessService
                 createRequest request = new createRequest(orgId);
                 createResponse response = OrgTicketService.create(request);
                 var ret = response.createReturn;
-                if(ret.ToString()=="true")
-                return GeneralErr.Success;
+                if (ret.ToString() == "true")
+                    return GeneralErr.Success;
                 else
                     return GeneralErr.Error;
             }
@@ -4107,19 +4105,20 @@ namespace Gss.BusinessService
             {
                 return GeneralErr.Error;
             }
-        }
-
-
-      /// <summary>
+        } 
+        #endregion
+        
+        #region 体验券相关
+        /// <summary>
         /// 获取体验券信息
-      /// </summary>
+        /// </summary>
         /// <param name="loginId">登录标识</param>
         /// <param name="type">类型</param>
         /// <param name="isEffciive">是否启用</param>
         /// <param name="endTime">到期时间</param>
         /// <param name="list">ObservableCollection<ExperienceInformation></param>
         /// <returns>ErrType</returns>
-        public ErrType GetExperienceInfo(string loginId,int type, int isEffciive, DateTime? endTime,ref ObservableCollection<ExperienceInformation> list)
+        public ErrType GetExperienceInfo(string loginId, int type, int isEffciive, DateTime? endTime, ref ObservableCollection<ExperienceInformation> list)
         {
             try
             {
@@ -4129,7 +4128,7 @@ namespace Gss.BusinessService
                 }
                 list.Clear();
 
-                ExperienceInfo rst = ManagerService.GetExperienceInfo(loginId,type,isEffciive,endTime);
+                ExperienceInfo rst = ManagerService.GetExperienceInfo(loginId, type, isEffciive, endTime);
                 if (rst.Result == false)
                     return GeneralErr.Error;
                 foreach (Experience ex in rst.ExperienceList)
@@ -4144,7 +4143,7 @@ namespace Gss.BusinessService
                     exp.StartDate = ex.StartDate;
                     exp.EndDate = ex.EndDate;
                     exp.CreatID = ex.CreatID;
-                    exp.Effective = ex.Effective==0?1:0;
+                    exp.Effective = ex.Effective == 0 ? 1 : 0;
                     exp.EffectiveTime = ex.EffectiveTime;
                     list.Add(exp);
                 }
@@ -4180,9 +4179,9 @@ namespace Gss.BusinessService
                 exp.StartDate = ex.StartDate;
                 exp.EndDate = ex.EndDate;
                 exp.CreatID = ex.CreatID;
-                exp.Effective = ex.Effective==0?1:0;
+                exp.Effective = ex.Effective == 0 ? 1 : 0;
                 exp.EffectiveTime = ex.EffectiveTime;
-                ResultDesc desc= ManagerService.AddExperience(loginId, exp);
+                ResultDesc desc = ManagerService.AddExperience(loginId, exp);
                 if (desc.Result)
                     return GeneralErr.Success;
                 else
@@ -4214,7 +4213,7 @@ namespace Gss.BusinessService
                 exp.StartDate = ex.StartDate;
                 exp.EndDate = ex.EndDate;
                 exp.CreatID = ex.CreatID;
-                exp.Effective = ex.Effective==0?1:0;
+                exp.Effective = ex.Effective == 0 ? 1 : 0;
                 exp.EffectiveTime = ex.EffectiveTime;
                 ResultDesc desc = ManagerService.EditExperience(loginId, exp);
                 if (desc.Result)
@@ -4248,6 +4247,150 @@ namespace Gss.BusinessService
             {
                 return GeneralErr.Error;
             }
+        } 
+        #endregion
+        
+        #region 广告相关
+        /// <summary>
+        /// 广告查询
+        /// </summary>
+        /// <param name="loginId"></param>
+        /// <param name="sTime"></param>
+        /// <param name="eTime"></param>
+        /// <param name="Name"></param>
+        /// <param name="Creater"></param>
+        /// <param name="State"></param>
+        /// <param name="list"></param>
+        /// <param name="pageindex">第几页,从1开始</param>
+        /// <param name="pagesize">每页多少条</param>
+        /// <param name="page">输出参数(总页数)</param>
+        /// <returns></returns>
+        public ErrType GetAdvertInfoWithPage(string loginId, DateTime sTime, DateTime eTime, string Name, string Creater, int State,
+            ref ObservableCollection<AdvertInfo> list, int pageindex, int pagesize, ref int page)
+        {
+            try
+            {
+                if (list == null)
+                {
+                    list = new ObservableCollection<AdvertInfo>();
+                }
+                list.Clear();
+                AdvertLqc lqc = new AdvertLqc();
+                lqc.Creator = Creater;
+                lqc.EndTime = eTime;
+                lqc.LoginID = loginId;
+                lqc.Name = Name;
+                lqc.StartTime = sTime;
+                lqc.Status = State;
+
+                AdvertListInfo rst = ManagerService.GetAdvertInfoWithPage(lqc, pageindex, pagesize, ref page);
+                if (rst.Result == false)
+                    return GeneralErr.Error;
+                foreach (Advert ex in rst.AdvertList)
+                {
+                    AdvertInfo advert = new AdvertInfo();
+                    advert.ID = ex.ID;
+                    advert.Creator = ex.Creator;
+                    advert.Name = ex.Name;
+                    advert.Remark = ex.Remark;
+                    advert.CreateDate = ex.CreateDate;
+                    advert.Status = ex.Status;
+                    advert.Url = ex.Url;
+                    list.Add(advert);
+                }
+                return GeneralErr.Success;
+            }
+            catch (TimeoutException te)
+            {
+                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name, new StackTrace().GetFrame(0).GetMethod().Name, te.Message); return new ErrType(ERR.EXEPTION, ErrorText.TimeoutException);
+            }
+            catch (Exception ex)
+            {
+                FileLog.WriteLog("", Assembly.GetExecutingAssembly().GetName().Name, this.GetType().Name, new StackTrace().GetFrame(0).GetMethod().Name, ex.Message);
+                return new ErrType(ERR.EXEPTION, ErrorText.QueryError);
+            }
         }
+
+        /// <summary>
+        /// 添加广告
+        /// </summary>
+        /// <param name="loginId">登录标识</param>
+        /// <param name="info">广告内容</param>
+        /// <returns>ErrType</returns>
+        public ErrType AddAdvert(string loginId, AdvertInfo info)
+        {
+            try
+            {
+                Advert advert = new Advert();
+                advert.ID = info.ID;
+                advert.Creator = info.Creator;
+                advert.Name = info.Name;
+                advert.Remark = info.Remark;
+                advert.CreateDate = info.CreateDate;
+                advert.Status = info.Status;
+                advert.Url = info.Url;
+                ResultDesc desc = ManagerService.AddAdvert(loginId, advert);
+                if (desc.Result)
+                    return GeneralErr.Success;
+                else
+                    return GeneralErr.Error;
+            }
+            catch (Exception e)
+            {
+                return GeneralErr.Error;
+            }
+        }
+
+        /// <summary>
+        /// 删除广告
+        /// </summary>
+        /// <param name="loginId">登录标识</param>
+        /// <param name="id">广告标识</param>
+        /// <returns>ResultDesc</returns>
+        public ErrType DelAdvert(string loginId, string id)
+        {
+            try
+            {
+                ResultDesc desc = ManagerService.DelAdvert(loginId, id);
+                if (desc.Result)
+                    return GeneralErr.Success;
+                else
+                    return GeneralErr.Error;
+            }
+            catch (Exception e)
+            {
+                return GeneralErr.Error;
+            }
+        }
+
+        /// <summary>
+        /// 编辑广告
+        /// </summary>
+        /// <param name="loginId">登录标识</param>
+        /// <param name="info">广告</param>
+        /// <returns>ResultDesc</returns>
+        public ErrType EditAdvert(string loginId, AdvertInfo info)
+        {
+            try
+            {
+                Advert advert = new Advert();
+                advert.ID = info.ID;
+                advert.Creator = info.Creator;
+                advert.Name = info.Name;
+                advert.Remark = info.Remark;
+                advert.Status = info.Status;
+                advert.Url = info.Url;
+                ResultDesc desc = ManagerService.EditAdvert(loginId, advert);
+                if (desc.Result)
+                    return GeneralErr.Success;
+                else
+                    return GeneralErr.Error;
+            }
+            catch (Exception e)
+            {
+                return GeneralErr.Error;
+            }
+        } 
+        #endregion
     }
 }

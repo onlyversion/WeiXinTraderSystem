@@ -61,7 +61,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/ArticlesInfo.aspx.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/ArticlesInfo.aspx.
         /// </summary>
         internal static string ArticlesInfo_ImitateConnectType {
             get {
@@ -70,7 +70,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/ArticlesInfo.aspx.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/ArticlesInfo.aspx.
         /// </summary>
         internal static string ArticlesInfo_StockConnectType {
             get {
@@ -97,7 +97,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/GssManager.svc.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/GssManager.svc.
         /// </summary>
         internal static string GssManager_ImitateConnectType {
             get {
@@ -106,7 +106,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/GssManager.svc.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/GssManager.svc.
         /// </summary>
         internal static string GssManager_StockConnectType {
             get {
@@ -124,7 +124,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/NewsInfo.aspx.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/NewsInfo.aspx.
         /// </summary>
         internal static string NewsAddOrEdit_ImitateConnectType {
             get {
@@ -133,7 +133,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/NewsInfo.aspx.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/NewsInfo.aspx.
         /// </summary>
         internal static string NewsAddOrEdit_StockConnectType {
             get {
@@ -142,7 +142,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/News.aspx.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/News.aspx.
         /// </summary>
         internal static string NewsShow_ImitateConnectType {
             get {
@@ -151,7 +151,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/News.aspx.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/News.aspx.
         /// </summary>
         internal static string NewsShow_StockConnectType {
             get {
@@ -160,7 +160,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://121.40.153.156/ZhongDingWeiYeWeiXinNew/services/createTicket?wsdl.
+        ///   Looks up a localized string similar to http://m.xsdzsp.com/ZhongDingWeiYeWeiXinNew/services/createTicket?wsdl.
         /// </summary>
         internal static string OrgTicketService_ImitateConnectType {
             get {
@@ -169,7 +169,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://121.40.153.156/ZhongDingWeiYeWeiXinNew/services/createTicket?wsdl.
+        ///   Looks up a localized string similar to http://m.xsdzsp.com/ZhongDingWeiYeWeiXinNew/services/createTicket?wsdl.
         /// </summary>
         internal static string OrgTicketService_StockConnectType {
             get {
@@ -196,7 +196,7 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/TradeService.svc.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/TradeService.svc.
         /// </summary>
         internal static string TradeService_ImitateConnectType {
             get {
@@ -205,11 +205,29 @@ namespace Gss.Entities {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://192.168.2.102:8077/TradeService.svc.
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/TradeService.svc.
         /// </summary>
         internal static string TradeService_StockConnectType {
             get {
                 return ResourceManager.GetString("TradeService_StockConnectType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/UpLoadImage.aspx.
+        /// </summary>
+        internal static string UpLoadImage_ImitateConnectType {
+            get {
+                return ResourceManager.GetString("UpLoadImage_ImitateConnectType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://121.40.153.156:8075/UpLoadImage.aspx.
+        /// </summary>
+        internal static string UpLoadImage_StockConnectType {
+            get {
+                return ResourceManager.GetString("UpLoadImage_StockConnectType", resourceCulture);
             }
         }
     }

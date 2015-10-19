@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="bAzYt+nfNnS/3xXVGUjzdFe8w6M=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="hm7GkhB9sgxBbiJ0zRL1elaQMNA=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_IManager">
       <properties>
@@ -127,10 +127,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_IManager" contract="ManagementService.IManager" bindingType="wsHttpBinding" address="http://192.168.1.116:8075/GssManager.svc" bindingConfiguration="WSHttpBinding_IManager">
+    <endpoint name="WSHttpBinding_IManager" contract="ManagementService.IManager" bindingType="wsHttpBinding" address="http://192.168.2.102:8077/GssManager.svc" bindingConfiguration="WSHttpBinding_IManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.1.116:8075/GssManager.svc</serializedValue>
+          <serializedValue>http://192.168.2.102:8077/GssManager.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

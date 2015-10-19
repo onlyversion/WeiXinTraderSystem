@@ -268,7 +268,12 @@
             </cus:GssTreeViewItem.View>
         </cus:GssTreeViewItem>
 
-
+        <cus:GssTreeViewItem Title="广告" Icon="/Gss.ManagementMenu;component/Images/Experience.png"
+                             Visibility="{Binding AllowAdvert, Converter={StaticResource BoolVisibilityCvt}}">
+            <cus:GssTreeViewItem.View>
+                <sysSetting:AdvertControl/>
+            </cus:GssTreeViewItem.View>
+        </cus:GssTreeViewItem>
 
         <!--<cus:GssTreeViewItem Title="发布" Icon="/Gss.ManagementMenu;component/Images/ReleaseAnnouncement.png"
                              Visibility="{Binding AllowReleaseAnnouncement, Converter={StaticResource BoolVisibilityCvt}}">

@@ -269,6 +269,10 @@
     <value>公告发布</value>
     <comment>系统设置-公告发布</comment>
   </data>
+  <data name="System_Advert" xml:space="preserve">
+    <value>广告</value>
+    <comment>系统设置-广告</comment>
+  </data>
   <data name="System_ArticlesInfo" xml:space="preserve">
     <value>理财师说</value>
     <comment>系统设置-理财师说</comment>

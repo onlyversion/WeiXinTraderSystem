@@ -126,11 +126,11 @@
     <comment>保证金WCF服务（交易服务器）</comment>
   </data>
   <data name="GssManager_ImitateConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/GssManager.svc</value>
+    <value>http://121.40.153.156:8075/GssManager.svc</value>
     <comment>(模拟服务器）http://118.123.240.152:8722/GssManager.svc</comment>
   </data>
   <data name="GssManager_StockConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/GssManager.svc</value>
+    <value>http://121.40.153.156:8075/GssManager.svc</value>
     <comment>(交易服务器）http://118.123.240.152:8622/GssManager.svc</comment>
   </data>
   <data name="JgjWebService" xml:space="preserve">
@@ -138,26 +138,26 @@
     <comment>金生金WebService地址</comment>
   </data>
   <data name="NewsAddOrEdit_ImitateConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/NewsInfo.aspx</value>
+    <value>http://121.40.153.156:8075/NewsInfo.aspx</value>
     <comment>模拟服务器  添加或编辑新闻</comment>
   </data>
   <data name="NewsAddOrEdit_StockConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/NewsInfo.aspx</value>
+    <value>http://121.40.153.156:8075/NewsInfo.aspx</value>
     <comment>交易服务器  添加或编辑新闻</comment>
   </data>
   <data name="NewsShow_ImitateConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/News.aspx</value>
+    <value>http://121.40.153.156:8075/News.aspx</value>
     <comment>模拟服务器 查看新闻</comment>
   </data>
   <data name="NewsShow_StockConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/News.aspx</value>
+    <value>http://121.40.153.156:8075/News.aspx</value>
     <comment>交易服务器 查看新闻</comment>
   </data>
   <data name="OrgTicketService_ImitateConnectType" xml:space="preserve">
-    <value>http://121.40.153.156/ZhongDingWeiYeWeiXinNew/services/createTicket?wsdl</value>
+    <value>http://m.xsdzsp.com/ZhongDingWeiYeWeiXinNew/services/createTicket?wsdl</value>
   </data>
   <data name="OrgTicketService_StockConnectType" xml:space="preserve">
-    <value>http://121.40.153.156/ZhongDingWeiYeWeiXinNew/services/createTicket?wsdl</value>
+    <value>http://m.xsdzsp.com/ZhongDingWeiYeWeiXinNew/services/createTicket?wsdl</value>
   </data>
   <data name="srvUpdateAddr" xml:space="preserve">
     <value />
@@ -168,17 +168,25 @@
     <comment>服务器上更新程序的文件版本号</comment>
   </data>
   <data name="TradeService_ImitateConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/TradeService.svc</value>
-    <comment>(模拟服务器）http://118.123.240.152:8722/tradeservice.svc</comment>
+    <value>http://121.40.153.156:8075/TradeService.svc</value>
+    <comment>(模拟服务器）</comment>
   </data>
   <data name="TradeService_StockConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/TradeService.svc</value>
-    <comment>(交易服务器）http://118.123.240.152:8622/tradeservice.svc</comment>
+    <value>http://121.40.153.156:8075/TradeService.svc</value>
+    <comment>(交易服务器）</comment>
   </data>
   <data name="ArticlesInfo_ImitateConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/ArticlesInfo.aspx</value>
+    <value>http://121.40.153.156:8075/ArticlesInfo.aspx</value>
   </data>
   <data name="ArticlesInfo_StockConnectType" xml:space="preserve">
-    <value>http://192.168.2.102:8077/ArticlesInfo.aspx</value>
+    <value>http://121.40.153.156:8075/ArticlesInfo.aspx</value>
+  </data>
+  <data name="UpLoadImage_ImitateConnectType" xml:space="preserve">
+    <value>http://121.40.153.156:8075/UpLoadImage.aspx</value>
+    <comment>上传图片保存地址</comment>
+  </data>
+  <data name="UpLoadImage_StockConnectType" xml:space="preserve">
+    <value>http://121.40.153.156:8075/UpLoadImage.aspx</value>
+    <comment>上传图片保存地址</comment>
   </data>
 </root>

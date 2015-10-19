@@ -116,3 +116,5 @@ E:\GitHub\WeiXinTraderSystem\Gss.PopUpWindow\obj\Release\Gss.PopUpWindow.csproj.
 E:\GitHub\WeiXinTraderSystem\Gss.PopUpWindow\obj\Release\Gss.PopUpWindow.dll
 E:\GitHub\WeiXinTraderSystem\Gss.PopUpWindow\obj\Release\Gss.PopUpWindow.pdb
 E:\GitHub\WeiXinTraderSystem\Gss.PopUpWindow\obj\Release\Gss.PopUpWindow.csprojResolveAssemblyReference.cache
+E:\GitHub\WeiXinTraderSystem\Gss.PopUpWindow\obj\Release\SystemSetting\AdvertWindow.baml
+E:\GitHub\WeiXinTraderSystem\Gss.PopUpWindow\obj\Release\SystemSetting\AdvertWindow.g.cs

@@ -723,6 +723,26 @@ namespace Gss.Entities.JTWEntityes
             }
         }
 
+        private bool _AllowAdvert;
+
+        /// <summary>
+        /// 广告
+        /// </summary>
+        public bool AllowAdvert
+        {
+            get { return _AllowAdvert; }
+            set
+            {
+                if (_AllowAdvert != value)
+                {
+                    _AllowAdvert = value;
+                    RaisePropertyChanged("AllowAdvert");
+
+                }
+            }
+        }
+
+
         private bool _allowViewLog;
 
         /// <summary>

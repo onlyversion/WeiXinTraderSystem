@@ -66,21 +66,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\ManagementService\CManager.wsdl" />
+    <None Include="Service References\ManagementService\CManager1.wsdl" />
+    <None Include="Service References\ManagementService\Gss.BusinessService.ManagementService.AdvertListInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ManagementService\Gss.BusinessService.ManagementService.ExperienceInfo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ManagementService\GssManager.wsdl" />
-    <None Include="Service References\ManagementService\GssManager4.xsd">
+    <None Include="Service References\ManagementService\GssManager.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ManagementService\GssManager41.xsd">
+    <None Include="Service References\ManagementService\GssManager1.wsdl" />
+    <None Include="Service References\ManagementService\GssManager1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ManagementService\GssManager42.xsd">
+    <None Include="Service References\ManagementService\GssManager2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ManagementService\GssManager43.xsd">
+    <None Include="Service References\ManagementService\GssManager3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OrgTicketService\createTicket.wsdl" />
@@ -217,7 +220,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ManagementService\GssManager.disco" />
+    <None Include="Service References\ManagementService\GssManager1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

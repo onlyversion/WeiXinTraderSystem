@@ -388,6 +388,8 @@ namespace Gss.TradeService
             }
         }
 
+     
+
         public ErrType GetHistoryDataInfoWithPage(
             string loginId,string weekTime, DateTime starttime, DateTime endtime, string productNum, string cycle,
             int pageindex, int pagesize, ref int page, ref ObservableCollection<Gss.Entities.JTWEntityes.HisData> list)

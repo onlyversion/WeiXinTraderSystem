@@ -28,3 +28,13 @@ E:\AllProjects\金通网微交易\公用管理端\Gss.StockQuotations\bin\Debug\
 E:\AllProjects\金通网微交易\公用管理端\Gss.StockQuotations\obj\Debug\Gss.StockQuotations.csprojResolveAssemblyReference.cache
 E:\AllProjects\金通网微交易\公用管理端\Gss.StockQuotations\obj\Debug\Gss.StockQuotations.dll
 E:\AllProjects\金通网微交易\公用管理端\Gss.StockQuotations\obj\Debug\Gss.StockQuotations.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Debug\Gss.StockQuotations.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Debug\Gss.StockQuotations.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Debug\com.gss.cnt.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Debug\com.gss.common.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Debug\Gss.Common.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Debug\Xceed.Wpf.Toolkit.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\bin\Debug\Gss.Common.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\obj\Debug\Gss.StockQuotations.csprojResolveAssemblyReference.cache
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\obj\Debug\Gss.StockQuotations.dll
+E:\GitHub\WeiXinTraderSystem\Gss.StockQuotations\obj\Debug\Gss.StockQuotations.pdb

@@ -1504,7 +1504,7 @@ namespace Gss.BusinessService
                 info.IsSystemSettingsEnabled = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System).FirstOrDefault() == null ? false : true;//系统设置（父类）
                 info.AllowReleaseNews = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_1).FirstOrDefault() == null ? false : true;//发布新闻
                 info.AllowArticlesInfo = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_ArticlesInfo).FirstOrDefault() == null ? false : true;//理财师说
-
+                info.AllowAdvert = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_Advert).FirstOrDefault() == null ? false : true;//广告
 
                 info.AllowReleaseAnnouncement = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_2).FirstOrDefault() == null ? false : true;//发布公告
                 info.AllowViewLog = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_LogInfo).FirstOrDefault() == null ? false : true;//查看日志
@@ -1517,6 +1517,7 @@ namespace Gss.BusinessService
                 info.EnablePrivilegeManager = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_PrivilegeManager).FirstOrDefault() == null ? false : true;//权限管理
                 info.EnableTradeMoneyInfo = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_TradeMoneyInfo).FirstOrDefault() == null ? false : true;//出入金解约
                 info.GroupManager = list.Where(p => p.PrivilegeName == AppPrivilegeConfig.System_Group).FirstOrDefault() == null ? false : true;//客户分组管理
+                
                 #endregion
 
                 #region 数据管理

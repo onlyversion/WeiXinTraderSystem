@@ -1,0 +1,3 @@
+2015/10/16 11:40:51		Gss.BusinessService	BusinessServiceProvider	GetTradeMoneyInfo	请求通道在等待 00:00:59.9959995 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+2015/10/16 11:42:02		Gss.BusinessService	BusinessServiceProvider	GetTradeMoneyInfo	请求通道在等待 00:00:59.9924991 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。
+2015/10/16 11:43:12		Gss.BusinessService	BusinessServiceProvider	GetTradeMoneyInfo	请求通道在等待 00:00:59.9989999 以后答复时超时。增加传递给请求调用的超时值，或者增加绑定上的 SendTimeout 值。分配给此操作的时间可能已经是更长超时的一部分。

@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="www.IManager.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="www.IManager.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="www.IManager.com/Imports">
+      <xsd:import schemaLocation="http://192.168.2.102:8077/GssManager.svc?xsd=xsd0" namespace="www.IManager.com" />
+      <xsd:import schemaLocation="http://192.168.2.102:8077/GssManager.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.2.102:8077/GssManager.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model" />
+      <xsd:import schemaLocation="http://192.168.2.102:8077/GssManager.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfInterface.model.WJY" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IManager_AddTradeUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeUser" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeUserEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeUserEx" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeUserEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeUserExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetUserFundinfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserFundinfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetUserFundinfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserFundinfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeUser" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeUser" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeUserEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeUserEx" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeUserEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeUserExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyUserFundinfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyUserFundinfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyUserFundinfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyUserFundinfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AdminLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdminLogin" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AdminLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdminLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetDateSetInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateSetInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetDateSetInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateSetInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyDateSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyDateSet" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyDateSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyDateSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetDateSetInfoEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateSetInfoEx" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetDateSetInfoEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDateSetInfoExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyDateSetEx_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyDateSetEx" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyDateSetEx_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyDateSetExResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetHolidayInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHolidayInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetHolidayInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHolidayInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyHoliday_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyHoliday" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyHoliday_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyHolidayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddHoliday_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddHoliday" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddHoliday_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddHolidayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelHoliday_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelHoliday" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelHoliday_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelHolidayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeSet" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeSet" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeSet" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeNews_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeNews" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeNews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeNews_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeNews" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeNews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeNews_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeNews" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeNews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeIpInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeIpInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeIpInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeIpInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeIp_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeIp" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeIp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeIpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeIp_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeIp" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeIp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeIpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeIp_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeIp" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeIp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeIpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeMacInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeMacInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeMacInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeMacInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeMac_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeMac" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeMac_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeMacResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeMac_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeMac" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeMac_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeMacResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeMac_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeMac" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeMac_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeMacResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeProductInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeProductInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeProductInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeProductInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeProduct" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeProduct" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddTradeProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTradeProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeProduct" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelTradeProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelTradeProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeRateInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeRateInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeRateInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeRateInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeRate_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeRate" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyTradeRate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyTradeRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetHedgingInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHedgingInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetHedgingInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHedgingInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyUserMoney_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyUserMoney" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyUserMoney_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyUserMoneyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetReportForms_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportForms" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetReportForms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetReportFormsUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportFormsUser" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetReportFormsUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportFormsUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiTradeOrderWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiTradeOrderWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiTradeOrderWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiTradeOrderWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiTradeHoldOrderWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiTradeHoldOrderWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiTradeHoldOrderWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiTradeHoldOrderWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiLTradeOrderWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiLTradeOrderWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiLTradeOrderWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiLTradeOrderWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeALogInfoWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeALogInfoWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeALogInfoWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeALogInfoWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetUserBaseInfoWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBaseInfoWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetUserBaseInfoWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBaseInfoWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_CheckTradeUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckTradeUser" />
+  </wsdl:message>
+  <wsdl:message name="IManager_CheckTradeUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckTradeUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ManualPrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:ManualPrice" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ManualPrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ManualPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiTradeChuJinWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiTradeChuJinWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiTradeChuJinWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiTradeChuJinWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiFundChangeWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiFundChangeWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiFundChangeWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiFundChangeWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ProcessChuJin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessChuJin" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ProcessChuJin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessChuJinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_RefusedChuJin_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefusedChuJin" />
+  </wsdl:message>
+  <wsdl:message name="IManager_RefusedChuJin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefusedChuJinResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiTradeJieYueWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiTradeJieYueWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetMultiTradeJieYueWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMultiTradeJieYueWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ProcessJieYue_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessJieYue" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ProcessJieYue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessJieYueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_RefusedJieYue_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefusedJieYue" />
+  </wsdl:message>
+  <wsdl:message name="IManager_RefusedJieYue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefusedJieYueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeJuJianInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeJuJianInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeJuJianInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeJuJianInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetOrgcode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrgcode" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetOrgcode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrgcodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeMoneyInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeMoneyInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeMoneyInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeMoneyInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeBank_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeBank" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetTradeBank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTradeBankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelUserFromUserGroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelUserFromUserGroups" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelUserFromUserGroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelUserFromUserGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddUserToUserGroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToUserGroups" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddUserToUserGroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserToUserGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyUserGroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyUserGroups" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ModifyUserGroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyUserGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelUserGroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelUserGroups" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelUserGroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelUserGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddUserGroups_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserGroups" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddUserGroups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetUserGroupsInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserGroupsInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetUserGroupsInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserGroupsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetExperienceInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExperienceInfo" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetExperienceInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExperienceInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddExperience_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddExperience" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddExperience_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddExperienceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_EditExperience_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditExperience" />
+  </wsdl:message>
+  <wsdl:message name="IManager_EditExperience_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditExperienceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelExperience_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelExperience" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelExperience_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelExperienceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetAdvertInfoWithPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvertInfoWithPage" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetAdvertInfoWithPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvertInfoWithPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddAdvert_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAdvert" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddAdvert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAdvertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelAdvert_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelAdvert" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DelAdvert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelAdvertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_EditAdvert_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditAdvert" />
+  </wsdl:message>
+  <wsdl:message name="IManager_EditAdvert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditAdvertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdateRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdateRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeleteRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeleteRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddRolePrivileges_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRolePrivileges" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddRolePrivileges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRolePrivilegesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoles" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegesRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegesRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegesRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegesRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegesWithRoleSign_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegesWithRoleSign" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegesWithRoleSign_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegesWithRoleSignResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddPrivileges_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPrivileges" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddPrivileges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPrivilegesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdatePrivileges_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePrivileges" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdatePrivileges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePrivilegesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadPrivileges_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadPrivileges" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadPrivileges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadPrivilegesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeletePrivileges_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePrivileges" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeletePrivileges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePrivilegesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegeList" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegeParentLit_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegeParentLit" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegeParentLit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegeParentLitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegeTopMenu_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegeTopMenu" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegeTopMenu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegeTopMenuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegesByParentID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegesByParentID" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivilegesByParentID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegesByParentIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ValidataUserRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidataUserRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ValidataUserRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidataUserRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UserRolePrivileges_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserRolePrivileges" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UserRolePrivileges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserRolePrivilegesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivileges_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivileges" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetPrivileges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPrivilegesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrg" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdateOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrg" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdateOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadOrg" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeleteOrg_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrg" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeleteOrg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetOrgList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrgList" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetOrgList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrgListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetBaseOrgListAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBaseOrgListAll" />
+  </wsdl:message>
+  <wsdl:message name="IManager_GetBaseOrgListAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBaseOrgListAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddUserRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddUserRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdateUserRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdateUserRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadUserRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadUserRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadUserRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadUserRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeleteUserRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserRole" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeleteUserRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteUserRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddOrgUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrgUser" />
+  </wsdl:message>
+  <wsdl:message name="IManager_AddOrgUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrgUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdateOrgUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrgUser" />
+  </wsdl:message>
+  <wsdl:message name="IManager_UpdateOrgUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrgUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadOrgUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadOrgUser" />
+  </wsdl:message>
+  <wsdl:message name="IManager_ReadOrgUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadOrgUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeleteOrgUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrgUser" />
+  </wsdl:message>
+  <wsdl:message name="IManager_DeleteOrgUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrgUserResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IManager">
+    <wsdl:operation name="AddTradeUser">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddTradeUser" message="tns:IManager_AddTradeUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddTradeUserResponse" message="tns:IManager_AddTradeUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTradeUserEx">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddTradeUserEx" message="tns:IManager_AddTradeUserEx_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddTradeUserExResponse" message="tns:IManager_AddTradeUserEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserFundinfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetUserFundinfo" message="tns:IManager_GetUserFundinfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetUserFundinfoResponse" message="tns:IManager_GetUserFundinfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelTradeUser">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelTradeUser" message="tns:IManager_DelTradeUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelTradeUserResponse" message="tns:IManager_DelTradeUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTradeUser">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyTradeUser" message="tns:IManager_ModifyTradeUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyTradeUserResponse" message="tns:IManager_ModifyTradeUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTradeUserEx">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyTradeUserEx" message="tns:IManager_ModifyTradeUserEx_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyTradeUserExResponse" message="tns:IManager_ModifyTradeUserEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUserFundinfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyUserFundinfo" message="tns:IManager_ModifyUserFundinfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyUserFundinfoResponse" message="tns:IManager_ModifyUserFundinfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdminLogin">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AdminLogin" message="tns:IManager_AdminLogin_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AdminLoginResponse" message="tns:IManager_AdminLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDateSetInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetDateSetInfo" message="tns:IManager_GetDateSetInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetDateSetInfoResponse" message="tns:IManager_GetDateSetInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDateSet">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyDateSet" message="tns:IManager_ModifyDateSet_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyDateSetResponse" message="tns:IManager_ModifyDateSet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDateSetInfoEx">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetDateSetInfoEx" message="tns:IManager_GetDateSetInfoEx_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetDateSetInfoExResponse" message="tns:IManager_GetDateSetInfoEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyDateSetEx">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyDateSetEx" message="tns:IManager_ModifyDateSetEx_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyDateSetExResponse" message="tns:IManager_ModifyDateSetEx_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHolidayInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetHolidayInfo" message="tns:IManager_GetHolidayInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetHolidayInfoResponse" message="tns:IManager_GetHolidayInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyHoliday">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyHoliday" message="tns:IManager_ModifyHoliday_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyHolidayResponse" message="tns:IManager_ModifyHoliday_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddHoliday">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddHoliday" message="tns:IManager_AddHoliday_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddHolidayResponse" message="tns:IManager_AddHoliday_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelHoliday">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelHoliday" message="tns:IManager_DelHoliday_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelHolidayResponse" message="tns:IManager_DelHoliday_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTradeSet">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddTradeSet" message="tns:IManager_AddTradeSet_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddTradeSetResponse" message="tns:IManager_AddTradeSet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelTradeSet">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelTradeSet" message="tns:IManager_DelTradeSet_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelTradeSetResponse" message="tns:IManager_DelTradeSet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTradeSet">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyTradeSet" message="tns:IManager_ModifyTradeSet_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyTradeSetResponse" message="tns:IManager_ModifyTradeSet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTradeNews">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddTradeNews" message="tns:IManager_AddTradeNews_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddTradeNewsResponse" message="tns:IManager_AddTradeNews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTradeNews">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyTradeNews" message="tns:IManager_ModifyTradeNews_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyTradeNewsResponse" message="tns:IManager_ModifyTradeNews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelTradeNews">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelTradeNews" message="tns:IManager_DelTradeNews_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelTradeNewsResponse" message="tns:IManager_DelTradeNews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeIpInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetTradeIpInfo" message="tns:IManager_GetTradeIpInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetTradeIpInfoResponse" message="tns:IManager_GetTradeIpInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTradeIp">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyTradeIp" message="tns:IManager_ModifyTradeIp_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyTradeIpResponse" message="tns:IManager_ModifyTradeIp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTradeIp">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddTradeIp" message="tns:IManager_AddTradeIp_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddTradeIpResponse" message="tns:IManager_AddTradeIp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelTradeIp">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelTradeIp" message="tns:IManager_DelTradeIp_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelTradeIpResponse" message="tns:IManager_DelTradeIp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeMacInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetTradeMacInfo" message="tns:IManager_GetTradeMacInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetTradeMacInfoResponse" message="tns:IManager_GetTradeMacInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTradeMac">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyTradeMac" message="tns:IManager_ModifyTradeMac_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyTradeMacResponse" message="tns:IManager_ModifyTradeMac_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTradeMac">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddTradeMac" message="tns:IManager_AddTradeMac_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddTradeMacResponse" message="tns:IManager_AddTradeMac_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelTradeMac">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelTradeMac" message="tns:IManager_DelTradeMac_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelTradeMacResponse" message="tns:IManager_DelTradeMac_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeProductInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetTradeProductInfo" message="tns:IManager_GetTradeProductInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetTradeProductInfoResponse" message="tns:IManager_GetTradeProductInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTradeProduct">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyTradeProduct" message="tns:IManager_ModifyTradeProduct_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyTradeProductResponse" message="tns:IManager_ModifyTradeProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTradeProduct">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddTradeProduct" message="tns:IManager_AddTradeProduct_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddTradeProductResponse" message="tns:IManager_AddTradeProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelTradeProduct">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelTradeProduct" message="tns:IManager_DelTradeProduct_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelTradeProductResponse" message="tns:IManager_DelTradeProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeRateInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetTradeRateInfo" message="tns:IManager_GetTradeRateInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetTradeRateInfoResponse" message="tns:IManager_GetTradeRateInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyTradeRate">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyTradeRate" message="tns:IManager_ModifyTradeRate_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyTradeRateResponse" message="tns:IManager_ModifyTradeRate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHedgingInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetHedgingInfo" message="tns:IManager_GetHedgingInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetHedgingInfoResponse" message="tns:IManager_GetHedgingInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUserMoney">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyUserMoney" message="tns:IManager_ModifyUserMoney_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyUserMoneyResponse" message="tns:IManager_ModifyUserMoney_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportForms">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetReportForms" message="tns:IManager_GetReportForms_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetReportFormsResponse" message="tns:IManager_GetReportForms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportFormsUser">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetReportFormsUser" message="tns:IManager_GetReportFormsUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetReportFormsUserResponse" message="tns:IManager_GetReportFormsUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMultiTradeOrderWithPage">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetMultiTradeOrderWithPage" message="tns:IManager_GetMultiTradeOrderWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetMultiTradeOrderWithPageResponse" message="tns:IManager_GetMultiTradeOrderWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMultiTradeHoldOrderWithPage">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetMultiTradeHoldOrderWithPage" message="tns:IManager_GetMultiTradeHoldOrderWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetMultiTradeHoldOrderWithPageResponse" message="tns:IManager_GetMultiTradeHoldOrderWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMultiLTradeOrderWithPage">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetMultiLTradeOrderWithPage" message="tns:IManager_GetMultiLTradeOrderWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetMultiLTradeOrderWithPageResponse" message="tns:IManager_GetMultiLTradeOrderWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeALogInfoWithPage">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetTradeALogInfoWithPage" message="tns:IManager_GetTradeALogInfoWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetTradeALogInfoWithPageResponse" message="tns:IManager_GetTradeALogInfoWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBaseInfoWithPage">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetUserBaseInfoWithPage" message="tns:IManager_GetUserBaseInfoWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetUserBaseInfoWithPageResponse" message="tns:IManager_GetUserBaseInfoWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckTradeUser">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/CheckTradeUser" message="tns:IManager_CheckTradeUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/CheckTradeUserResponse" message="tns:IManager_CheckTradeUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ManualPrice">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ManualPrice" message="tns:IManager_ManualPrice_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ManualPriceResponse" message="tns:IManager_ManualPrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMultiTradeChuJinWithPage">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetMultiTradeChuJinWithPage" message="tns:IManager_GetMultiTradeChuJinWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetMultiTradeChuJinWithPageResponse" message="tns:IManager_GetMultiTradeChuJinWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMultiFundChangeWithPage">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetMultiFundChangeWithPage" message="tns:IManager_GetMultiFundChangeWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetMultiFundChangeWithPageResponse" message="tns:IManager_GetMultiFundChangeWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessChuJin">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ProcessChuJin" message="tns:IManager_ProcessChuJin_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ProcessChuJinResponse" message="tns:IManager_ProcessChuJin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefusedChuJin">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/RefusedChuJin" message="tns:IManager_RefusedChuJin_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/RefusedChuJinResponse" message="tns:IManager_RefusedChuJin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMultiTradeJieYueWithPage">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetMultiTradeJieYueWithPage" message="tns:IManager_GetMultiTradeJieYueWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetMultiTradeJieYueWithPageResponse" message="tns:IManager_GetMultiTradeJieYueWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessJieYue">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ProcessJieYue" message="tns:IManager_ProcessJieYue_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ProcessJieYueResponse" message="tns:IManager_ProcessJieYue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefusedJieYue">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/RefusedJieYue" message="tns:IManager_RefusedJieYue_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/RefusedJieYueResponse" message="tns:IManager_RefusedJieYue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeJuJianInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetTradeJuJianInfo" message="tns:IManager_GetTradeJuJianInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetTradeJuJianInfoResponse" message="tns:IManager_GetTradeJuJianInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrgcode">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetOrgcode" message="tns:IManager_GetOrgcode_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetOrgcodeResponse" message="tns:IManager_GetOrgcode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeMoneyInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetTradeMoneyInfo" message="tns:IManager_GetTradeMoneyInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetTradeMoneyInfoResponse" message="tns:IManager_GetTradeMoneyInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeBank">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetTradeBank" message="tns:IManager_GetTradeBank_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetTradeBankResponse" message="tns:IManager_GetTradeBank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelUserFromUserGroups">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelUserFromUserGroups" message="tns:IManager_DelUserFromUserGroups_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelUserFromUserGroupsResponse" message="tns:IManager_DelUserFromUserGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserToUserGroups">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddUserToUserGroups" message="tns:IManager_AddUserToUserGroups_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddUserToUserGroupsResponse" message="tns:IManager_AddUserToUserGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUserGroups">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ModifyUserGroups" message="tns:IManager_ModifyUserGroups_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ModifyUserGroupsResponse" message="tns:IManager_ModifyUserGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelUserGroups">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelUserGroups" message="tns:IManager_DelUserGroups_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelUserGroupsResponse" message="tns:IManager_DelUserGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserGroups">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddUserGroups" message="tns:IManager_AddUserGroups_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddUserGroupsResponse" message="tns:IManager_AddUserGroups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGroupsInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetUserGroupsInfo" message="tns:IManager_GetUserGroupsInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetUserGroupsInfoResponse" message="tns:IManager_GetUserGroupsInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExperienceInfo">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetExperienceInfo" message="tns:IManager_GetExperienceInfo_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetExperienceInfoResponse" message="tns:IManager_GetExperienceInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddExperience">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddExperience" message="tns:IManager_AddExperience_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddExperienceResponse" message="tns:IManager_AddExperience_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditExperience">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/EditExperience" message="tns:IManager_EditExperience_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/EditExperienceResponse" message="tns:IManager_EditExperience_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelExperience">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelExperience" message="tns:IManager_DelExperience_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelExperienceResponse" message="tns:IManager_DelExperience_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvertInfoWithPage">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetAdvertInfoWithPage" message="tns:IManager_GetAdvertInfoWithPage_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetAdvertInfoWithPageResponse" message="tns:IManager_GetAdvertInfoWithPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAdvert">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddAdvert" message="tns:IManager_AddAdvert_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddAdvertResponse" message="tns:IManager_AddAdvert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DelAdvert">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DelAdvert" message="tns:IManager_DelAdvert_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DelAdvertResponse" message="tns:IManager_DelAdvert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditAdvert">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/EditAdvert" message="tns:IManager_EditAdvert_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/EditAdvertResponse" message="tns:IManager_EditAdvert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddRole" message="tns:IManager_AddRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddRoleResponse" message="tns:IManager_AddRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/UpdateRole" message="tns:IManager_UpdateRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/UpdateRoleResponse" message="tns:IManager_UpdateRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ReadRole" message="tns:IManager_ReadRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ReadRoleResponse" message="tns:IManager_ReadRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DeleteRole" message="tns:IManager_DeleteRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DeleteRoleResponse" message="tns:IManager_DeleteRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRolePrivileges">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddRolePrivileges" message="tns:IManager_AddRolePrivileges_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddRolePrivilegesResponse" message="tns:IManager_AddRolePrivileges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetRoles" message="tns:IManager_GetRoles_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetRolesResponse" message="tns:IManager_GetRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivilegesRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetPrivilegesRole" message="tns:IManager_GetPrivilegesRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetPrivilegesRoleResponse" message="tns:IManager_GetPrivilegesRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivilegesWithRoleSign">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetPrivilegesWithRoleSign" message="tns:IManager_GetPrivilegesWithRoleSign_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetPrivilegesWithRoleSignResponse" message="tns:IManager_GetPrivilegesWithRoleSign_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPrivileges">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddPrivileges" message="tns:IManager_AddPrivileges_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddPrivilegesResponse" message="tns:IManager_AddPrivileges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePrivileges">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/UpdatePrivileges" message="tns:IManager_UpdatePrivileges_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/UpdatePrivilegesResponse" message="tns:IManager_UpdatePrivileges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPrivileges">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ReadPrivileges" message="tns:IManager_ReadPrivileges_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ReadPrivilegesResponse" message="tns:IManager_ReadPrivileges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePrivileges">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DeletePrivileges" message="tns:IManager_DeletePrivileges_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DeletePrivilegesResponse" message="tns:IManager_DeletePrivileges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivilegeList">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetPrivilegeList" message="tns:IManager_GetPrivilegeList_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetPrivilegeListResponse" message="tns:IManager_GetPrivilegeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivilegeParentLit">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetPrivilegeParentLit" message="tns:IManager_GetPrivilegeParentLit_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetPrivilegeParentLitResponse" message="tns:IManager_GetPrivilegeParentLit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivilegeTopMenu">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetPrivilegeTopMenu" message="tns:IManager_GetPrivilegeTopMenu_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetPrivilegeTopMenuResponse" message="tns:IManager_GetPrivilegeTopMenu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivilegesByParentID">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetPrivilegesByParentID" message="tns:IManager_GetPrivilegesByParentID_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetPrivilegesByParentIDResponse" message="tns:IManager_GetPrivilegesByParentID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidataUserRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ValidataUserRole" message="tns:IManager_ValidataUserRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ValidataUserRoleResponse" message="tns:IManager_ValidataUserRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UserRolePrivileges">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/UserRolePrivileges" message="tns:IManager_UserRolePrivileges_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/UserRolePrivilegesResponse" message="tns:IManager_UserRolePrivileges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPrivileges">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetPrivileges" message="tns:IManager_GetPrivileges_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetPrivilegesResponse" message="tns:IManager_GetPrivileges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddOrg">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddOrg" message="tns:IManager_AddOrg_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddOrgResponse" message="tns:IManager_AddOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrg">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/UpdateOrg" message="tns:IManager_UpdateOrg_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/UpdateOrgResponse" message="tns:IManager_UpdateOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadOrg">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ReadOrg" message="tns:IManager_ReadOrg_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ReadOrgResponse" message="tns:IManager_ReadOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrg">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DeleteOrg" message="tns:IManager_DeleteOrg_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DeleteOrgResponse" message="tns:IManager_DeleteOrg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrgList">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetOrgList" message="tns:IManager_GetOrgList_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetOrgListResponse" message="tns:IManager_GetOrgList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBaseOrgListAll">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/GetBaseOrgListAll" message="tns:IManager_GetBaseOrgListAll_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/GetBaseOrgListAllResponse" message="tns:IManager_GetBaseOrgListAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddUserRole" message="tns:IManager_AddUserRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddUserRoleResponse" message="tns:IManager_AddUserRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/UpdateUserRole" message="tns:IManager_UpdateUserRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/UpdateUserRoleResponse" message="tns:IManager_UpdateUserRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadUserRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ReadUserRole" message="tns:IManager_ReadUserRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ReadUserRoleResponse" message="tns:IManager_ReadUserRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUserRole">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DeleteUserRole" message="tns:IManager_DeleteUserRole_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DeleteUserRoleResponse" message="tns:IManager_DeleteUserRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddOrgUser">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/AddOrgUser" message="tns:IManager_AddOrgUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/AddOrgUserResponse" message="tns:IManager_AddOrgUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrgUser">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/UpdateOrgUser" message="tns:IManager_UpdateOrgUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/UpdateOrgUserResponse" message="tns:IManager_UpdateOrgUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadOrgUser">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/ReadOrgUser" message="tns:IManager_ReadOrgUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/ReadOrgUserResponse" message="tns:IManager_ReadOrgUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrgUser">
+      <wsdl:input wsaw:Action="www.IManager.com/IManager/DeleteOrgUser" message="tns:IManager_DeleteOrgUser_InputMessage" />
+      <wsdl:output wsaw:Action="www.IManager.com/IManager/DeleteOrgUserResponse" message="tns:IManager_DeleteOrgUser_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

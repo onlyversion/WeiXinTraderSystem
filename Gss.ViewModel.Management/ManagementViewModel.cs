@@ -1219,8 +1219,10 @@ namespace Gss.ViewModel.Management
 
             NewsList = new ObservableCollection<NewsInfo>();
             ArtilesList = new ObservableCollection<NewsInfo>();
+            AdvertList = new ObservableCollection<AdvertInfo>();
             GetNewsCondition = new SelectCondition();
             GetArticlesCondition = new SelectCondition();
+            GetAdvertCondition = new SelectCondition();
 
             FundReportList = new ObservableCollection<FundChangeInformation>();
             ChuJinList = new ObservableCollection<TradeChuJinInformation>();

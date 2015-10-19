@@ -31,3 +31,14 @@ E:\AllProjects\金通网微交易\公用管理端\Gss.BusinessService\bin\Debug\
 E:\AllProjects\金通网微交易\公用管理端\Gss.BusinessService\obj\Debug\Gss.BusinessService.csprojResolveAssemblyReference.cache
 E:\AllProjects\金通网微交易\公用管理端\Gss.BusinessService\obj\Debug\Gss.BusinessService.dll
 E:\AllProjects\金通网微交易\公用管理端\Gss.BusinessService\obj\Debug\Gss.BusinessService.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\bin\Debug\Gss.BusinessService.dll.config
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\bin\Debug\Gss.BusinessService.dll
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\bin\Debug\Gss.BusinessService.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\bin\Debug\Gss.Common.dll
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\bin\Debug\Gss.Entities.dll
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\bin\Debug\Xceed.Wpf.Toolkit.dll
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\bin\Debug\Gss.Common.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\bin\Debug\Gss.Entities.pdb
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\obj\Debug\Gss.BusinessService.csprojResolveAssemblyReference.cache
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\obj\Debug\Gss.BusinessService.dll
+E:\GitHub\WeiXinTraderSystem\Gss.BusinessService\obj\Debug\Gss.BusinessService.pdb

@@ -457,6 +457,15 @@ namespace Gss.Entities {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 广告.
+        /// </summary>
+        public static string System_Advert {
+            get {
+                return ResourceManager.GetString("System_Advert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 理财师说.
         /// </summary>
         public static string System_ArticlesInfo {

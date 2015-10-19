@@ -121,6 +121,9 @@
     <Compile Include="DataManager\ExperienceControl.xaml.cs">
       <DependentUpon>ExperienceControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SystemSetting\AdvertControl.xaml.cs">
+      <DependentUpon>AdvertControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SystemSetting\ArticlesInfoControl.xaml.cs">
       <DependentUpon>ArticlesInfoControl.xaml</DependentUpon>
     </Compile>
@@ -312,6 +315,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="DataManager\ExperienceControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetting\AdvertControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
